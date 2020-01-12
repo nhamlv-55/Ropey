@@ -34,6 +34,22 @@ class Node:
         self._children = list()
         self._sort = None
         self._num_child = 0
+        self._node_idx = -1
+
+    def keys(self):
+        return ["children", "index", "features"]
+
+    def __getitem__(self, key):
+        # print("K:",key)
+        if key=="children": return self._children
+        elif key =="index": return self._node_idx
+        elif key =="features": return self._token_id
+
+    def __setitem__(self, key, value):
+        if key=="children": return self.set_children(value)
+        elif key =="index": return self.set_node_idx(value)
+
+
     def set_token(self, ast_node, vocab):
         if z3.is_rational_value(ast_node):
             self._token = "<NUMBER>"
@@ -43,6 +59,12 @@ class Node:
             self._token_id = vocab.add_token(self._token)
     def set_sort(self, ast_node):
         self._sort = ast_node.sort().name()
+
+    def set_node_idx(self, idx):
+        self._node_idx = idx
+
+    def get_node_idx(self):
+        return self._node_idx
 
     def token(self):
         return self._token
