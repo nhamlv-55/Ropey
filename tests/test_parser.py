@@ -10,5 +10,5 @@ def test_1():
     vocab = Du.Vocab()
     tree = Du.ast_to_node(expr, vocab)
     print(tree)
-    vocab.dump()
+    vocab.save("test_1_vocab.json")
 test_1()

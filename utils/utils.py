@@ -27,7 +27,10 @@ class Vocab:
         print("ID2W:", self.id2w)
         print("W2ID:", self.w2id)
 
-
+    def save(self, filename):
+        vocab = {"id2w": self.id2w, "w2id": self.w2id, "size": self.size}
+        with open(filename, "w") as f:
+            json.dump(vocab, f)
 class Node:
     def __init__(self):
         self._token = ""
