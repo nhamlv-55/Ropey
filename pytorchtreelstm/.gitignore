@@ -1,0 +1,8 @@
+.mypy_cache/
+.pytest_cache/
+__pycache__/
+build/
+dist/
+pytorch_tree_lstm.egg-info/
+venv/
+.vscode
