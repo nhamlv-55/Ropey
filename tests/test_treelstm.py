@@ -55,11 +55,12 @@ if __name__ == '__main__':
             data['adjacency_list'],
             data['edge_order']
         )
-
         labels = data['labels']
         loss = loss_function(h, labels)
         loss.backward()
         optimizer.step()
 
         print(f'Iteration {n+1} Loss: {loss}')
+        #check that embedding is being trained
+        print(model.emb(torch.LongTensor([5])))
     print(data)
