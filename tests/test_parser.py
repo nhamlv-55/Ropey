@@ -1,6 +1,6 @@
 # import Tree
 import z3
-import Doping.utils.ast_to_tree as Du
+import Doping.utils.utils as Du
 
 def test_1():
     x1, x2, x3 = z3.Reals('x1 x2 x3')
