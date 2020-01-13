@@ -8,9 +8,12 @@ class Vocab:
         self.w2id = {}
         self.size = 0
 
+        self.id2s = {}
+        self.s2id = {}
+        self.sort_size = 0
+
         #add constant
         self.add_token("<ROOT>")
-        self.add_token("<NUMBER>")
         self.add_token("<UNK>")
     
     def add_token(self, w):
@@ -24,12 +27,24 @@ class Vocab:
             self.size+=1
             return self.w2id[w]
 
+    def add_sort(self, sort):
+        '''add a token to vocab and return its id'''
+        if sort in self.s2id:
+            return self.s2id[sort]
+        else:
+            idx = self.sort_size
+            self.s2id[sort] = idx
+            self.id2s[idx] = sort
+            self.sort_size+=1
+            return self.s2id[sort]
+
+
     def dump(self):
         print("ID2W:", self.id2w)
         print("W2ID:", self.w2id)
 
     def save(self, filename):
-        vocab = {"id2w": self.id2w, "w2id": self.w2id, "size": self.size}
+        vocab = {"id2w": self.id2w, "w2id": self.w2id, "size": self.size, "id2s": self.id2s, "s2id": self.s2id, "sort_size": self.sort_size}
         with open(filename, "w") as f:
             json.dump(vocab, f)
 class Node:
@@ -37,6 +52,7 @@ class Node:
         self._raw_expr = ""
         self._token = ""
         self._token_id = -1
+        self._sort_id = -1
         self._children = list()
         self._sort = None
         self._num_child = 0
@@ -67,9 +83,18 @@ class Node:
 
 
 
-    def set_sort(self, ast_node):
-        self._sort = ast_node.sort().name()
-
+    def set_sort(self, ast_node, vocab):
+        if z3.is_const(ast_node):
+            if z3.is_bool(ast_node):
+                sort = "<BOOL_VAR>"
+            elif z3.is_rational_value(ast_node) or z3.is_int(ast_node):
+                sort = "<NUMBER>"
+            else:
+                sort = "<VAR>"
+        else:
+            sort = ast_node.sort().name()
+        self._sort = sort
+        self._sort_id = vocab.add_sort(self._sort)
     def set_node_idx(self, idx):
         self._node_idx = idx
 
@@ -93,19 +118,20 @@ class Node:
         self._token = "<ROOT>"
         self._token_id = vocab.add_token(self._token)
         self._raw_expr = "<ROOT>"
+        self._sort = "<ROOT>"
 
     def to_json(self):
         if self._num_child==0:
-            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "children": [], "expr": self._raw_expr}
+            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "sort_id": self._sort_id, "children": [], "expr": self._raw_expr}
         else:
-            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "children": [child.to_json() for child in self._children], "expr": self._raw_expr}
+            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "sort_id": self._sort_id, "children": [child.to_json() for child in self._children], "expr": self._raw_expr}
     def __str__(self):
         return json.dumps(self.to_json(), indent = 2)
 
 def ast_to_node(ast_node, vocab):
     node = Node()
     node.set_token(ast_node, vocab)
-    node.set_sort(ast_node)
+    node.set_sort(ast_node, vocab)
     if ast_node.num_args == 0:
         return node
     else:
