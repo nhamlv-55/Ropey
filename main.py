@@ -41,19 +41,17 @@ if __name__ == '__main__':
     for n in range(1000):
         optimizer.zero_grad()
         loss = 0
-        outputs = []
-        for i in range(len(C_trees)):
-            output = model(
-                C_trees[i],
-                L_a_trees[i],
-                L_b_trees[i]
-            )
-            outputs.append(output)
-        outputs = torch.stack(outputs)
-        loss += loss_function(outputs, label_batch)
+        output = model(
+            C_batch,
+            L_a_batch,
+            L_b_batch
+        )
+        loss = loss_function(output, label_batch)
         loss.backward()
         optimizer.step()
 
-        print(f'Iteration {n+1} Loss: {loss}')
-        #check that embedding is being trained
-        print(model.emb(torch.LongTensor([5])))
+        if n%100==0:
+            # print(output.shape)
+            print(f'Iteration {n+1} Loss: {loss}')
+            #check that embedding is being trained
+            print(model.emb(torch.LongTensor([5])))
