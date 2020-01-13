@@ -9,6 +9,7 @@ class Vocab:
         self.size = 0
 
         #add constant
+        self.add_token("<ROOT>")
         self.add_token("<NUMBER>")
         self.add_token("<UNK>")
     
@@ -45,11 +46,10 @@ class Node:
         return ["children", "index", "features"]
 
     def __getitem__(self, key):
-        # print("K:",key)
         if key=="children": return self._children
         elif key =="index": return self._node_idx
         elif key =="features": return self._token_id
-
+        elif key =="token_id": return self._token_id
     def __setitem__(self, key, value):
         if key=="children": return self.set_children(value)
         elif key =="index": return self.set_node_idx(value)
@@ -64,6 +64,8 @@ class Node:
             self._token = ast_node.decl().name()
             self._token_id = vocab.add_token(self._token)
             self._raw_expr = str(ast_node)
+
+
 
     def set_sort(self, ast_node):
         self._sort = ast_node.sort().name()
@@ -87,6 +89,10 @@ class Node:
     def children(self):
         return self._children
 
+    def set_as_root(self, vocab):
+        self._token = "<ROOT>"
+        self._token_id = vocab.add_token(self._token)
+        self._raw_expr = "<ROOT>"
 
     def to_json(self):
         if self._num_child==0:
@@ -106,10 +112,20 @@ def ast_to_node(ast_node, vocab):
         node.set_children([ast_to_node(child, vocab) for child in ast_node.children()])
         return node
 
+def rootify(ast_node, vocab):
+    '''
+    attach the tree to a dummy node called ROOT to make sure everything is a tree (even a single node)
+    '''
+    root_node = Node()
+    root_node.set_as_root(vocab)
+    root_node.set_children([ast_node])
+    return root_node
+
+def ast_to_tree(ast_node, vocab):
+    return rootify(ast_to_node(ast_node, vocab), vocab)
 
 def _label_node_index(node, n=0):
     node['index'] = n
-    print(node)
     for child in node['children']:
         n += 1
         _label_node_index(child, n)
@@ -118,14 +134,8 @@ def _label_node_index(node, n=0):
 def _gather_node_attributes(node, key):
     if key in node.keys():
         features = [node[key]]
-    elif key == "labels": #only for testing
-        features = [[0]]
 
-    counter = 0
     for child in node['children']:
-        print(counter)
-        counter+=1
-        print(key)
         features.extend(_gather_node_attributes(child, key))
     return features
 
@@ -143,15 +153,15 @@ def convert_tree_to_tensors(tree, device=torch.device('cpu')):
     # Label each node with its walk order to match nodes to feature tensor indexes
     # This modifies the original tree as a side effect
     _label_node_index(tree)
-    features = _gather_node_attributes(tree, 'features')
-    labels = _gather_node_attributes(tree, 'labels')
+    features = _gather_node_attributes(tree, 'token_id')
     adjacency_list = _gather_adjacency_list(tree)
 
+    # print("LEN FEATURES", len(features))
+    # print("ADJ LIST", adjacency_list)
     node_order, edge_order = calculate_evaluation_orders(adjacency_list, len(features))
 
     return {
         'features': torch.tensor(features, device=device, dtype=torch.int64),
-        'labels': torch.tensor(labels, device=device, dtype=torch.float32),
         'node_order': torch.tensor(node_order, device=device, dtype=torch.int64),
         'adjacency_list': torch.tensor(adjacency_list, device=device, dtype=torch.int64),
         'edge_order': torch.tensor(edge_order, device=device, dtype=torch.int64),
