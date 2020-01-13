@@ -62,13 +62,14 @@ def batch_tree_input(batch):
         batched_adjacency_list.append(b['adjacency_list'] + offset)
         offset += n
     batched_adjacency_list = torch.cat(batched_adjacency_list)
-
+    edge_sizes = [b['adjacency_list'].shape[0] for b in batch]
     return {
         'features': batched_features,
         'node_order': batched_node_order,
         'edge_order': batched_edge_order,
         'adjacency_list': batched_adjacency_list,
-        'tree_sizes': tree_sizes
+        'tree_sizes': tree_sizes,
+        'edge_sizes': edge_sizes
     }
 
 

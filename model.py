@@ -20,12 +20,12 @@ class Model(torch.nn.Module):
         h_b, c_b = self.forward_a_tree(lit_b)
         h_b = h_b[-1].view(1, self._tree_dim)
 
-        print(h_a.shape, h_b.shape, h_c.shape)
+        # print(h_a.shape, h_b.shape, h_c.shape)
         fuse_a_b = torch.matmul(h_a, h_b)
-        print(fuse_a_b.shape)
+        # print(fuse_a_b.shape)
         h = torch.matmul(fuse_a_b, h_c)
-        print(h.shape)
-        return F.softmax(self.fc2(F.relu(self.fc1(h))))
+        # print(h.shape)
+        return F.relu(self.fc2(F.relu(self.fc1(h))))
 
     def forward_a_tree(self, tree):
         features = tree["features"]
