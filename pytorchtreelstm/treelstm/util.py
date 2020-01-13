@@ -79,3 +79,9 @@ def unbatch_tree_tensor(tensor, tree_sizes):
     sum(tree_sizes) must equal the size of tensor's zeroth dimension.
     '''
     return torch.split(tensor, tree_sizes, dim=0)
+
+def stack_last_h(tensor, tree_sizes):
+    unb = unbatch_tree_tensor(tensor, tree_sizes)
+    last_h = [x[-1] for x in unb]
+    return torch.stack(last_h)
+
