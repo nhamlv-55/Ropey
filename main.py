@@ -3,30 +3,29 @@ import torch.nn as nn
 import z3
 from Doping.pytorchtreelstm.treelstm import TreeLSTM, calculate_evaluation_orders
 import Doping.utils.utils as Du
-from Doping.utils.Dataset import Dataset
+from Doping.utils.Dataset import DataObj
 from model import Model
 import json
 import os
 
-training = Dataset("/home/nv3le/workspace/Doping/PySpacerSolver/Exp2/ind_gen_files")
-vocab_file = os.path.join(training.datafolder, "vocab.json")
-with open(vocab_file, "r") as f:
-    vocab = json.load(f)
-
+dataObj = DataObj("/home/nv3le/workspace/Doping/PySpacerSolver/Exp2/ind_gen_files")
+train = dataObj.train
+test = dataObj.test
+vocab = dataObj.vocab
 if __name__ == '__main__':
     model = Model(vocab['size']).train()
     loss_function = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters())
-    print("Training with %d datapoints"%training.size())
+    print("Training with %d datapoints"%train["size"])
     for n in range(1000):
         optimizer.zero_grad()
         loss = 0
         output = model(
-            training.C_batch,
-            training.L_a_batch,
-            training.L_b_batch
+            train["C_batch"],
+            train["L_a_batch"],
+            train["L_b_batch"]
         )
-        loss = loss_function(output, training.label_batch)
+        loss = loss_function(output, train["label_batch"])
         loss.backward()
         optimizer.step()
 
