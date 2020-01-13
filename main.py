@@ -54,4 +54,4 @@ if __name__ == '__main__':
             # print(output.shape)
             print(f'Iteration {n+1} Loss: {loss}')
             #check that embedding is being trained
-            print(model.emb(torch.LongTensor([5])))
+            print(model.emb(torch.LongTensor([5]).to(device = torch.device('cuda') ) ) )

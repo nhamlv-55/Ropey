@@ -1,14 +1,16 @@
 import torch
+torch.set_default_tensor_type('torch.cuda.FloatTensor')
 import torch.nn as nn
 import torch.nn.functional as F
 from Doping.pytorchtreelstm.treelstm import TreeLSTM
 import Doping.pytorchtreelstm.treelstm.util as TLUtil
 class Model(torch.nn.Module):
-    def __init__(self, vocab_size, emb_dim = 10, tree_dim = 10, out_dim = 3):
+    def __init__(self, vocab_size, emb_dim = 10, tree_dim = 10, out_dim = 3, device = torch.device('cuda')):
         super().__init__()
         self._emb_dim = emb_dim
         self._tree_dim = tree_dim
-        self.emb = nn.Embedding(vocab_size, emb_dim)
+        self.emb = nn.Embedding(vocab_size, emb_dim )
+        self.device = device
         self.treelstm = TreeLSTM(emb_dim, tree_dim)
         self.fc1 = nn.Linear(tree_dim, int(tree_dim/2))
         self.fc2 = nn.Linear(int(tree_dim/2), out_dim)
@@ -38,10 +40,10 @@ class Model(torch.nn.Module):
         return logits.view(batch_size, -1)
 
     def forward_a_tree(self, tree):
-        features = tree["features"]
-        node_order = tree["node_order"]
-        adjacency_list = tree["adjacency_list"]
-        edge_order = tree["edge_order"]
+        features = tree["features"].to(self.device)
+        node_order = tree["node_order"].to(self.device)
+        adjacency_list = tree["adjacency_list"].to(self.device)
+        edge_order = tree["edge_order"].to(self.device)
         features = self.emb(features)
         h, c = self.treelstm(features, node_order, adjacency_list, edge_order)
         return h,c, tree["tree_sizes"] 

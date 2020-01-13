@@ -149,7 +149,7 @@ def _gather_adjacency_list(node):
     return adjacency_list
 
 
-def convert_tree_to_tensors(tree, device=torch.device('cpu')):
+def convert_tree_to_tensors(tree, device=torch.device('cuda')):
     # Label each node with its walk order to match nodes to feature tensor indexes
     # This modifies the original tree as a side effect
     _label_node_index(tree)
