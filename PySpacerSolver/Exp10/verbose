@@ -1,0 +1,1840 @@
+(transform N7datalog13mk_coi_filterE...no-op 0s)
+(transform N7datalog25mk_interp_tail_simplifierE...3 rules 0s)
+(transform N7datalog27mk_quantifier_instantiationE...no-op 0s)
+(transform N7datalog8mk_scaleE...no-op 0s)
+(transform N7datalog18mk_karr_invariantsE...no-op 0s)
+(transform N7datalog14mk_array_blastE...no-op 0s)
+(transform N7datalog16mk_elim_term_iteE...no-op 0s)
+(transform N7datalog22mk_subsumption_checkerE...no-op 0s)
+(transform N7datalog12mk_bit_blastE...no-op 0s)
+(transform N7datalog15mk_rule_inlinerE...no-op 0s)
+(transform N7datalog13mk_coi_filterE...no-op 0s)
+(transform N7datalog25mk_interp_tail_simplifierE...3 rules 0s)
+(transform N7datalog22mk_subsumption_checkerE...no-op 0s)
+(transform N7datalog15mk_rule_inlinerE...no-op 0s)
+(transform N7datalog13mk_coi_filterE...no-op 0s)
+(transform N7datalog25mk_interp_tail_simplifierE...3 rules 0s)
+(transform N7datalog22mk_subsumption_checkerE...no-op 0s)
+(transform N7datalog15mk_rule_inlinerE...no-op 0s)
+(transform N7datalog22mk_subsumption_checkerE...no-op 0s)
+(transform N7datalog15mk_rule_inlinerE...no-op 0s)
+(transform N7datalog22mk_subsumption_checkerE...no-op 0s)
+(transform N7datalog15mk_rule_inlinerE...no-op 0s)
+(transform N7datalog22mk_subsumption_checkerE...no-op 0s)
+(transform N7datalog8mk_sliceE...no-op 0s)
+expand: query!0 (0, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 0.00 :before-memory 3.51 :after-memory 3.70)
+Entering level 1
+(:SPACER-max-depth         1
+ :SPACER-num-active-lemmas 1
+ :SPACER-num-lemmas        1
+ :SPACER-num-pobs          1
+ :conflicts                2
+ :mk-bool-var              54
+ :mk-clause                52
+ :num-checks               2
+ :pool_solver.checks       1
+ :propagations             2
+ :time.spacer.init_rules   0.00
+ :time.spacer.solve        0.00
+ :time.spacer.solve.reach  0.00)
+expand: query!0 (1, 0) FAR  w(0) 1.
+	create_child: INV (0, 1) FAR 255 U 0.00
+expand: INV (0, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (1, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 0.00 :before-memory 3.70 :after-memory 3.90)
+Propagating: 0 1  ! 2 
+(spacer::context::propagate :time 0.00 :before-memory 3.90 :after-memory 3.99)
+Entering level 2
+(:SPACER-max-depth               2
+ :SPACER-max-query-lvl           1
+ :SPACER-num-active-lemmas       2
+ :SPACER-num-is_invariant        2
+ :SPACER-num-lemmas              3
+ :SPACER-num-pobs                2
+ :SPACER-num-queries             1
+ :added-eqs                      48
+ :arith-add-rows                 28
+ :arith-assert-diseq             12
+ :arith-assert-lower             24
+ :arith-assert-upper             22
+ :arith-conflicts                2
+ :arith-eq-adapter               24
+ :arith-pivots                   10
+ :bool-inductive-gen             1
+ :bool-inductive-gen-failures    1
+ :conflicts                      16
+ :decisions                      56
+ :del-clause                     32
+ :final-checks                   6
+ :mk-bool-var                    238
+ :mk-clause                      294
+ :num-checks                     16
+ :pool_solver.checks             8
+ :pool_solver.checks.sat         3
+ :propagations                   198
+ :time.pool_solver.smt.total     0.00
+ :time.pool_solver.smt.total.sat 0.00
+ :time.spacer.init_rules         0.00
+ :time.spacer.solve              0.01
+ :time.spacer.solve.propagate    0.00
+ :time.spacer.solve.reach        0.00)
+expand: query!0 (2, 0) FAR  w(0) 1.
+	create_child: INV (1, 2) FAR 255 U 0.00
+expand: INV (1, 0) FAR  w(0) 255.
+	create_child: INV (0, 2) FAR 1297 U 0.00
+expand: INV (0, 0) FAR  w(0) 1297. F 0.00
+expand: INV (1, 0) FAR  w(0) 255.
+	create_child: INV (0, 2) FAR 1541 U 0.00
+expand: INV (0, 0) FAR  w(0) 1541. F 0.00
+expand: INV (1, 0) FAR  w(0) 255.
+	create_child: INV (0, 2) FAR 1894 U 0.00
+expand: INV (0, 0) FAR  w(0) 1894. F 0.00
+expand: INV (1, 0) FAR  w(0) 255.
+	create_child: INV (0, 2) FAR 2223 U 0.00
+expand: INV (0, 0) FAR  w(0) 2223. F 0.00
+expand: INV (1, 0) FAR  w(0) 255.
+	create_child: INV (0, 2) FAR 2430 U 0.00
+expand: INV (0, 0) FAR  w(0) 2430. F 0.00
+expand: INV (1, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (2, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 0.03 :before-memory 3.99 :after-memory 4.55)
+Propagating: 0 1 2  ! 3 
+(spacer::context::propagate :time 0.01 :before-memory 4.55 :after-memory 4.55)
+Entering level 3
+(:SPACER-max-depth                 3
+ :SPACER-max-query-lvl             2
+ :SPACER-num-active-lemmas         7
+ :SPACER-num-ctp-blocked           2
+ :SPACER-num-is_invariant          10
+ :SPACER-num-lemmas                10
+ :SPACER-num-pobs                  7
+ :SPACER-num-propagations          1
+ :SPACER-num-queries               7
+ :added-eqs                        402
+ :arith-add-rows                   1384
+ :arith-assert-diseq               196
+ :arith-assert-lower               634
+ :arith-assert-upper               406
+ :arith-bound-prop                 136
+ :arith-conflicts                  12
+ :arith-eq-adapter                 106
+ :arith-fixed-eqs                  54
+ :arith-offset-eqs                 2
+ :arith-pivots                     190
+ :bool-inductive-gen               7
+ :bool-inductive-gen-failures      7
+ :conflicts                        70
+ :decisions                        642
+ :del-clause                       108
+ :final-checks                     28
+ :iuc_solver.num_proxies           18
+ :mk-bool-var                      652
+ :mk-clause                        614
+ :num-checks                       70
+ :pool_solver.checks               35
+ :pool_solver.checks.sat           14
+ :propagations                     2012
+ :time.iuc_solver.get_iuc          0.00
+ :time.pool_solver.smt.total       0.03
+ :time.pool_solver.smt.total.sat   0.02
+ :time.spacer.init_rules           0.00
+ :time.spacer.mbp                  0.00
+ :time.spacer.solve                0.04
+ :time.spacer.solve.propagate      0.01
+ :time.spacer.solve.reach          0.03
+ :time.spacer.solve.reach.children 0.01)
+expand: query!0 (3, 0) FAR  w(0) 1.
+	create_child: INV (2, 3) FAR 255 U 0.00
+expand: INV (2, 0) FAR  w(0) 255.
+	create_child: INV (1, 3) FAR 3196 U 0.00
+expand: INV (1, 0) FAR  w(0) 3196.
+	create_child: INV (0, 3) FAR 3397 U 0.01
+expand: INV (0, 0) FAR  w(0) 3397. F 0.00
+expand: INV (1, 0) FAR  w(0) 3196. F 0.05
+expand: INV (2, 0) FAR  w(0) 255.
+	create_child: INV (1, 3) FAR 1894 U 0.00
+expand: INV (1, 0) FAR  w(0) 1894.
+	create_child: INV (0, 3) FAR 4960 U 0.00
+expand: INV (0, 0) FAR  w(0) 4960. F 0.01
+expand: INV (1, 0) FAR  w(0) 1894.
+	create_child: INV (0, 3) FAR 5631 U 0.02
+expand: INV (0, 0) FAR  w(0) 5631. F 0.00
+expand: INV (1, 0) FAR  w(0) 1894. F 0.09
+expand: INV (2, 0) FAR  w(0) 255.
+	create_child: INV (1, 3) FAR 6356 U 0.00
+expand: INV (1, 0) FAR  w(0) 6356. F 0.05
+expand: INV (2, 0) FAR  w(0) 255.
+	create_child: INV (1, 3) FAR 6785 U 0.00
+expand: INV (1, 0) FAR  w(0) 6785. F 0.08
+expand: INV (2, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (3, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 0.34 :before-memory 4.55 :after-memory 5.61)
+Propagating: 0 1 2 3  ! 4 
+(spacer::context::propagate :time 0.05 :before-memory 5.61 :after-memory 5.70)
+Entering level 4
+(:SPACER-max-depth                     4
+ :SPACER-max-query-lvl                 3
+ :SPACER-num-active-lemmas             14
+ :SPACER-num-ctp-blocked               8
+ :SPACER-num-invariants                1
+ :SPACER-num-is_invariant              24
+ :SPACER-num-lemmas                    19
+ :SPACER-num-pobs                      13
+ :SPACER-num-propagations              2
+ :SPACER-num-queries                   15
+ :added-eqs                            1174
+ :arith-add-rows                       12216
+ :arith-assert-diseq                   592
+ :arith-assert-lower                   2470
+ :arith-assert-upper                   1802
+ :arith-bound-prop                     520
+ :arith-conflicts                      68
+ :arith-eq-adapter                     218
+ :arith-fixed-eqs                      198
+ :arith-offset-eqs                     36
+ :arith-pivots                         704
+ :bool-inductive-gen                   15
+ :bool-inductive-gen-failures          18
+ :conflicts                            214
+ :decisions                            3136
+ :del-clause                           216
+ :final-checks                         70
+ :iuc_solver.num_proxies               65
+ :minimized-lits                       14
+ :mk-bool-var                          1326
+ :mk-clause                            1230
+ :num-checks                           178
+ :pool_solver.checks                   89
+ :pool_solver.checks.sat               35
+ :propagations                         8368
+ :time.iuc_solver.get_iuc              0.01
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.00
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.00
+ :time.iuc_solver.get_iuc.learn_core   0.00
+ :time.pool_solver.proof               0.00
+ :time.pool_solver.smt.total           0.38
+ :time.pool_solver.smt.total.sat       0.13
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.01
+ :time.spacer.solve                    0.44
+ :time.spacer.solve.propagate          0.06
+ :time.spacer.solve.reach              0.37
+ :time.spacer.solve.reach.children     0.02
+ :time.spacer.solve.reach.gen.bool_ind 0.25)
+expand: query!0 (4, 0) FAR  w(0) 1.
+	create_child: INV (3, 4) FAR 255 U 0.00
+expand: INV (3, 0) FAR  w(0) 255.
+	create_child: INV (2, 4) FAR 3196 U 0.00
+expand: INV (2, 0) FAR  w(0) 3196. F 0.15
+expand: INV (3, 0) FAR  w(0) 255.
+	create_child: INV (2, 4) FAR 1541 U 0.01
+expand: INV (2, 0) FAR  w(0) 1541. F 0.16
+expand: INV (3, 0) FAR  w(0) 255.
+	create_child: INV (2, 4) FAR 10310 U 0.00
+expand: INV (2, 0) FAR  w(0) 10310.
+	create_child: INV (1, 4) FAR 10445 U 0.01
+expand: INV (1, 0) FAR  w(0) 10445. F 0.04
+expand: INV (2, 0) FAR  w(0) 10310. F 0.13
+expand: INV (3, 0) FAR  w(0) 255.
+	create_child: INV (2, 4) FAR 11265 U 0.01
+expand: INV (2, 0) FAR  w(0) 11265. F 0.19
+expand: INV (3, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (4, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 0.73 :before-memory 5.70 :after-memory 6.81)
+Propagating: 1 2 3 4  ! 5 
+(spacer::context::propagate :time 0.16 :before-memory 6.81 :after-memory 7.03)
+Entering level 5
+(:SPACER-max-depth                     5
+ :SPACER-max-query-lvl                 4
+ :SPACER-num-active-lemmas             19
+ :SPACER-num-ctp-blocked               10
+ :SPACER-num-invariants                2
+ :SPACER-num-is_invariant              37
+ :SPACER-num-lemma-jumped              2
+ :SPACER-num-lemmas                    26
+ :SPACER-num-pobs                      16
+ :SPACER-num-propagations              5
+ :SPACER-num-queries                   21
+ :added-eqs                            2112
+ :arith-add-rows                       41288
+ :arith-assert-diseq                   1132
+ :arith-assert-lower                   5258
+ :arith-assert-upper                   3846
+ :arith-bound-prop                     1118
+ :arith-conflicts                      164
+ :arith-eq-adapter                     348
+ :arith-fixed-eqs                      392
+ :arith-offset-eqs                     44
+ :arith-pivots                         1560
+ :bool-inductive-gen                   21
+ :bool-inductive-gen-failures          30
+ :conflicts                            404
+ :decisions                            7560
+ :del-clause                           336
+ :final-checks                         116
+ :iuc_solver.num_proxies               108
+ :minimized-lits                       88
+ :mk-bool-var                          1976
+ :mk-clause                            2100
+ :num-checks                           294
+ :pool_solver.checks                   147
+ :pool_solver.checks.sat               58
+ :propagations                         18782
+ :time.iuc_solver.get_iuc              0.02
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.00
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.01
+ :time.iuc_solver.get_iuc.learn_core   0.01
+ :time.pool_solver.proof               0.00
+ :time.pool_solver.smt.total           1.24
+ :time.pool_solver.smt.total.sat       0.43
+ :time.spacer.ctp                      0.00
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.01
+ :time.spacer.solve                    1.34
+ :time.spacer.solve.propagate          0.23
+ :time.spacer.solve.reach              1.10
+ :time.spacer.solve.reach.children     0.03
+ :time.spacer.solve.reach.gen.bool_ind 0.88)
+expand: query!0 (5, 0) FAR  w(0) 1.
+	create_child: INV (4, 5) FAR 255 U 0.00
+expand: INV (4, 0) FAR  w(0) 255.
+	create_child: INV (3, 5) FAR 13462 U 0.02
+expand: INV (3, 0) FAR  w(0) 13462. F 0.17
+expand: INV (4, 0) FAR  w(0) 255.
+	create_child: INV (3, 5) FAR 11265 U 0.01
+expand: INV (3, 0) FAR  w(0) 11265. F 0.19
+expand: INV (4, 0) FAR  w(0) 255.
+	create_child: INV (3, 5) FAR 6785 U 0.02
+expand: INV (3, 0) FAR  w(0) 6785.
+	create_child: INV (2, 5) FAR 15103 U 0.01
+expand: INV (2, 0) FAR  w(0) 15103. F 0.27
+expand: INV (3, 0) FAR  w(0) 6785. F 0.18
+expand: INV (4, 0) FAR  w(0) 255.
+	create_child: INV (3, 5) FAR 16495 U 0.03
+expand: INV (3, 0) FAR  w(0) 16495. F 0.00
+expand: INV (4, 0) FAR  w(0) 255.
+	create_child: INV (3, 5) FAR 16664 U 0.02
+expand: INV (3, 0) FAR  w(0) 16664. F 0.33
+expand: INV (4, 0) FAR  w(0) 255.
+	create_child: INV (3, 5) FAR 1894 U 0.02
+expand: INV (3, 0) FAR  w(0) 1894. F 0.29
+expand: INV (4, 0) FAR  w(0) 255. F 0.01
+expand: query!0 (5, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 1.58 :before-memory 7.03 :after-memory 7.97)
+Propagating: 2 3 4 5  ! 6 
+(spacer::context::propagate :time 0.29 :before-memory 7.97 :after-memory 8.10)
+Entering level 6
+(:SPACER-max-depth                     6
+ :SPACER-max-query-lvl                 5
+ :SPACER-num-active-lemmas             24
+ :SPACER-num-ctp-blocked               11
+ :SPACER-num-invariants                2
+ :SPACER-num-is_invariant              56
+ :SPACER-num-lemma-jumped              2
+ :SPACER-num-lemmas                    35
+ :SPACER-num-pobs                      20
+ :SPACER-num-propagations              11
+ :SPACER-num-queries                   29
+ :added-eqs                            3454
+ :arith-add-rows                       108378
+ :arith-assert-diseq                   2042
+ :arith-assert-lower                   10810
+ :arith-assert-upper                   7466
+ :arith-bound-prop                     1820
+ :arith-conflicts                      340
+ :arith-eq-adapter                     510
+ :arith-fixed-eqs                      628
+ :arith-offset-eqs                     96
+ :arith-pivots                         2936
+ :bool-inductive-gen                   29
+ :bool-inductive-gen-failures          46
+ :conflicts                            694
+ :decisions                            17000
+ :del-clause                           490
+ :final-checks                         182
+ :iuc_solver.num_proxies               152
+ :minimized-lits                       152
+ :mk-bool-var                          2874
+ :mk-clause                            3212
+ :num-checks                           448
+ :pool_solver.checks                   224
+ :pool_solver.checks.sat               91
+ :propagations                         39892
+ :time.iuc_solver.get_iuc              0.03
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.01
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.01
+ :time.iuc_solver.get_iuc.learn_core   0.01
+ :time.pool_solver.proof               0.01
+ :time.pool_solver.smt.total           3.06
+ :time.pool_solver.smt.total.sat       1.48
+ :time.spacer.ctp                      0.00
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.02
+ :time.spacer.solve                    3.21
+ :time.spacer.solve.propagate          0.52
+ :time.spacer.solve.reach              2.68
+ :time.spacer.solve.reach.children     0.04
+ :time.spacer.solve.reach.gen.bool_ind 2.26)
+expand: query!0 (6, 0) FAR  w(0) 1.
+	create_child: INV (5, 6) FAR 255 U 0.00
+expand: INV (5, 0) FAR  w(0) 255.
+	create_child: INV (4, 6) FAR 1541 U 0.00
+expand: INV (4, 0) FAR  w(0) 1541.
+	create_child: INV (3, 6) FAR 19659 U 0.02
+expand: INV (3, 0) FAR  w(0) 19659. F 0.28
+expand: INV (4, 0) FAR  w(0) 1541. F 0.24
+expand: INV (5, 0) FAR  w(0) 255.
+	create_child: INV (4, 6) FAR 1894 U 0.02
+expand: INV (4, 0) FAR  w(0) 1894. F 0.29
+expand: INV (5, 0) FAR  w(0) 255.
+	create_child: INV (4, 6) FAR 11265 U 0.07
+expand: INV (4, 0) FAR  w(0) 11265.
+	create_child: INV (3, 6) FAR 22327 U 0.04
+expand: INV (3, 0) FAR  w(0) 22327. F 0.27
+expand: INV (4, 0) FAR  w(0) 11265.
+	create_child: INV (3, 6) FAR 23727 U 0.07
+expand: INV (3, 0) FAR  w(0) 23727.
+	create_child: INV (2, 6) FAR 24262 U 0.02
+expand: INV (2, 0) FAR  w(0) 24262. F 0.45
+expand: INV (3, 0) FAR  w(0) 23727. F 0.40
+expand: INV (4, 0) FAR  w(0) 11265. F 0.33
+expand: INV (5, 0) FAR  w(0) 255. F 0.01
+expand: query!0 (6, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 2.54 :before-memory 8.10 :after-memory 10.05)
+Propagating: 2 3 4 5 6  ! 7 
+(spacer::context::propagate :time 0.77 :before-memory 10.05 :after-memory 10.56)
+Entering level 7
+(:SPACER-max-depth                     7
+ :SPACER-max-query-lvl                 6
+ :SPACER-num-active-lemmas             31
+ :SPACER-num-ctp-blocked               13
+ :SPACER-num-invariants                3
+ :SPACER-num-is_invariant              81
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    44
+ :SPACER-num-pobs                      24
+ :SPACER-num-propagations              17
+ :SPACER-num-queries                   37
+ :added-eqs                            5000
+ :arith-add-rows                       223234
+ :arith-assert-diseq                   3100
+ :arith-assert-lower                   19238
+ :arith-assert-upper                   12854
+ :arith-bound-prop                     3064
+ :arith-conflicts                      510
+ :arith-eq-adapter                     702
+ :arith-fixed-eqs                      902
+ :arith-offset-eqs                     120
+ :arith-pivots                         4566
+ :bool-inductive-gen                   37
+ :bool-inductive-gen-failures          63
+ :conflicts                            1000
+ :decisions                            32414
+ :del-clause                           678
+ :final-checks                         262
+ :iuc_solver.num_proxies               227
+ :minimized-lits                       210
+ :mk-bool-var                          3850
+ :mk-clause                            4960
+ :num-checks                           628
+ :pool_solver.checks                   314
+ :pool_solver.checks.sat               131
+ :propagations                         70228
+ :time.iuc_solver.get_iuc              0.04
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.01
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.02
+ :time.iuc_solver.get_iuc.learn_core   0.01
+ :time.pool_solver.proof               0.01
+ :time.pool_solver.smt.total           6.29
+ :time.pool_solver.smt.total.sat       3.16
+ :time.spacer.ctp                      0.01
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.03
+ :time.spacer.solve                    6.53
+ :time.spacer.solve.propagate          1.29
+ :time.spacer.solve.reach              5.21
+ :time.spacer.solve.reach.children     0.06
+ :time.spacer.solve.reach.gen.bool_ind 4.39)
+expand: query!0 (7, 0) FAR  w(0) 1.
+	create_child: INV (6, 7) FAR 255 U 0.00
+expand: INV (6, 0) FAR  w(0) 255.
+	create_child: INV (5, 7) FAR 28170 U 0.03
+expand: INV (5, 0) FAR  w(0) 28170. F 0.17
+expand: INV (6, 0) FAR  w(0) 255.
+	create_child: INV (5, 7) FAR 11265 U 0.03
+expand: INV (5, 0) FAR  w(0) 11265.
+	create_child: INV (4, 7) FAR 28605 U 0.09
+expand: INV (4, 0) FAR  w(0) 28605.
+	create_child: INV (3, 7) FAR 29311 U 0.03
+expand: INV (3, 0) FAR  w(0) 29311.
+	create_child: INV (2, 7) FAR 29733 U 0.04
+expand: INV (2, 0) FAR  w(0) 29733. F 0.65
+expand: INV (3, 0) FAR  w(0) 29311. F 0.44
+expand: INV (4, 0) FAR  w(0) 28605. F 0.59
+expand: INV (5, 0) FAR  w(0) 11265.
+	create_child: INV (4, 7) FAR 22327 U 0.23
+expand: INV (4, 0) FAR  w(0) 22327. F 0.37
+expand: INV (5, 0) FAR  w(0) 11265. F 0.51
+expand: INV (6, 0) FAR  w(0) 255.
+	create_child: INV (5, 7) FAR 10310 U 0.05
+expand: INV (5, 0) FAR  w(0) 10310. F 0.51
+expand: INV (6, 0) FAR  w(0) 255.
+	create_child: INV (5, 7) FAR 13462 U 1.50
+expand: INV (5, 0) FAR  w(0) 13462. F 0.01
+expand: INV (6, 0) FAR  w(0) 255. F 0.01
+expand: query!0 (7, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 5.29 :before-memory 10.56 :after-memory 12.02)
+Propagating: 2 3 4 5 6 7  ! 8 
+(spacer::context::propagate :time 5.89 :before-memory 12.02 :after-memory 12.67)
+Entering level 8
+(:SPACER-max-depth                     8
+ :SPACER-max-query-lvl                 7
+ :SPACER-num-active-lemmas             37
+ :SPACER-num-ctp-blocked               19
+ :SPACER-num-invariants                3
+ :SPACER-num-is_invariant              121
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    54
+ :SPACER-num-pobs                      28
+ :SPACER-num-propagations              32
+ :SPACER-num-queries                   46
+ :added-eqs                            6434
+ :arith-add-rows                       706406
+ :arith-assert-diseq                   4188
+ :arith-assert-lower                   28898
+ :arith-assert-upper                   20108
+ :arith-bound-prop                     5302
+ :arith-conflicts                      752
+ :arith-eq-adapter                     882
+ :arith-fixed-eqs                      1178
+ :arith-offset-eqs                     150
+ :arith-pivots                         9712
+ :bool-inductive-gen                   46
+ :bool-inductive-gen-failures          77
+ :conflicts                            1410
+ :decisions                            52862
+ :del-clause                           880
+ :final-checks                         338
+ :iuc_solver.num_proxies               294
+ :minimized-lits                       288
+ :mk-bool-var                          4926
+ :mk-clause                            7788
+ :num-checks                           830
+ :pool_solver.checks                   415
+ :pool_solver.checks.sat               169
+ :propagations                         109036
+ :time.iuc_solver.get_iuc              0.06
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.02
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.03
+ :time.iuc_solver.get_iuc.learn_core   0.01
+ :time.pool_solver.proof               0.01
+ :time.pool_solver.smt.total           17.39
+ :time.pool_solver.smt.total.sat       11.93
+ :time.spacer.ctp                      0.03
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.04
+ :time.spacer.solve                    17.72
+ :time.spacer.solve.propagate          7.18
+ :time.spacer.solve.reach              10.51
+ :time.spacer.solve.reach.children     0.08
+ :time.spacer.solve.reach.gen.bool_ind 7.35)
+expand: query!0 (8, 0) FAR  w(0) 1.
+	create_child: INV (7, 8) FAR 255 U 0.00
+expand: INV (7, 0) FAR  w(0) 255.
+	create_child: INV (6, 8) FAR 16495 U 0.04
+expand: INV (6, 0) FAR  w(0) 16495.
+	create_child: INV (5, 8) FAR 37725 U 0.31
+expand: INV (5, 0) FAR  w(0) 37725.
+	create_child: INV (4, 8) FAR 38445 U 0.11
+expand: INV (4, 0) FAR  w(0) 38445.
+	create_child: INV (3, 8) FAR 39204 U 0.23
+expand: INV (3, 0) FAR  w(0) 39204.
+	create_child: INV (2, 8) FAR 39724 U 0.26
+expand: INV (2, 0) FAR  w(0) 39724. F 0.97
+expand: INV (3, 0) FAR  w(0) 39204. F 0.51
+expand: INV (4, 0) FAR  w(0) 38445.
+	create_child: INV (3, 8) FAR 42419 U 0.13
+expand: INV (3, 0) FAR  w(0) 42419.
+	create_child: INV (2, 8) FAR 42846 U 0.28
+expand: INV (2, 0) FAR  w(0) 42846. F 1.55
+expand: INV (3, 0) FAR  w(0) 42419. F 1.28
+expand: INV (4, 0) FAR  w(0) 38445. F 1.17
+expand: INV (5, 0) FAR  w(0) 37725. F 0.82
+expand: INV (6, 0) FAR  w(0) 16495. F 0.03
+expand: INV (7, 0) FAR  w(0) 255.
+	create_child: INV (6, 8) FAR 1894 U 0.15
+expand: INV (6, 0) FAR  w(0) 1894. F 0.73
+expand: INV (7, 0) FAR  w(0) 255.
+	create_child: INV (6, 8) FAR 11265 U 0.30
+expand: INV (6, 0) FAR  w(0) 11265.
+	create_child: INV (5, 8) FAR 22327 U 0.06
+expand: INV (5, 0) FAR  w(0) 22327.
+	create_child: INV (4, 8) FAR 47099 U 0.07
+expand: INV (4, 0) FAR  w(0) 47099.
+	create_child: INV (3, 8) FAR 48060 U 0.39
+expand: INV (3, 0) FAR  w(0) 48060.
+	create_child: INV (2, 8) FAR 48571 U 0.45
+expand: INV (2, 0) FAR  w(0) 48571. F 1.16
+expand: INV (3, 0) FAR  w(0) 48060. F 1.34
+expand: INV (4, 0) FAR  w(0) 47099.
+	create_child: INV (3, 8) FAR 49980 U 0.73
+expand: INV (3, 0) FAR  w(0) 49980.
+	create_child: INV (2, 8) FAR 50315 U 0.43
+expand: INV (2, 0) FAR  w(0) 50315. F 0.79
+expand: INV (3, 0) FAR  w(0) 49980. F 0.71
+expand: INV (4, 0) FAR  w(0) 47099. F 1.82
+expand: INV (5, 0) FAR  w(0) 22327. F 1.07
+expand: INV (6, 0) FAR  w(0) 11265. F 1.07
+expand: INV (7, 0) FAR  w(0) 255.
+	create_child: INV (6, 8) FAR 6785 U 0.27
+expand: INV (6, 0) FAR  w(0) 6785. F 1.22
+expand: INV (7, 0) FAR  w(0) 255. F 0.01
+expand: query!0 (8, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 20.54 :before-memory 12.67 :after-memory 17.60)
+Propagating: 2 3 4 5 6 7 8  ! 9 
+(spacer::context::propagate :time 7.88 :before-memory 17.60 :after-memory 18.56)
+Entering level 9
+(:SPACER-max-depth                     9
+ :SPACER-max-query-lvl                 8
+ :SPACER-num-active-lemmas             49
+ :SPACER-num-ctp-blocked               27
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              183
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    72
+ :SPACER-num-pobs                      39
+ :SPACER-num-propagations              58
+ :SPACER-num-queries                   63
+ :added-eqs                            9566
+ :arith-add-rows                       1589276
+ :arith-assert-diseq                   6418
+ :arith-assert-lower                   61006
+ :arith-assert-upper                   47452
+ :arith-bound-prop                     8082
+ :arith-conflicts                      1342
+ :arith-eq-adapter                     1272
+ :arith-fixed-eqs                      1760
+ :arith-offset-eqs                     200
+ :arith-pivots                         15080
+ :bool-inductive-gen                   63
+ :bool-inductive-gen-failures          108
+ :conflicts                            2288
+ :decisions                            119314
+ :del-clause                           1264
+ :final-checks                         482
+ :iuc_solver.num_proxies               470
+ :minimized-lits                       446
+ :mk-bool-var                          7216
+ :mk-clause                            11840
+ :num-checks                           1214
+ :pool_solver.checks                   607
+ :pool_solver.checks.sat               241
+ :propagations                         236674
+ :time.iuc_solver.get_iuc              0.09
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.03
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.04
+ :time.iuc_solver.get_iuc.learn_core   0.02
+ :time.pool_solver.proof               0.02
+ :time.pool_solver.smt.total           45.56
+ :time.pool_solver.smt.total.sat       30.34
+ :time.spacer.ctp                      0.05
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.08
+ :time.spacer.solve                    46.15
+ :time.spacer.solve.propagate          15.07
+ :time.spacer.solve.reach              31.05
+ :time.spacer.solve.reach.children     0.18
+ :time.spacer.solve.reach.gen.bool_ind 22.10)
+expand: query!0 (9, 0) FAR  w(0) 1.
+	create_child: INV (8, 9) FAR 255 U 0.00
+expand: INV (8, 0) FAR  w(0) 255.
+	create_child: INV (7, 9) FAR 11265 U 0.36
+expand: INV (7, 0) FAR  w(0) 11265.
+	create_child: INV (6, 9) FAR 28605 U 0.30
+expand: INV (6, 0) FAR  w(0) 28605.
+	create_child: INV (5, 9) FAR 59967 U 0.14
+expand: INV (5, 0) FAR  w(0) 59967.
+	create_child: INV (4, 9) FAR 61262 U 0.79
+expand: INV (4, 0) FAR  w(0) 61262.
+	create_child: INV (3, 9) FAR 62477 U 0.49
+expand: INV (3, 0) FAR  w(0) 62477.
+	create_child: INV (2, 9) FAR 63229 U 0.69
+expand: INV (2, 0) FAR  w(0) 63229. F 3.08
+expand: INV (3, 0) FAR  w(0) 62477. F 0.70
+expand: INV (4, 0) FAR  w(0) 61262. F 7.78
+expand: INV (5, 0) FAR  w(0) 59967. F 2.05
+expand: INV (6, 0) FAR  w(0) 28605. F 3.15
+expand: INV (7, 0) FAR  w(0) 11265.
+	create_child: INV (6, 9) FAR 22327 U 0.50
+expand: INV (6, 0) FAR  w(0) 22327.
+	create_child: INV (5, 9) FAR 47099 U 0.78
+expand: INV (5, 0) FAR  w(0) 47099.
+	create_child: INV (4, 9) FAR 48060 U 9.13
+expand: INV (4, 0) FAR  w(0) 48060.
+	create_child: INV (3, 9) FAR 68629 U 0.53
+expand: INV (3, 0) FAR  w(0) 68629.
+	create_child: INV (2, 9) FAR 69600 U 2.79
+expand: INV (2, 0) FAR  w(0) 69600. F 2.51
+expand: INV (3, 0) FAR  w(0) 68629. F 1.27
+expand: INV (4, 0) FAR  w(0) 48060.
+	create_child: INV (3, 9) FAR 48571 U 2.08
+expand: INV (3, 0) FAR  w(0) 48571.
+	create_child: INV (2, 9) FAR 72845 U 2.16
+expand: INV (2, 0) FAR  w(0) 72845. F 3.42
+expand: INV (3, 0) FAR  w(0) 48571. F 2.83
+expand: INV (4, 0) FAR  w(0) 48060. F 1.93
+expand: INV (5, 0) FAR  w(0) 47099. F 2.66
+expand: INV (6, 0) FAR  w(0) 22327. F 2.67
+expand: INV (7, 0) FAR  w(0) 11265. F 1.59
+expand: INV (8, 0) FAR  w(0) 255.
+	create_child: INV (7, 9) FAR 10310 U 1.01
+expand: INV (7, 0) FAR  w(0) 10310. F 0.82
+expand: INV (8, 0) FAR  w(0) 255.
+	create_child: INV (7, 9) FAR 16495 U 0.26
+expand: INV (7, 0) FAR  w(0) 16495. F 1.48
+expand: INV (8, 0) FAR  w(0) 255. F 0.02
+expand: query!0 (9, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 60.06 :before-memory 18.56 :after-memory 23.10)
+Propagating: 2 3 4 5 6 7 8 9  ! 10 
+(spacer::context::propagate :time 31.09 :before-memory 23.10 :after-memory 24.16)
+Entering level 10
+(:SPACER-max-depth                     10
+ :SPACER-max-query-lvl                 9
+ :SPACER-num-active-lemmas             59
+ :SPACER-num-ctp-blocked               29
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              293
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    89
+ :SPACER-num-pobs                      46
+ :SPACER-num-propagations              122
+ :SPACER-num-queries                   79
+ :added-eqs                            13528
+ :arith-add-rows                       4187908
+ :arith-assert-diseq                   9402
+ :arith-assert-lower                   112738
+ :arith-assert-upper                   99084
+ :arith-bound-prop                     10412
+ :arith-conflicts                      2294
+ :arith-eq-adapter                     1778
+ :arith-fixed-eqs                      2500
+ :arith-offset-eqs                     268
+ :arith-pivots                         24606
+ :bool-inductive-gen                   79
+ :bool-inductive-gen-failures          135
+ :conflicts                            3630
+ :decisions                            241660
+ :del-clause                           1744
+ :final-checks                         648
+ :iuc_solver.num_proxies               658
+ :minimized-lits                       714
+ :mk-bool-var                          9910
+ :mk-clause                            16030
+ :num-checks                           1694
+ :pool_solver.checks                   847
+ :pool_solver.checks.sat               324
+ :propagations                         469156
+ :time.iuc_solver.get_iuc              0.12
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.04
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.05
+ :time.iuc_solver.get_iuc.learn_core   0.03
+ :time.pool_solver.proof               0.02
+ :time.pool_solver.smt.total           136.38
+ :time.pool_solver.smt.total.sat       98.45
+ :time.spacer.ctp                      0.10
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.13
+ :time.spacer.solve                    137.30
+ :time.spacer.solve.propagate          46.16
+ :time.spacer.solve.reach              91.10
+ :time.spacer.solve.reach.children     0.30
+ :time.spacer.solve.reach.gen.bool_ind 56.85)
+expand: query!0 (10, 0) FAR  w(0) 1.
+	create_child: INV (9, 10) FAR 255 U 0.00
+expand: INV (9, 0) FAR  w(0) 255.
+	create_child: INV (8, 10) FAR 11265 U 0.01
+expand: INV (8, 0) FAR  w(0) 11265.
+	create_child: INV (7, 10) FAR 22327 U 0.51
+expand: INV (7, 0) FAR  w(0) 22327.
+	create_child: INV (6, 10) FAR 47099 U 0.12
+expand: INV (6, 0) FAR  w(0) 47099.
+	create_child: INV (5, 10) FAR 48060 U 0.92
+expand: INV (5, 0) FAR  w(0) 48060.
+	create_child: INV (4, 10) FAR 48571 U 1.74
+expand: INV (4, 0) FAR  w(0) 48571.
+	create_child: INV (3, 10) FAR 72845 U 2.39
+expand: INV (3, 0) FAR  w(0) 72845. F 3.60
+expand: INV (4, 0) FAR  w(0) 48571. F 3.49
+expand: INV (5, 0) FAR  w(0) 48060. F 6.14
+expand: INV (6, 0) FAR  w(0) 47099. F 3.61
+expand: INV (7, 0) FAR  w(0) 22327. F 1.59
+expand: INV (8, 0) FAR  w(0) 11265. F 1.43
+expand: INV (9, 0) FAR  w(0) 255. F 0.03
+expand: query!0 (10, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 25.62 :before-memory 24.16 :after-memory 24.99)
+Propagating: 3 4 5 6 7 8 9 10  ! 11 
+(spacer::context::propagate :time 30.70 :before-memory 24.99 :after-memory 25.84)
+Entering level 11
+(:SPACER-max-depth                     11
+ :SPACER-max-query-lvl                 10
+ :SPACER-num-active-lemmas             63
+ :SPACER-num-ctp-blocked               34
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              351
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    97
+ :SPACER-num-pobs                      46
+ :SPACER-num-propagations              132
+ :SPACER-num-queries                   86
+ :added-eqs                            15762
+ :arith-add-rows                       5699016
+ :arith-assert-diseq                   11102
+ :arith-assert-lower                   143472
+ :arith-assert-upper                   128088
+ :arith-bound-prop                     11442
+ :arith-conflicts                      2710
+ :arith-eq-adapter                     2076
+ :arith-fixed-eqs                      2942
+ :arith-offset-eqs                     286
+ :arith-pivots                         29504
+ :bool-inductive-gen                   86
+ :bool-inductive-gen-failures          148
+ :conflicts                            4178
+ :decisions                            326288
+ :del-clause                           1974
+ :final-checks                         772
+ :iuc_solver.num_proxies               690
+ :minimized-lits                       786
+ :mk-bool-var                          10988
+ :mk-clause                            17788
+ :num-checks                           1924
+ :pool_solver.checks                   962
+ :pool_solver.checks.sat               386
+ :propagations                         601044
+ :time.iuc_solver.get_iuc              0.14
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.04
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.06
+ :time.iuc_solver.get_iuc.learn_core   0.04
+ :time.pool_solver.proof               0.03
+ :time.pool_solver.smt.total           192.53
+ :time.pool_solver.smt.total.sat       141.83
+ :time.spacer.ctp                      0.15
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.15
+ :time.spacer.solve                    193.63
+ :time.spacer.solve.propagate          76.86
+ :time.spacer.solve.reach              116.73
+ :time.spacer.solve.reach.children     0.35
+ :time.spacer.solve.reach.gen.bool_ind 74.27)
+expand: query!0 (11, 0) FAR  w(0) 1.
+	create_child: INV (10, 11) FAR 255 U 0.00
+expand: INV (10, 0) FAR  w(0) 255.
+	create_child: INV (9, 11) FAR 13462 U 0.01
+expand: INV (9, 0) FAR  w(0) 13462. F 1.48
+expand: INV (10, 0) FAR  w(0) 255.
+	create_child: INV (9, 11) FAR 11265 U 0.15
+expand: INV (9, 0) FAR  w(0) 11265.
+	create_child: INV (8, 11) FAR 22327 U 0.66
+expand: INV (8, 0) FAR  w(0) 22327.
+	create_child: INV (7, 11) FAR 47099 U 0.18
+expand: INV (7, 0) FAR  w(0) 47099.
+	create_child: INV (6, 11) FAR 48060 U 1.43
+expand: INV (6, 0) FAR  w(0) 48060.
+	create_child: INV (5, 11) FAR 95592 U 0.67
+expand: INV (5, 0) FAR  w(0) 95592.
+	create_child: INV (4, 11) FAR 97120 U 1.28
+expand: INV (4, 0) FAR  w(0) 97120.
+	create_child: INV (3, 11) FAR 98510 U 0.98
+expand: INV (3, 0) FAR  w(0) 98510.
+	create_child: INV (2, 11) FAR 101848 U 1.45
+expand: INV (2, 0) FAR  w(0) 101848.
+	create_child: INV (1, 11) FAR 103410 U 1.50
+expand: INV (1, 0) FAR  w(0) 103410. F 0.85
+expand: INV (2, 0) FAR  w(0) 101848. F 6.43
+expand: INV (3, 0) FAR  w(0) 98510. F 7.27
+expand: INV (4, 0) FAR  w(0) 97120. F 13.62
+expand: INV (5, 0) FAR  w(0) 95592. F 4.61
+expand: INV (6, 0) FAR  w(0) 48060.
+	create_child: INV (5, 11) FAR 48571 U 7.07
+expand: INV (5, 0) FAR  w(0) 48571. F 4.38
+expand: INV (6, 0) FAR  w(0) 48060. F 5.96
+expand: INV (7, 0) FAR  w(0) 47099. F 12.68
+expand: INV (8, 0) FAR  w(0) 22327. F 2.51
+expand: INV (9, 0) FAR  w(0) 11265. F 17.90
+expand: INV (10, 0) FAR  w(0) 255.
+	create_child: INV (9, 11) FAR 16495 U 3.67
+expand: INV (9, 0) FAR  w(0) 16495. F 1.37
+expand: INV (10, 0) FAR  w(0) 255.
+	create_child: INV (9, 11) FAR 10310 U 0.35
+expand: INV (9, 0) FAR  w(0) 10310. F 2.67
+expand: INV (10, 0) FAR  w(0) 255. F 0.01
+expand: query!0 (11, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 101.24 :before-memory 25.84 :after-memory 33.23)
+Propagating: 1 2 3 4 5 6 7 8 9 10 11  ! 12 
+(spacer::context::propagate :time 88.91 :before-memory 33.23 :after-memory 35.10)
+Entering level 12
+(:SPACER-max-depth                     12
+ :SPACER-max-query-lvl                 11
+ :SPACER-num-active-lemmas             74
+ :SPACER-num-ctp-blocked               40
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              460
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    112
+ :SPACER-num-pobs                      51
+ :SPACER-num-propagations              178
+ :SPACER-num-queries                   100
+ :added-eqs                            19632
+ :arith-add-rows                       10542888
+ :arith-assert-diseq                   14370
+ :arith-assert-lower                   201300
+ :arith-assert-upper                   191886
+ :arith-bound-prop                     13178
+ :arith-conflicts                      3750
+ :arith-eq-adapter                     2608
+ :arith-fixed-eqs                      3672
+ :arith-offset-eqs                     394
+ :arith-pivots                         41640
+ :bool-inductive-gen                   100
+ :bool-inductive-gen-failures          177
+ :conflicts                            5522
+ :decisions                            512186
+ :del-clause                           2416
+ :final-checks                         968
+ :iuc_solver.num_proxies               861
+ :minimized-lits                       1024
+ :mk-bool-var                          13478
+ :mk-clause                            21306
+ :num-checks                           2366
+ :pool_solver.checks                   1183
+ :pool_solver.checks.sat               484
+ :propagations                         909692
+ :time.iuc_solver.get_iuc              0.16
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.05
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.07
+ :time.iuc_solver.get_iuc.learn_core   0.04
+ :time.pool_solver.proof               0.03
+ :time.pool_solver.smt.total           382.28
+ :time.pool_solver.smt.total.sat       298.72
+ :time.spacer.ctp                      0.26
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.22
+ :time.spacer.solve                    383.78
+ :time.spacer.solve.propagate          165.77
+ :time.spacer.solve.reach              217.97
+ :time.spacer.solve.reach.children     0.48
+ :time.spacer.solve.reach.gen.bool_ind 149.24)
+expand: query!0 (12, 0) FAR  w(0) 1.
+	create_child: INV (11, 12) FAR 255 U 0.00
+expand: INV (11, 0) FAR  w(0) 255.
+	create_child: INV (10, 12) FAR 16495 U 0.06
+expand: INV (10, 0) FAR  w(0) 16495.
+	create_child: INV (9, 12) FAR 119172 U 0.35
+expand: INV (9, 0) FAR  w(0) 119172. F 0.45
+expand: INV (10, 0) FAR  w(0) 16495.
+	create_child: INV (9, 12) FAR 37725 U 0.80
+expand: INV (9, 0) FAR  w(0) 37725.
+	create_child: INV (8, 12) FAR 38445 U 7.78
+expand: INV (8, 0) FAR  w(0) 38445.
+	create_child: INV (7, 12) FAR 42419 U 1.17
+expand: INV (7, 0) FAR  w(0) 42419.
+	create_child: INV (6, 12) FAR 42846 U 2.08
+expand: INV (6, 0) FAR  w(0) 42846.
+	create_child: INV (5, 12) FAR 120023 U 1.76
+expand: INV (5, 0) FAR  w(0) 120023.
+	create_child: INV (4, 12) FAR 122162 U 5.50
+expand: INV (4, 0) FAR  w(0) 122162.
+	create_child: INV (3, 12) FAR 124215 U 2.60
+expand: INV (3, 0) FAR  w(0) 124215.
+	create_child: INV (2, 12) FAR 127045 U 3.34
+expand: INV (2, 0) FAR  w(0) 127045. F 1.37
+expand: INV (3, 0) FAR  w(0) 124215. F 7.85
+expand: INV (4, 0) FAR  w(0) 122162. F 4.54
+expand: INV (5, 0) FAR  w(0) 120023. F 4.22
+expand: INV (6, 0) FAR  w(0) 42846. F 22.24
+expand: INV (7, 0) FAR  w(0) 42419. F 4.32
+expand: INV (8, 0) FAR  w(0) 38445. F 3.47
+expand: INV (9, 0) FAR  w(0) 37725. F 3.96
+expand: INV (10, 0) FAR  w(0) 16495. F 0.04
+expand: INV (11, 0) FAR  w(0) 255.
+	create_child: INV (10, 12) FAR 11265 U 2.48
+expand: INV (10, 0) FAR  w(0) 11265.
+	create_child: INV (9, 12) FAR 22327 U 1.27
+expand: INV (9, 0) FAR  w(0) 22327.
+	create_child: INV (8, 12) FAR 47099 U 0.49
+expand: INV (8, 0) FAR  w(0) 47099.
+	create_child: INV (7, 12) FAR 48060 U 1.61
+expand: INV (7, 0) FAR  w(0) 48060.
+	create_child: INV (6, 12) FAR 48571 U 8.62
+expand: INV (6, 0) FAR  w(0) 48571.
+	create_child: INV (5, 12) FAR 72845 U 2.69
+expand: INV (5, 0) FAR  w(0) 72845.
+	create_child: INV (4, 12) FAR 132604 U 8.71
+expand: INV (4, 0) FAR  w(0) 132604.
+	create_child: INV (3, 12) FAR 135889 U 3.47
+expand: INV (3, 0) FAR  w(0) 135889.
+	create_child: INV (2, 12) FAR 138104 U 4.92
+expand: INV (2, 0) FAR  w(0) 138104. F 2.96
+expand: INV (3, 0) FAR  w(0) 135889. F 10.93
+expand: INV (4, 0) FAR  w(0) 132604. F 32.14
+expand: INV (5, 0) FAR  w(0) 72845. F 7.52
+expand: INV (6, 0) FAR  w(0) 48571. F 8.20
+expand: INV (7, 0) FAR  w(0) 48060. F 4.94
+expand: INV (8, 0) FAR  w(0) 47099. F 5.75
+expand: INV (9, 0) FAR  w(0) 22327. F 4.21
+expand: INV (10, 0) FAR  w(0) 11265. F 3.96
+expand: INV (11, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (12, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 192.95 :before-memory 35.10 :after-memory 41.31)
+Propagating: 2 3 4 5 6 7 8 9 10 11 12  ! 13 
+(spacer::context::propagate :time 128.00 :before-memory 41.31 :after-memory 42.92)
+Entering level 13
+(:SPACER-max-depth                     13
+ :SPACER-max-query-lvl                 12
+ :SPACER-num-active-lemmas             89
+ :SPACER-num-ctp-blocked               48
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              587
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    133
+ :SPACER-num-pobs                      59
+ :SPACER-num-propagations              230
+ :SPACER-num-queries                   120
+ :added-eqs                            24280
+ :arith-add-rows                       17538432
+ :arith-assert-diseq                   17990
+ :arith-assert-lower                   289826
+ :arith-assert-upper                   278274
+ :arith-bound-prop                     14214
+ :arith-conflicts                      4638
+ :arith-eq-adapter                     3218
+ :arith-fixed-eqs                      4592
+ :arith-offset-eqs                     460
+ :arith-pivots                         54870
+ :bool-inductive-gen                   120
+ :bool-inductive-gen-failures          212
+ :conflicts                            6772
+ :decisions                            806264
+ :del-clause                           2984
+ :final-checks                         1202
+ :iuc_solver.num_proxies               1118
+ :minimized-lits                       1234
+ :mk-bool-var                          16800
+ :mk-clause                            24270
+ :num-checks                           2934
+ :pool_solver.checks                   1467
+ :pool_solver.checks.sat               601
+ :propagations                         1301684
+ :time.iuc_solver.get_iuc              0.20
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.06
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.08
+ :time.iuc_solver.get_iuc.learn_core   0.06
+ :time.pool_solver.proof               0.04
+ :time.pool_solver.smt.total           702.65
+ :time.pool_solver.smt.total.sat       538.59
+ :time.spacer.ctp                      0.38
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.32
+ :time.spacer.solve                    704.74
+ :time.spacer.solve.propagate          293.77
+ :time.spacer.solve.reach              410.91
+ :time.spacer.solve.reach.children     0.68
+ :time.spacer.solve.reach.gen.bool_ind 264.99)
+expand: query!0 (13, 0) FAR  w(0) 1.
+	create_child: INV (12, 13) FAR 255 U 0.01
+expand: INV (12, 0) FAR  w(0) 255.
+	create_child: INV (11, 13) FAR 16495 U 0.99
+expand: INV (11, 0) FAR  w(0) 16495.
+	create_child: INV (10, 13) FAR 37725 U 0.48
+expand: INV (10, 0) FAR  w(0) 37725.
+	create_child: INV (9, 13) FAR 38445 U 0.47
+expand: INV (9, 0) FAR  w(0) 38445.
+	create_child: INV (8, 13) FAR 42419 U 12.32
+expand: INV (8, 0) FAR  w(0) 42419.
+	create_child: INV (7, 13) FAR 42846 U 1.84
+expand: INV (7, 0) FAR  w(0) 42846.
+	create_child: INV (6, 13) FAR 120023 U 4.10
+expand: INV (6, 0) FAR  w(0) 120023.
+	create_child: INV (5, 13) FAR 122162 U 4.69
+expand: INV (5, 0) FAR  w(0) 122162.
+	create_child: INV (4, 13) FAR 124215 U 10.20
+expand: INV (4, 0) FAR  w(0) 124215.
+	create_child: INV (3, 13) FAR 127045 U 20.91
+expand: INV (3, 0) FAR  w(0) 127045.
+	create_child: INV (2, 13) FAR 152872 U 2.48
+expand: INV (2, 0) FAR  w(0) 152872. F 10.20
+expand: INV (3, 0) FAR  w(0) 127045. F 2.24
+expand: INV (4, 0) FAR  w(0) 124215. F 8.10
+expand: INV (5, 0) FAR  w(0) 122162. F 17.72
+expand: INV (6, 0) FAR  w(0) 120023. F 17.05
+expand: INV (7, 0) FAR  w(0) 42846. F 3.66
+expand: INV (8, 0) FAR  w(0) 42419. F 6.37
+expand: INV (9, 0) FAR  w(0) 38445. F 8.82
+expand: INV (10, 0) FAR  w(0) 37725. F 4.89
+expand: INV (11, 0) FAR  w(0) 16495. F 0.13
+expand: INV (12, 0) FAR  w(0) 255.
+	create_child: INV (11, 13) FAR 11265 U 3.26
+expand: INV (11, 0) FAR  w(0) 11265.
+	create_child: INV (10, 13) FAR 22327 U 1.37
+expand: INV (10, 0) FAR  w(0) 22327.
+	create_child: INV (9, 13) FAR 47099 U 1.07
+expand: INV (9, 0) FAR  w(0) 47099.
+	create_child: INV (8, 13) FAR 48060 U 14.89
+expand: INV (8, 0) FAR  w(0) 48060.
+	create_child: INV (7, 13) FAR 48571 U 3.17
+expand: INV (7, 0) FAR  w(0) 48571.
+	create_child: INV (6, 13) FAR 72845 U 4.23
+expand: INV (6, 0) FAR  w(0) 72845.
+	create_child: INV (5, 13) FAR 132604 U 26.56
+expand: INV (5, 0) FAR  w(0) 132604.
+	create_child: INV (4, 13) FAR 135889 U 14.84
+expand: INV (4, 0) FAR  w(0) 135889.
+	create_child: INV (3, 13) FAR 138104 U 5.87
+expand: INV (3, 0) FAR  w(0) 138104. F 17.59
+expand: INV (4, 0) FAR  w(0) 135889. F 28.29
+expand: INV (5, 0) FAR  w(0) 132604. F 8.16
+expand: INV (6, 0) FAR  w(0) 72845. F 7.33
+expand: INV (7, 0) FAR  w(0) 48571. F 4.50
+expand: INV (8, 0) FAR  w(0) 48060. F 5.63
+expand: INV (9, 0) FAR  w(0) 47099. F 13.22
+expand: INV (10, 0) FAR  w(0) 22327. F 5.45
+expand: INV (11, 0) FAR  w(0) 11265. F 13.03
+expand: INV (12, 0) FAR  w(0) 255. F 0.07
+expand: query!0 (13, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 316.37 :before-memory 42.92 :after-memory 47.42)
+Propagating: 2 3 4 5 6 7 8 9 10 11 12 13  ! 14 
+(spacer::context::propagate :time 194.53 :before-memory 47.42 :after-memory 49.33)
+Entering level 14
+(:SPACER-max-depth                     14
+ :SPACER-max-query-lvl                 13
+ :SPACER-num-active-lemmas             96
+ :SPACER-num-ctp-blocked               53
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              763
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    154
+ :SPACER-num-pobs                      60
+ :SPACER-num-propagations              324
+ :SPACER-num-queries                   140
+ :added-eqs                            29688
+ :arith-add-rows                       29037532
+ :arith-assert-diseq                   23102
+ :arith-assert-lower                   410332
+ :arith-assert-upper                   401226
+ :arith-bound-prop                     16180
+ :arith-conflicts                      6390
+ :arith-eq-adapter                     4010
+ :arith-fixed-eqs                      5648
+ :arith-offset-eqs                     534
+ :arith-pivots                         74536
+ :bool-inductive-gen                   140
+ :bool-inductive-gen-failures          248
+ :conflicts                            9012
+ :decisions                            1224998
+ :del-clause                           3666
+ :final-checks                         1462
+ :iuc_solver.num_proxies               1229
+ :minimized-lits                       1630
+ :mk-bool-var                          19952
+ :mk-clause                            28914
+ :num-checks                           3616
+ :pool_solver.checks                   1808
+ :pool_solver.checks.sat               731
+ :propagations                         1904042
+ :time.iuc_solver.get_iuc              0.24
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.07
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.10
+ :time.iuc_solver.get_iuc.learn_core   0.07
+ :time.pool_solver.proof               0.04
+ :time.pool_solver.smt.total           1212.84
+ :time.pool_solver.smt.total.sat       959.84
+ :time.spacer.ctp                      0.56
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.44
+ :time.spacer.solve                    1215.64
+ :time.spacer.solve.propagate          488.29
+ :time.spacer.solve.reach              727.28
+ :time.spacer.solve.reach.children     0.92
+ :time.spacer.solve.reach.gen.bool_ind 429.89)
+expand: query!0 (14, 0) FAR  w(0) 1.
+	create_child: INV (13, 14) FAR 255 U 0.01
+expand: INV (13, 0) FAR  w(0) 255.
+	create_child: INV (12, 14) FAR 11265 U 1.94
+expand: INV (12, 0) FAR  w(0) 11265.
+	create_child: INV (11, 14) FAR 22327 U 1.34
+expand: INV (11, 0) FAR  w(0) 22327.
+	create_child: INV (10, 14) FAR 47099 U 1.19
+expand: INV (10, 0) FAR  w(0) 47099.
+	create_child: INV (9, 14) FAR 48060 U 4.82
+expand: INV (9, 0) FAR  w(0) 48060.
+	create_child: INV (8, 14) FAR 48571 U 34.20
+expand: INV (8, 0) FAR  w(0) 48571.
+	create_child: INV (7, 14) FAR 72845 U 30.56
+expand: INV (7, 0) FAR  w(0) 72845.
+	create_child: INV (6, 14) FAR 132604 U 34.20
+expand: INV (6, 0) FAR  w(0) 132604.
+	create_child: INV (5, 14) FAR 135889 U 47.02
+expand: INV (5, 0) FAR  w(0) 135889.
+	create_child: INV (4, 14) FAR 138104 U 15.06
+expand: INV (4, 0) FAR  w(0) 138104. F 5.27
+expand: INV (5, 0) FAR  w(0) 135889. F 12.06
+expand: INV (6, 0) FAR  w(0) 132604. F 8.58
+expand: INV (7, 0) FAR  w(0) 72845. F 6.17
+expand: INV (8, 0) FAR  w(0) 48571. F 10.33
+expand: INV (9, 0) FAR  w(0) 48060. F 7.91
+expand: INV (10, 0) FAR  w(0) 47099. F 5.09
+expand: INV (11, 0) FAR  w(0) 22327. F 3.71
+expand: INV (12, 0) FAR  w(0) 11265. F 5.53
+expand: INV (13, 0) FAR  w(0) 255. F 0.04
+expand: query!0 (14, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 235.11 :before-memory 49.33 :after-memory 50.57)
+Propagating: 4 5 6 7 8 9 10 11 12 13 14  ! 15 
+(spacer::context::propagate :time 154.74 :before-memory 50.57 :after-memory 56.91)
+Entering level 15
+(:SPACER-max-depth                     15
+ :SPACER-max-query-lvl                 14
+ :SPACER-num-active-lemmas             98
+ :SPACER-num-ctp-blocked               61
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              908
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    165
+ :SPACER-num-pobs                      60
+ :SPACER-num-propagations              390
+ :SPACER-num-queries                   150
+ :added-eqs                            33364
+ :arith-add-rows                       37126068
+ :arith-assert-diseq                   26164
+ :arith-assert-lower                   487398
+ :arith-assert-upper                   479704
+ :arith-bound-prop                     16986
+ :arith-conflicts                      7186
+ :arith-eq-adapter                     4516
+ :arith-fixed-eqs                      6376
+ :arith-offset-eqs                     572
+ :arith-pivots                         87498
+ :bool-inductive-gen                   150
+ :bool-inductive-gen-failures          266
+ :conflicts                            10106
+ :decisions                            1507782
+ :del-clause                           4108
+ :final-checks                         1656
+ :iuc_solver.num_proxies               1260
+ :minimized-lits                       1848
+ :mk-bool-var                          21662
+ :mk-clause                            31158
+ :num-checks                           4058
+ :pool_solver.checks                   2029
+ :pool_solver.checks.sat               828
+ :propagations                         2323276
+ :time.iuc_solver.get_iuc              0.27
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.07
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.11
+ :time.iuc_solver.get_iuc.learn_core   0.08
+ :time.pool_solver.proof               0.05
+ :time.pool_solver.smt.total           1602.24
+ :time.pool_solver.smt.total.sat       1292.38
+ :time.spacer.ctp                      0.75
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.49
+ :time.spacer.solve                    1605.49
+ :time.spacer.solve.propagate          643.04
+ :time.spacer.solve.reach              962.39
+ :time.spacer.solve.reach.children     1.04
+ :time.spacer.solve.reach.gen.bool_ind 484.49)
+expand: query!0 (15, 0) FAR  w(0) 1.
+	create_child: INV (14, 15) FAR 255 U 0.01
+expand: INV (14, 0) FAR  w(0) 255.
+	create_child: INV (13, 15) FAR 195017 U 0.62
+expand: INV (13, 0) FAR  w(0) 195017. F 2.48
+expand: INV (14, 0) FAR  w(0) 255.
+	create_child: INV (13, 15) FAR 11265 U 2.34
+expand: INV (13, 0) FAR  w(0) 11265.
+	create_child: INV (12, 15) FAR 22327 U 0.85
+expand: INV (12, 0) FAR  w(0) 22327.
+	create_child: INV (11, 15) FAR 47099 U 0.62
+expand: INV (11, 0) FAR  w(0) 47099.
+	create_child: INV (10, 15) FAR 48060 U 1.79
+expand: INV (10, 0) FAR  w(0) 48060.
+	create_child: INV (9, 15) FAR 48571 U 11.88
+expand: INV (9, 0) FAR  w(0) 48571.
+	create_child: INV (8, 15) FAR 72845 U 4.08
+expand: INV (8, 0) FAR  w(0) 72845.
+	create_child: INV (7, 15) FAR 132604 U 70.03
+expand: INV (7, 0) FAR  w(0) 132604.
+	create_child: INV (6, 15) FAR 135889 U 32.32
+expand: INV (6, 0) FAR  w(0) 135889.
+	create_child: INV (5, 15) FAR 197853 U 7.21
+expand: INV (5, 0) FAR  w(0) 197853.
+	create_child: INV (4, 15) FAR 199226 U 3.68
+expand: INV (4, 0) FAR  w(0) 199226. F 5.30
+expand: INV (5, 0) FAR  w(0) 197853. F 31.70
+expand: INV (6, 0) FAR  w(0) 135889. F 17.23
+expand: INV (7, 0) FAR  w(0) 132604. F 10.74
+expand: INV (8, 0) FAR  w(0) 72845. F 21.70
+expand: INV (9, 0) FAR  w(0) 48571. F 9.94
+expand: INV (10, 0) FAR  w(0) 48060. F 10.13
+expand: INV (11, 0) FAR  w(0) 47099. F 14.32
+expand: INV (12, 0) FAR  w(0) 22327. F 5.17
+expand: INV (13, 0) FAR  w(0) 11265. F 7.92
+expand: INV (14, 0) FAR  w(0) 255. F 0.03
+expand: query!0 (15, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 272.18 :before-memory 56.91 :after-memory 60.42)
+Propagating: 4 5 6 7 8 9 10 11 12 13 14 15  ! 16 
+(spacer::context::propagate :time 144.48 :before-memory 60.42 :after-memory 61.70)
+Entering level 16
+(:SPACER-max-depth                     16
+ :SPACER-max-query-lvl                 15
+ :SPACER-num-active-lemmas             105
+ :SPACER-num-ctp-blocked               74
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              1029
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    178
+ :SPACER-num-pobs                      63
+ :SPACER-num-propagations              425
+ :SPACER-num-queries                   162
+ :added-eqs                            38042
+ :arith-add-rows                       44809712
+ :arith-assert-diseq                   29780
+ :arith-assert-lower                   567656
+ :arith-assert-upper                   567268
+ :arith-bound-prop                     18576
+ :arith-conflicts                      8008
+ :arith-eq-adapter                     4776
+ :arith-fixed-eqs                      7420
+ :arith-offset-eqs                     948
+ :arith-pivots                         98890
+ :bool-inductive-gen                   162
+ :bool-inductive-gen-failures          287
+ :conflicts                            11162
+ :decisions                            1826924
+ :del-clause                           4530
+ :final-checks                         1862
+ :iuc_solver.num_proxies               1371
+ :minimized-lits                       2022
+ :mk-bool-var                          23354
+ :mk-clause                            34236
+ :num-checks                           4480
+ :pool_solver.checks                   2240
+ :pool_solver.checks.sat               931
+ :propagations                         2730104
+ :time.iuc_solver.get_iuc              0.29
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.08
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.12
+ :time.iuc_solver.get_iuc.learn_core   0.09
+ :time.pool_solver.proof               0.05
+ :time.pool_solver.smt.total           2018.37
+ :time.pool_solver.smt.total.sat       1641.84
+ :time.spacer.ctp                      0.95
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.57
+ :time.spacer.solve                    2022.16
+ :time.spacer.solve.propagate          787.51
+ :time.spacer.solve.reach              1234.57
+ :time.spacer.solve.reach.children     1.22
+ :time.spacer.solve.reach.gen.bool_ind 608.81)
+expand: query!0 (16, 0) FAR  w(0) 1.
+	create_child: INV (15, 16) FAR 255 U 0.00
+expand: INV (15, 0) FAR  w(0) 255.
+	create_child: INV (14, 16) FAR 11265 U 3.23
+expand: INV (14, 0) FAR  w(0) 11265.
+	create_child: INV (13, 16) FAR 28605 U 1.78
+expand: INV (13, 0) FAR  w(0) 28605.
+	create_child: INV (12, 16) FAR 59967 U 0.45
+expand: INV (12, 0) FAR  w(0) 59967.
+	create_child: INV (11, 16) FAR 61262 U 1.74
+expand: INV (11, 0) FAR  w(0) 61262.
+	create_child: INV (10, 16) FAR 213015 U 15.39
+expand: INV (10, 0) FAR  w(0) 213015.
+	create_child: INV (9, 16) FAR 214232 U 7.05
+expand: INV (9, 0) FAR  w(0) 214232.
+	create_child: INV (8, 16) FAR 98510 U 38.25
+expand: INV (8, 0) FAR  w(0) 98510.
+	create_child: INV (7, 16) FAR 101848 U 14.25
+expand: INV (7, 0) FAR  w(0) 101848.
+	create_child: INV (6, 16) FAR 214891 U 1.56
+expand: INV (6, 0) FAR  w(0) 214891.
+	create_child: INV (5, 16) FAR 215859 U 4.09
+expand: INV (5, 0) FAR  w(0) 215859. F 33.39
+expand: INV (6, 0) FAR  w(0) 214891. F 5.75
+expand: INV (7, 0) FAR  w(0) 101848. F 28.61
+expand: INV (8, 0) FAR  w(0) 98510. F 11.43
+expand: INV (9, 0) FAR  w(0) 214232. F 5.97
+expand: INV (10, 0) FAR  w(0) 213015. F 8.16
+expand: INV (11, 0) FAR  w(0) 61262. F 7.46
+expand: INV (12, 0) FAR  w(0) 59967. F 9.63
+expand: INV (13, 0) FAR  w(0) 28605. F 6.15
+expand: INV (14, 0) FAR  w(0) 11265.
+	create_child: INV (13, 16) FAR 22327 U 3.98
+expand: INV (13, 0) FAR  w(0) 22327.
+	create_child: INV (12, 16) FAR 47099 U 0.93
+expand: INV (12, 0) FAR  w(0) 47099.
+	create_child: INV (11, 16) FAR 48060 U 1.24
+expand: INV (11, 0) FAR  w(0) 48060.
+	create_child: INV (10, 16) FAR 48571 U 2.62
+expand: INV (10, 0) FAR  w(0) 48571.
+	create_child: INV (9, 16) FAR 72845 U 0.51
+expand: INV (9, 0) FAR  w(0) 72845.
+	create_child: INV (8, 16) FAR 132604 U 8.82
+expand: INV (8, 0) FAR  w(0) 132604.
+	create_child: INV (7, 16) FAR 135889 U 4.01
+expand: INV (7, 0) FAR  w(0) 135889.
+	create_child: INV (6, 16) FAR 197853 U 7.28
+expand: INV (6, 0) FAR  w(0) 197853.
+	create_child: INV (5, 16) FAR 199226 U 4.26
+expand: INV (5, 0) FAR  w(0) 199226. F 5.57
+expand: INV (6, 0) FAR  w(0) 197853. F 26.55
+expand: INV (7, 0) FAR  w(0) 135889.
+	create_child: INV (6, 16) FAR 138104 U 11.93
+expand: INV (6, 0) FAR  w(0) 138104. F 10.59
+expand: INV (7, 0) FAR  w(0) 135889. F 11.11
+expand: INV (8, 0) FAR  w(0) 132604. F 8.60
+expand: INV (9, 0) FAR  w(0) 72845. F 10.40
+expand: INV (10, 0) FAR  w(0) 48571. F 14.29
+expand: INV (11, 0) FAR  w(0) 48060. F 7.98
+expand: INV (12, 0) FAR  w(0) 47099. F 6.67
+expand: INV (13, 0) FAR  w(0) 22327. F 3.82
+expand: INV (14, 0) FAR  w(0) 11265. F 7.72
+expand: INV (15, 0) FAR  w(0) 255.
+	create_child: INV (14, 16) FAR 16495 U 2.75
+expand: INV (14, 0) FAR  w(0) 16495. F 0.10
+expand: INV (15, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (16, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 366.29 :before-memory 61.70 :after-memory 67.24)
+Propagating: 5 6 7 8 9 10 11 12 13 14 15 16  ! 17 
+(spacer::context::propagate :time 150.37 :before-memory 67.24 :after-memory 69.62)
+Entering level 17
+(:SPACER-max-depth                     17
+ :SPACER-max-query-lvl                 16
+ :SPACER-num-active-lemmas             115
+ :SPACER-num-ctp-blocked               77
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              1245
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    201
+ :SPACER-num-pobs                      69
+ :SPACER-num-propagations              548
+ :SPACER-num-queries                   184
+ :added-eqs                            44520
+ :arith-add-rows                       55565008
+ :arith-assert-diseq                   35272
+ :arith-assert-lower                   720002
+ :arith-assert-upper                   718382
+ :arith-bound-prop                     20106
+ :arith-conflicts                      9306
+ :arith-eq-adapter                     5102
+ :arith-fixed-eqs                      8562
+ :arith-offset-eqs                     1080
+ :arith-pivots                         114532
+ :bool-inductive-gen                   184
+ :bool-inductive-gen-failures          327
+ :conflicts                            13070
+ :decisions                            2344998
+ :del-clause                           5330
+ :final-checks                         2156
+ :iuc_solver.num_proxies               1528
+ :minimized-lits                       2482
+ :mk-bool-var                          26636
+ :mk-clause                            38284
+ :num-checks                           5280
+ :pool_solver.checks                   2640
+ :pool_solver.checks.sat               1078
+ :propagations                         3454644
+ :time.iuc_solver.get_iuc              0.35
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.10
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.14
+ :time.iuc_solver.get_iuc.learn_core   0.10
+ :time.pool_solver.proof               0.06
+ :time.pool_solver.smt.total           2534.14
+ :time.pool_solver.smt.total.sat       2031.95
+ :time.spacer.ctp                      1.19
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.73
+ :time.spacer.solve                    2538.83
+ :time.spacer.solve.propagate          937.89
+ :time.spacer.solve.reach              1600.86
+ :time.spacer.solve.reach.children     1.54
+ :time.spacer.solve.reach.gen.bool_ind 817.32)
+expand: query!0 (17, 0) FAR  w(0) 1.
+	create_child: INV (16, 17) FAR 255 U 0.01
+expand: INV (16, 0) FAR  w(0) 255.
+	create_child: INV (15, 17) FAR 11265 U 0.67
+expand: INV (15, 0) FAR  w(0) 11265.
+	create_child: INV (14, 17) FAR 22327 U 0.65
+expand: INV (14, 0) FAR  w(0) 22327.
+	create_child: INV (13, 17) FAR 47099 U 1.52
+expand: INV (13, 0) FAR  w(0) 47099.
+	create_child: INV (12, 17) FAR 48060 U 5.82
+expand: INV (12, 0) FAR  w(0) 48060.
+	create_child: INV (11, 17) FAR 48571 U 30.00
+expand: INV (11, 0) FAR  w(0) 48571.
+	create_child: INV (10, 17) FAR 72845 U 20.79
+expand: INV (10, 0) FAR  w(0) 72845.
+	create_child: INV (9, 17) FAR 132604 U 22.52
+expand: INV (9, 0) FAR  w(0) 132604.
+	create_child: INV (8, 17) FAR 135889 U 81.22
+expand: INV (8, 0) FAR  w(0) 135889.
+	create_child: INV (7, 17) FAR 138104 U 5.68
+expand: INV (7, 0) FAR  w(0) 138104. F 29.48
+expand: INV (8, 0) FAR  w(0) 135889.
+	create_child: INV (7, 17) FAR 197853 U 3.55
+expand: INV (7, 0) FAR  w(0) 197853.
+	create_child: INV (6, 17) FAR 248852 U 0.44
+expand: INV (6, 0) FAR  w(0) 248852.
+	create_child: INV (5, 17) FAR 250765 U 25.09
+expand: INV (5, 0) FAR  w(0) 250765.
+	create_child: INV (4, 17) FAR 252244 U 14.25
+expand: INV (4, 0) FAR  w(0) 252244. F 1.43
+expand: INV (5, 0) FAR  w(0) 250765. F 15.35
+expand: INV (6, 0) FAR  w(0) 248852. F 108.71
+expand: INV (7, 0) FAR  w(0) 197853.
+	create_child: INV (6, 17) FAR 199226 U 4.12
+expand: INV (6, 0) FAR  w(0) 199226. F 19.51
+expand: INV (7, 0) FAR  w(0) 197853. F 17.73
+expand: INV (8, 0) FAR  w(0) 135889. F 13.44
+expand: INV (9, 0) FAR  w(0) 132604. F 27.62
+expand: INV (10, 0) FAR  w(0) 72845. F 17.19
+expand: INV (11, 0) FAR  w(0) 48571. F 14.41
+expand: INV (12, 0) FAR  w(0) 48060. F 23.71
+expand: INV (13, 0) FAR  w(0) 47099. F 10.57
+expand: INV (14, 0) FAR  w(0) 22327. F 5.53
+expand: INV (15, 0) FAR  w(0) 11265. F 45.42
+expand: INV (16, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (17, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 566.59 :before-memory 69.62 :after-memory 74.16)
+Propagating: 4 5 6 7 8 9 10 11 12 13 14 15 16 17  ! 18 
+(spacer::context::propagate :time 607.24 :before-memory 74.16 :after-memory 78.36)
+Entering level 18
+(:SPACER-max-depth                     18
+ :SPACER-max-query-lvl                 17
+ :SPACER-num-active-lemmas             125
+ :SPACER-num-ctp-blocked               82
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              1443
+ :SPACER-num-lemma-jumped              3
+ :SPACER-num-lemmas                    217
+ :SPACER-num-pobs                      72
+ :SPACER-num-propagations              640
+ :SPACER-num-queries                   199
+ :added-eqs                            49976
+ :arith-add-rows                       72272480
+ :arith-assert-diseq                   40134
+ :arith-assert-lower                   858542
+ :arith-assert-upper                   859996
+ :arith-bound-prop                     20648
+ :arith-conflicts                      10570
+ :arith-eq-adapter                     5414
+ :arith-fixed-eqs                      9592
+ :arith-offset-eqs                     1130
+ :arith-pivots                         133998
+ :bool-inductive-gen                   199
+ :bool-inductive-gen-failures          354
+ :conflicts                            14778
+ :decisions                            2914976
+ :del-clause                           5978
+ :final-checks                         2438
+ :iuc_solver.num_proxies               1710
+ :minimized-lits                       2978
+ :mk-bool-var                          29230
+ :mk-clause                            41284
+ :num-checks                           5928
+ :pool_solver.checks                   2964
+ :pool_solver.checks.sat               1219
+ :propagations                         4156738
+ :time.iuc_solver.get_iuc              0.38
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.10
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.15
+ :time.iuc_solver.get_iuc.learn_core   0.12
+ :time.pool_solver.proof               0.07
+ :time.pool_solver.smt.total           3706.99
+ :time.pool_solver.smt.total.sat       3026.38
+ :time.spacer.ctp                      1.54
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      0.91
+ :time.spacer.solve                    3712.66
+ :time.spacer.solve.propagate          1545.12
+ :time.spacer.solve.reach              2167.45
+ :time.spacer.solve.reach.children     1.91
+ :time.spacer.solve.reach.gen.bool_ind 1138.05)
+expand: query!0 (18, 0) FAR  w(0) 1.
+	create_child: INV (17, 18) FAR 255 U 0.01
+expand: INV (17, 0) FAR  w(0) 255.
+	create_child: INV (16, 18) FAR 11265 U 3.92
+expand: INV (16, 0) FAR  w(0) 11265.
+	create_child: INV (15, 18) FAR 28605 U 0.94
+expand: INV (15, 0) FAR  w(0) 28605.
+	create_child: INV (14, 18) FAR 59967 U 0.60
+expand: INV (14, 0) FAR  w(0) 59967.
+	create_child: INV (13, 18) FAR 61262 U 3.12
+expand: INV (13, 0) FAR  w(0) 61262.
+	create_child: INV (12, 18) FAR 213015 U 6.39
+expand: INV (12, 0) FAR  w(0) 213015.
+	create_child: INV (11, 18) FAR 214232 U 3.38
+expand: INV (11, 0) FAR  w(0) 214232.
+	create_child: INV (10, 18) FAR 98510 U 2.58
+expand: INV (10, 0) FAR  w(0) 98510.
+	create_child: INV (9, 18) FAR 101848 U 90.31
+expand: INV (9, 0) FAR  w(0) 101848.
+	create_child: INV (8, 18) FAR 277701 U 35.43
+expand: INV (8, 0) FAR  w(0) 277701.
+	create_child: INV (7, 18) FAR 280156 U 42.62
+expand: INV (7, 0) FAR  w(0) 280156.
+	create_child: INV (6, 18) FAR 282664 U 25.66
+expand: INV (6, 0) FAR  w(0) 282664.
+	create_child: INV (5, 18) FAR 285657 U 46.90
+expand: INV (5, 0) FAR  w(0) 285657. F 70.02
+expand: INV (6, 0) FAR  w(0) 282664. F 128.22
+expand: INV (7, 0) FAR  w(0) 280156. F 41.80
+expand: INV (8, 0) FAR  w(0) 277701. F 161.53
+expand: INV (9, 0) FAR  w(0) 101848. F 22.04
+expand: INV (10, 0) FAR  w(0) 98510. F 14.54
+expand: INV (11, 0) FAR  w(0) 214232. F 6.82
+expand: INV (12, 0) FAR  w(0) 213015. F 9.74
+expand: INV (13, 0) FAR  w(0) 61262. F 20.69
+expand: INV (14, 0) FAR  w(0) 59967. F 11.65
+expand: INV (15, 0) FAR  w(0) 28605. F 9.04
+expand: INV (16, 0) FAR  w(0) 11265.
+	create_child: INV (15, 18) FAR 22327 U 9.02
+expand: INV (15, 0) FAR  w(0) 22327.
+	create_child: INV (14, 18) FAR 47099 U 0.83
+expand: INV (14, 0) FAR  w(0) 47099.
+	create_child: INV (13, 18) FAR 48060 U 21.38
+expand: INV (13, 0) FAR  w(0) 48060.
+	create_child: INV (12, 18) FAR 48571 U 5.52
+expand: INV (12, 0) FAR  w(0) 48571.
+	create_child: INV (11, 18) FAR 72845 U 7.20
+expand: INV (11, 0) FAR  w(0) 72845.
+	create_child: INV (10, 18) FAR 132604 U 50.19
+expand: INV (10, 0) FAR  w(0) 132604.
+	create_child: INV (9, 18) FAR 135889 U 83.70
+expand: INV (9, 0) FAR  w(0) 135889. F 27.83
+expand: INV (10, 0) FAR  w(0) 132604. F 50.80
+expand: INV (11, 0) FAR  w(0) 72845. F 20.57
+expand: INV (12, 0) FAR  w(0) 48571. F 14.17
+expand: INV (13, 0) FAR  w(0) 48060. F 52.03
+expand: INV (14, 0) FAR  w(0) 47099. F 12.33
+expand: INV (15, 0) FAR  w(0) 22327. F 12.05
+expand: INV (16, 0) FAR  w(0) 11265. F 16.38
+expand: INV (17, 0) FAR  w(0) 255.
+	create_child: INV (16, 18) FAR 16495 U 4.59
+expand: INV (16, 0) FAR  w(0) 16495. F 9.36
+expand: INV (17, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (18, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 1156.07 :before-memory 78.36 :after-memory 85.81)
+Propagating: 5 6 7 8 9 10 11 12 13 14 15 16 17 18  ! 19 
+(spacer::context::propagate :time 625.72 :before-memory 85.81 :after-memory 88.19)
+Entering level 19
+(:SPACER-max-depth                     19
+ :SPACER-max-query-lvl                 18
+ :SPACER-num-active-lemmas             133
+ :SPACER-num-ctp-blocked               88
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              1690
+ :SPACER-num-lemma-jumped              4
+ :SPACER-num-lemmas                    239
+ :SPACER-num-pobs                      76
+ :SPACER-num-propagations              774
+ :SPACER-num-queries                   220
+ :added-eqs                            56214
+ :arith-add-rows                       104411298
+ :arith-assert-diseq                   45784
+ :arith-assert-lower                   1058662
+ :arith-assert-upper                   1051456
+ :arith-bound-prop                     21854
+ :arith-conflicts                      12166
+ :arith-eq-adapter                     5816
+ :arith-fixed-eqs                      10784
+ :arith-offset-eqs                     1208
+ :arith-pivots                         169634
+ :bool-inductive-gen                   220
+ :bool-inductive-gen-failures          394
+ :conflicts                            16994
+ :decisions                            3676050
+ :del-clause                           6842
+ :final-checks                         2772
+ :iuc_solver.num_proxies               1917
+ :minimized-lits                       3496
+ :mk-bool-var                          32882
+ :mk-clause                            45486
+ :num-checks                           6786
+ :pool_solver.checks                   3393
+ :pool_solver.checks.sat               1386
+ :propagations                         5146764
+ :restarts                             2
+ :time.iuc_solver.get_iuc              0.43
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.12
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.17
+ :time.iuc_solver.get_iuc.learn_core   0.13
+ :time.pool_solver.proof               0.08
+ :time.pool_solver.smt.total           5487.28
+ :time.pool_solver.smt.total.sat       4485.75
+ :time.spacer.ctp                      2.22
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      1.12
+ :time.spacer.solve                    5494.45
+ :time.spacer.solve.propagate          2170.84
+ :time.spacer.solve.reach              3323.52
+ :time.spacer.solve.reach.children     2.40
+ :time.spacer.solve.reach.gen.bool_ind 1774.41)
+expand: query!0 (19, 0) FAR  w(0) 1.
+	create_child: INV (18, 19) FAR 255 U 0.01
+expand: INV (18, 0) FAR  w(0) 255.
+	create_child: INV (17, 19) FAR 11265 U 7.02
+expand: INV (17, 0) FAR  w(0) 11265.
+	create_child: INV (16, 19) FAR 22327 U 5.82
+expand: INV (16, 0) FAR  w(0) 22327.
+	create_child: INV (15, 19) FAR 47099 U 5.62
+expand: INV (15, 0) FAR  w(0) 47099.
+	create_child: INV (14, 19) FAR 48060 U 18.84
+expand: INV (14, 0) FAR  w(0) 48060.
+	create_child: INV (13, 19) FAR 48571 U 3.17
+expand: INV (13, 0) FAR  w(0) 48571.
+	create_child: INV (12, 19) FAR 72845 U 5.55
+expand: INV (12, 0) FAR  w(0) 72845.
+	create_child: INV (11, 19) FAR 132604 U 0.80
+expand: INV (11, 0) FAR  w(0) 132604.
+	create_child: INV (10, 19) FAR 135889 U 7.59
+expand: INV (10, 0) FAR  w(0) 135889.
+	create_child: INV (9, 19) FAR 197853 U 24.43
+expand: INV (9, 0) FAR  w(0) 197853.
+	create_child: INV (8, 19) FAR 248852 U 5.47
+expand: INV (8, 0) FAR  w(0) 248852.
+	create_child: INV (7, 19) FAR 318358 U 14.59
+expand: INV (7, 0) FAR  w(0) 318358.
+	create_child: INV (6, 19) FAR 318378 U 25.26
+expand: INV (6, 0) FAR  w(0) 318378.
+	create_child: INV (5, 19) FAR 325411 U 6.53
+expand: INV (5, 0) FAR  w(0) 325411.
+	create_child: INV (4, 19) FAR 328369 U 14.01
+expand: INV (4, 0) FAR  w(0) 328369.
+	create_child: INV (3, 19) FAR 332323 U 27.39
+expand: INV (3, 0) FAR  w(0) 332323.
+	create_child: INV (2, 19) FAR 335154 U 4.61
+expand: INV (2, 0) FAR  w(0) 335154. F 1959.10
+expand: INV (3, 0) FAR  w(0) 332323. F 29.66
+expand: INV (4, 0) FAR  w(0) 328369. F 114.97
+expand: INV (5, 0) FAR  w(0) 325411. F 45.18
+expand: INV (6, 0) FAR  w(0) 318378. F 30.85
+expand: INV (7, 0) FAR  w(0) 318358. F 65.95
+expand: INV (8, 0) FAR  w(0) 248852. F 309.14
+expand: INV (9, 0) FAR  w(0) 197853. F 87.33
+expand: INV (10, 0) FAR  w(0) 135889. F 81.86
+expand: INV (11, 0) FAR  w(0) 132604. F 21.87
+expand: INV (12, 0) FAR  w(0) 72845. F 15.45
+expand: INV (13, 0) FAR  w(0) 48571. F 15.14
+expand: INV (14, 0) FAR  w(0) 48060. F 15.47
+expand: INV (15, 0) FAR  w(0) 47099. F 11.02
+expand: INV (16, 0) FAR  w(0) 22327. F 14.92
+expand: INV (17, 0) FAR  w(0) 11265. F 14.91
+expand: INV (18, 0) FAR  w(0) 255. F 0.00
+expand: query!0 (19, 0) FAR  w(0) 1. F 0.00
+(spacer::context::check_reachability :time 3009.73 :before-memory 88.19 :after-memory 100.70)
+Propagating: 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  ! 20 21 
+(spacer::context::propagate :time 873.97 :before-memory 100.70 :after-memory 107.07)
+Entering level 20
+(:SPACER-max-depth                     20
+ :SPACER-max-query-lvl                 19
+ :SPACER-num-active-lemmas             142
+ :SPACER-num-ctp-blocked               89
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              2060
+ :SPACER-num-lemma-jumped              4
+ :SPACER-num-lemmas                    257
+ :SPACER-num-pobs                      82
+ :SPACER-num-propagations              1016
+ :SPACER-num-queries                   237
+ :added-eqs                            63548
+ :arith-add-rows                       171221364
+ :arith-assert-diseq                   52444
+ :arith-assert-lower                   1309754
+ :arith-assert-upper                   1319796
+ :arith-bound-prop                     22688
+ :arith-conflicts                      14154
+ :arith-eq-adapter                     6224
+ :arith-fixed-eqs                      12214
+ :arith-offset-eqs                     1322
+ :arith-pivots                         231228
+ :bool-inductive-gen                   237
+ :bool-inductive-gen-failures          426
+ :conflicts                            19732
+ :decisions                            4712976
+ :del-clause                           7890
+ :final-checks                         3122
+ :iuc_solver.num_proxies               2223
+ :minimized-lits                       4086
+ :mk-bool-var                          37040
+ :mk-clause                            50864
+ :num-checks                           7822
+ :pool_solver.checks                   3911
+ :pool_solver.checks.sat               1561
+ :propagations                         6454582
+ :restarts                             6
+ :time.iuc_solver.get_iuc              0.47
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.13
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.19
+ :time.iuc_solver.get_iuc.learn_core   0.15
+ :time.pool_solver.proof               0.08
+ :time.pool_solver.smt.total           9368.97
+ :time.pool_solver.smt.total.sat       7814.00
+ :time.spacer.ctp                      3.15
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      1.45
+ :time.spacer.solve                    9378.15
+ :time.spacer.solve.propagate          3044.81
+ :time.spacer.solve.reach              6333.25
+ :time.spacer.solve.reach.children     3.08
+ :time.spacer.solve.reach.gen.bool_ind 4492.32)
+(:SPACER-max-depth                     20
+ :SPACER-max-query-lvl                 19
+ :SPACER-num-active-lemmas             142
+ :SPACER-num-ctp-blocked               89
+ :SPACER-num-invariants                4
+ :SPACER-num-is_invariant              2060
+ :SPACER-num-lemma-jumped              4
+ :SPACER-num-lemmas                    257
+ :SPACER-num-pobs                      82
+ :SPACER-num-propagations              1016
+ :SPACER-num-queries                   237
+ :added-eqs                            63548
+ :arith-add-rows                       171221364
+ :arith-assert-diseq                   52444
+ :arith-assert-lower                   1309754
+ :arith-assert-upper                   1319796
+ :arith-bound-prop                     22688
+ :arith-conflicts                      14154
+ :arith-eq-adapter                     6224
+ :arith-fixed-eqs                      12214
+ :arith-offset-eqs                     1322
+ :arith-pivots                         231228
+ :bool-inductive-gen                   237
+ :bool-inductive-gen-failures          426
+ :conflicts                            19732
+ :decisions                            4712976
+ :del-clause                           7890
+ :final-checks                         3122
+ :iuc_solver.num_proxies               2223
+ :minimized-lits                       4086
+ :mk-bool-var                          37040
+ :mk-clause                            50864
+ :num-checks                           7822
+ :pool_solver.checks                   3911
+ :pool_solver.checks.sat               1561
+ :propagations                         6454582
+ :restarts                             6
+ :time.iuc_solver.get_iuc              0.47
+ :time.iuc_solver.get_iuc.hyp_reduce1  0.13
+ :time.iuc_solver.get_iuc.hyp_reduce2  0.19
+ :time.iuc_solver.get_iuc.learn_core   0.15
+ :time.pool_solver.proof               0.08
+ :time.pool_solver.smt.total           9368.97
+ :time.pool_solver.smt.total.sat       7814.00
+ :time.spacer.ctp                      3.15
+ :time.spacer.init_rules               0.00
+ :time.spacer.mbp                      1.45
+ :time.spacer.solve                    9378.16
+ :time.spacer.solve.propagate          3044.81
+ :time.spacer.solve.reach              6333.25
+ :time.spacer.solve.reach.children     3.08
+ :time.spacer.solve.reach.gen.bool_ind 4492.32)

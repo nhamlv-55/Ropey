@@ -36,7 +36,7 @@ class Model(torch.nn.Module):
         # print(fuse_a_b.shape)
         h = torch.matmul( h_c, fuse_a_b)
         # print(h.shape)
-        logits = F.relu(self.fc2(F.relu(self.fc1(h))))
+        logits = self.fc2(F.relu(self.fc1(h)))
         return logits.view(batch_size, -1)
 
     def forward_a_tree(self, tree):

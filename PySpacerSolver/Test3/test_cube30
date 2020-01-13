@@ -1,0 +1,10 @@
+(assert
+     (and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+)

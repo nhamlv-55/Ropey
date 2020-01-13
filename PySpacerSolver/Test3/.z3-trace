@@ -1,0 +1,2579 @@
+** expand-pob: query!0 level: 0 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 0 query!0 false
+
+
+* LEVEL 1
+** expand-pob: query!0 level: 1 depth: 0
+ exprID: 1 pobID: none
+true
+
+** expand-pob: BwdInv level: 0 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+LEMMA:
+(not BwdInv_4_n)
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not BwdInv_4_n)
+trying to drop 
+:(not BwdInv_4_n)
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 0 BwdInv BwdInv_4_n
+
+** expand-pob: query!0 level: 1 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 1 query!0 false
+
+Propagating
+
+* LEVEL 2
+** expand-pob: query!0 level: 2 depth: 0
+ exprID: 1 pobID: none
+true
+
+** expand-pob: BwdInv level: 1 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_3_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_0.smt2
+CUBE:
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_3_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_1.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_2.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_3.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_4.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0)
+     (>= BwdInv_2_n (/ 3.0 32.0)))
+trying to drop 
+:(= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_5.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (>= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0)))
+trying to drop 
+:(= BwdInv_0_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_6.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 1 BwdInv (or BwdInv_4_n
+    BwdInv_5_n
+    (< BwdInv_2_n (/ 3.0 32.0))
+    (> BwdInv_1_n (/ 3.0 32.0))
+    (> BwdInv_0_n 0.0))
+
+** expand-pob: query!0 level: 2 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 2 query!0 false
+
+Propagating
+
+* LEVEL 3
+** expand-pob: query!0 level: 3 depth: 0
+ exprID: 1 pobID: none
+true
+
+** expand-pob: BwdInv level: 2 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+** expand-pob: BwdInv level: 1 depth: 0
+ exprID: 2790 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (>= BwdInv_1_n 0.0)
+     (<= BwdInv_1_n (/ 195.0 512.0))
+     (< BwdInv_1_n (/ 165.0 1024.0))
+     (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     BwdInv_3_n
+     (<= BwdInv_1_n (/ 15685.0 59904.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_7.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0)))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_8.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0)))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_9.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0)))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_10.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0)))
+trying to drop 
+:(>= BwdInv_2_n (/ 713.0 19968.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_11.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0)))
+trying to drop 
+:(= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_12.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 1 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (< BwdInv_2_n (/ 713.0 19968.0))
+    (> (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0)))
+
+** expand-pob: BwdInv level: 2 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (not BwdInv_3_n)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_13.smt2
+CUBE:
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_3_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_14.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_15.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_16.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_17.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_18.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_0_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_19.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 2 BwdInv (or BwdInv_4_n
+    BwdInv_5_n
+    (not (= BwdInv_0_n 0.0))
+    (not (= BwdInv_1_n (/ 3.0 32.0)))
+    (not (= BwdInv_2_n (/ 3.0 32.0))))
+
+** expand-pob: query!0 level: 3 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 3 query!0 false
+
+Propagating
+
+* LEVEL 4
+** expand-pob: query!0 level: 4 depth: 0
+ exprID: 1 pobID: none
+true
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+** expand-pob: BwdInv level: 2 depth: 0
+ exprID: 2790 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (>= BwdInv_1_n 0.0)
+     (<= BwdInv_1_n (/ 195.0 512.0))
+     (< BwdInv_1_n (/ 165.0 1024.0))
+     (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0)))
+
+** expand-pob: BwdInv level: 1 depth: 0
+ exprID: 5128 pobID: 2790
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n 0.0)
+     (>= BwdInv_2_n 0.0)
+     (> (+ (* (/ 243.0 1600.0) BwdInv_1_n) (* (/ 1207.0 1600.0) BwdInv_2_n))
+        (/ 3738801.0 52428800.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 18837.0 163840.0))
+     (> (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 52719.0 655360.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 46011.0 327680.0))
+     (>= (+ (* (/ 21.0 25.0) BwdInv_1_n) (* (- (/ 117.0 100.0)) BwdInv_2_n))
+         (- (/ 20589.0 409600.0)))
+     (>= (+ (* (/ 117.0 100.0) BwdInv_2_n) (* (- (/ 21.0 25.0)) BwdInv_1_n))
+         (/ 633.0 16384.0))
+     (>= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 36483.0 327680.0))
+     (>= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (- (/ 219.0 163840.0))))
+
+LEMMA:
+(let ((a!1 (not (<= (+ (* (/ 39.0 28.0) BwdInv_2_n) (* (- 1.0) BwdInv_1_n))
+                    (- (/ 219.0 7168.0))))))
+  (and (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       BwdInv_3_n
+       a!1
+       (>= BwdInv_2_n (/ 713.0 19968.0))
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (not (>= BwdInv_1_n (/ 165.0 1024.0)))))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_20.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (not (>= BwdInv_1_n (/ 165.0 1024.0)))
+     (>= BwdInv_2_n (/ 713.0 19968.0)))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_21.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (not (>= BwdInv_1_n (/ 165.0 1024.0)))
+     (>= BwdInv_2_n (/ 713.0 19968.0)))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_22.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (not (>= BwdInv_1_n (/ 165.0 1024.0)))
+     (>= BwdInv_2_n (/ 713.0 19968.0)))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_23.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (not (>= BwdInv_1_n (/ 165.0 1024.0)))
+     (>= BwdInv_2_n (/ 713.0 19968.0)))
+trying to drop 
+:(not (>= BwdInv_1_n (/ 165.0 1024.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_24.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (not (>= BwdInv_1_n (/ 165.0 1024.0)))
+     (>= BwdInv_2_n (/ 713.0 19968.0)))
+trying to drop 
+:(>= BwdInv_2_n (/ 713.0 19968.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_25.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 1 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (> BwdInv_2_n (/ 3.0 32.0))
+    (>= BwdInv_1_n (/ 165.0 1024.0))
+    (< BwdInv_2_n (/ 713.0 19968.0))
+    (>= (+ BwdInv_1_n (* (- (/ 39.0 28.0)) BwdInv_2_n)) (/ 219.0 7168.0)))
+
+** expand-pob: BwdInv level: 2 depth: 0
+ exprID: 2790 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (>= BwdInv_1_n 0.0)
+     (<= BwdInv_1_n (/ 195.0 512.0))
+     (< BwdInv_1_n (/ 165.0 1024.0))
+     (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     BwdInv_3_n
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0))
+     (<= BwdInv_2_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_26.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_27.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_28.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_29.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_30.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(<= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_31.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(>= BwdInv_1_n (/ 35.0 512.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_32.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_33.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 441.0 5120.0)))
+trying to drop 
+:(>= BwdInv_2_n (/ 441.0 5120.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_34.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 2 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (< BwdInv_1_n (/ 35.0 512.0))
+    (> (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+    (< BwdInv_2_n (/ 441.0 5120.0)))
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_2_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_35.smt2
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_36.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_37.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_38.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_39.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_0_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_40.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 3 BwdInv (or BwdInv_4_n
+    BwdInv_5_n
+    (not (= BwdInv_0_n 0.0))
+    (not (= BwdInv_1_n (/ 3.0 32.0)))
+    (not (= BwdInv_2_n (/ 3.0 32.0))))
+
+** expand-pob: query!0 level: 4 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 4 query!0 false
+
+Propagating
+
+* LEVEL 5
+** expand-pob: query!0 level: 5 depth: 0
+ exprID: 1 pobID: none
+true
+
+** expand-pob: BwdInv level: 4 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 7707 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (< BwdInv_0_n 0.0)
+     (<= BwdInv_0_n (/ 45.0 1024.0))
+     (>= BwdInv_0_n (- (/ 33.0 1024.0)))
+     (>= BwdInv_0_n (- (/ 19.0 1024.0)))
+     (= (+ BwdInv_2_n (* (/ 3.0 2.0) BwdInv_0_n)) (/ 135.0 2048.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0))))
+
+** expand-pob: BwdInv level: 2 depth: 0
+ exprID: 8036 pobID: 7707
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (< BwdInv_0_n 0.0)
+     (>= BwdInv_2_n 0.0)
+     (< (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 8079.0 65536.0))
+     (>= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 15.0 16384.0))
+     (<= (+ (* (/ 1191.0 128.0) BwdInv_0_n) (* (/ 1207.0 64.0) BwdInv_2_n))
+         (/ 3738801.0 2097152.0))
+     (<= (+ (* 21.0 BwdInv_0_n) (* (/ 109.0 2.0) BwdInv_2_n))
+         (/ 74325.0 16384.0))
+     (>= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 1731.0 32768.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 2.0) BwdInv_0_n)) (/ 987.0 16384.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 2.0) BwdInv_0_n)) (/ 9507.0 32768.0))
+     (>= (+ (* (/ 109.0 2.0) BwdInv_2_n) (* 21.0 BwdInv_0_n))
+         (/ 72381.0 16384.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     BwdInv_3_n
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= BwdInv_0_n (- (/ 238533.0 6504448.0)))
+     (<= BwdInv_0_n (/ 15677.0 958464.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= BwdInv_1_n (- (/ 11242555.0 310542336.0)))
+     (<= BwdInv_1_n (/ 1853809.0 4852224.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0)))
+     (>= (+ (* (- (/ 397.0 162.0)) BwdInv_0_n)
+            (* (- (/ 1207.0 243.0)) BwdInv_2_n))
+         (- (/ 1246267.0 2654208.0))))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_41.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_42.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_43.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_44.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_45.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_2_n (/ 713.0 19968.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(>= BwdInv_2_n (/ 713.0 19968.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_46.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+      (* (/ 1191.0 128.0) BwdInv_0_n)
+      (* (/ 1207.0 64.0) BwdInv_2_n))
+   (/ 3738801.0 2097152.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_47.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+    (/ 997435.0 2654208.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_48.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+           (* (/ 1191.0 128.0) BwdInv_0_n)
+           (* (/ 1207.0 64.0) BwdInv_2_n))
+        (/ 3738801.0 2097152.0))
+     (>= (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+         (/ 997435.0 2654208.0))
+     (>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n)
+            (* (- (/ 397.0 540.0)) BwdInv_0_n))
+         (- (/ 130613.0 4423680.0))))
+trying to drop 
+:(>= (+ (* (- (/ 397.0 810.0)) BwdInv_2_n) (* (- (/ 397.0 540.0)) BwdInv_0_n))
+    (- (/ 130613.0 4423680.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_49.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 2 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (> BwdInv_2_n (/ 3.0 32.0))
+    (not (= (+ (* (/ 243.0 64.0) BwdInv_1_n)
+               (* (/ 1191.0 128.0) BwdInv_0_n)
+               (* (/ 1207.0 64.0) BwdInv_2_n))
+            (/ 3738801.0 2097152.0)))
+    (> (+ (* (/ 397.0 540.0) BwdInv_0_n) (* (/ 397.0 810.0) BwdInv_2_n))
+       (/ 130613.0 4423680.0))
+    (< (+ (* (/ 397.0 162.0) BwdInv_0_n) (* (/ 1207.0 243.0) BwdInv_2_n))
+       (/ 997435.0 2654208.0)))
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 7707 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (< BwdInv_0_n 0.0)
+     (<= BwdInv_0_n (/ 45.0 1024.0))
+     (>= BwdInv_0_n (- (/ 33.0 1024.0)))
+     (>= BwdInv_0_n (- (/ 19.0 1024.0)))
+     (= (+ BwdInv_2_n (* (/ 3.0 2.0) BwdInv_0_n)) (/ 135.0 2048.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0))))
+
+** expand-pob: BwdInv level: 2 depth: 0
+ exprID: 10498 pobID: 7707
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n 0.0)
+     (>= BwdInv_2_n 0.0)
+     (<= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 18837.0 163840.0))
+     (> (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 52719.0 655360.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 46011.0 327680.0))
+     (>= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 36483.0 327680.0))
+     (>= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (- (/ 219.0 163840.0)))
+     (>= (+ (* (/ 117.0 20.0) BwdInv_2_n) (* (- (/ 21.0 5.0)) BwdInv_1_n))
+         (/ 3165.0 16384.0))
+     (>= (+ (* (/ 21.0 5.0) BwdInv_1_n) (* (- (/ 117.0 20.0)) BwdInv_2_n))
+         (- (/ 20589.0 81920.0)))
+     (> (+ (* (/ 243.0 320.0) BwdInv_1_n) (* (/ 1207.0 320.0) BwdInv_2_n))
+        (/ 3738801.0 10485760.0)))
+
+LEMMA:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0)))))
+  (and (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       BwdInv_3_n
+       a!1
+       (not (<= BwdInv_2_n (/ 91.0 1152.0)))
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       (<= BwdInv_1_n (/ 3.0 32.0))))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_50.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_51.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_52.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_53.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_54.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:(<= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_55.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:(not (<= BwdInv_1_n (/ 77.0 1728.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_56.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (<= BwdInv_1_n (/ 3.0 32.0))
+     (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+     (not (<= BwdInv_2_n (/ 91.0 1152.0))))
+trying to drop 
+:(not (<= BwdInv_2_n (/ 91.0 1152.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_57.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 2 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (> BwdInv_2_n (/ 3.0 32.0))
+    (> BwdInv_1_n (/ 3.0 32.0))
+    (<= BwdInv_1_n (/ 77.0 1728.0))
+    (<= (+ (* (/ 27.0 80.0) BwdInv_1_n) (* (/ 9.0 8.0) BwdInv_2_n))
+        (/ 617.0 5120.0))
+    (<= BwdInv_2_n (/ 91.0 1152.0)))
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 7707 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (< BwdInv_0_n 0.0)
+     (<= BwdInv_0_n (/ 45.0 1024.0))
+     (>= BwdInv_0_n (- (/ 33.0 1024.0)))
+     (>= BwdInv_0_n (- (/ 19.0 1024.0)))
+     (= (+ BwdInv_2_n (* (/ 3.0 2.0) BwdInv_0_n)) (/ 135.0 2048.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0))))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     BwdInv_3_n
+     (>= BwdInv_0_n (- (/ 19.0 1024.0)))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_58.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_59.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_60.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_61.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_62.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:(>= BwdInv_1_n (/ 35.0 512.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_63.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:(<= BwdInv_1_n (/ 5.0 64.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_64.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0)))
+trying to drop 
+:(= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_65.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_0_n (- (/ 17.0 1024.0)))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0))
+     (<= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0)))
+trying to drop 
+:(<= BwdInv_0_n (- (/ 17.0 1024.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_66.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0))
+     (<= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0)))
+trying to drop 
+:(>= BwdInv_2_n (/ 93.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_67.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0))
+     (<= (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0)))
+trying to drop 
+:(= (+ (* (/ 3.0 2.0) BwdInv_0_n) BwdInv_2_n) (/ 135.0 2048.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_68.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 3 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (< BwdInv_1_n (/ 35.0 512.0))
+    (> (+ BwdInv_1_n (* (- 5.0) BwdInv_0_n)) (/ 165.0 1024.0))
+    (< BwdInv_2_n (/ 93.0 1024.0))
+    (> (+ BwdInv_2_n (* (/ 3.0 2.0) BwdInv_0_n)) (/ 135.0 2048.0)))
+
+** expand-pob: BwdInv level: 4 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 2790 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (>= BwdInv_1_n 0.0)
+     (<= BwdInv_1_n (/ 195.0 512.0))
+     (< BwdInv_1_n (/ 165.0 1024.0))
+     (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     BwdInv_3_n
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (<= BwdInv_2_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_69.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_70.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_71.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_72.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_73.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(>= BwdInv_1_n (/ 35.0 512.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_74.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(<= BwdInv_1_n (/ 5.0 64.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_75.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_76.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(>= BwdInv_2_n (/ 93.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_77.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 3 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (< BwdInv_1_n (/ 35.0 512.0))
+    (> (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+    (< BwdInv_2_n (/ 93.0 1024.0)))
+
+** expand-pob: BwdInv level: 4 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_2_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_78.smt2
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_79.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_80.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_81.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_82.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_0_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_83.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 4 BwdInv (or BwdInv_4_n
+    BwdInv_5_n
+    (not (= BwdInv_0_n 0.0))
+    (not (= BwdInv_1_n (/ 3.0 32.0)))
+    (not (= BwdInv_2_n (/ 3.0 32.0))))
+
+** expand-pob: query!0 level: 5 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 5 query!0 false
+
+Propagating
+
+* LEVEL 6
+** expand-pob: query!0 level: 6 depth: 0
+ exprID: 1 pobID: none
+true
+
+** expand-pob: BwdInv level: 5 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+** expand-pob: BwdInv level: 4 depth: 0
+ exprID: 2790 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (>= BwdInv_1_n 0.0)
+     (<= BwdInv_1_n (/ 195.0 512.0))
+     (< BwdInv_1_n (/ 165.0 1024.0))
+     (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0)))
+
+** expand-pob: BwdInv level: 3 depth: 0
+ exprID: 5128 pobID: 2790
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n 0.0)
+     (>= BwdInv_2_n 0.0)
+     (> (+ (* (/ 243.0 1600.0) BwdInv_1_n) (* (/ 1207.0 1600.0) BwdInv_2_n))
+        (/ 3738801.0 52428800.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 18837.0 163840.0))
+     (> (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 52719.0 655360.0))
+     (<= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 46011.0 327680.0))
+     (>= (+ (* (/ 21.0 25.0) BwdInv_1_n) (* (- (/ 117.0 100.0)) BwdInv_2_n))
+         (- (/ 20589.0 409600.0)))
+     (>= (+ (* (/ 117.0 100.0) BwdInv_2_n) (* (- (/ 21.0 25.0)) BwdInv_1_n))
+         (/ 633.0 16384.0))
+     (>= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 36483.0 327680.0))
+     (>= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (- (/ 219.0 163840.0))))
+
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0))))
+      (a!2 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0)))))
+  (and (not BwdInv_4_n)
+       BwdInv_3_n
+       (not BwdInv_5_n)
+       a!1
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= BwdInv_2_n (/ 441.0 5120.0))
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_84.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (>= BwdInv_2_n (/ 441.0 5120.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_85.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (>= BwdInv_2_n (/ 441.0 5120.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_86.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (>= BwdInv_2_n (/ 441.0 5120.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_87.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (>= BwdInv_2_n (/ 441.0 5120.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_88.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (>= BwdInv_2_n (/ 441.0 5120.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(>= BwdInv_2_n (/ 441.0 5120.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_89.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       (not (<= BwdInv_1_n (/ 77.0 1728.0)))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(not (<= BwdInv_1_n (/ 77.0 1728.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_90.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+         (/ 617.0 5120.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_91.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       a!1
+       (<= BwdInv_1_n (/ 9701.0 114688.0))
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(<= BwdInv_1_n (/ 9701.0 114688.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_92.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       a!1
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+    (/ 3165.0 16384.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_93.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 9.0 8.0) BwdInv_2_n) (* (/ 27.0 80.0) BwdInv_1_n))
+                    (/ 617.0 5120.0))))
+      (a!2 (not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n)
+                       (* (/ 367.0 250.0) BwdInv_2_n))
+                    (/ 563.0 4500.0)))))
+  (and BwdInv_3_n
+       (not BwdInv_4_n)
+       (not BwdInv_5_n)
+       (<= BwdInv_2_n (/ 3.0 32.0))
+       a!1
+       (>= (+ (* (- (/ 21.0 5.0)) BwdInv_1_n) (* (/ 117.0 20.0) BwdInv_2_n))
+           (/ 3165.0 16384.0))
+       a!2))
+trying to drop 
+:(not (<= (+ (* (- (/ 9.0 250.0)) BwdInv_1_n) (* (/ 367.0 250.0) BwdInv_2_n))
+         (/ 563.0 4500.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_94.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 3 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (> BwdInv_2_n (/ 3.0 32.0))
+    (> (+ (* (/ 21.0 5.0) BwdInv_1_n) (* (- (/ 117.0 20.0)) BwdInv_2_n))
+       (- (/ 3165.0 16384.0)))
+    (<= (+ (* (/ 27.0 80.0) BwdInv_1_n) (* (/ 9.0 8.0) BwdInv_2_n))
+        (/ 617.0 5120.0))
+    (>= (+ (* (/ 9.0 250.0) BwdInv_1_n) (* (- (/ 367.0 250.0)) BwdInv_2_n))
+        (- (/ 563.0 4500.0))))
+
+** expand-pob: BwdInv level: 4 depth: 0
+ exprID: 2790 pobID: 575
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (>= BwdInv_1_n 0.0)
+     (<= BwdInv_1_n (/ 195.0 512.0))
+     (< BwdInv_1_n (/ 165.0 1024.0))
+     (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0))
+     (>= BwdInv_1_n (/ 35.0 512.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     BwdInv_3_n
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0))
+     (<= BwdInv_2_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_95.smt2
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:BwdInv_3_n
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_96.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_97.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_98.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (<= BwdInv_2_n (/ 3.0 32.0))
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(<= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_99.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(>= BwdInv_1_n (/ 35.0 512.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_100.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (<= BwdInv_1_n (/ 5.0 64.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(<= BwdInv_1_n (/ 5.0 64.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_101.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:1
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_102.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and BwdInv_3_n
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (>= BwdInv_1_n (/ 35.0 512.0))
+     (= (+ (* (/ 3.0 10.0) BwdInv_1_n) BwdInv_2_n) (/ 117.0 1024.0))
+     (>= BwdInv_2_n (/ 93.0 1024.0)))
+trying to drop 
+:(>= BwdInv_2_n (/ 93.0 1024.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_103.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 4 BwdInv (or (not BwdInv_3_n)
+    BwdInv_4_n
+    BwdInv_5_n
+    (not (= (+ BwdInv_2_n (* (/ 3.0 10.0) BwdInv_1_n)) (/ 117.0 1024.0)))
+    (< BwdInv_1_n (/ 35.0 512.0))
+    (< BwdInv_2_n (/ 93.0 1024.0)))
+
+** expand-pob: BwdInv level: 5 depth: 0
+ exprID: 575 pobID: 1
+(and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_2_n (/ 3.0 32.0)))
+
+LEMMA:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0)
+     (= BwdInv_2_n (/ 3.0 32.0)))
+POB:
+1
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_104.smt2
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_4_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_105.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(not BwdInv_5_n)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_106.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_2_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_107.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_1_n (/ 3.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_108.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:1
+------------------------------------------------
+CUBE:
+(and (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+trying to drop 
+:(= BwdInv_0_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#0_109.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:147 ---------
+		finished expand lit in:0
+------------------------------------------------
+** add-lemma: 5 BwdInv (or BwdInv_4_n
+    BwdInv_5_n
+    (not (= BwdInv_0_n 0.0))
+    (not (= BwdInv_1_n (/ 3.0 32.0)))
+    (not (= BwdInv_2_n (/ 3.0 32.0))))
+
+** expand-pob: query!0 level: 6 depth: 0
+ exprID: 1 pobID: none
+true
+
+** add-lemma: 6 query!0 false
+
+Propagating
+
+* LEVEL 7

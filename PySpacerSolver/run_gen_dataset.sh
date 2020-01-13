@@ -1,0 +1,1 @@
+PYTHONPATH=/home/nv3le/opt/z3/build/python/:/home/nv3le/workspace/:/home/nv3le/opt/pysmt/ python3 spacer_solver.py -input Exp2/ind_gen_files/pool_solver_vsolver#0_2.smt2.with_lemma.smt2 -gen_dataset -vis

@@ -1,0 +1,932 @@
+LEMMA:
+(not (>= INV_0_n (/ 1.0 8.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (>= INV_0_n (/ 1.0 8.0)))
+trying to drop 
+:(not (>= INV_0_n (/ 1.0 8.0)))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (>= INV_3_n 0.0))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (>= INV_3_n 0.0))
+trying to drop 
+:(not (>= INV_3_n 0.0))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (>= INV_4_n (/ 1.0 16.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (>= INV_4_n (/ 1.0 16.0)))
+trying to drop 
+:(not (>= INV_4_n (/ 1.0 16.0)))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (>= INV_2_n (/ 1.0 32.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (>= INV_2_n (/ 1.0 32.0)))
+trying to drop 
+:(not (>= INV_2_n (/ 1.0 32.0)))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (<= INV_5_n (- (/ 1.0 32.0))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (<= INV_5_n (- (/ 1.0 32.0))))
+trying to drop 
+:(not (<= INV_5_n (- (/ 1.0 32.0))))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (<= INV_6_n (- (/ 1.0 32.0))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (<= INV_6_n (- (/ 1.0 32.0))))
+trying to drop 
+:(not (<= INV_6_n (- (/ 1.0 32.0))))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(= INV_1_n 0.0)
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(= INV_1_n 0.0)
+trying to drop 
+:(= INV_1_n 0.0)
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (>= INV_1_n (/ 1.0 16.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (>= INV_1_n (/ 1.0 16.0)))
+trying to drop 
+:(not (>= INV_1_n (/ 1.0 16.0)))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (<= (+ (* (- 1.0) INV_4_n) (* (/ 11.0 3.0) INV_3_n)) (- (/ 1.0 16.0))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (<= (+ (* (- 1.0) INV_4_n) (* (/ 11.0 3.0) INV_3_n)) (- (/ 1.0 16.0))))
+trying to drop 
+:(not (<= (+ (* (- 1.0) INV_4_n) (* (/ 11.0 3.0) INV_3_n)) (- (/ 1.0 16.0))))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (>= INV_0_n (/ 81.0 1024.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_0.smt2
+CUBE:
+(not (>= INV_0_n (/ 81.0 1024.0)))
+trying to drop 
+:(not (>= INV_0_n (/ 81.0 1024.0)))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(and (not (>= INV_3_n 0.0))
+     (<= INV_2_n (/ 1.0 32.0))
+     (>= INV_6_n (- (/ 1.0 32.0)))
+     (not (<= INV_5_n (- (/ 397.0 30720.0)))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_1.smt2
+CUBE:
+(and (not (>= INV_3_n 0.0))
+     (<= INV_2_n (/ 1.0 32.0))
+     (>= INV_6_n (- (/ 1.0 32.0)))
+     (not (<= INV_5_n (- (/ 397.0 30720.0)))))
+trying to drop 
+:(not (>= INV_3_n 0.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (<= INV_2_n (/ 1.0 32.0))
+     (>= INV_6_n (- (/ 1.0 32.0)))
+     (not (<= INV_5_n (- (/ 397.0 30720.0)))))
+trying to drop 
+:(<= INV_2_n (/ 1.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_2.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (<= INV_2_n (/ 1.0 32.0))
+     (>= INV_6_n (- (/ 1.0 32.0)))
+     (not (<= INV_5_n (- (/ 397.0 30720.0)))))
+trying to drop 
+:(>= INV_6_n (- (/ 1.0 32.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_3.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (<= INV_2_n (/ 1.0 32.0))
+     (>= INV_6_n (- (/ 1.0 32.0)))
+     (not (<= INV_5_n (- (/ 397.0 30720.0)))))
+trying to drop 
+:(not (<= INV_5_n (- (/ 397.0 30720.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_4.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- 1.0) INV_4_n) (* (/ 11.0 3.0) INV_3_n))
+                    (- (/ 1.0 16.0)))))
+      (a!2 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (/ 22.0 3.0) INV_3_n)
+                       (* (- 2.0) INV_4_n))
+                    (/ 3.0 32.0)))))
+  (and a!1
+       a!2
+       (>= (+ (* (- 1.0) INV_5_n) (* (- (/ 1701.0 899.0)) INV_6_n))
+           (- (/ 1911135.0 10126336.0)))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_5.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (- 1.0) INV_4_n) (* (/ 11.0 3.0) INV_3_n))
+                    (- (/ 1.0 16.0)))))
+      (a!2 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (/ 22.0 3.0) INV_3_n)
+                       (* (- 2.0) INV_4_n))
+                    (/ 3.0 32.0)))))
+  (and a!1
+       (>= (+ (* (- 1.0) INV_5_n) (* (- (/ 1701.0 899.0)) INV_6_n))
+           (- (/ 1911135.0 10126336.0)))
+       a!2))
+trying to drop 
+:(not (<= (+ (* (- 1.0) INV_4_n) (* (/ 11.0 3.0) INV_3_n)) (- (/ 1.0 16.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (/ 22.0 3.0) INV_3_n)
+                       (* (- 2.0) INV_4_n))
+                    (/ 3.0 32.0)))))
+  (and (>= (+ (* (- 1.0) INV_5_n) (* (- (/ 1701.0 899.0)) INV_6_n))
+           (- (/ 1911135.0 10126336.0)))
+       a!1))
+trying to drop 
+:(>= (+ (* (- 1.0) INV_5_n) (* (- (/ 1701.0 899.0)) INV_6_n))
+    (- (/ 1911135.0 10126336.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_6.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (/ 22.0 3.0) INV_3_n)
+                       (* (- 2.0) INV_4_n))
+                    (/ 3.0 32.0)))))
+  (and (>= (+ (* (- 1.0) INV_5_n) (* (- (/ 1701.0 899.0)) INV_6_n))
+           (- (/ 1911135.0 10126336.0)))
+       a!1))
+trying to drop 
+:(not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+            (* (- (/ 1.0 3.0)) INV_2_n)
+            (* (/ 22.0 3.0) INV_3_n)
+            (* (- 2.0) INV_4_n))
+         (/ 3.0 32.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_7.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(and (not (>= INV_3_n 0.0))
+     (<= INV_1_n 0.0)
+     (not (<= INV_5_n (- (/ 61.0 2560.0)))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_8.smt2
+CUBE:
+(and (not (>= INV_3_n 0.0))
+     (not (<= INV_5_n (- (/ 61.0 2560.0))))
+     (<= INV_1_n 0.0))
+trying to drop 
+:(not (>= INV_3_n 0.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_9.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (not (>= INV_3_n 0.0))
+     (not (<= INV_5_n (- (/ 61.0 2560.0))))
+     (<= INV_1_n 0.0))
+trying to drop 
+:(not (<= INV_5_n (- (/ 61.0 2560.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_10.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (not (>= INV_3_n 0.0))
+     (not (<= INV_5_n (- (/ 61.0 2560.0))))
+     (<= INV_1_n 0.0))
+trying to drop 
+:(<= INV_1_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_11.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 71296.0 27241.0)) INV_0_n)
+                       (* (/ 176000.0 27241.0) INV_3_n)
+                       (* (/ 136000.0 27241.0) INV_5_n)
+                       (* (- (/ 48000.0 27241.0)) INV_4_n))
+                    (- (/ 32347.0 54482.0))))))
+  (and (not (>= INV_1_n (/ 1.0 16.0))) (<= INV_2_n (/ 1.0 32.0)) a!1))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_12.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 71296.0 27241.0)) INV_0_n)
+                       (* (/ 176000.0 27241.0) INV_3_n)
+                       (* (/ 136000.0 27241.0) INV_5_n)
+                       (* (- (/ 48000.0 27241.0)) INV_4_n))
+                    (- (/ 32347.0 54482.0))))))
+  (and (not (>= INV_1_n (/ 1.0 16.0))) (<= INV_2_n (/ 1.0 32.0)) a!1))
+trying to drop 
+:(not (>= INV_1_n (/ 1.0 16.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_13.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 71296.0 27241.0)) INV_0_n)
+                       (* (/ 176000.0 27241.0) INV_3_n)
+                       (* (/ 136000.0 27241.0) INV_5_n)
+                       (* (- (/ 48000.0 27241.0)) INV_4_n))
+                    (- (/ 32347.0 54482.0))))))
+  (and (not (>= INV_1_n (/ 1.0 16.0))) (<= INV_2_n (/ 1.0 32.0)) a!1))
+trying to drop 
+:(<= INV_2_n (/ 1.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_14.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 71296.0 27241.0)) INV_0_n)
+                       (* (/ 176000.0 27241.0) INV_3_n)
+                       (* (/ 136000.0 27241.0) INV_5_n)
+                       (* (- (/ 48000.0 27241.0)) INV_4_n))
+                    (- (/ 32347.0 54482.0))))))
+  (and (not (>= INV_1_n (/ 1.0 16.0))) a!1))
+trying to drop 
+:(not (<= (+ (* (- (/ 71296.0 27241.0)) INV_0_n)
+            (* (/ 176000.0 27241.0) INV_3_n)
+            (* (/ 136000.0 27241.0) INV_5_n)
+            (* (- (/ 48000.0 27241.0)) INV_4_n))
+         (- (/ 32347.0 54482.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_15.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 82000.0 17199.0)) INV_0_n)
+                       (* (/ 1390048.0 131859.0) INV_3_n)
+                       (* (- (/ 631840.0 43953.0)) INV_1_n)
+                       (* (/ 63184.0 43953.0) INV_6_n)
+                       (* (- (/ 63184.0 131859.0)) INV_2_n)
+                       (* (- (/ 126368.0 43953.0)) INV_4_n)
+                       (* (- (/ 4701304.0 395577.0)) INV_5_n))
+                    (- (/ 495397477.0 405070848.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_16.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 82000.0 17199.0)) INV_0_n)
+                       (* (/ 1390048.0 131859.0) INV_3_n)
+                       (* (- (/ 631840.0 43953.0)) INV_1_n)
+                       (* (/ 63184.0 43953.0) INV_6_n)
+                       (* (- (/ 63184.0 131859.0)) INV_2_n)
+                       (* (- (/ 126368.0 43953.0)) INV_4_n)
+                       (* (- (/ 4701304.0 395577.0)) INV_5_n))
+                    (- (/ 495397477.0 405070848.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= INV_6_n (- (/ 1.0 32.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_17.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 82000.0 17199.0)) INV_0_n)
+                       (* (/ 1390048.0 131859.0) INV_3_n)
+                       (* (- (/ 631840.0 43953.0)) INV_1_n)
+                       (* (/ 63184.0 43953.0) INV_6_n)
+                       (* (- (/ 63184.0 131859.0)) INV_2_n)
+                       (* (- (/ 126368.0 43953.0)) INV_4_n)
+                       (* (- (/ 4701304.0 395577.0)) INV_5_n))
+                    (- (/ 495397477.0 405070848.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= (+ (* (- (/ 82000.0 17199.0)) INV_0_n)
+            (* (/ 1390048.0 131859.0) INV_3_n)
+            (* (- (/ 631840.0 43953.0)) INV_1_n)
+            (* (/ 63184.0 43953.0) INV_6_n)
+            (* (- (/ 63184.0 131859.0)) INV_2_n)
+            (* (- (/ 126368.0 43953.0)) INV_4_n)
+            (* (- (/ 4701304.0 395577.0)) INV_5_n))
+         (- (/ 495397477.0 405070848.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_18.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(and (not (>= INV_1_n (/ 1.0 16.0))) (>= INV_6_n (- (/ 1.0 32.0))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(and (not (>= INV_1_n (/ 1.0 16.0))) (>= INV_6_n (- (/ 1.0 32.0))))
+trying to drop 
+:(not (>= INV_1_n (/ 1.0 16.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_19.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(and (not (>= INV_1_n (/ 1.0 16.0))) (>= INV_6_n (- (/ 1.0 32.0))))
+trying to drop 
+:(>= INV_6_n (- (/ 1.0 32.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_20.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 136229519616.0 47731306051.0)) INV_0_n)
+                       (* (/ 25172846016.0 3671638927.0) INV_6_n)
+                       (* (/ 142646127424.0 3671638927.0) INV_5_n)
+                       (* (- (/ 251728460160.0 3671638927.0)) INV_1_n)
+                       (* (- (/ 8390948672.0 3671638927.0)) INV_2_n)
+                       (* (/ 16781897344.0 333785357.0) INV_3_n)
+                       (* (- (/ 50345692032.0 3671638927.0)) INV_4_n))
+                    (- (/ 528334718060867.0 134411357839616.0))))))
+  (and a!1 (not (<= INV_6_n (- (/ 1.0 32.0))))))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_21.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 136229519616.0 47731306051.0)) INV_0_n)
+                       (* (/ 25172846016.0 3671638927.0) INV_6_n)
+                       (* (/ 142646127424.0 3671638927.0) INV_5_n)
+                       (* (- (/ 251728460160.0 3671638927.0)) INV_1_n)
+                       (* (- (/ 8390948672.0 3671638927.0)) INV_2_n)
+                       (* (/ 16781897344.0 333785357.0) INV_3_n)
+                       (* (- (/ 50345692032.0 3671638927.0)) INV_4_n))
+                    (- (/ 528334718060867.0 134411357839616.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= INV_6_n (- (/ 1.0 32.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_22.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 136229519616.0 47731306051.0)) INV_0_n)
+                       (* (/ 25172846016.0 3671638927.0) INV_6_n)
+                       (* (/ 142646127424.0 3671638927.0) INV_5_n)
+                       (* (- (/ 251728460160.0 3671638927.0)) INV_1_n)
+                       (* (- (/ 8390948672.0 3671638927.0)) INV_2_n)
+                       (* (/ 16781897344.0 333785357.0) INV_3_n)
+                       (* (- (/ 50345692032.0 3671638927.0)) INV_4_n))
+                    (- (/ 528334718060867.0 134411357839616.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= (+ (* (- (/ 136229519616.0 47731306051.0)) INV_0_n)
+            (* (/ 25172846016.0 3671638927.0) INV_6_n)
+            (* (/ 142646127424.0 3671638927.0) INV_5_n)
+            (* (- (/ 251728460160.0 3671638927.0)) INV_1_n)
+            (* (- (/ 8390948672.0 3671638927.0)) INV_2_n)
+            (* (/ 16781897344.0 333785357.0) INV_3_n)
+            (* (- (/ 50345692032.0 3671638927.0)) INV_4_n))
+         (- (/ 528334718060867.0 134411357839616.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_23.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (/ 53985432.0 20965651.0) INV_4_n)
+                       (* (- (/ 401475976184.0 82793355799.0)) INV_0_n)
+                       (* (- (/ 57953560.0 2995093.0)) INV_1_n)
+                       (* (- (/ 874098336852.0 82793355799.0)) INV_5_n)
+                       (* (/ 5795356.0 2995093.0) INV_6_n))
+                    (- (/ 59255118204209.0 84780396338176.0))))))
+  (and (not (>= INV_3_n 0.0)) (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_24.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 53985432.0 20965651.0) INV_4_n)
+                       (* (- (/ 401475976184.0 82793355799.0)) INV_0_n)
+                       (* (- (/ 57953560.0 2995093.0)) INV_1_n)
+                       (* (- (/ 874098336852.0 82793355799.0)) INV_5_n)
+                       (* (/ 5795356.0 2995093.0) INV_6_n))
+                    (- (/ 59255118204209.0 84780396338176.0))))))
+  (and (not (>= INV_3_n 0.0)) (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (>= INV_3_n 0.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 53985432.0 20965651.0) INV_4_n)
+                       (* (- (/ 401475976184.0 82793355799.0)) INV_0_n)
+                       (* (- (/ 57953560.0 2995093.0)) INV_1_n)
+                       (* (- (/ 874098336852.0 82793355799.0)) INV_5_n)
+                       (* (/ 5795356.0 2995093.0) INV_6_n))
+                    (- (/ 59255118204209.0 84780396338176.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= INV_6_n (- (/ 1.0 32.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_25.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 53985432.0 20965651.0) INV_4_n)
+                       (* (- (/ 401475976184.0 82793355799.0)) INV_0_n)
+                       (* (- (/ 57953560.0 2995093.0)) INV_1_n)
+                       (* (- (/ 874098336852.0 82793355799.0)) INV_5_n)
+                       (* (/ 5795356.0 2995093.0) INV_6_n))
+                    (- (/ 59255118204209.0 84780396338176.0))))))
+  (and (not (<= INV_6_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= (+ (* (/ 53985432.0 20965651.0) INV_4_n)
+            (* (- (/ 401475976184.0 82793355799.0)) INV_0_n)
+            (* (- (/ 57953560.0 2995093.0)) INV_1_n)
+            (* (- (/ 874098336852.0 82793355799.0)) INV_5_n)
+            (* (/ 5795356.0 2995093.0) INV_6_n))
+         (- (/ 59255118204209.0 84780396338176.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_26.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 5794307175296.0 575779423741.0)) INV_0_n)
+                       (* (- (/ 2501602360000.0 575779423741.0)) INV_6_n)
+                       (* (/ 10077679696000.0 575779423741.0) INV_5_n)
+                       (* (- (/ 3556828128000.0 575779423741.0)) INV_4_n)
+                       (* (- (/ 17784140640000.0 575779423741.0)) INV_1_n))
+                    (- (/ 650597476319.0 2303117694964.0))))))
+  (and (not (>= INV_3_n 0.0)) (<= INV_2_n (/ 1.0 32.0)) a!1))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_27.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 5794307175296.0 575779423741.0)) INV_0_n)
+                       (* (- (/ 2501602360000.0 575779423741.0)) INV_6_n)
+                       (* (/ 10077679696000.0 575779423741.0) INV_5_n)
+                       (* (- (/ 3556828128000.0 575779423741.0)) INV_4_n)
+                       (* (- (/ 17784140640000.0 575779423741.0)) INV_1_n))
+                    (- (/ 650597476319.0 2303117694964.0))))))
+  (and (not (>= INV_3_n 0.0)) (<= INV_2_n (/ 1.0 32.0)) a!1))
+trying to drop 
+:(not (>= INV_3_n 0.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_28.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 5794307175296.0 575779423741.0)) INV_0_n)
+                       (* (- (/ 2501602360000.0 575779423741.0)) INV_6_n)
+                       (* (/ 10077679696000.0 575779423741.0) INV_5_n)
+                       (* (- (/ 3556828128000.0 575779423741.0)) INV_4_n)
+                       (* (- (/ 17784140640000.0 575779423741.0)) INV_1_n))
+                    (- (/ 650597476319.0 2303117694964.0))))))
+  (and (<= INV_2_n (/ 1.0 32.0)) a!1))
+trying to drop 
+:(<= INV_2_n (/ 1.0 32.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_29.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 5794307175296.0 575779423741.0)) INV_0_n)
+                       (* (- (/ 2501602360000.0 575779423741.0)) INV_6_n)
+                       (* (/ 10077679696000.0 575779423741.0) INV_5_n)
+                       (* (- (/ 3556828128000.0 575779423741.0)) INV_4_n)
+                       (* (- (/ 17784140640000.0 575779423741.0)) INV_1_n))
+                    (- (/ 650597476319.0 2303117694964.0))))))
+  (and (<= INV_2_n (/ 1.0 32.0)) a!1))
+trying to drop 
+:(not (<= (+ (* (- (/ 5794307175296.0 575779423741.0)) INV_0_n)
+            (* (- (/ 2501602360000.0 575779423741.0)) INV_6_n)
+            (* (/ 10077679696000.0 575779423741.0) INV_5_n)
+            (* (- (/ 3556828128000.0 575779423741.0)) INV_4_n)
+            (* (- (/ 17784140640000.0 575779423741.0)) INV_1_n))
+         (- (/ 650597476319.0 2303117694964.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_30.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and (not (<= INV_5_n (- (/ 1.0 32.0)))) a!1 (= INV_3_n 0.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and (= INV_3_n 0.0) (not (<= INV_5_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(= INV_3_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_31.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:1
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and (= INV_3_n 0.0) (not (<= INV_5_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= INV_5_n (- (/ 1.0 32.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_32.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and (= INV_3_n 0.0) a!1))
+trying to drop 
+:(not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+            (* (- (/ 1.0 3.0)) INV_2_n)
+            (* (- 2.0) INV_4_n)
+            (* (/ 17.0 3.0) INV_5_n))
+         (/ 3.0 32.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_33.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 6688.0 4299.0)) INV_0_n)
+                       (* (/ 54208.0 21495.0) INV_3_n)
+                       (* (/ 41888.0 21495.0) INV_5_n)
+                       (* (- (/ 4928.0 7165.0)) INV_4_n)
+                       (* (- (/ 2464.0 21495.0)) INV_2_n)
+                       (* (- (/ 4928.0 1433.0)) INV_1_n))
+                    (- (/ 67053.0 229280.0))))))
+  (and (not (<= INV_5_n (- (/ 1.0 32.0)))) a!1))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_34.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 6688.0 4299.0)) INV_0_n)
+                       (* (/ 54208.0 21495.0) INV_3_n)
+                       (* (/ 41888.0 21495.0) INV_5_n)
+                       (* (- (/ 4928.0 7165.0)) INV_4_n)
+                       (* (- (/ 2464.0 21495.0)) INV_2_n)
+                       (* (- (/ 4928.0 1433.0)) INV_1_n))
+                    (- (/ 67053.0 229280.0))))))
+  (and (not (<= INV_5_n (- (/ 1.0 32.0)))) a!1))
+trying to drop 
+:(not (<= INV_5_n (- (/ 1.0 32.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_35.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(not (<= (+ (* (- (/ 6688.0 4299.0)) INV_0_n)
+            (* (/ 54208.0 21495.0) INV_3_n)
+            (* (/ 41888.0 21495.0) INV_5_n)
+            (* (- (/ 4928.0 7165.0)) INV_4_n)
+            (* (- (/ 2464.0 21495.0)) INV_2_n)
+            (* (- (/ 4928.0 1433.0)) INV_1_n))
+         (- (/ 67053.0 229280.0))))
+trying to drop 
+:(not (<= (+ (* (- (/ 6688.0 4299.0)) INV_0_n)
+            (* (/ 54208.0 21495.0) INV_3_n)
+            (* (/ 41888.0 21495.0) INV_5_n)
+            (* (- (/ 4928.0 7165.0)) INV_4_n)
+            (* (- (/ 2464.0 21495.0)) INV_2_n)
+            (* (- (/ 4928.0 1433.0)) INV_1_n))
+         (- (/ 67053.0 229280.0))))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (/ 217312.0 339437.0) INV_0_n)
+                       (* (- (/ 36544.0 339437.0)) INV_2_n)
+                       (* (/ 621248.0 339437.0) INV_5_n)
+                       (* (- (/ 219264.0 339437.0)) INV_4_n)
+                       (* (/ 109632.0 339437.0) INV_6_n)
+                       (* (- (/ 1096320.0 339437.0)) INV_1_n))
+                    (- (/ 182471.0 10861984.0))))))
+  (and (not (>= INV_3_n 0.0)) (>= INV_6_n (- (/ 1.0 32.0))) a!1))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_36.smt2
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 217312.0 339437.0) INV_0_n)
+                       (* (- (/ 36544.0 339437.0)) INV_2_n)
+                       (* (/ 621248.0 339437.0) INV_5_n)
+                       (* (- (/ 219264.0 339437.0)) INV_4_n)
+                       (* (/ 109632.0 339437.0) INV_6_n)
+                       (* (- (/ 1096320.0 339437.0)) INV_1_n))
+                    (- (/ 182471.0 10861984.0))))))
+  (and (not (>= INV_3_n 0.0)) (>= INV_6_n (- (/ 1.0 32.0))) a!1))
+trying to drop 
+:(not (>= INV_3_n 0.0))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_37.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:111 ---------
+	passed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 217312.0 339437.0) INV_0_n)
+                       (* (- (/ 36544.0 339437.0)) INV_2_n)
+                       (* (/ 621248.0 339437.0) INV_5_n)
+                       (* (- (/ 219264.0 339437.0)) INV_4_n)
+                       (* (/ 109632.0 339437.0) INV_6_n)
+                       (* (- (/ 1096320.0 339437.0)) INV_1_n))
+                    (- (/ 182471.0 10861984.0))))))
+  (and (>= INV_6_n (- (/ 1.0 32.0))) a!1))
+trying to drop 
+:(>= INV_6_n (- (/ 1.0 32.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_38.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (/ 217312.0 339437.0) INV_0_n)
+                       (* (- (/ 36544.0 339437.0)) INV_2_n)
+                       (* (/ 621248.0 339437.0) INV_5_n)
+                       (* (- (/ 219264.0 339437.0)) INV_4_n)
+                       (* (/ 109632.0 339437.0) INV_6_n)
+                       (* (- (/ 1096320.0 339437.0)) INV_1_n))
+                    (- (/ 182471.0 10861984.0))))))
+  (and (>= INV_6_n (- (/ 1.0 32.0))) a!1))
+trying to drop 
+:(not (<= (+ (* (/ 217312.0 339437.0) INV_0_n)
+            (* (- (/ 36544.0 339437.0)) INV_2_n)
+            (* (/ 621248.0 339437.0) INV_5_n)
+            (* (- (/ 219264.0 339437.0)) INV_4_n)
+            (* (/ 109632.0 339437.0) INV_6_n)
+            (* (- (/ 1096320.0 339437.0)) INV_1_n))
+         (- (/ 182471.0 10861984.0))))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_39.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and (>= (+ (* (/ 14.0 3.0) INV_0_n) (* 2.0 INV_4_n)) (- (/ 3.0 32.0)))
+       a!1
+       (<= INV_3_n 0.0)))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and a!1 (<= INV_3_n 0.0)))
+trying to drop 
+:(not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+            (* (- (/ 1.0 3.0)) INV_2_n)
+            (* (- 2.0) INV_4_n)
+            (* (/ 17.0 3.0) INV_5_n))
+         (/ 3.0 32.0)))
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_40.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+CUBE:
+(let ((a!1 (not (<= (+ (* (- (/ 14.0 3.0)) INV_0_n)
+                       (* (- (/ 1.0 3.0)) INV_2_n)
+                       (* (- 2.0) INV_4_n)
+                       (* (/ 17.0 3.0) INV_5_n))
+                    (/ 3.0 32.0)))))
+  (and a!1 (<= INV_3_n 0.0)))
+trying to drop 
+:(<= INV_3_n 0.0)
+DUMP QUERY = TRUE
+OLD THRES:15
+Dumping benchmark to pool_solver_vsolver#1_41.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------
+LEMMA:
+(not (>= INV_0_n 0.0))
+POB:
+1
+USE LIT EXPANSION?
+0
+DUMP QUERY = TRUE
+OLD THRES:15
+CUBE:
+(not (>= INV_0_n 0.0))
+trying to drop 
+:(not (>= INV_0_n 0.0))
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:118 ---------
+	failed check_ind in:0
+------------------------------------------------

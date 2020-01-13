@@ -82,6 +82,6 @@ def unbatch_tree_tensor(tensor, tree_sizes):
 
 def stack_last_h(tensor, tree_sizes):
     unb = unbatch_tree_tensor(tensor, tree_sizes)
-    last_h = [x[-1] for x in unb]
+    last_h = [x[0] for x in unb]
     return torch.stack(last_h)
 

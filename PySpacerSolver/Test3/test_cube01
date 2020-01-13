@@ -1,0 +1,7 @@
+(assert (and (not BwdInv_3_n)
+     (not BwdInv_4_n)
+     (not BwdInv_5_n)
+     (= BwdInv_2_n (/ 3.0 32.0))
+     (= BwdInv_1_n (/ 3.0 32.0))
+     (= BwdInv_0_n 0.0))
+)
