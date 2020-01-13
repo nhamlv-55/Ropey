@@ -33,6 +33,7 @@ class Vocab:
             json.dump(vocab, f)
 class Node:
     def __init__(self):
+        self._raw_expr = ""
         self._token = ""
         self._token_id = -1
         self._children = list()
@@ -58,9 +59,12 @@ class Node:
         if z3.is_rational_value(ast_node):
             self._token = "<NUMBER>"
             self._token_id = vocab.add_token(self._token)
+            self._raw_expr = str(ast_node)
         else:
             self._token = ast_node.decl().name()
             self._token_id = vocab.add_token(self._token)
+            self._raw_expr = str(ast_node)
+
     def set_sort(self, ast_node):
         self._sort = ast_node.sort().name()
 
@@ -86,9 +90,9 @@ class Node:
 
     def to_json(self):
         if self._num_child==0:
-            return {"token": self._token, "token_id": self._token_id, "sort": self._sort}
+            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "children": [], "expr": self._raw_expr}
         else:
-            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "children": [child.to_json() for child in self._children]}
+            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "children": [child.to_json() for child in self._children], "expr": self._raw_expr}
     def __str__(self):
         return json.dumps(self.to_json(), indent = 2)
 
@@ -105,6 +109,7 @@ def ast_to_node(ast_node, vocab):
 
 def _label_node_index(node, n=0):
     node['index'] = n
+    print(node)
     for child in node['children']:
         n += 1
         _label_node_index(child, n)
