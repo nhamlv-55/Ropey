@@ -5,15 +5,16 @@ import json
 import torch
 from sklearn.model_selection import train_test_split
 import os
+import random
 class DataObj:
-    def __init__(self, datafolder, name = "dataset"):
+    def __init__(self, datafolder, name = "dataset", shuffle = True):
         self.datafolder = datafolder
         self.all_dps = []
         self._size = 0
         self.train = {}
         self.test = {}
         self.vocab = {}
-
+        self.shuffle = shuffle(x)
         self.build_dataset()
         self.get_vocab()
 
@@ -27,7 +28,8 @@ class DataObj:
         self.datafolder = os.path.join(self.datafolder, "")
         all_dps = glob.glob(self.datafolder+"/*.dp.json")
         all_dps = sorted(all_dps)
-
+        if self.shuffle:
+            random.shuffle(all_dps)
         train_index = int(len(all_dps)*train_size)
 
         train_dps = all_dps[:train_index]
