@@ -7,9 +7,8 @@ import os
 import json
 import time
 from itertools import chain, combinations
-from termcolor import colored
 import copy
-
+from Doping.PySpacerSolver.utils import *
 import Doping.utils.utils as Du
 class SpacerSolverProxyDb(object):
     def __init__(self, proxies_db):
@@ -275,28 +274,8 @@ class InductiveGeneralizer(object):
         print("CANNOT DROP:", self.lits_to_keep)
         return [v for v in cube if not z3.is_true(v)]
 
-def gen_datapoints(cube, inducted_cube, vocab, filename):
-    for i in range(len(cube)):
-        for j in range(i+1, len(cube)):
-            '''4 possible labels: both lits are dropped 0, only one is dropped 1, non is dropped 2'''
-            if cube[i] in inducted_cube and cube[j] in inducted_cube:
-                label = 0
-            elif cube[i] not in inducted_cube and cube[j] not in inducted_cube:
-                label = 2
-            else:
-                label = 1
 
-            C_tree = Du.ast_to_tree(z3.And(cube), vocab)
-            L_a_tree = Du.ast_to_tree(cube[i], vocab)
-            L_b_tree = Du.ast_to_tree(cube[j], vocab)
-
-            datapoint = {"C_tree": C_tree.to_json(), "L_a_tree": L_a_tree.to_json(), "L_b_tree": L_b_tree.to_json(), "label": label}
-            dp_filename = filename+ "."+ str(i)+ "."+ str(j)+ ".dp.json"
-            with open(dp_filename, "w") as f:
-                json.dump(datapoint, f)
-    return vocab
-
-def ind_gen(filename, lits_to_keep , vocab, drop_all = False, vis = False):
+def ind_gen(filename, lits_to_keep , dataset, drop_all = False, vis = False):
     '''
     lits_to_keep: a list of literal that we skip checking (== will be kept unless they are not in the unsat core)
     drop_all: whether we drop literals one by one or all at once
@@ -346,15 +325,10 @@ def ind_gen(filename, lits_to_keep , vocab, drop_all = False, vis = False):
 
     #visualization
     if vis:
-        for l in cube:
-            if l in inducted_cube:
-                print(colored("||\t"+str(l), 'green'))
-            else:
-                print(colored("||\t"+str(l), 'red'))
+        visualize(cube, inducted_cube)
     #generate dataset
-    if vocab is not None:
-        if len(cube)>1:
-            vocab = gen_datapoints(cube, inducted_cube, vocab, filename)
+    if dataset is not None:
+        dataset.add_dp(cube, inducted_cube, filename)
 
     del edb
     del zsolver
@@ -364,7 +338,7 @@ def powerset(policy):
     "powerset([1,2,3]) --> () (1,) (2,) (3,) (1,2) (1,3) (2,3) (1,2,3)"
     return chain.from_iterable(combinations(policy, r) for r in range(len(policy)+1))
 
-def ind_gen_folder(folder, policy_file, use_powerset, vis, vocab):
+def ind_gen_folder(folder, policy_file, use_powerset, vis, dataset):
     total_useful = 0
     total_wasted = 0
     running_times = []
@@ -373,7 +347,7 @@ def ind_gen_folder(folder, policy_file, use_powerset, vis, vocab):
         with open(policy_file, "r") as f:
             policy = json.load(f)
     queries = glob.glob(folder+"/*.smt2")
-    for q in queries[:40]:
+    for q in queries:
         print(q)
         if q in policy:
             base_policy = policy[q]
@@ -387,7 +361,7 @@ def ind_gen_folder(folder, policy_file, use_powerset, vis, vocab):
                 for p in power_policies:
                     lits_to_keep = sorted(list(p))
                     #has to parse a copy of the lits_to_keep
-                    res = ind_gen(q, lits_to_keep[:], vocab = vocab, vis = vis)
+                    res = ind_gen(q, lits_to_keep[:], dataset = dataset, vis = vis)
                     log.info("Trying %s in %s"%(str(lits_to_keep), str(res["ind_gen_time"])))
                     total_useful += res["useful"]
                     total_wasted += res["wasted"]
@@ -408,7 +382,7 @@ def ind_gen_folder(folder, policy_file, use_powerset, vis, vocab):
                 policy[q] = res["lits_to_keep"]
 
         else:
-            res = ind_gen(q, [], vocab = vocab, vis = vis)
+            res = ind_gen(q, [], dataset = dataset, vis = vis)
             total_useful += res["useful"]
             total_wasted +=res["wasted"]
             policy[q] = res["lits_to_keep"]
@@ -418,8 +392,9 @@ def ind_gen_folder(folder, policy_file, use_powerset, vis, vocab):
         json.dump(policy, f, indent = 4)
     with open(os.path.join(folder, "running_times.json"), "w") as f:
         json.dump(running_times, f, indent = 4)
-    if vocab is not None:
-        vocab.save(os.path.join(folder, "vocab.json"))
+    if dataset is not None:
+        dataset.save_vocab(folder)
+        # dataset.dump_dataset(folder)
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-input', help='could be a smt2 file or a folder')
@@ -435,13 +410,14 @@ if __name__ == '__main__':
     log.setLevel(getattr(logging, args.logLevel))
     # logging.basicConfig(level=getattr(logging, args.logLevel))
     if args.gen_dataset:
-        vocab = Du.Vocab()
+        dataset = Du.Dataset()
     else:
-        vocab = None
+        dataset = None
+
     if os.path.isdir(args.input):
-        ind_gen_folder(args.input, args.policy, args.powerset, args.vis, vocab = vocab)
+        ind_gen_folder(args.input, args.policy, args.powerset, args.vis, dataset = dataset)
     elif os.path.isfile(args.input):
-        ind_gen(filename = args.input, lits_to_keep = [] , vocab = vocab, drop_all = False, vis = args.vis)
+        ind_gen(filename = args.input, lits_to_keep = [] , dataset = dataset, drop_all = False, vis = args.vis)
     else:
         print("not a file or folder")
    
