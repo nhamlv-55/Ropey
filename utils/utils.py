@@ -2,6 +2,8 @@ import z3
 import json
 import torch
 from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
+from Doping.PySpacerSolver.utils import *
+import os
 class Vocab:
     def __init__(self):
         self.id2w = {}
@@ -15,7 +17,10 @@ class Vocab:
         #add constant
         self.add_token("<ROOT>")
         self.add_token("<UNK>")
-    
+
+        self.add_sort("<ROOT>")
+        self.add_sort("<UNK>")
+
     def add_token(self, w):
         '''add a token to vocab and return its id'''
         if w in self.w2id:
@@ -64,7 +69,7 @@ class Node:
     def __getitem__(self, key):
         if key=="children": return self._children
         elif key =="index": return self._node_idx
-        elif key =="features": return self._token_id
+        elif key =="features": return self.get_feat()
         elif key =="token_id": return self._token_id
     def __setitem__(self, key, value):
         if key=="children": return self.set_children(value)
@@ -87,10 +92,23 @@ class Node:
         if z3.is_const(ast_node):
             if z3.is_bool(ast_node):
                 sort = "<BOOL_VAR>"
-            elif z3.is_rational_value(ast_node) or z3.is_int(ast_node):
-                sort = "<NUMBER>"
+            elif ast_node == 0:
+                sort = "<ZERO>"
+            elif z3.is_int(ast_node):
+                if ast_node < 0:
+                    sort = "<NEG_INT>"
+                else:
+                    sort = "<POS_INT>"
+            elif z3.is_rational_value(ast_node):
+                fl = float(ast_node.numerator_as_long())/float(ast_node.denominator_as_long())
+                if fl < 0:
+                    sort = "<NEG_RAT>"
+                else:
+                    sort = "<POS_RAT>"
             else:
                 sort = "<VAR>"
+        elif ast_node.decl().name() == "and":
+            sort = "<AND>"
         else:
             sort = ast_node.sort().name()
         self._sort = sort
@@ -119,14 +137,27 @@ class Node:
         self._token_id = vocab.add_token(self._token)
         self._raw_expr = "<ROOT>"
         self._sort = "<ROOT>"
+        self._sort_id = vocab.add_sort(self._sort)
 
     def to_json(self):
         if self._num_child==0:
-            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "sort_id": self._sort_id, "children": [], "expr": self._raw_expr}
+            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "sort_id": self._sort_id, "children": [], "expr": self._raw_expr, "features": self.get_feat()}
         else:
-            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "sort_id": self._sort_id, "children": [child.to_json() for child in self._children], "expr": self._raw_expr}
+            return {"token": self._token, "token_id": self._token_id, "sort": self._sort, "sort_id": self._sort_id, "children": [child.to_json() for child in self._children], "expr": self._raw_expr, "features": self.get_feat()}
     def __str__(self):
         return json.dumps(self.to_json(), indent = 2)
+
+    def rewrite(self):
+        if self._num_child==0:
+            return "%s|%s"%(self._token, self._sort)
+        else:
+            childs = [child.rewrite() for child in self._children]
+            childs = " ".join(childs)
+            return "(%s (%s))"%(self._token, childs)
+            
+
+    def get_feat(self):
+        return [self._token_id, self._sort_id]
 
 def ast_to_node(ast_node, vocab):
     node = Node()
@@ -179,7 +210,7 @@ def convert_tree_to_tensors(tree, device=torch.device('cuda')):
     # Label each node with its walk order to match nodes to feature tensor indexes
     # This modifies the original tree as a side effect
     _label_node_index(tree)
-    features = _gather_node_attributes(tree, 'token_id')
+    features = _gather_node_attributes(tree, 'features')
     adjacency_list = _gather_adjacency_list(tree)
 
     # print("LEN FEATURES", len(features))
@@ -193,3 +224,95 @@ def convert_tree_to_tensors(tree, device=torch.device('cuda')):
         'edge_order': torch.tensor(edge_order, device=device, dtype=torch.int64),
     }
 
+class Dataset:
+    def __init__(self, html_vis_page = None):
+        self.vocab = Vocab()
+        self.dataset = {}
+        if html_vis_page is not None:
+            self.html_vis_page = HtmlVisPage(html_vis_page)
+        else:
+            self.html_vis_page = None
+
+    def print2html(self, s, color = "black"):
+        print(s)
+        if self.html_vis_page is not None:
+            self.html_vis_page.write(html_colored(s, color))
+
+    def check_lit_conflict(self, cube, inducted_cube, filename):
+        '''
+        Check if exists 2 lits that are the same after tokenization, but one is red and one is blue
+        '''
+        self.print2html("Checking for lit conflict")
+
+        #a set contain all the lits that stays after ind_gen
+        conflict = False
+        blue_trees = set()
+        for lit in inducted_cube:
+            blue_trees.add(ast_to_tree(lit, self.vocab).rewrite())
+
+        for lit in cube:
+            lit_tree = ast_to_tree(lit, self.vocab).rewrite()
+            if lit in inducted_cube:
+                self.print2html("%s =====> %s"%(lit, lit_tree), "blue")
+            elif lit not in inducted_cube and lit_tree in blue_trees:
+                conflict = True
+                self.print2html("%s =====> %s"%(lit, lit_tree), "purple")
+            elif lit not in inducted_cube and lit_tree not in blue_trees:
+                self.print2html("%s =====> %s"%(lit, lit_tree), "red")
+
+        self.print2html("----------------------------")
+        return conflict
+
+    def add_dp(self, cube, inducted_cube, filename):
+        if len(cube)<=1:
+            return
+
+        if self.check_lit_conflict(cube, inducted_cube, filename):
+            self.print2html("There is a self-conflict. Drop this cube")
+            return
+
+        for i in range(len(cube)):
+
+            for j in range(i+1, len(cube)):
+                '''4 possible labels: both lits are dropped 0, only one is dropped 1, non is dropped 2'''
+                if cube[i] in inducted_cube and cube[j] in inducted_cube:
+                    label = 0
+                elif cube[i] not in inducted_cube and cube[j] not in inducted_cube:
+                    label = 0
+                else:
+                    label = 1
+
+                C_tree = ast_to_tree(z3.And(cube), self.vocab)
+                L_a_tree = ast_to_tree(cube[i], self.vocab)
+                L_b_tree = ast_to_tree(cube[j], self.vocab)
+
+                dp_filename = filename+ "."+ str(i)+ "."+ str(j)+ ".dp.json"
+                X = (C_tree.rewrite(), L_a_tree.rewrite(), L_b_tree.rewrite())
+                datapoint = {"filename": filename, "cube": cube, "inducted_cube": inducted_cube, "label": label}
+                if X in self.dataset and self.dataset[X]["label"]!=label:
+                    self.print2html("Exist a same datapoint with a different label")
+                    self.print2html("PREVIOUS ENTRY")
+                    self.print2html(self.dataset[X]["filename"])
+                    visualize(self.dataset[X]["cube"], self.dataset[X]["inducted_cube"], self.html_vis_page)
+                    self.print2html(L_a_tree.rewrite(), "")
+                    self.print2html("THIS ENTRY")
+                    self.print2html(filename)
+                    visualize(cube, inducted_cube, self.html_vis_page)
+                else:
+                    self.dataset[X] = datapoint
+                with open(dp_filename, "w") as f:
+                    json.dump({"C_tree": C_tree.to_json(), "L_a_tree": L_a_tree.to_json(), "L_b_tree": L_b_tree.to_json(), "label": label}, f)
+
+    def save_vocab(self, folder):
+        print("SAVING VOCAB")
+        self.vocab.save(os.path.join(folder, "vocab.json"))
+
+    def dump_dataset(self, folder):
+        pass
+        print("DUMPING DATASET IN TOKEN FORMAT")
+        with open(os.path.join(folder, "ds_token_form.json"), "w") as f:
+            json.dump(self.dataset, f, indent = 2)
+
+    def dump_html(self):
+        if self.html_vis_page is not None:
+            self.html_vis_page.dump()
