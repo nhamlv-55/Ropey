@@ -14,6 +14,10 @@ class Vocab:
         self.s2id = {}
         self.sort_size = 0
 
+        self.id2const = {}
+        self.const2id = {}
+        self.const_size = 0
+
         #add constant
         self.add_token("<ROOT>")
         self.add_token("<UNK>")
@@ -33,7 +37,7 @@ class Vocab:
             return self.w2id[w]
 
     def add_sort(self, sort):
-        '''add a token to vocab and return its id'''
+        '''add a sort to vocab and return its id'''
         if sort in self.s2id:
             return self.s2id[sort]
         else:
@@ -42,6 +46,18 @@ class Vocab:
             self.id2s[idx] = sort
             self.sort_size+=1
             return self.s2id[sort]
+
+    def add_const(self, const):
+        '''add a const to vocab and return its id'''
+        if const in self.const2id:
+            return self.const2id[const]
+        else:
+            idx = self.const_size
+            self.const2id[const] = idx
+            self.id2const[idx] = const
+            self.const_size+=1
+            return self.const2id[const]
+
 
 
     def dump(self):
@@ -238,22 +254,39 @@ class Dataset:
         if self.html_vis_page is not None:
             self.html_vis_page.write(html_colored(s, color))
 
+
+    def normalize(self, ast):
+        return z3.simplify(ast, arith_ineq_lhs = True, sort_sums = True)
+
+    def normalize_cube(self, cube):
+        new_cube = []
+        for l in cube:
+            new_cube.append(self.normalize(l))
+        return new_cube
+
     def check_lit_conflict(self, cube, inducted_cube, filename):
         '''
         Check if exists 2 lits that are the same after tokenization, but one is red and one is blue
         '''
         self.print2html("Checking for lit conflict")
-
+        
         #a set contain all the lits that stays after ind_gen
         conflict = False
         blue_trees = set()
-        for lit in inducted_cube:
-            blue_trees.add(ast_to_tree(lit, self.vocab).rewrite())
+        red_trees = set()
+        for lit in cube:
+            if lit in inducted_cube:
+                blue_trees.add(ast_to_tree(lit, self.vocab).rewrite())
+            else:
+                red_trees.add(ast_to_tree(lit, self.vocab).rewrite())
 
         for lit in cube:
             lit_tree = ast_to_tree(lit, self.vocab).rewrite()
-            if lit in inducted_cube:
+            if lit in inducted_cube and lit_tree not in red_trees:
                 self.print2html("%s =====> %s"%(lit, lit_tree), "blue")
+            elif lit in inducted_cube and lit_tree in red_trees:
+                conflict = True
+                self.print2html("%s =====> %s"%(lit, lit_tree), "purple")
             elif lit not in inducted_cube and lit_tree in blue_trees:
                 conflict = True
                 self.print2html("%s =====> %s"%(lit, lit_tree), "purple")
@@ -266,10 +299,25 @@ class Dataset:
     def add_dp(self, cube, inducted_cube, filename):
         if len(cube)<=1:
             return
+        #Normalize before doing anything
+        self.print2html("normalize the cube")
 
+        self.print2html("raw cube")
+        visualize(cube, inducted_cube, self.html_vis_page)
+
+        self.print2html("normalized cube")
+        cube = self.normalize_cube(cube)
+        inducted_cube = self.normalize_cube(inducted_cube)
+        visualize(cube, inducted_cube, self.html_vis_page)
+
+        #Check for conflict
         if self.check_lit_conflict(cube, inducted_cube, filename):
             self.print2html("There is a self-conflict. Drop this cube")
             return
+
+
+
+        last_collision_file = None
 
         for i in range(len(cube)):
 
@@ -289,15 +337,17 @@ class Dataset:
                 dp_filename = filename+ "."+ str(i)+ "."+ str(j)+ ".dp.json"
                 X = (C_tree.rewrite(), L_a_tree.rewrite(), L_b_tree.rewrite())
                 datapoint = {"filename": filename, "cube": cube, "inducted_cube": inducted_cube, "label": label}
+
                 if X in self.dataset and self.dataset[X]["label"]!=label:
-                    self.print2html("Exist a same datapoint with a different label")
-                    self.print2html("PREVIOUS ENTRY")
-                    self.print2html(self.dataset[X]["filename"])
-                    visualize(self.dataset[X]["cube"], self.dataset[X]["inducted_cube"], self.html_vis_page)
-                    self.print2html(L_a_tree.rewrite(), "")
-                    self.print2html("THIS ENTRY")
-                    self.print2html(filename)
-                    visualize(cube, inducted_cube, self.html_vis_page)
+                    if last_collision_file is None:
+                        self.print2html("Exist a same datapoint with a different label")
+                        self.print2html("PREVIOUS ENTRY")
+                        self.print2html(self.dataset[X]["filename"])
+                        visualize(self.dataset[X]["cube"], self.dataset[X]["inducted_cube"], self.html_vis_page)
+                        self.print2html("THIS ENTRY")
+                        self.print2html(filename)
+                        visualize(cube, inducted_cube, self.html_vis_page)
+                        last_collision_file = self.dataset[X]["filename"]
                 else:
                     self.dataset[X] = datapoint
                 with open(dp_filename, "w") as f:
