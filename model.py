@@ -28,6 +28,14 @@ class Model(torch.nn.Module):
             self.fc1 = nn.Linear(tree_dim*2, int(tree_dim))
         self.fc2 = nn.Linear(int(tree_dim), out_dim)
 
+
+    def metadata(self):
+        return {"emb_dim": self._emb_dim,
+                "tree_dim": self._tree_dim,
+                "use_c": self._use_c,
+                "use_const_emb": self._use_const_emb
+        }
+
     def forward(self, cube, lit_a, lit_b):
         h_a, c_a, a_sz = self.forward_a_tree(lit_a)
         h_b, c_b, b_sz = self.forward_a_tree(lit_b)

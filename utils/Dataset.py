@@ -33,6 +33,15 @@ class DataObj:
         self.build_dataset()
         self.get_vocab()
 
+    def metadata(self):
+        return {"datafolder": self.datafolder,
+                "size": self._size,
+                "max_size": self._max_size,
+                "train_size": self.train_size,
+                "vocab_size": self.vocab['size'],
+                "sort_size": self.vocab['sort_size']
+        }
+
     def get_vocab(self):
         vocab_file = os.path.join(self.datafolder, "vocab.json")
         with open(vocab_file, "r") as f:

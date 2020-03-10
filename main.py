@@ -63,11 +63,13 @@ if __name__ == '__main__':
                   emb_dim = 20,
                   tree_dim = 200,
                   out_dim =2,
-                  use_c = True,
+                  use_c = False,
                   use_const_emb = False).train()
     loss_function = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters())
 
+    metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
+    SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
     for n in range(100):
         last_batch = False
         total_loss = 0
