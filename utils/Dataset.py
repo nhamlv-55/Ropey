@@ -39,7 +39,9 @@ class DataObj:
                 "max_size": self._max_size,
                 "train_size": self.train_size,
                 "vocab_size": self.vocab['size'],
-                "sort_size": self.vocab['sort_size']
+                "sort_size": self.vocab['sort_size'],
+                "shuffle": self.shuffle,
+                "batch_size": self.batch_size
         }
 
     def get_vocab(self):
