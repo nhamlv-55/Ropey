@@ -29,5 +29,6 @@ if __name__=="__main__":
                     batch_size = 1) # batchsize = 1 for visualization
 
     test, last_batch = dataObj.next_batch(dataObj.test_dps, "test")
+    print(test)
     output = model(test["C_batch"], test["L_a_batch"], test["L_b_batch"])
     print(output)

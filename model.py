@@ -37,11 +37,11 @@ class Model(torch.nn.Module):
         }
 
     def forward(self, cube, lit_a, lit_b):
-        h_a, c_a, a_sz = self.forward_a_tree(lit_a)
-        h_b, c_b, b_sz = self.forward_a_tree(lit_b)
+        h_a_raw, c_a_raw, a_sz = self.forward_a_tree(lit_a)
+        h_b_raw, c_b_raw, b_sz = self.forward_a_tree(lit_b)
 
-        h_a = TLUtil.stack_last_h(h_a, a_sz)
-        h_b = TLUtil.stack_last_h(h_b, b_sz)
+        h_a = TLUtil.stack_last_h(h_a_raw, a_sz)
+        h_b = TLUtil.stack_last_h(h_b_raw, b_sz)
 
         assert(h_a.shape[0] == h_b.shape[0])
         # assert(h_a.shape[0] == h_c.shape[0])
@@ -53,9 +53,9 @@ class Model(torch.nn.Module):
         # print(fuse_a_b.shape)
 
         if self._use_c:
-            h_c, c_c, c_sz = self.forward_a_tree(cube)
+            h_c_raw, c_c_raw, c_sz = self.forward_a_tree(cube)
             # print(h_a.shape, h_b.shape, h_c.shape)
-            h_c = TLUtil.stack_last_h(h_c, c_sz)
+            h_c = TLUtil.stack_last_h(h_c_raw, c_sz)
             h_c = h_c.view(batch_size, 1, -1)
             h = torch.cat((h_c, h_a, h_b), dim = -1)
         else:
@@ -63,7 +63,13 @@ class Model(torch.nn.Module):
         # h = torch.matmul(h_c, fuse_a_b)
         # print(h.shape)
         logits = self.fc2(F.relu(self.fc1(h)))
-        return logits.view(batch_size, -1)
+        if self.training:
+            return logits.view(batch_size, -1)
+        else:
+            return logits.view(batch_size, -1), {
+                "h_a_raw": h_a_raw,
+                "h_b_raw": h_b_raw,
+            }
 
     def forward_a_tree(self, tree):
         features = tree["features"].to(self.device)
