@@ -53,6 +53,9 @@ if __name__ == '__main__':
     parser.add_argument('-E', '--use_const_emb', action='store_true')
     parser.add_argument('-M', '--max_size', type = int, default = -1)
     parser.add_argument('-S', '--shuffle', action='store_true')
+    parser.add_argument('-N', '--epoch', type = int, default = 300)
+    parser.add_argument('--eval-epoch', type = int, default = 10)
+    parser.add_argument('--save-epoch', type = int, default = 100)
     args = parser.parse_args()
 
     exp_folder = args.input
@@ -61,8 +64,9 @@ if __name__ == '__main__':
     use_const_emb = args.use_const_emb
     max_size = args.max_size
     shuffle = args.shuffle
-
-
+    n_epoch = args.epoch
+    eval_epoch = args.eval_epoch
+    save_epoch = args.save_epoch
 
     dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 1024)
     test = dataObj.test
@@ -83,7 +87,7 @@ if __name__ == '__main__':
 
     metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
-    for n in range(300):
+    for n in range(n_epoch):
         last_batch = False
         total_loss = 0
 
@@ -108,7 +112,7 @@ if __name__ == '__main__':
         SWRITER.add_scalar('Accuracy/test', accurary, n)        #empty gpu
         # torch.cuda.empty_cache()
 
-        if n%10==0:
+        if n%eval_epoch==0:
             # print(output.shape)
             print(f'Iteration {n+1} Loss: {loss}')
             #check that embedding is being trained
@@ -120,10 +124,12 @@ if __name__ == '__main__':
             print("TEST SIZE:", dataObj.test["size"])
             evaluate(model, test, vis)
 
-        if n%100==0:
+        if n%save_epoch==0:
+            new_model_path = new_model_path(exp_folder)
+            print("Saving to %s", new_model_path)
             torch.save({
             'epoch': n,
             'model_state_dict': model.state_dict(),
             'optimizer_state_dict': optimizer.state_dict(),
             'loss': loss,
-            }, new_model_path(exp_folder))
+            }, new_model_path)
