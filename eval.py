@@ -2,18 +2,12 @@ import torch
 from model import Model
 from Doping.utils.Dataset import DataObj
 import argparse
-torch.no_grad()
-parser = argparse.ArgumentParser()
-parser.add_argument('--model-path', help='path to the .pt file')
-args = parser.parse_args()
 
-if __name__=="__main__":
-    model_path = args.model_path
-
+def setup_model(model_path):
     checkpoint = torch.load(model_path)
     model_metadata = checkpoint['metadata']
     dataset_metadata = checkpoint['dataset']
-    print(model_metadata)
+
     model = Model(dataset_metadata['vocab_size'],
                 dataset_metadata['sort_size'],
                 emb_dim = model_metadata['emb_dim'],
@@ -28,7 +22,27 @@ if __name__=="__main__":
                     train_size = dataset_metadata['train_size'],
                     batch_size = 1) # batchsize = 1 for visualization
 
+    return model, dataObj
+
+def run(model, dataObj):
     test, last_batch = dataObj.next_batch(dataObj.test_dps, "test")
     print(test)
     output = model(test["C_batch"], test["L_a_batch"], test["L_b_batch"])
     print(output)
+
+    json_vis_data = {}
+    json_vis_data["h_a_raw"] = output[1]["h_a_raw"].tolist()
+    json_vis_data["h_b_raw"] = output[1]["h_b_raw"].tolist()
+
+    return json_vis_data
+
+
+if __name__=="__main__":
+    torch.no_grad()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model-path', help='path to the .pt file')
+    args = parser.parse_args()
+
+    model_path = args.model_path
+    model, dataObj = setup_model(model_path)
+    run(model, dataObj)
