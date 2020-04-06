@@ -128,9 +128,10 @@ if __name__ == '__main__':
             model_path = new_model_path()
             print("Saving to ", model_path)
             torch.save({
-            'epoch': n,
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimizer.state_dict(),
-            'loss': loss,
-                'dataset': dataObj.metadata()
+                'epoch': n,
+                'model_state_dict': model.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'loss': loss,
+                'dataset': dataObj.metadata(),
+                'metadata': model.metadata()
             }, model_path)
