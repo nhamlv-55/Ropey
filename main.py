@@ -5,6 +5,7 @@ import z3
 from Doping.pytorchtreelstm.treelstm import TreeLSTM, calculate_evaluation_orders
 import Doping.utils.utils as Du
 from Doping.utils.Dataset import DataObj
+from Doping.settings import MODEL_PATH, new_model_name, new_model_path
 from model import Model
 import json
 import os
@@ -47,30 +48,42 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-input', help='path to the ind_gen_files folder')
     parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
-    parser.add_argument('-vis', action='store_true')
+    parser.add_argument('-v', '--vis', action='store_true')
+    parser.add_argument('-C', '--use_c', action='store_true')
+    parser.add_argument('-E', '--use_const_emb', action='store_true')
+    parser.add_argument('-M', '--max_size', type = int, default = -1)
+    parser.add_argument('-S', '--shuffle', action='store_true')
     args = parser.parse_args()
 
     exp_folder = args.input
     vis = args.vis
-    dataObj = DataObj(exp_folder, max_size = 4000, train_size = 0.8, batch_size = 1024)
+    use_c = args.use_c
+    use_const_emb = args.use_const_emb
+    max_size = args.max_size
+    shuffle = args.shuffle
+
+
+
+    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 1024)
     test = dataObj.test
     vocab = dataObj.vocab
 
     print("DATASET SIZE:", dataObj.size())
+    print("TRAIN SIZE:", dataObj.train["size"])
     print("TEST SIZE:", dataObj.test["size"])
     model = Model(vocab['size'],
                   vocab['sort_size'],
                   emb_dim = 20,
                   tree_dim = 200,
                   out_dim =2,
-                  use_c = False,
-                  use_const_emb = False).train()
+                  use_c = use_c,
+                  use_const_emb = use_const_emb).train()
     loss_function = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters())
 
     metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
-    for n in range(100):
+    for n in range(300):
         last_batch = False
         total_loss = 0
 
@@ -106,3 +119,11 @@ if __name__ == '__main__':
             print("testing eval----------------------------")
             print("TEST SIZE:", dataObj.test["size"])
             evaluate(model, test, vis)
+
+        if n%100==0:
+            torch.save({
+            'epoch': n,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'loss': loss,
+            }, new_model_path(exp_folder))
