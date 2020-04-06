@@ -5,7 +5,7 @@ import z3
 from Doping.pytorchtreelstm.treelstm import TreeLSTM, calculate_evaluation_orders
 import Doping.utils.utils as Du
 from Doping.utils.Dataset import DataObj
-from Doping.settings import MODEL_PATH, new_model_name, new_model_path
+from Doping.settings import MODEL_PATH, new_model_path
 from model import Model
 import json
 import os
@@ -125,11 +125,12 @@ if __name__ == '__main__':
             evaluate(model, test, vis)
 
         if n%save_epoch==0:
-            new_model_path = new_model_path(exp_folder)
-            print("Saving to %s", new_model_path)
+            model_path = new_model_path()
+            print("Saving to ", model_path)
             torch.save({
             'epoch': n,
             'model_state_dict': model.state_dict(),
             'optimizer_state_dict': optimizer.state_dict(),
             'loss': loss,
-            }, new_model_path)
+                'dataset': dataObj.metadata()
+            }, model_path)
