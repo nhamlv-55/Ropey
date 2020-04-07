@@ -76,24 +76,26 @@
     </style>
 </head>
 <body>
-    <h1 id="name"></h1>
-    <input type="range" id="vol" name="vol" min="0" max="199" oninput="updatePlot()">
+    <h1 id="filename"></h1>
+    <input type="range" id="vol" name="vol" min="0" oninput="updatePlot()" value=0>
+    <span id="slider-val"></span>
     <section class="container">
         <div id="L_a_tree" class="a_tree"></div>
         <div id="L_b_tree" class="b_tree"></div>
     </section>
-    <div id="instances"></div>
-    <textarea readonly id="expr_pob" class="expr"></textarea>
-    <textarea readonly id="expr_lemma" class="expr"></textarea>
     <script>
-     var data = {{data | safe}};
+     var data = {{context | safe}};
      console.log(data);
      var id2w = data["vocab"]["id2w"]
      var id2s = data["vocab"]["id2s"]
-
+     document.getElementById("vol").max = data["metadata"]["tree_dim"];
+     document.getElementById("vol").value = {{h_index}};
+     document.getElementById("slider-val").innerHTML = {{h_index}};
+     document.getElementById("filename").innerHTML = data["filename"];
      console.log(id2w, id2s)
      function updatePlot(){
          h_index = document.getElementById("vol").value;
+         document.getElementById("slider-val").innerHTML = h_index;
          console.log("h_index", h_index);
          plot_a_tree("L_a_tree", data["node_a"], data["adj_list_a"], data["feature_a"],
                      data["h_a_raw"], data["h_a_min"], data["h_a_max"], h_index);
@@ -130,10 +132,6 @@
          var options = {
              physics: {
                  enabled: false
-             },
-             interaction: {
-                 dragNodes: false,
-                 hover: true,
              },
              layout: {
                  hierarchical: {

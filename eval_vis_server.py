@@ -17,12 +17,11 @@ parser.add_argument('--model-path', help='path to the .pt file')
 parser.add_argument('--port', type= int, default=8080, help='port')
 args = parser.parse_args()
 
-model, dataObj = setup_model(args.model_path)
-
-@app.route('/vis')
-def handle_vis():
-    json_vis_data = run(model, dataObj)
-    return render_template('vis.html', data=json.dumps(json_vis_data))
+model, dataObj, model_metadata = setup_model(args.model_path)
+@app.route('/vis/<h_index>', methods=['GET'])
+def handle_vis(h_index):
+    json_vis_data = run(model, dataObj, model_metadata)
+    return render_template('vis.html', context=json.dumps(json_vis_data), h_index = h_index)
 
 
 if __name__ == '__main__':

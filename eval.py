@@ -24,9 +24,9 @@ def setup_model(model_path):
                     train_size = dataset_metadata['train_size'],
                     batch_size = 1) # batchsize = 1 for visualization
     print("--------------------------")
-    return model, dataObj
+    return model, dataObj, model_metadata
 
-def run(model, dataObj):
+def run(model, dataObj, model_metadata):
     test, last_batch = dataObj.next_batch(dataObj.test_dps, "test")
     print(test)
     L_a_tree = test["L_a_batch"]
@@ -52,6 +52,7 @@ def run(model, dataObj):
     json_vis_data["vocab"] = dataObj.vocab
     json_vis_data["feature_a"] = L_a_tree["features"].tolist()
     json_vis_data["feature_b"] = L_b_tree["features"].tolist()
+    json_vis_data["metadata"] = model_metadata
     return json_vis_data
 
 
@@ -62,5 +63,5 @@ if __name__=="__main__":
     args = parser.parse_args()
 
     model_path = args.model_path
-    model, dataObj = setup_model(model_path)
-    run(model, dataObj)
+    model, dataObj, model_metadata = setup_model(model_path)
+    run(model, dataObj, model_metadata)
