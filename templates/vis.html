@@ -1,0 +1,196 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+    <title>Spacer Visualization</title>
+​    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.1/d3.min.js" ></script>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" />
+​    
+    <style type="text/css">
+     .container {
+         width: 100%;
+         height: 1000px;
+         margin: auto;
+         padding: 10px;
+     }
+
+     .a_tree {
+         width: 50%;
+         height: 1000px;
+         float: left;
+     }
+
+     .b_tree {
+         height: 1000px;
+         margin-left: 50%;
+     }
+
+     #network {
+         position: absolute;
+         top:0;
+         left:0;
+         width: 98%;
+         height:98%;
+     }
+     #instances {
+         position: absolute;
+         top:0;
+         right:0;
+         width: 15%;
+         height: 100%;
+         overflow: scroll;
+     }
+     .expr {
+         font-family: monospace;
+         display: none;
+         position: absolute;
+         border: 1px solid black;
+         width: 30%;
+         height: 20%;
+         overflow: auto;
+         white-space: pre;
+         background-color: white;
+         padding: .5em;
+         resize: both;
+     }
+     .prova{
+         resize: both;
+         overflow: auto;
+         width: 30%;
+         height: 20%;
+         border: 1px solid black;
+     }
+     #expr_pob{
+     }
+     #expr_lemma{
+         bottom: 20px;
+     }
+​     
+     #name {
+         position: absolute;
+         width: 100%;
+         text-align: center;
+     }
+    </style>
+</head>
+<body>
+    <h1 id="name"></h1>
+    <input type="range" id="vol" name="vol" min="0" max="199" oninput="updatePlot()">
+    <section class="container">
+        <div id="L_a_tree" class="a_tree"></div>
+        <div id="L_b_tree" class="b_tree"></div>
+    </section>
+    <div id="instances"></div>
+    <textarea readonly id="expr_pob" class="expr"></textarea>
+    <textarea readonly id="expr_lemma" class="expr"></textarea>
+    <script>
+     var data = {{data | safe}};
+     console.log(data);
+     var id2w = data["vocab"]["id2w"]
+     var id2s = data["vocab"]["id2s"]
+
+     console.log(id2w, id2s)
+     function updatePlot(){
+         h_index = document.getElementById("vol").value;
+         console.log("h_index", h_index);
+         plot_a_tree("L_a_tree", data["node_a"], data["adj_list_a"], data["feature_a"],
+                     data["h_a_raw"], data["h_a_min"], data["h_a_max"], h_index);
+
+         plot_a_tree("L_b_tree", data["node_b"], data["adj_list_b"], data["feature_b"],
+                     data["h_b_raw"], data["h_b_min"], data["h_b_max"], h_index);
+
+     }
+
+     function plot_a_tree(target_container, nodes, adj_list, feature, h, h_min, h_max, h_index){
+         startColor = '#ffffff'
+         endColor = '#e67e22'
+         var colorMap = d3.scaleLinear()
+	                      .domain([h_min[h_index],h_max[h_index]])
+	                      .range([startColor, endColor]);
+         var network=null;
+         var vis_nodes = [];
+         var vis_edges = [];
+         for (i in nodes){
+             var node = {"id": i}
+             node.value = h[i][h_index];
+             node.shape = "square";
+             node.color = colorMap(node.value);
+             node.label = id2w[feature[i][0]] +"|" + id2s[feature[i][1]];
+             
+             vis_nodes.push(node);
+             
+         }
+         for (i in adj_list){
+             e = adj_list[i]
+             vis_edges.push({"from": e[0], "to": e[1]});
+         }
+         var container = document.getElementById(target_container);
+         var options = {
+             physics: {
+                 enabled: false
+             },
+             interaction: {
+                 dragNodes: false,
+                 hover: true,
+             },
+             layout: {
+                 hierarchical: {
+                     direction: 'UD',
+                     sortMethod: 'directed',
+                 },
+             },
+             edges:{
+                 width: 0.5,
+                 selectionWidth: function (width) {return width*2;},
+                 arrows: {
+                     to:     {enabled: true, type:'arrow'}
+                 },
+                 smooth: {
+                     type: 'cubicBezier',
+                     //type: 'diagonalCross',
+                     roundness: 0.2
+                 },
+                 color: {
+                     color: 'lightblue',
+                     highlight: 'blue'
+                 }
+             },
+         }
+
+         vis_data = {nodes: vis_nodes, edges: vis_edges};
+         network = new vis.Network(container,vis_data,options);
+         network.data = vis_data
+         /* network.on("click", function (params) { */
+         /* if(params["nodes"].length){ */
+         /* node=network.data.nodes.get(params["nodes"][0]); */
+         /* $('#expr_pob').val(node.expr).show(); */
+         /* lemmas = '' */
+         /* for (k in node.lemmas){ */
+         /* lemmas+='at depth: '+k; */
+         /* for (j in node.lemmas[k]){ */
+         /* lemmas+=", lemma level: " + node.lemmas[k][j].init_level + " to " + node.lemmas[k][j].level+"\n  "; */
+         /* lemmas+=node.lemmas[k][j].expr.replace("\n","\n  "); */
+         /* lemmas+="\n\n"; */
+         /* } */
+                 }
+     /* $('#expr_lemma').val(lemmas).show(); */
+     /* } */
+     /* }); */
+     /* network.on("deselectNode", function (params) { */
+     /* $('#expr_pob').val('').hide(); */
+     /* $('#expr_lemma').val('').hide(); */
+     /* params["previousSelection"]["nodes"] */
+     /* }); */
+     /*  */
+     /* } */
+     /*  */
+     plot_a_tree("L_a_tree", data["node_a"], data["adj_list_a"], data["feature_a"],
+                 data["h_a_raw"], data["h_a_min"], data["h_a_max"], 1);
+
+     plot_a_tree("L_b_tree", data["node_b"], data["adj_list_b"], data["feature_b"],
+                 data["h_b_raw"], data["h_b_min"], data["h_b_max"], 1);
+
+    </script>
+</body>
