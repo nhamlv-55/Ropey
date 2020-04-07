@@ -53,20 +53,27 @@ class DataObj:
     def build_dataset(self):
         self.datafolder = os.path.join(self.datafolder, "")
         self.all_dps = glob.glob(self.datafolder+"/*.dp.json")
-        self.all_dps = sorted(self.all_dps)[:self._max_size]
+        self.all_dps = sorted(self.all_dps)
         self._size = len(self.all_dps)
         if self.shuffle:
             random.shuffle(self.all_dps)
         train_index = int(self._size*self.train_size)
 
+        #only use up to max_size dps for the training set
         self.train_dps = []
-        for i in range(train_index):
-            self.train_dps.append(self.all_dps[i])
+        assert(self._max_size < train_index)
+        #if max_size == -1, use all the dps
+        if self._max_size == -1:
+            for i in range(train_index):
+                self.train_dps.append(self.all_dps[i])
+        else:
+            for i in range( train_index - self._max_size, train_index):
+                self.train_dps.append(self.all_dps[i])
         self.test_dps = []
         for i in range(train_index, len(self.all_dps)):
             self.test_dps.append(self.all_dps[i])
 
-        assert(len(self.train_dps)+len(self.test_dps) == len(self.all_dps))
+        # assert(len(self.train_dps)+len(self.test_dps) == len(self.all_dps))
 
         self.train = self._dataset_from_dps(self.train_dps, "train")
         self.test = self._dataset_from_dps(self.test_dps, "test")
@@ -96,6 +103,7 @@ class DataObj:
     def next_batch(self, all_dps, name):
         last_batch = False
         dataset = {}
+        filenames = []
         C_trees = []
         L_a_trees = []
         L_b_trees = []
@@ -103,6 +111,7 @@ class DataObj:
         for dp in all_dps[self.data_pointer: min(self.data_pointer + self.batch_size, len(all_dps))]:
             with open(dp, "r") as f:
                 data  = json.load(f)
+                filenames.append(dp)
                 C_trees.append(DPu.convert_tree_to_tensors(data["C_tree"]))
                 L_a_trees.append(DPu.convert_tree_to_tensors(data["L_a_tree"]))
                 L_b_trees.append(DPu.convert_tree_to_tensors(data["L_b_tree"]))
@@ -114,7 +123,7 @@ class DataObj:
         dataset["L_a_batch"] = batch_tree_input(L_a_trees)
         dataset["L_b_batch"] = batch_tree_input(L_b_trees)
         dataset["label_batch"] = torch.tensor(labels)
-
+        dataset["filenames"] = filenames
         self.data_pointer+=self.batch_size
         if self.data_pointer>len(all_dps):
             last_batch = True
