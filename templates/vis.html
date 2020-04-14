@@ -76,7 +76,8 @@
     </style>
 </head>
 <body>
-    <h1 id="filename"></h1>
+    <h2 id="filename"></h2>
+    <h2 id="metadata"></h2>
     <input type="range" id="vol" name="vol" min="0" oninput="updatePlot()" value=0>
     <span id="slider-val"></span>
     <section class="container">
@@ -92,6 +93,7 @@
      document.getElementById("vol").value = {{h_index}};
      document.getElementById("slider-val").innerHTML = {{h_index}};
      document.getElementById("filename").innerHTML = data["filename"];
+     document.getElementById("metadata").innerHTML = JSON.stringify(data["metadata"]);
      console.log(id2w, id2s)
      function updatePlot(){
          h_index = document.getElementById("vol").value;
@@ -117,10 +119,11 @@
          for (i in nodes){
              var node = {"id": i}
              node.value = h[i][h_index];
-             node.shape = "square";
+             node.shape = "dot";
              node.color = colorMap(node.value);
+             node.color.border = 'black';
              node.label = id2w[feature[i][0]] +"|" + id2s[feature[i][1]];
-             
+             node.size = 20;
              vis_nodes.push(node);
              
          }
@@ -185,10 +188,10 @@
      /* } */
      /*  */
      plot_a_tree("L_a_tree", data["node_a"], data["adj_list_a"], data["feature_a"],
-                 data["h_a_raw"], data["h_a_min"], data["h_a_max"], 1);
+                 data["h_a_raw"], data["h_a_min"], data["h_a_max"], {{h_index}});
 
      plot_a_tree("L_b_tree", data["node_b"], data["adj_list_b"], data["feature_b"],
-                 data["h_b_raw"], data["h_b_min"], data["h_b_max"], 1);
+                 data["h_b_raw"], data["h_b_min"], data["h_b_max"], {{h_index}});
 
     </script>
 </body>
