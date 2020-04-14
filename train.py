@@ -16,20 +16,43 @@ import argparse
 SWRITER = SummaryWriter()
 
 def evaluate(model, testset, vis = False):
-    output = model(
-        testset["C_batch"],
-        testset["L_a_batch"],
-        testset["L_b_batch"]
-    ).cpu()
-    true_label = testset["label_batch"].cpu()
-    # print("true:", testset["label_batch"])
-    m = nn.Softmax(dim = 1)
-    # print("output:", output)
-    values, pred = torch.max(m(output), 1)
+    last_batch = False
+    total_loss = 0
+
+    all_true_labels = []
+    all_preds  = []
+    all_values = []
+    while not last_batch:
+        test, last_batch = dataObj.next_batch(dataObj.test_dps, "test")
+        # print("Training with %d datapoints"%train["size"])
+        output = model(
+            test["C_batch"],
+            test["L_a_batch"],
+            test["L_b_batch"]
+        )
+        true_label = test["label_batch"].cpu()
+        m = nn.Softmax(dim = 1)
+
+        values, pred = torch.max(m(output), 1)
+
+        all_true_labels.extend(true_label.tolist())
+        all_preds.extend(pred.tolist())
+        all_values.extend(values.tolist())
+
+    # output = model(
+    #     testset["C_batch"],
+    #     testset["L_a_batch"],
+    #     testset["L_b_batch"]
+    # ).cpu()
+    # true_label = testset["label_batch"].cpu()
+    # # print("true:", testset["label_batch"])
+    # m = nn.Softmax(dim = 1)
+    # # print("output:", output)
+    # values, pred = torch.max(m(output), 1)
 
     # print("pred:", pred)
-    acc = accuracy_score(true_label, pred)
-    print(confusion_matrix(true_label, pred))
+    acc = accuracy_score(all_true_labels, all_preds)
+    print(confusion_matrix(all_true_labels, all_preds))
     print("accurarcy", acc)
 
     true_label = true_label.tolist()
@@ -37,11 +60,11 @@ def evaluate(model, testset, vis = False):
     pred = pred.tolist()
     if vis:
         print("Label\tPred\tConfidence")
-        for i in range(len(pred)):
+        for i in range(len(all_preds)):
             if true_label[i]!=pred[i]:
-                print(colored("%d\t%d\t%f"%(true_label[i], pred[i], values[i]), 'red'))
+                print(colored("%d\t%d\t%f"%(all_true_labels[i], all_preds[i], all_values[i]), 'red'))
             else:
-                print(colored("%d\t%d\t%f"%(true_label[i], pred[i], values[i]), 'green'))
+                print(colored("%d\t%d\t%f"%(all_true_label[i], all_preds[i], all_values[i]), 'green'))
 
     return acc
 if __name__ == '__main__':
@@ -77,8 +100,8 @@ if __name__ == '__main__':
     print("TEST SIZE:", dataObj.test["size"])
     model = Model(vocab['size'],
                   vocab['sort_size'],
-                  emb_dim = 20,
-                  tree_dim = 200,
+                  emb_dim = 30, #30 is the max emb_dim possible, due to the legacy dataset
+                  tree_dim = 100,
                   out_dim =2,
                   use_c = use_c,
                   use_const_emb = use_const_emb).train()
