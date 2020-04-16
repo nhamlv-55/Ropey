@@ -84,7 +84,7 @@ if __name__ == '__main__':
     parser.add_argument('-E', '--use_const_emb', action='store_true')
     parser.add_argument('-M', '--max_size', type = int, default = -1)
     parser.add_argument('-S', '--shuffle', action='store_true')
-    parser.add_argument('-N', '--epoch', type = int, default = 300)
+    parser.add_argument('-N', '--epoch', type = int, default = 100)
     parser.add_argument('--eval-epoch', type = int, default = 10)
     parser.add_argument('--save-epoch', type = int, default = 100)
     args = parser.parse_args()
@@ -120,6 +120,7 @@ if __name__ == '__main__':
 
     metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
+    examples_idx = random.sample(list(range(1000)), 20)
     for n in range(n_epoch):
         last_batch = False
         total_loss = 0
@@ -145,7 +146,6 @@ if __name__ == '__main__':
         if n%eval_epoch==0:
             # print(output.shape)
             train_accuracy = evaluate(model, dataObj.train_dps)
-            examples_idx = random.sample(list(range(1000)), 20)
             print("example_ids:", examples_idx)
             test_accuracy = evaluate(model, dataObj.test_dps, examples_idx, SWRITER, n)
             SWRITER.add_scalar('Loss/train', total_loss, n)

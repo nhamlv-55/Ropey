@@ -29,7 +29,7 @@ def get_exp_name(exp_folder, vis, use_c, use_const_emb, max_size, shuffle):
 def json_to_markdown(data):
     result = ""
     for key in data:
-        result += "### %s\n\n"%key
+        result += "### %s\n"%key
         result += "```\n"
         result += "%s"%(str(data[key]).replace("\n", "\n\n"))
         result += "\n```"
