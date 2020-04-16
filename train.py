@@ -13,9 +13,8 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 from termcolor import colored
 import argparse
 
-SWRITER = SummaryWriter()
 
-def evaluate(model, testset, vis = False):
+def evaluate(model, testset, training = False, vis = False):
     last_batch = False
     total_loss = 0
 
@@ -23,7 +22,7 @@ def evaluate(model, testset, vis = False):
     all_preds  = []
     all_values = []
     while not last_batch:
-        test, last_batch = dataObj.next_batch(dataObj.test_dps, "test")
+        test, last_batch = dataObj.next_batch(testset, "test")
         # print("Training with %d datapoints"%train["size"])
         output = model(
             test["C_batch"],
@@ -79,6 +78,8 @@ if __name__ == '__main__':
     eval_epoch = args.eval_epoch
     save_epoch = args.save_epoch
 
+    exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, max_size, shuffle)
+    SWRITER = SummaryWriter(comment = exp_name)
     dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 1024)
     test = dataObj.test
     vocab = dataObj.vocab
@@ -118,22 +119,18 @@ if __name__ == '__main__':
             loss.backward()
             optimizer.step()
 
-        accurary = evaluate(model, test, vis)
-        SWRITER.add_scalar('Loss/train', total_loss, n)
-        SWRITER.add_scalar('Accuracy/test', accurary, n)        #empty gpu
         # torch.cuda.empty_cache()
 
         if n%eval_epoch==0:
             # print(output.shape)
+            train_accuracy = evaluate(model, dataObj.train_dps, vis)
+            test_accuracy = evaluate(model, dataObj.test_dps, vis)
+            SWRITER.add_scalar('Loss/train', total_loss, n)
+            SWRITER.add_scalar('Accuracy/train', train_accuracy, n)
+            SWRITER.add_scalar('Accuracy/test', test_accuracy, n)
             print(f'Iteration {n+1} Loss: {loss}')
             #check that embedding is being trained
             print(model.emb(torch.LongTensor([5]).to(device = torch.device('cuda') ) ) )
-            print("training eval---------------------------")
-            # train = dataObj.train
-            # evaluate(model, train, vis)
-            print("testing eval----------------------------")
-            print("TEST SIZE:", dataObj.test["size"])
-            evaluate(model, test, vis)
 
         if n%save_epoch==0:
             model_path = new_model_path()
