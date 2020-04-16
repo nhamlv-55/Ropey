@@ -39,18 +39,6 @@ def evaluate(model, testset, vis = False):
         all_preds.extend(pred.tolist())
         all_values.extend(values.tolist())
 
-    # output = model(
-    #     testset["C_batch"],
-    #     testset["L_a_batch"],
-    #     testset["L_b_batch"]
-    # ).cpu()
-    # true_label = testset["label_batch"].cpu()
-    # # print("true:", testset["label_batch"])
-    # m = nn.Softmax(dim = 1)
-    # # print("output:", output)
-    # values, pred = torch.max(m(output), 1)
-
-    # print("pred:", pred)
     acc = accuracy_score(all_true_labels, all_preds)
     print(confusion_matrix(all_true_labels, all_preds))
     print("accurarcy", acc)
