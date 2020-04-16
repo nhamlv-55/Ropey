@@ -12,18 +12,17 @@ import os
 from sklearn.metrics import confusion_matrix, accuracy_score
 from termcolor import colored
 import argparse
+import random
 
-
-def evaluate(model, testset, training = False, vis = False):
+def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
     last_batch = False
-    total_loss = 0
 
     all_true_labels = []
     all_preds  = []
     all_values = []
+
     while not last_batch:
         test, last_batch = dataObj.next_batch(testset, "test")
-        # print("Training with %d datapoints"%train["size"])
         output = model(
             test["C_batch"],
             test["L_a_batch"],
@@ -39,19 +38,41 @@ def evaluate(model, testset, training = False, vis = False):
         all_values.extend(values.tolist())
 
     acc = accuracy_score(all_true_labels, all_preds)
-    print(confusion_matrix(all_true_labels, all_preds))
+    print(confusion_matrix(all_true_labels, all_preds)) 
     print("accurarcy", acc)
 
     true_label = true_label.tolist()
     values = values.tolist()
     pred = pred.tolist()
-    if vis:
-        print("Label\tPred\tConfidence")
-        for i in range(len(all_preds)):
-            if true_label[i]!=pred[i]:
-                print(colored("%d\t%d\t%f"%(all_true_labels[i], all_preds[i], all_values[i]), 'red'))
-            else:
-                print(colored("%d\t%d\t%f"%(all_true_label[i], all_preds[i], all_values[i]), 'green'))
+    if examples_idx is not None:
+        #grab the random 20 examples
+        examples_dps = [testset[i] for i in examples_idx]
+        test, last_batch = dataObj.next_batch(examples_dps, "examples")
+        output = model(
+            test["C_batch"],
+            test["L_a_batch"],
+            test["L_b_batch"]
+        )
+        true_label = test["label_batch"].cpu()
+        m = nn.Softmax(dim = 1)
+
+        values, pred = torch.max(m(output), 1)
+
+        true_label = true_label.tolist()
+        pred = pred.tolist()
+        values = values.tolist()
+
+        for idx in range(len(examples_dps)):
+            example = examples_dps[idx]
+            display_text = Du.display_example(example, true_label[idx], pred[idx], values[idx])
+            
+            writer.add_text('example', display_text, n)
+    #     print("Label\tPred\tConfidence")
+    #     for i in range(len(all_preds)):
+    #         if true_label[i]!=pred[i]:
+    #             print(colored("%d\t%d\t%f"%(all_true_labels[i], all_preds[i], all_values[i]), 'red'))
+    #         else:
+    #             print(colored("%d\t%d\t%f"%(all_true_label[i], all_preds[i], all_values[i]), 'green'))
 
     return acc
 if __name__ == '__main__':
@@ -123,8 +144,10 @@ if __name__ == '__main__':
 
         if n%eval_epoch==0:
             # print(output.shape)
-            train_accuracy = evaluate(model, dataObj.train_dps, vis)
-            test_accuracy = evaluate(model, dataObj.test_dps, vis)
+            train_accuracy = evaluate(model, dataObj.train_dps)
+            examples_idx = random.sample(list(range(1000)), 20)
+            print("example_ids:", examples_idx)
+            test_accuracy = evaluate(model, dataObj.test_dps, examples_idx, SWRITER, n)
             SWRITER.add_scalar('Loss/train', total_loss, n)
             SWRITER.add_scalar('Accuracy/train', train_accuracy, n)
             SWRITER.add_scalar('Accuracy/test', test_accuracy, n)
@@ -133,7 +156,7 @@ if __name__ == '__main__':
             print(model.emb(torch.LongTensor([5]).to(device = torch.device('cuda') ) ) )
 
         if n%save_epoch==0:
-            model_path = new_model_path()
+            model_path = new_model_path(basename = exp_name)
             print("Saving to ", model_path)
             torch.save({
                 'epoch': n,
