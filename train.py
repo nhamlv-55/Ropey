@@ -67,13 +67,6 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
             display_text = Du.display_example(example, true_label[idx], pred[idx], values[idx])
             
             writer.add_text('example', display_text, n)
-    #     print("Label\tPred\tConfidence")
-    #     for i in range(len(all_preds)):
-    #         if true_label[i]!=pred[i]:
-    #             print(colored("%d\t%d\t%f"%(all_true_labels[i], all_preds[i], all_values[i]), 'red'))
-    #         else:
-    #             print(colored("%d\t%d\t%f"%(all_true_label[i], all_preds[i], all_values[i]), 'green'))
-
     return acc
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -81,6 +74,7 @@ if __name__ == '__main__':
     parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
     parser.add_argument('-v', '--vis', action='store_true')
     parser.add_argument('-C', '--use_c', action='store_true')
+    parser.add_argument('-D', '--use_dot_product', action='store_true')
     parser.add_argument('-E', '--use_const_emb', action='store_true')
     parser.add_argument('-M', '--max_size', type = int, default = -1)
     parser.add_argument('-S', '--shuffle', action='store_true')
@@ -93,18 +87,19 @@ if __name__ == '__main__':
     vis = args.vis
     use_c = args.use_c
     use_const_emb = args.use_const_emb
+    use_dot_product = args.use_dot_product
     max_size = args.max_size
     shuffle = args.shuffle
     n_epoch = args.epoch
     eval_epoch = args.eval_epoch
     save_epoch = args.save_epoch
 
-    exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, max_size, shuffle)
+    exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle)
     SWRITER = SummaryWriter(comment = exp_name)
-    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 1024)
-    test = dataObj.test
+    #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
+    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 64)
     vocab = dataObj.vocab
-
+    device = torch.device('cpu')
     print("DATASET SIZE:", dataObj.size())
     print("TRAIN SIZE:", dataObj.train["size"])
     print("TEST SIZE:", dataObj.test["size"])
@@ -114,13 +109,15 @@ if __name__ == '__main__':
                   tree_dim = 100,
                   out_dim =2,
                   use_c = use_c,
-                  use_const_emb = use_const_emb).train()
-    loss_function = torch.nn.CrossEntropyLoss()
+                  use_const_emb = use_const_emb,
+                  use_dot_product = use_dot_product,
+                  device = device).train()
+    loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(model.parameters())
 
     metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
-    examples_idx = random.sample(list(range(1000)), 20)
+    examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
     for n in range(n_epoch):
         last_batch = False
         total_loss = 0
@@ -153,7 +150,7 @@ if __name__ == '__main__':
             SWRITER.add_scalar('Accuracy/test', test_accuracy, n)
             print(f'Iteration {n+1} Loss: {loss}')
             #check that embedding is being trained
-            print(model.emb(torch.LongTensor([5]).to(device = torch.device('cuda') ) ) )
+            print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
 
         if n%save_epoch==0:
             model_path = new_model_path(basename = exp_name)

@@ -9,12 +9,14 @@ def setup_model(model_path):
     dataset_metadata = checkpoint['dataset']
 
     model = Model(dataset_metadata['vocab_size'],
-                dataset_metadata['sort_size'],
-                emb_dim = model_metadata['emb_dim'],
-                tree_dim = model_metadata['tree_dim'],
-                out_dim = 2,
-                use_c = model_metadata['use_c'],
-                use_const_emb = model_metadata['use_const_emb']).eval()
+                  dataset_metadata['sort_size'],
+                  emb_dim = model_metadata['emb_dim'],
+                  tree_dim = model_metadata['tree_dim'],
+                  out_dim = 2,
+                  use_c = model_metadata['use_c'],
+                  use_const_emb = model_metadata['use_const_emb'],
+                  use_dot_product = model_metadata['use_dot_product']
+    ).eval()
 
     # datafolder = '1_tree_to_test_adj_list/'
     dataObj = DataObj(datafolder = dataset_metadata['datafolder'],
@@ -28,7 +30,6 @@ def setup_model(model_path):
 
 def run(model, dataObj, model_metadata):
     test, last_batch = dataObj.next_batch(dataObj.test_dps, "test")
-    print(test)
     L_a_tree = test["L_a_batch"]
     L_b_tree = test["L_b_batch"]
     output = model(test["C_batch"], test["L_a_batch"], test["L_b_batch"])

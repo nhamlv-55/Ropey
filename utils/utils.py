@@ -5,7 +5,7 @@ from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
 # from Doping.PySpacerSolver.utils import *
 import os
 
-def get_exp_name(exp_folder, vis, use_c, use_const_emb, max_size, shuffle):
+def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle):
     '''
     construct a meaningful exp_name for the Tensorboard
     '''
@@ -19,6 +19,8 @@ def get_exp_name(exp_folder, vis, use_c, use_const_emb, max_size, shuffle):
         exp_name.append("C")
     if use_const_emb:
         exp_name.append("E")
+    if use_dot_product:
+        exp_name.append("D")
     exp_name.append("M")
     exp_name.append(str(max_size))
     if shuffle:
