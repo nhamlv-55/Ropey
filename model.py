@@ -5,7 +5,7 @@ import torch.nn.functional as F
 from Doping.pytorchtreelstm.treelstm import TreeLSTM
 import Doping.pytorchtreelstm.treelstm.util as TLUtil
 class Model(torch.nn.Module):
-    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, tree_dim = 10, out_dim = 3, use_c = True, use_const_emb = True, device = torch.device('cuda')):
+    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, tree_dim = 10, out_dim = 3, use_c = True, use_const_emb = True, use_dot_product = True, device = torch.device('cuda')):
         super().__init__()
         print("VOCAB SIZE:", vocab_size)
         print("SORT SIZE", sort_vocab_size)
@@ -15,6 +15,7 @@ class Model(torch.nn.Module):
         self._tree_dim = tree_dim
         self._use_c = use_c
         self._use_const_emb = use_const_emb
+        self._use_dot_product = use_dot_product
         self.emb = nn.Embedding(vocab_size, emb_dim )
         self.sort_emb = nn.Embedding(sort_vocab_size, emb_dim )
         self.device = device
@@ -22,11 +23,19 @@ class Model(torch.nn.Module):
             self.treelstm = TreeLSTM(emb_dim*3, tree_dim)
         else:
             self.treelstm = TreeLSTM(emb_dim*2, tree_dim)
+
+        self.next_to_last_size = 0
         if self._use_c:
-            self.fc1 = nn.Linear(tree_dim*3, int(tree_dim))
+            self.next_to_last_size = tree_dim * 3
         else:
-            self.fc1 = nn.Linear(tree_dim*2, int(tree_dim))
-        self.fc2 = nn.Linear(int(tree_dim), out_dim)
+            self.next_to_last_size = tree_dim * 2
+
+        if self._use_dot_product:
+            self.next_to_last_size+=1
+
+
+        self.fc1 = nn.Linear(self.next_to_last_size, tree_dim)
+        self.fc2 = nn.Linear(tree_dim, out_dim)
 
 
     def metadata(self):
@@ -46,6 +55,13 @@ class Model(torch.nn.Module):
         assert(h_a.shape[0] == h_b.shape[0])
         # assert(h_a.shape[0] == h_c.shape[0])
         batch_size = h_a.shape[0]
+
+        #compute the dot product here
+        if self._use_dot_product:
+            dotp = torch.diag(torch.matmul(h_a, torch.t(h_b)))
+            dotp = dotp.view(batch_size, 1, -1)
+            # print("dotp shape", dotp.shape)
+
         h_a = h_a.view(batch_size, 1, -1)
         h_b = h_b.view(batch_size, 1, -1)
         # print(h_a.shape, h_b.shape, h_c.shape)
@@ -60,6 +76,10 @@ class Model(torch.nn.Module):
             h = torch.cat((h_c, h_a, h_b), dim = -1)
         else:
             h = torch.cat((h_a, h_b), dim = -1)
+
+        # print(h.shape)
+        if self._use_dot_product:
+            h = torch.cat((h, dotp), dim = -1)
         # h = torch.matmul(h_c, fuse_a_b)
         # print(h.shape)
         logits = self.fc2(F.relu(self.fc1(h)))
@@ -87,11 +107,8 @@ class Model(torch.nn.Module):
             const_emb = features[:, 2:2+self._emb_dim]*1.0
             features = torch.cat((token_emb, sort_emb, const_emb), dim = 1)
         else:
-
             features = torch.cat((token_emb, sort_emb), dim = 1)
-        
         # features = token_emb
-        # print(features.shape)
         h, c = self.treelstm(features, node_order, adjacency_list, edge_order)
         return h,c, tree["tree_sizes"] 
  
