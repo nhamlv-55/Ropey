@@ -20,6 +20,7 @@ class DataObj:
         self.all_dps = []
         self._size = 0
         self._max_size = max_size
+        self._total_dps = 5000
         self.train = {}
         self.test = {}
         self.vocab = {}
@@ -54,6 +55,7 @@ class DataObj:
         self.datafolder = os.path.join(self.datafolder, "")
         self.all_dps = glob.glob(self.datafolder+"/*.dp.json")
         self.all_dps = sorted(self.all_dps)
+        self.all_dps = self.all_dps[:self._total_dps]
         self._size = len(self.all_dps)
         if self.shuffle:
             random.shuffle(self.all_dps)
