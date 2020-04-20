@@ -19,20 +19,19 @@ class Model(torch.nn.Module):
         self.emb = nn.Embedding(vocab_size, emb_dim )
         self.sort_emb = nn.Embedding(sort_vocab_size, emb_dim )
         self.device = device
+
+        #calculate the input size of tree_lstm based on flags
+        self.treelstm_input_size = emb_dim * 2
         if self._use_const_emb:
-            self.treelstm = TreeLSTM(emb_dim*3, tree_dim)
-        else:
-            self.treelstm = TreeLSTM(emb_dim*2, tree_dim)
-
-        self.next_to_last_size = 0
+            self.treelstm_input_size += self._emb_dim
         if self._use_c:
-            self.next_to_last_size = tree_dim * 3
-        else:
-            self.next_to_last_size = tree_dim * 2
+            self.treelstm_input_size += self._tree_dim
+        self.treelstm = TreeLSTM(self.treelstm_input_size, tree_dim)
 
+        #calculate the size of the last layer before FNN
+        self.next_to_last_size = tree_dim * 2
         if self._use_dot_product:
             self.next_to_last_size+=1
-
 
         self.fc1 = nn.Linear(self.next_to_last_size, tree_dim)
         self.fc2 = nn.Linear(tree_dim, out_dim)
@@ -47,9 +46,17 @@ class Model(torch.nn.Module):
         }
 
     def forward(self, cube, lit_a, lit_b):
-        h_a_raw, c_a_raw, a_sz = self.forward_a_tree(lit_a)
-        h_b_raw, c_b_raw, b_sz = self.forward_a_tree(lit_b)
+        #if use context, need to compute context features first
+        if self._use_c:
+            h_c_raw, c_c_raw, c_sz = self.forward_a_tree(cube)
+            h_c = TLUtil.stack_last_h(h_c_raw, c_sz)
+            batch_size = h_c.shape[0]
+            h_a_raw, c_a_raw, a_sz = self.forward_a_tree(lit_a, h_c)
+            h_b_raw, c_b_raw, b_sz = self.forward_a_tree(lit_b, h_c)
 
+        else:
+            h_a_raw, c_a_raw, a_sz = self.forward_a_tree(lit_a)
+            h_b_raw, c_b_raw, b_sz = self.forward_a_tree(lit_b)
         h_a = TLUtil.stack_last_h(h_a_raw, a_sz)
         h_b = TLUtil.stack_last_h(h_b_raw, b_sz)
 
@@ -69,15 +76,16 @@ class Model(torch.nn.Module):
         # fuse_a_b = torch.matmul(h_a, h_b)
         # print(fuse_a_b.shape)
 
-        if self._use_c:
-            h_c_raw, c_c_raw, c_sz = self.forward_a_tree(cube)
-            # print(h_a.shape, h_b.shape, h_c.shape)
-            h_c = TLUtil.stack_last_h(h_c_raw, c_sz)
-            h_c = h_c.view(batch_size, 1, -1)
-            h = torch.cat((h_c, h_a, h_b), dim = -1)
-        else:
-            h = torch.cat((h_a, h_b), dim = -1)
+        # if self._use_c:
+        #     h_c_raw, c_c_raw, c_sz = self.forward_a_tree(cube)
+        #     # print(h_a.shape, h_b.shape, h_c.shape)
+        #     h_c = TLUtil.stack_last_h(h_c_raw, c_sz)
+        #     h_c = h_c.view(batch_size, 1, -1)
+        #     h = torch.cat((h_c, h_a, h_b), dim = -1)
+        # else:
+        #     h = torch.cat((h_a, h_b), dim = -1)
 
+        h = torch.cat((h_a, h_b), dim = -1)
         # print(h.shape)
         if self._use_dot_product:
             h = torch.cat((h, dotp), dim = -1)
@@ -92,7 +100,11 @@ class Model(torch.nn.Module):
                 "h_b_raw": h_b_raw,
             }
 
-    def forward_a_tree(self, tree):
+    def forward_a_tree(self, tree, context_features = None):
+        '''
+        if context_features is not None, we are forwarding a L_a or L_b tree.
+        if context_features is None, we are forwarding the C_tree.
+        '''
         features = tree["features"].to(self.device)
         node_order = tree["node_order"].to(self.device)
         adjacency_list = tree["adjacency_list"].to(self.device)
@@ -109,6 +121,29 @@ class Model(torch.nn.Module):
             features = torch.cat((token_emb, sort_emb, const_emb), dim = 1)
         else:
             features = torch.cat((token_emb, sort_emb), dim = 1)
+
+
+        if context_features is None:
+            if self._use_c:
+                all_tiled_c = torch.zeros(features.shape[0], self._tree_dim)
+                features = torch.cat((features, all_tiled_c), dim = 1)
+        else:
+            #tiling context features.
+            tree_sizes = tree["tree_sizes"]
+            batch_size = len(tree_sizes)
+            # print(tree_sizes)
+            assert(context_features.shape[0]==len(tree_sizes))
+            assert(sum(tree_sizes) == features.shape[0])
+            all_tiled_c = []
+            for idx in range(len(tree_sizes)):
+                tree_size = tree_sizes[idx]
+                context_feat = context_features[idx]
+                tiled_c = context_feat.repeat(tree_size, 1)
+                all_tiled_c.append(tiled_c)
+                # print("tiled_c.shape", tiled_c.shape)
+            all_tiled_c = torch.cat(all_tiled_c, dim = 0)
+            features = torch.cat((features, all_tiled_c), dim = 1)
+            # print(all_tiled_c.shape)
         # features = token_emb
         h, c = self.treelstm(features, node_order, adjacency_list, edge_order)
         return h,c, tree["tree_sizes"] 
