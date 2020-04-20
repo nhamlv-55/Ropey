@@ -42,7 +42,8 @@ class Model(torch.nn.Module):
         return {"emb_dim": self._emb_dim,
                 "tree_dim": self._tree_dim,
                 "use_c": self._use_c,
-                "use_const_emb": self._use_const_emb
+                "use_const_emb": self._use_const_emb,
+                "use_dot_product": self._use_dot_product
         }
 
     def forward(self, cube, lit_a, lit_b):
