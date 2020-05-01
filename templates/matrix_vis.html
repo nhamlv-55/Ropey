@@ -29,8 +29,8 @@
         <input type="range" id="vol" name="vol" min="0" oninput="updatePlot()" value=0>
         <span id="slider-val"></span>
     </div>
-    <div id="my_dataviz" style="display:inline-block"></div>
-    <div style ="display: inline-block"><pre id="L_dataviz"></pre></div>
+    <div id="my_dataviz" style="display:inline-block; width: 50%;"></div>
+    <div style ="display: inline-block; width: 50%"><pre id="L_dataviz"></pre></div>
     <script>
         var data = {{context | safe}};
         var show_number = true;
@@ -131,7 +131,9 @@
         }
         row.selectAll(".cell")
         .data(function(d, i) { return data[i]; })
-        .style("fill", colorMap);
+           .style("fill", function(d, i){
+               if(d>0){return colorMap(d);}
+           });
 
         var labels = svg.append('g')
         .attr('class', "labels");
