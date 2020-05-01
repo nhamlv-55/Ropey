@@ -8,7 +8,8 @@ from flask_cors import CORS
 from flask import render_template
 import json
 import glob
-
+import os
+import html
 app = Flask(__name__)
 app.config.from_object(__name__)
 CORS(app)
@@ -35,16 +36,21 @@ if args.matrix_path is not None:
     def handle_vis():
         Xs = glob.glob(args.matrix_path+"/X00*.json")
         Xs = sorted(Xs)
-        print(Xs)
         data = []
         for X in Xs:
+            print(X)
             with open(X, "r") as f:
                 X_data = json.load(f)
                 X_data = X_data["X"]
                 data.append(X_data)
         L_size = len(data[-1])
-
-        json_vis_data = {"Xs": data, "L_size": L_size, "no_of_X": len(data)}
+        with open(os.path.join(args.matrix_path, "L.json"), "r") as f:
+            L = json.load(f)
+        id2L = {}
+        for k in L:
+            idx = L[k]
+            id2L[idx] = html.escape(k)
+        json_vis_data = {"Xs": data, "L_size": L_size, "no_of_X": len(data), "L": id2L}
         return render_template('matrix_vis.html', context=json.dumps(json_vis_data))
 
 
