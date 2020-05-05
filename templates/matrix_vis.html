@@ -16,7 +16,18 @@
      #expr_lemma{
          bottom: 20px;
      }
-​     
+​     div.tooltip {	
+        position: absolute;			
+        text-align: center;			
+        width: 60px;					
+        height: 28px;					
+        padding: 2px;				
+        font: 12px sans-serif;		
+        background: lightsteelblue;	
+        border: 0px;		
+        border-radius: 8px;			
+        pointer-events: none;			
+     } 
      #name {
          position: absolute;
          width: 100%;
@@ -28,13 +39,15 @@
     <div>
         <input type="range" id="vol" name="vol" min="0" oninput="updatePlot()" value=0>
         <span id="slider-val"></span>
+        <span >Cell value:</span>
+        <span id="cell-val"></span>
     </div>
     <div id="Xs_dataviz" style="display:inline-block; width: 40%;"></div>
     <div id="Ps_dataviz" style="display:inline-block; width: 40%;"></div>
     <div style ="display: inline-block; width: 50%"><pre id="L_dataviz"></pre></div>
     <script>
      var data = {{context | safe}};
-     var show_number = true;
+     var show_number = false;
      console.log(data);
      document.getElementById("vol").max = data["no_of_X"]-1;
      document.getElementById("L_dataviz").innerHTML = JSON.stringify( data.L ,null, 2);
@@ -94,7 +107,10 @@
                      .attr("height", height + margin.top + margin.bottom)
                      .append("g")
                      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+         // Define the div for the tooltip
+         var div = d3.select("body").append("div")
+                     .attr("class", "tooltip")
+                     .style("opacity", 0);
          var background = svg.append("rect")
                              .style("stroke", "black")
                              .style("stroke-width", "2px")
@@ -128,7 +144,11 @@
          cell.append('rect')
              .attr("width", x.rangeBand())
              .attr("height", y.rangeBand())
-             .style("stroke-width", 0);
+             .style("stroke-width", 0)
+             .on("mouseover", function(d) {
+                 document.getElementById("cell-val").innerHTML = d;
+             })
+
 
          if(show_number){
              cell.append("text")
