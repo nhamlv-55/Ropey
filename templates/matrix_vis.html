@@ -11,28 +11,6 @@
      #L_dataviz{
          font-size:20px;
      }
-     #expr_pob{
-     }
-     #expr_lemma{
-         bottom: 20px;
-     }
-​     div.tooltip {	
-        position: absolute;			
-        text-align: center;			
-        width: 60px;					
-        height: 28px;					
-        padding: 2px;				
-        font: 12px sans-serif;		
-        background: lightsteelblue;	
-        border: 0px;		
-        border-radius: 8px;			
-        pointer-events: none;			
-     } 
-     #name {
-         position: absolute;
-         width: 100%;
-         text-align: center;
-     }
     </style>
 </head>
 <body>
@@ -107,10 +85,6 @@
                      .attr("height", height + margin.top + margin.bottom)
                      .append("g")
                      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-         // Define the div for the tooltip
-         var div = d3.select("body").append("div")
-                     .attr("class", "tooltip")
-                     .style("opacity", 0);
          var background = svg.append("rect")
                              .style("stroke", "black")
                              .style("stroke-width", "2px")
