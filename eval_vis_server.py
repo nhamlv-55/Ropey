@@ -37,7 +37,10 @@ if args.matrix_path is not None:
     def handle_vis():
         Xs = glob.glob(args.matrix_path+"/X00*.json")
         Xs = sorted(Xs)
-        data = []
+        Ps = glob.glob(args.matrix_path+"/P00*.json")
+        Ps = sorted(Ps)
+        #collect X data
+        Xs_data = []
         limit = args.limit
         limit = min(len(Xs), limit)
         for X in Xs[:limit]:
@@ -45,15 +48,28 @@ if args.matrix_path is not None:
             with open(X, "r") as f:
                 X_data = json.load(f)
                 X_data = X_data["X"]
-                data.append(X_data)
-        L_size = len(data[-1])
+                Xs_data.append(X_data)
+        L_size = len(Xs_data[-1])
+
+        #collect P data
+        Ps_data = []
+        for P in Ps[:limit]:
+            print(P)
+            with open(P, "r") as f:
+                P_data = json.load(f)
+                P_data = P_data["P"]
+                Ps_data.append(P_data)
+
         with open(os.path.join(args.matrix_path, "L.json"), "r") as f:
             L = json.load(f)
         id2L = {}
         for k in L:
             idx = L[k]
             id2L[idx] = html.escape(k)
-        json_vis_data = {"Xs": data, "L_size": L_size, "no_of_X": len(data), "L": id2L}
+
+        assert(len(Xs_data) == len(Ps_data))
+        
+        json_vis_data = {"Xs": Xs_data, "Ps": Ps_data, "L_size": L_size, "no_of_X": len(Xs_data), "L": id2L}
         return render_template('matrix_vis.html', context=json.dumps(json_vis_data))
 
 
