@@ -97,9 +97,9 @@ if __name__ == '__main__':
     exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle)
     SWRITER = SummaryWriter(comment = exp_name)
     #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
-    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 64)
+    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 1024)
     vocab = dataObj.vocab
-    device = torch.device('cpu')
+    device = torch.device('cuda')
     print("DATASET SIZE:", dataObj.size())
     print("TRAIN SIZE:", dataObj.train["size"])
     print("TEST SIZE:", dataObj.test["size"])
@@ -132,7 +132,7 @@ if __name__ == '__main__':
                 train["L_a_batch"],
                 train["L_b_batch"]
             )
-            loss = loss_function(output, train["label_batch"])
+            loss = loss_function(output, train["label_batch"].to(device))
             total_loss += loss
 
             loss.backward()
