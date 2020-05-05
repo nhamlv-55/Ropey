@@ -22,6 +22,7 @@ If matrix-path is provided, we are visualizing the X matrix
 parser.add_argument('--model-path', help='path to the .pt file')
 parser.add_argument('--matrix-path', help='path to the X.json, L.json files')
 parser.add_argument('--port', type= int, default=8080, help='port')
+parser.add_argument('--limit', type= int, default=50, help='visualize from t_0 to t_limit')
 args = parser.parse_args()
 
 if args.model_path is not None:
@@ -37,7 +38,9 @@ if args.matrix_path is not None:
         Xs = glob.glob(args.matrix_path+"/X00*.json")
         Xs = sorted(Xs)
         data = []
-        for X in Xs:
+        limit = args.limit
+        limit = min(len(Xs), limit)
+        for X in Xs[:limit]:
             print(X)
             with open(X, "r") as f:
                 X_data = json.load(f)
