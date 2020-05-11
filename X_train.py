@@ -101,23 +101,21 @@ if __name__ == '__main__':
     vocab = dataObj.vocab
     device = torch.device('cuda')
     print("DATASET SIZE:", dataObj.size())
-    print("TRAIN SIZE:", dataObj.train["size"])
-    print("TEST SIZE:", dataObj.test["size"])
+    # print("TRAIN SIZE:", dataObj.train["size"])
+    # print("TEST SIZE:", dataObj.test["size"])
     model = Model(vocab['size'],
                   vocab['sort_size'],
                   emb_dim = 30, #30 is the max emb_dim possible, due to the legacy dataset
                   tree_dim = 100,
-                  out_dim =2,
-                  use_c = use_c,
                   use_const_emb = use_const_emb,
                   use_dot_product = use_dot_product,
                   device = device).train()
-    loss_function = torch.nn.MSWLoss().to(device)
+    loss_function = torch.nn.MSELoss().to(device)
     optimizer = torch.optim.Adam(model.parameters())
 
     metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
-    examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
+    # examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
     for n in range(n_epoch):
         last_batch = False
         total_loss = 0
@@ -126,9 +124,9 @@ if __name__ == '__main__':
             optimizer.zero_grad()
             loss = 0
             train, last_batch = dataObj.next_batch(dataObj.train_dps, "train")
+            # print(train)
             # print("Training with %d datapoints"%train["size"])
             output = model(
-                train["C_batch"],
                 train["L_a_batch"],
                 train["L_b_batch"]
             )
@@ -140,26 +138,26 @@ if __name__ == '__main__':
 
         # torch.cuda.empty_cache()
 
-        if n%eval_epoch==0:
-            # print(output.shape)
-            train_accuracy = evaluate(model, dataObj.train_dps)
-            print("example_ids:", examples_idx)
-            test_accuracy = evaluate(model, dataObj.test_dps, examples_idx, SWRITER, n)
-            SWRITER.add_scalar('Loss/train', total_loss, n)
-            SWRITER.add_scalar('Accuracy/train', train_accuracy, n)
-            SWRITER.add_scalar('Accuracy/test', test_accuracy, n)
-            print(f'Iteration {n+1} Loss: {loss}')
-            #check that embedding is being trained
-            print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
+        # if n%eval_epoch==0:
+        #     # print(output.shape)
+        #     train_accuracy = evaluate(model, dataObj.train_dps)
+        #     print("example_ids:", examples_idx)
+        #     test_accuracy = evaluate(model, dataObj.test_dps, examples_idx, SWRITER, n)
+        #     SWRITER.add_scalar('Loss/train', total_loss, n)
+        #     SWRITER.add_scalar('Accuracy/train', train_accuracy, n)
+        #     SWRITER.add_scalar('Accuracy/test', test_accuracy, n)
+        #     print(f'Iteration {n+1} Loss: {loss}')
+        #     #check that embedding is being trained
+        #     print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
 
-        if n%save_epoch==0:
-            model_path = new_model_path(basename = exp_name)
-            print("Saving to ", model_path)
-            torch.save({
-                'epoch': n,
-                'model_state_dict': model.state_dict(),
-                'optimizer_state_dict': optimizer.state_dict(),
-                'loss': loss,
-                'dataset': dataObj.metadata(),
-                'metadata': model.metadata()
-            }, model_path)
+        # if n%save_epoch==0:
+        #     model_path = new_model_path(basename = exp_name)
+        #     print("Saving to ", model_path)
+        #     torch.save({
+        #         'epoch': n,
+        #         'model_state_dict': model.state_dict(),
+        #         'optimizer_state_dict': optimizer.state_dict(),
+        #         'loss': loss,
+        #         'dataset': dataObj.metadata(),
+        #         'metadata': model.metadata()
+        #     }, model_path)

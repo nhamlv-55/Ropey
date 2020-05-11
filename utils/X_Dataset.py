@@ -64,7 +64,7 @@ class DataObj:
         for lf in self.lit_files:
             with open(lf, "r") as f:
                 lit = json.load(f)
-                print(lit)
+                # print(lit)
                 lit_index = lit["index"]
                 assert(lit_index not in self.lits)
                 lit_tree = DPu.convert_tree_to_tensors(lit["tree"])
@@ -75,24 +75,30 @@ class DataObj:
         self.Ps = sorted(self.Ps)
         self.test_P = self.Ps[-1]
         no_of_P = len(self.Ps)
-        self.training_P = self.Ps[int(no_of_P)*train_size]
-        print("Training P:", self.training_P)
-        print("Testing P:", self.test_P)
+        self.train_P = self.Ps[int(no_of_P*self.train_size)]
+        with open(self.train_P, "r") as f:
+            self.train_dps = json.load(f)["P"]
+
+        self.test_P = self.Ps[-1]
+        with open(self.test_P, "r") as f:
+            self.test_dps = json.load(f)["P"]
+        print("Training P:", self.train_dps)
+        print("Testing P:", self.test_dps)
 
 
         #only use up to max_size dps for the training set
-        self.train_dps = []
-        assert(self._max_size < train_index)
-        #if max_size == -1, use all the dps
-        if self._max_size == -1:
-            for i in range(train_index):
-                self.train_dps.append(self.all_dps[i])
-        else:
-            for i in range( train_index - self._max_size, train_index):
-                self.train_dps.append(self.all_dps[i])
-        self.test_dps = []
-        for i in range(train_index, len(self.all_dps)):
-            self.test_dps.append(self.all_dps[i])
+        # self.train_dps = []
+        # assert(self._max_size < self.training_P)
+        # #if max_size == -1, use all the dps
+        # if self._max_size == -1:
+        #     for i in range(train_index):
+        #         self.train_dps.append(self.all_dps[i])
+        # else:
+        #     for i in range( train_index - self._max_size, train_index):
+        #         self.train_dps.append(self.all_dps[i])
+        # self.test_dps = []
+        # for i in range(train_index, len(self.all_dps)):
+        #     self.test_dps.append(self.all_dps[i])
 
 
     def next_batch(self, P_matrix, name):
@@ -103,9 +109,12 @@ class DataObj:
         L_a_trees = []
         L_b_trees = []
         labels = []
-        for i in P_matrix[self.data_pointer: min(self.data_pointer + self.batch_size, len(P_matrix))]:
+        print("training from row {} to row {} of the matrix training_P".format(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))))
+        for i in range(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))):
             #at row_i
-            for j in range(len(row_i)):
+            
+            for j in range(len(P_matrix[i])):
+                # print(self.lits[i])
                 L_a_trees.append(self.lits[i])
                 L_b_trees.append(self.lits[j])
                 labels.append(P_matrix[i][j])
