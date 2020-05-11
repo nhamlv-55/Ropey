@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 import os
 import random
 class DataObj:
-    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, batch_size = -1, train_size = 0.67):
+    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, batch_size = -1, train_size = 0.67, threshold = 0.75):
         '''
         datafolder: path to the /ind_gen_files folder
         name: name of the dataset
@@ -33,6 +33,7 @@ class DataObj:
         self.Ps = None
         self.train_P = None
         self.test_P = None
+        self.threshold = threshold
 
         self.build_dataset()
         self.get_vocab()
@@ -45,7 +46,8 @@ class DataObj:
                 "vocab_size": self.vocab['size'],
                 "sort_size": self.vocab['sort_size'],
                 "shuffle": self.shuffle,
-                "batch_size": self.batch_size
+                "batch_size": self.batch_size,
+                "threshold": self.threshold
         }
 
     def get_vocab(self):
@@ -82,9 +84,12 @@ class DataObj:
         self.test_P = self.Ps[-1]
         with open(self.test_P, "r") as f:
             self.test_dps = json.load(f)["P"]
-        print("Training P:", self.train_dps)
+        print("Training P:")
+        for i in self.train_dps:
+            print(["{0:0.2f}".format(j) for j in i])
         print("Testing P:", self.test_dps)
-
+        for i in self.test_dps:
+            print(["{0:0.2f}".format(j) for j in i])
 
         #only use up to max_size dps for the training set
         # self.train_dps = []
@@ -117,7 +122,7 @@ class DataObj:
                 # print(self.lits[i])
                 L_a_trees.append(self.lits[i])
                 L_b_trees.append(self.lits[j])
-                labels.append(P_matrix[i][j])
+                labels.append(int(P_matrix[i][j]> self.threshold))
 
         dataset["size"] = len(L_a_trees)
         dataset["L_a_batch"] = batch_tree_input(L_a_trees)
