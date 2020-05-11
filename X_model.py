@@ -8,7 +8,7 @@ class Model(torch.nn.Module):
     '''
     This model use h_c as a feature in h_a and h_b.
     '''
-    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, tree_dim = 10, use_const_emb = True, use_dot_product = True, device = torch.device('cuda')):
+    def __init__(self, vocab_size, sort_vocab_size, threshold = 0.75, emb_dim = 10, tree_dim = 10, use_const_emb = True, use_dot_product = True, device = torch.device('cuda')):
         super().__init__()
         print("VOCAB SIZE:", vocab_size)
         print("SORT SIZE", sort_vocab_size)
@@ -33,9 +33,9 @@ class Model(torch.nn.Module):
             self.next_to_last_size+=1
 
         self.fc1 = nn.Linear(self.next_to_last_size, tree_dim).to(self.device)
-        self.fc2 = nn.Linear(tree_dim, 1).to(self.device)
-
-
+        self.fc2 = nn.Linear(tree_dim, 2).to(self.device)
+        self.threshold = threshold  # threshold
+        self.softmax = nn.Softmax(dim = 1)
     def metadata(self):
         return {"emb_dim": self._emb_dim,
                 "tree_dim": self._tree_dim,
@@ -65,6 +65,7 @@ class Model(torch.nn.Module):
         if self._use_dot_product:
             h = torch.cat((h, dotp), dim = -1)
         logits = self.fc2(F.relu(self.fc1(h)))
+        #the meaning of output: how confident we are that the second value > threshold
         if self.training:
             return logits.view(batch_size, -1)
         else:
