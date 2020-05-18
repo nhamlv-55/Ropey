@@ -6,7 +6,7 @@ import shutil
 import time
 import stat
 # fp.spacer.dump_benchmarks=true -tr:spacer.ind_gen fp.spacer.use_expansion=false
-z3_args = ['fp.spacer.max_level=7',
+z3_args = ['fp.spacer.max_level=20',
            'fp.spacer.dump_benchmarks=true',
            '-tr:spacer.ind_gen',
            'fp.spacer.use_expansion=false',
@@ -53,15 +53,23 @@ def main():
             gen_ind_gen_command.append(">/dev/null")
         gen_ind_gen_command = " ".join(gen_ind_gen_command)
 
-        spacer_solver_command = ["PYTHONPATH=~/opt/z3/build/python/:~/workspace/:~/opt/pysmt/"]
+        spacer_solver_command = ["PYTHONPATH=~/opt/z3squashed/build/python/:~/workspace/:~/opt/pysmt/"]
         spacer_solver_command.append("python3")
         spacer_solver_command.append(os.path.join(cwd, "PySpacerSolver", "spacer_solver.py"))
         spacer_solver_command.append("-input ind_gen_files/")
         spacer_solver_command.append("-gen_dataset")
+        spacer_solver_command.append("-skip-indgen")
         if logging!='DEBUG':
             spacer_solver_command.append(">/dev/null")
         spacer_solver_command = " ".join(spacer_solver_command)
 
+        
+        with open(os.path.join(q_folder_path, 'run_1.sh'), 'w') as f:
+            f.write(z3_run_command)
+        with open(os.path.join(q_folder_path, 'run_2.sh'), 'w') as f:
+            f.write(gen_ind_gen_command)
+        with open(os.path.join(q_folder_path, 'run_3.sh'), 'w') as f:
+            f.write(spacer_solver_command)
 
         with open(os.path.join(q_folder_path, 'run.sh'), 'w') as f:
             f.write("#! /usr/bin/bash\n")
