@@ -2,7 +2,6 @@
 Need https://github.com/nhamlv-55/PySpacerSolver clone in to the same folder. The folder should look like this
 ```
 .
-├── error_log
 ├── eval.py
 ├── eval_vis_server.py
 ├── generate_data.py
@@ -11,8 +10,6 @@ Need https://github.com/nhamlv-55/PySpacerSolver clone in to the same folder. Th
 ├── pytorchtreelstm
 ├── README.md
 ├── requirements.txt
-├── runs
-├── run_script.sh
 ├── settings.py
 ├── templates
 ├── tests
