@@ -2,3 +2,4 @@ torch
 termcolor
 z3
 pysmt
+tensorboard
