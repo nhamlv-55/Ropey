@@ -84,12 +84,12 @@ class DataObj:
         self.test_P = self.Ps[-1]
         with open(self.test_P, "r") as f:
             self.test_dps = json.load(f)["P"]
-        print("Training P:")
-        for i in self.train_dps:
-            print(["{0:0.2f}".format(j) for j in i])
-        print("Testing P:", self.test_dps)
-        for i in self.test_dps:
-            print(["{0:0.2f}".format(j) for j in i])
+        # print("Training P:")
+        # for i in self.train_dps:
+        #     print(["{0:0.2f}".format(j) for j in i])
+        # print("Testing P:", self.test_dps)
+        # for i in self.test_dps:
+        #     print(["{0:0.2f}".format(j) for j in i])
 
         #only use up to max_size dps for the training set
         # self.train_dps = []
@@ -114,7 +114,7 @@ class DataObj:
         L_a_trees = []
         L_b_trees = []
         labels = []
-        print("training from row {} to row {} of the matrix training_P".format(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))))
+        # print("training from row {} to row {} of the matrix training_P".format(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))))
         for i in range(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))):
             #at row_i
             
