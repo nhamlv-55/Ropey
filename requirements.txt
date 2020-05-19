@@ -3,3 +3,4 @@ termcolor
 z3
 pysmt
 tensorboard
+sklearn
