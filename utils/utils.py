@@ -6,7 +6,7 @@ from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
 import os
 import numpy as np
 
-def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle):
+def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate):
     '''
     construct a meaningful exp_name for the Tensorboard
     '''
@@ -24,6 +24,8 @@ def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_siz
         exp_name.append("D")
     exp_name.append("M")
     exp_name.append(str(max_size))
+    exp_name.append("Nr")
+    exp_name.append(str(negative_sampling_rate))
     if shuffle:
         exp_name.append("S")
 
