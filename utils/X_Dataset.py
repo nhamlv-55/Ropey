@@ -9,11 +9,11 @@ import random
 import logging
 from Doping.utils.utils import calculate_P
 
-
+logging.getLogger().setLevel(logging.DEBUG)
 log = logging.getLogger(__name__)
 
 class DataObj:
-    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, batch_size = -1, train_size = 0.67, threshold = 0.75, negative_sampling_rate = -1):
+    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75, negative_sampling_rate = -1):
         '''
         datafolder: path to the /ind_gen_files folder
         name: name of the dataset
@@ -34,7 +34,6 @@ class DataObj:
         self.train_dps = []
         self.test_dps = []
         self.data_pointer = 0
-        self.batch_size = batch_size
         self.train_size = train_size
         self.shuffle = shuffle
         
@@ -54,7 +53,6 @@ class DataObj:
                 "vocab_size": self.vocab['size'],
                 "sort_size": self.vocab['sort_size'],
                 "shuffle": self.shuffle,
-                "batch_size": self.batch_size,
                 "threshold": self.threshold
         }
 
@@ -108,7 +106,7 @@ class DataObj:
         self.test_P = self._build_P(test_suffix)
 
 
-    def next_batch(self, P_matrix, name):
+    def next_batch(self, P_matrix, batch_size):
         last_batch = False
         dataset = {}
         filenames = []
@@ -118,10 +116,8 @@ class DataObj:
         labels = []
         log.debug("data_pointer:{}".format(self.data_pointer))
         log.debug(len(P_matrix))
-        # print("training from row {} to row {} of the matrix training_P".format(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))))
-        for i in range(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))):
+        for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
             #at row_i
-            
             for j in range(len(P_matrix[i])):
                 # print(self.lits[i])
                 L_a_trees.append(self.lits[i])
@@ -133,7 +129,7 @@ class DataObj:
         dataset["L_b_batch"] = batch_tree_input(L_b_trees)
         dataset["label_batch"] = torch.tensor(labels)
         dataset["filenames"] = filenames
-        self.data_pointer+=self.batch_size
+        self.data_pointer+=batch_size
         if self.data_pointer>len(P_matrix):
             last_batch = True
             self.data_pointer = 0

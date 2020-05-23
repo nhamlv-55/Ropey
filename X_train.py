@@ -15,6 +15,11 @@ import argparse
 import random
 import logging
 
+#TRAIN_BSZ could be much bigger than TEST_BSZ because we use negative sampling in training
+TRAIN_BSZ = 100
+TEST_BSZ = 10
+
+
 def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
     last_batch = False
 
@@ -28,7 +33,7 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
                "f1": -1}
 
     while not last_batch:
-        test, last_batch = dataObj.next_batch(testset, "test")
+        test, last_batch = dataObj.next_batch(testset, TEST_BSZ)
         output = model(
             test["L_a_batch"],
             test["L_b_batch"]
@@ -63,7 +68,7 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
     if examples_idx is not None:
         #grab the random 20 examples
         examples_dps = [testset[i] for i in examples_idx]
-        test, last_batch = dataObj.next_batch(examples_dps, "examples")
+        test, last_batch = dataObj.next_batch(examples_dps, -1)
         output = model(
             test["C_batch"],
             test["L_a_batch"],
@@ -116,7 +121,7 @@ if __name__ == '__main__':
     exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle)
     SWRITER = SummaryWriter(comment = exp_name)
     #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
-    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, batch_size = 10, threshold = threshold)
+    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, threshold = threshold)
     vocab = dataObj.vocab
     device = torch.device('cuda')
     print("DATASET SIZE:", dataObj.size())
@@ -143,8 +148,8 @@ if __name__ == '__main__':
         while not last_batch:
             optimizer.zero_grad()
             loss = 0
-            train, last_batch = dataObj.next_batch(dataObj.train_P , "train")
-            # print(train)
+            train, last_batch = dataObj.next_batch(dataObj.train_P , batch_size = TRAIN_BSZ)
+            print(last_batch)
             # print("Training with %d datapoints"%train["size"])
             output = model(
                 train["L_a_batch"],
