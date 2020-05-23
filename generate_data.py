@@ -8,10 +8,11 @@ import stat
 # fp.spacer.dump_benchmarks=true -tr:spacer.ind_gen fp.spacer.use_expansion=false
 z3_args = ['fp.spacer.max_level=20',
            'fp.spacer.dump_benchmarks=true',
+           'fp.spacer.dump_threshold=99999',
            '-tr:spacer.ind_gen',
            'fp.spacer.use_expansion=false',
            'fp.spacer.arith.solver=6',
-           'fp.spacer.trace_file=spacer.log',
+           # 'fp.spacer.trace_file=spacer.log',
            'fp.print_statistics=true' ,
            '-v:1'
            ]
@@ -63,9 +64,11 @@ def main():
             spacer_solver_command.append(">/dev/null")
         spacer_solver_command = " ".join(spacer_solver_command)
 
-        
+        move_z3_trace = "cp .z3-trace solving_z3_trace"
         with open(os.path.join(q_folder_path, 'run_1.sh'), 'w') as f:
             f.write(z3_run_command)
+            f.write("\n")
+            f.write(move_z3_trace)
         with open(os.path.join(q_folder_path, 'run_2.sh'), 'w') as f:
             f.write(gen_ind_gen_command)
         with open(os.path.join(q_folder_path, 'run_3.sh'), 'w') as f:
@@ -74,6 +77,8 @@ def main():
         with open(os.path.join(q_folder_path, 'run.sh'), 'w') as f:
             f.write("#! /usr/bin/bash\n")
             f.write(z3_run_command)
+            f.write("\n")
+            f.write(move_z3_trace)
             f.write("\n")
             f.write(gen_ind_gen_command)
             f.write("\n")
