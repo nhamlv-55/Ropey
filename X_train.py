@@ -9,10 +9,11 @@ from Doping.settings import MODEL_PATH, new_model_path
 from X_model import Model
 import json
 import os
-from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 from termcolor import colored
 import argparse
 import random
+import logging
 
 def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
     last_batch = False
@@ -20,6 +21,11 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
     all_true_labels = []
     all_preds  = []
     all_values = []
+
+    results = {"acc": -1,
+               "pre": -1,
+               "rec": -1,
+               "f1": -1}
 
     while not last_batch:
         test, last_batch = dataObj.next_batch(testset, "test")
@@ -37,9 +43,20 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
         all_values.extend(values.tolist())
 
     acc = accuracy_score(all_true_labels, all_preds)
+    f1 = f1_score(all_true_labels, all_preds)
+    pre = precision_score(all_true_labels, all_preds)
+    recall = recall_score(all_true_labels, all_preds)
+
+    results["acc"] = acc
+    results["f1"] = f1
+    results["pre"] = pre
+    results["rec"] = recall
+
     print(confusion_matrix(all_true_labels, all_preds)) 
     print("accurarcy", acc)
-
+    print("f1", f1)
+    print("precision", pre)
+    print("recall", recall)
     true_label = true_label.tolist()
     values = values.tolist()
     pred = pred.tolist()
@@ -66,7 +83,7 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
             display_text = Du.display_example(example, true_label[idx], pred[idx], values[idx])
             
             writer.add_text('example', display_text, n)
-    return acc
+    return results
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-input', help='path to the ind_gen_files folder')
@@ -76,6 +93,7 @@ if __name__ == '__main__':
     parser.add_argument('-D', '--use_dot_product', action='store_true')
     parser.add_argument('-E', '--use_const_emb', action='store_true')
     parser.add_argument('-M', '--max_size', type = int, default = -1)
+    parser.add_argument('-Nr', '--negative_sampling_rate', type = int, default = -1, help="controlling how many negative samples are used per 1 positive sample")
     parser.add_argument('-S', '--shuffle', action='store_true')
     parser.add_argument('-N', '--epoch', type = int, default = 100)
     parser.add_argument('--eval-epoch', type = int, default = 10)
@@ -125,7 +143,7 @@ if __name__ == '__main__':
         while not last_batch:
             optimizer.zero_grad()
             loss = 0
-            train, last_batch = dataObj.next_batch(dataObj.train_dps, "train")
+            train, last_batch = dataObj.next_batch(dataObj.train_P , "train")
             # print(train)
             # print("Training with %d datapoints"%train["size"])
             output = model(
@@ -142,12 +160,14 @@ if __name__ == '__main__':
 
         if n%eval_epoch==0:
             # print(output.shape)
-            train_accuracy = evaluate(model, dataObj.train_dps)
+            train_res = evaluate(model, dataObj.train_P)
             # print("example_ids:", examples_idx)
-            test_accuracy = evaluate(model, dataObj.test_dps)
+            test_res = evaluate(model, dataObj.test_P)
             SWRITER.add_scalar('Loss/train', total_loss, n)
-            SWRITER.add_scalar('Accuracy/train', train_accuracy, n)
-            SWRITER.add_scalar('Accuracy/test', test_accuracy, n)
+            SWRITER.add_scalar('Accuracy/train', train_res["acc"], n)
+            SWRITER.add_scalar('Accuracy/test', test_res["acc"], n)
+            SWRITER.add_scalar('F1/train', train_res["f1"], n)
+            SWRITER.add_scalar('F1/test', test_res["f1"], n)
             print(f'Iteration {n+1} Loss: {loss}')
             #check that embedding is being trained
             # print(model.emb(torch.LongTensor([5]).to(device = device ) ) )

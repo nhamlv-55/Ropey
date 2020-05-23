@@ -4,6 +4,7 @@ import torch
 from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
 # from Doping.PySpacerSolver.utils import *
 import os
+import numpy as np
 
 def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle):
     '''
@@ -67,3 +68,21 @@ def display_example(filename, true_label, pred_label, value):
 
     #Tensorboard use markdown to render text
     return json_to_markdown(result)
+
+def calculate_P(X, L, L_freq):
+    idx2freq = {}
+    for k in L:
+        idx = L[k]
+        freq = L_freq[k]
+
+        idx2freq[idx] = freq
+    print(len(X), len(L), len(L_freq))
+    assert(len(X)==len(L)==len(L_freq))
+    P_matrix = np.zeros((len(X), len(X)))
+    for i in range(len(X)):
+        for j in range(len(X)):
+            P_matrix[i][j] = X[i][j]/idx2freq[i]
+            assert(P_matrix[i][j]<=1 )
+
+    return P_matrix
+

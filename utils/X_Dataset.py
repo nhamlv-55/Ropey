@@ -6,8 +6,14 @@ import torch
 from sklearn.model_selection import train_test_split
 import os
 import random
+import logging
+from Doping.utils.utils import calculate_P
+
+
+log = logging.getLogger(__name__)
+
 class DataObj:
-    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, batch_size = -1, train_size = 0.67, threshold = 0.75):
+    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, batch_size = -1, train_size = 0.67, threshold = 0.75, negative_sampling_rate = -1):
         '''
         datafolder: path to the /ind_gen_files folder
         name: name of the dataset
@@ -15,8 +21,10 @@ class DataObj:
         max_size: how many datapoints to use (test+ train). To test the performance after some certain spacer's checkpoints.
         batch_size: batch_size for training
         train_size: how much of the dataset is used for training
+        negative_sampling_rate: how many negative examples are used per 1 positive example
         '''
         self.datafolder = datafolder
+
         self.all_dps = []
         self._size = 0
         self._max_size = max_size
@@ -29,11 +37,11 @@ class DataObj:
         self.batch_size = batch_size
         self.train_size = train_size
         self.shuffle = shuffle
-
-        self.Ps = None
+        
         self.train_P = None
         self.test_P = None
         self.threshold = threshold
+        self.neg_rate = negative_sampling_rate
 
         self.build_dataset()
         self.get_vocab()
@@ -55,6 +63,17 @@ class DataObj:
         with open(vocab_file, "r") as f:
             self.vocab = json.load(f)
 
+    def _build_P(self, suffix):
+        with open(os.path.join(self.datafolder, "X" + suffix), "r") as f:
+            X = json.load(f)["X"]
+        with open(os.path.join(self.datafolder, "L" + suffix ), "r") as f:
+            L = json.load(f)
+        with open(os.path.join(self.datafolder, "L_freq" + suffix ), "r") as f:
+            L_freq = json.load(f)
+
+        P = calculate_P(X, L, L_freq)
+        return P
+
 
     def build_dataset(self):
         self.datafolder = os.path.join(self.datafolder, "")
@@ -72,38 +91,21 @@ class DataObj:
                 lit_tree = DPu.convert_tree_to_tensors(lit["tree"])
                 self.lits[lit_index] = lit_tree
 
+        X_mats = glob.glob(self.datafolder + "/X0*.json")
+        X_mats = sorted(X_mats)
 
-        self.Ps = glob.glob(self.datafolder + "/P00*.json")
-        self.Ps = sorted(self.Ps)
-        self.test_P = self.Ps[-1]
-        no_of_P = len(self.Ps)
-        self.train_P = self.Ps[int(no_of_P*self.train_size)]
-        with open(self.train_P, "r") as f:
-            self.train_dps = json.load(f)["P"]
+        
+        train_index = int(len(X_mats)*self.train_size)
+        X_train_filename = os.path.basename(X_mats[train_index])
+        X_test_filename = os.path.basename(X_mats[-1])
+        #expect X_train_filename to be X00***.json, then suffix would be 00***.json
+        train_suffix = X_train_filename[1:]
+        log.info("train_suffix:{}".format(train_suffix))
+        test_suffix  = X_test_filename[1:]
+        log.info("test_suffix:{}".format(test_suffix))
 
-        self.test_P = self.Ps[-1]
-        with open(self.test_P, "r") as f:
-            self.test_dps = json.load(f)["P"]
-        # print("Training P:")
-        # for i in self.train_dps:
-        #     print(["{0:0.2f}".format(j) for j in i])
-        # print("Testing P:", self.test_dps)
-        # for i in self.test_dps:
-        #     print(["{0:0.2f}".format(j) for j in i])
-
-        #only use up to max_size dps for the training set
-        # self.train_dps = []
-        # assert(self._max_size < self.training_P)
-        # #if max_size == -1, use all the dps
-        # if self._max_size == -1:
-        #     for i in range(train_index):
-        #         self.train_dps.append(self.all_dps[i])
-        # else:
-        #     for i in range( train_index - self._max_size, train_index):
-        #         self.train_dps.append(self.all_dps[i])
-        # self.test_dps = []
-        # for i in range(train_index, len(self.all_dps)):
-        #     self.test_dps.append(self.all_dps[i])
+        self.train_P = self._build_P(train_suffix)
+        self.test_P = self._build_P(test_suffix)
 
 
     def next_batch(self, P_matrix, name):
@@ -114,6 +116,8 @@ class DataObj:
         L_a_trees = []
         L_b_trees = []
         labels = []
+        log.debug("data_pointer:{}".format(self.data_pointer))
+        log.debug(len(P_matrix))
         # print("training from row {} to row {} of the matrix training_P".format(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))))
         for i in range(self.data_pointer, min(self.data_pointer + self.batch_size, len(P_matrix))):
             #at row_i
