@@ -13,7 +13,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 log = logging.getLogger(__name__)
 
 class DataObj:
-    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75, negative_sampling_rate = -1):
+    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75):
         '''
         datafolder: path to the /ind_gen_files folder
         name: name of the dataset
@@ -21,7 +21,6 @@ class DataObj:
         max_size: how many datapoints to use (test+ train). To test the performance after some certain spacer's checkpoints.
         batch_size: batch_size for training
         train_size: how much of the dataset is used for training
-        negative_sampling_rate: how many negative examples are used per 1 positive example
         '''
         self.datafolder = datafolder
 
@@ -40,7 +39,6 @@ class DataObj:
         self.train_P = None
         self.test_P = None
         self.threshold = threshold
-        self.neg_rate = negative_sampling_rate
 
         self.build_dataset()
         self.get_vocab()
@@ -53,7 +51,7 @@ class DataObj:
                 "vocab_size": self.vocab['size'],
                 "sort_size": self.vocab['sort_size'],
                 "shuffle": self.shuffle,
-                "threshold": self.threshold
+                "threshold": self.threshold,
         }
 
     def get_vocab(self):
@@ -106,7 +104,7 @@ class DataObj:
         self.test_P = self._build_P(test_suffix)
 
 
-    def next_batch(self, P_matrix, batch_size):
+    def next_batch(self, P_matrix, batch_size, negative_sampling_rate):
         last_batch = False
         dataset = {}
         filenames = []
@@ -116,13 +114,38 @@ class DataObj:
         labels = []
         log.debug("data_pointer:{}".format(self.data_pointer))
         log.debug(len(P_matrix))
-        for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
-            #at row_i
-            for j in range(len(P_matrix[i])):
-                # print(self.lits[i])
+
+        if negative_sampling_rate==-1:#if not using negative sampling
+            for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
+                #at row_i
+                for j in range(len(P_matrix[i])):
+                    # print(self.lits[i])
+                    L_a_trees.append(self.lits[i])
+                    L_b_trees.append(self.lits[j])
+                    labels.append(int(P_matrix[i][j]> self.threshold))
+        else:#if using negative sampling
+            pos_samples = []
+            neg_samples = []
+            for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
+                #at row_i
+                for j in range(len(P_matrix[i])):
+                    # print(self.lits[i])
+                    if (P_matrix[i][j] > self.threshold):
+                        pos_samples.append((i, j, 1))
+                    else:
+                        neg_samples.append((i, j, 0))
+
+            n_neg_samples = len(pos_samples)*negative_sampling_rate
+            neg_samples = random.sample(neg_samples, n_neg_samples)
+
+            all_samples = pos_samples + neg_samples
+            random.shuffle(all_samples)
+            log.debug("Use negative sampling. Number of datapoints for this batch:{}".format(len(all_samples)))
+            for (i,j,label) in all_samples:
                 L_a_trees.append(self.lits[i])
                 L_b_trees.append(self.lits[j])
-                labels.append(int(P_matrix[i][j]> self.threshold))
+                labels.append(int(label))
+
 
         dataset["size"] = len(L_a_trees)
         dataset["L_a_batch"] = batch_tree_input(L_a_trees)

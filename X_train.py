@@ -17,7 +17,7 @@ import logging
 
 #TRAIN_BSZ could be much bigger than TEST_BSZ because we use negative sampling in training
 TRAIN_BSZ = 100
-TEST_BSZ = 10
+TEST_BSZ = 39
 
 
 def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
@@ -33,7 +33,7 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
                "f1": -1}
 
     while not last_batch:
-        test, last_batch = dataObj.next_batch(testset, TEST_BSZ)
+        test, last_batch = dataObj.next_batch(testset, TEST_BSZ, -1) #set negative_sampling_rate to -1 in evaluation
         output = model(
             test["L_a_batch"],
             test["L_b_batch"]
@@ -68,7 +68,7 @@ def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
     if examples_idx is not None:
         #grab the random 20 examples
         examples_dps = [testset[i] for i in examples_idx]
-        test, last_batch = dataObj.next_batch(examples_dps, -1)
+        test, last_batch = dataObj.next_batch(examples_dps, -1, -1)
         output = model(
             test["C_batch"],
             test["L_a_batch"],
@@ -117,14 +117,17 @@ if __name__ == '__main__':
     eval_epoch = args.eval_epoch
     save_epoch = args.save_epoch
     threshold = args.threshold
+    negative_sampling_rate = args.negative_sampling_rate
 
-    exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle)
+
+    exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate)
     SWRITER = SummaryWriter(comment = exp_name)
     #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
     dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, threshold = threshold)
     vocab = dataObj.vocab
     device = torch.device('cuda')
     print("DATASET SIZE:", dataObj.size())
+    print("NEGATIVE SAMPLING RATE:", negative_sampling_rate)
     # print("TRAIN SIZE:", dataObj.train["size"])
     # print("TEST SIZE:", dataObj.test["size"])
     model = Model(vocab['size'],
@@ -148,8 +151,8 @@ if __name__ == '__main__':
         while not last_batch:
             optimizer.zero_grad()
             loss = 0
-            train, last_batch = dataObj.next_batch(dataObj.train_P , batch_size = TRAIN_BSZ)
-            print(last_batch)
+            train, last_batch = dataObj.next_batch(dataObj.train_P , batch_size = TRAIN_BSZ, negative_sampling_rate = negative_sampling_rate)
+            # print(last_batch)
             # print("Training with %d datapoints"%train["size"])
             output = model(
                 train["L_a_batch"],
