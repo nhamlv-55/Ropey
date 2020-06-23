@@ -30,6 +30,9 @@ from Doping.PySpacerSolver.ExprDb import ExprDb
 from X_eval import setup_model
 from six.moves import cStringIO
 
+import torch
+import torch.nn as nn
+from Doping.pytorchtreelstm.treelstm import batch_tree_input
 class Lemma_Dp:
     def __init__(self, exp_folder, new_folder, prefix = ""):
         self.lemma = ""
@@ -67,7 +70,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.seed_file = ""
         self.lemmas_q = []
         self.max_q = 50
-
+        
+        self.m = nn.Softmax(dim = 1)
         self.is_training = False
     def SayHello(self, request, context):
         return indgen_conn_pb2.HelloReply(message='Hello, %s!' % request.name)
@@ -92,8 +96,18 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
         print("Receive lemma:", lemma)
 
-        no_of_lits = self.parse_lemma(lemma)
-        print("no of lits:", no_of_lits)
+        lit_jsons = self.parse_lemma(lemma)
+        print("no of lits:", len(lit_jsons))
+
+        L_a_trees = []
+        for l in lit_jsons:
+            L_a_trees.append(DPu.convert_tree_to_tensors(l["tree"]))
+        L_a_batch = batch_tree_input(L_a_trees)
+
+        output = self.model(L_a_batch, L_a_batch)[0]
+
+        values, pred = torch.max(self.m(output), 1)
+        print(values)
         answer = [0, 1, 2, 3]
 
         
@@ -177,12 +191,14 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
 
         lits = [self.edb.converter.convert(v) for v in cmd.args.args()]
-
         # Use the dataset object to parse it to JSON.
-        # After calling to add_dp_to_X, in the self.exp_folder, there should be the files L_0.json, L_1.json, etc.
-        self.dataset.add_dp_to_X(lits, os.path.join(self.exp_folder, "temp"))
-
-        return len(lits)
+        try:
+            lit_jsons = self.dataset.parse_cube_to_lit_jsons(lits)
+        except Exception as e:
+            print(lemma)
+            print(e)
+        assert(len(lit_jsons)==len(lits))
+        return lit_jsons
 
         # for l in lines:
         #     if l.startswith("-----------------------------"):
