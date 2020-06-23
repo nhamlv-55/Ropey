@@ -108,7 +108,6 @@ class DataObj:
         last_batch = False
         dataset = {}
         filenames = []
-        C_trees = []
         L_a_trees = []
         L_b_trees = []
         labels = []
