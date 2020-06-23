@@ -16,8 +16,8 @@ import random
 import logging
 
 #TRAIN_BSZ could be much bigger than TEST_BSZ because we use negative sampling in training
-TRAIN_BSZ = 100
-TEST_BSZ = 39
+TRAIN_BSZ = 300
+TEST_BSZ = 35
 
 
 def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
@@ -132,7 +132,6 @@ if __name__ == '__main__':
     # print("TEST SIZE:", dataObj.test["size"])
     model = Model(vocab['size'],
                   vocab['sort_size'],
-                  threshold = threshold,
                   emb_dim = 30, #30 is the max emb_dim possible, due to the legacy dataset
                   tree_dim = 100,
                   use_const_emb = use_const_emb,
@@ -180,14 +179,14 @@ if __name__ == '__main__':
             #check that embedding is being trained
             # print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
 
-        # if n%save_epoch==0:
-        #     model_path = new_model_path(basename = exp_name)
-        #     print("Saving to ", model_path)
-        #     torch.save({
-        #         'epoch': n,
-        #         'model_state_dict': model.state_dict(),
-        #         'optimizer_state_dict': optimizer.state_dict(),
-        #         'loss': loss,
-        #         'dataset': dataObj.metadata(),
-        #         'metadata': model.metadata()
-        #     }, model_path)
+        if n%save_epoch==0:
+            model_path = new_model_path(basename = exp_name)
+            print("Saving to ", model_path)
+            torch.save({
+                'epoch': n,
+                'model_state_dict': model.state_dict(),
+                'optimizer_state_dict': optimizer.state_dict(),
+                'loss': loss,
+                'dataset': dataObj.metadata(),
+                'metadata': model.metadata()
+            }, model_path)
