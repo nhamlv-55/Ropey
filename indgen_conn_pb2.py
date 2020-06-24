@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='indgen_conn',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x11indgen_conn.proto\x12\x0bindgen_conn\"\x16\n\x05Lemma\x12\r\n\x05lemma\x18\x01 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1a\n\x03\x41\x63k\x12\x13\n\x0b\x61\x63k_message\x18\x01 \x01(\t2\x80\x01\n\x07Greeter\x12@\n\x08SayHello\x12\x19.indgen_conn.HelloRequest\x1a\x17.indgen_conn.HelloReply\"\x00\x12\x33\n\tSendLemma\x12\x12.indgen_conn.Lemma\x1a\x10.indgen_conn.Ack\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11indgen_conn.proto\x12\x0bindgen_conn\"2\n\x05Lemma\x12\x14\n\x0clemma_before\x18\x01 \x01(\t\x12\x13\n\x0blemma_after\x18\x02 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"[\n\x05Query\x12\r\n\x05lemma\x18\x01 \x01(\t\x12\x11\n\tkept_lits\x18\x02 \x03(\x05\x12\x14\n\x0c\x63hecking_lit\x18\x03 \x01(\x05\x12\x1a\n\x12to_be_checked_lits\x18\x04 \x03(\x05\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x18\n\x06\x41nswer\x12\x0e\n\x06\x61nswer\x18\x01 \x03(\x05\"\x1a\n\x03\x41\x63k\x12\x13\n\x0b\x61\x63k_message\x18\x01 \x01(\x08\x32\xb9\x01\n\x07Greeter\x12@\n\x08SayHello\x12\x19.indgen_conn.HelloRequest\x1a\x17.indgen_conn.HelloReply\"\x00\x12\x33\n\tSendLemma\x12\x12.indgen_conn.Lemma\x1a\x10.indgen_conn.Ack\"\x00\x12\x37\n\nQueryModel\x12\x12.indgen_conn.Query\x1a\x13.indgen_conn.Answer\"\x00\x62\x06proto3'
 )
 
 
@@ -32,8 +32,15 @@ _LEMMA = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='lemma', full_name='indgen_conn.Lemma.lemma', index=0,
+      name='lemma_before', full_name='indgen_conn.Lemma.lemma_before', index=0,
       number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='lemma_after', full_name='indgen_conn.Lemma.lemma_after', index=1,
+      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -51,7 +58,7 @@ _LEMMA = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=34,
-  serialized_end=56,
+  serialized_end=84,
 )
 
 
@@ -81,8 +88,60 @@ _HELLOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=58,
-  serialized_end=86,
+  serialized_start=86,
+  serialized_end=114,
+)
+
+
+_QUERY = _descriptor.Descriptor(
+  name='Query',
+  full_name='indgen_conn.Query',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='lemma', full_name='indgen_conn.Query.lemma', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='kept_lits', full_name='indgen_conn.Query.kept_lits', index=1,
+      number=2, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='checking_lit', full_name='indgen_conn.Query.checking_lit', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='to_be_checked_lits', full_name='indgen_conn.Query.to_be_checked_lits', index=3,
+      number=4, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=116,
+  serialized_end=207,
 )
 
 
@@ -112,22 +171,22 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=88,
-  serialized_end=117,
+  serialized_start=209,
+  serialized_end=238,
 )
 
 
-_ACK = _descriptor.Descriptor(
-  name='Ack',
-  full_name='indgen_conn.Ack',
+_ANSWER = _descriptor.Descriptor(
+  name='Answer',
+  full_name='indgen_conn.Answer',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='ack_message', full_name='indgen_conn.Ack.ack_message', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='answer', full_name='indgen_conn.Answer.answer', index=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -143,13 +202,46 @@ _ACK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=119,
-  serialized_end=145,
+  serialized_start=240,
+  serialized_end=264,
+)
+
+
+_ACK = _descriptor.Descriptor(
+  name='Ack',
+  full_name='indgen_conn.Ack',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ack_message', full_name='indgen_conn.Ack.ack_message', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=266,
+  serialized_end=292,
 )
 
 DESCRIPTOR.message_types_by_name['Lemma'] = _LEMMA
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
+DESCRIPTOR.message_types_by_name['Query'] = _QUERY
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['Answer'] = _ANSWER
 DESCRIPTOR.message_types_by_name['Ack'] = _ACK
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -167,12 +259,26 @@ HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_messag
   })
 _sym_db.RegisterMessage(HelloRequest)
 
+Query = _reflection.GeneratedProtocolMessageType('Query', (_message.Message,), {
+  'DESCRIPTOR' : _QUERY,
+  '__module__' : 'indgen_conn_pb2'
+  # @@protoc_insertion_point(class_scope:indgen_conn.Query)
+  })
+_sym_db.RegisterMessage(Query)
+
 HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Message,), {
   'DESCRIPTOR' : _HELLOREPLY,
   '__module__' : 'indgen_conn_pb2'
   # @@protoc_insertion_point(class_scope:indgen_conn.HelloReply)
   })
 _sym_db.RegisterMessage(HelloReply)
+
+Answer = _reflection.GeneratedProtocolMessageType('Answer', (_message.Message,), {
+  'DESCRIPTOR' : _ANSWER,
+  '__module__' : 'indgen_conn_pb2'
+  # @@protoc_insertion_point(class_scope:indgen_conn.Answer)
+  })
+_sym_db.RegisterMessage(Answer)
 
 Ack = _reflection.GeneratedProtocolMessageType('Ack', (_message.Message,), {
   'DESCRIPTOR' : _ACK,
@@ -189,8 +295,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=148,
-  serialized_end=276,
+  serialized_start=295,
+  serialized_end=480,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -208,6 +314,15 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LEMMA,
     output_type=_ACK,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='QueryModel',
+    full_name='indgen_conn.Greeter.QueryModel',
+    index=2,
+    containing_service=None,
+    input_type=_QUERY,
+    output_type=_ANSWER,
     serialized_options=None,
   ),
 ])

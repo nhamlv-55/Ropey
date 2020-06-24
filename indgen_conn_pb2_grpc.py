@@ -24,6 +24,11 @@ class GreeterStub(object):
                 request_serializer=indgen__conn__pb2.Lemma.SerializeToString,
                 response_deserializer=indgen__conn__pb2.Ack.FromString,
                 )
+        self.QueryModel = channel.unary_unary(
+                '/indgen_conn.Greeter/QueryModel',
+                request_serializer=indgen__conn__pb2.Query.SerializeToString,
+                response_deserializer=indgen__conn__pb2.Answer.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -44,6 +49,12 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def QueryModel(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -56,6 +67,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.SendLemma,
                     request_deserializer=indgen__conn__pb2.Lemma.FromString,
                     response_serializer=indgen__conn__pb2.Ack.SerializeToString,
+            ),
+            'QueryModel': grpc.unary_unary_rpc_method_handler(
+                    servicer.QueryModel,
+                    request_deserializer=indgen__conn__pb2.Query.FromString,
+                    response_serializer=indgen__conn__pb2.Answer.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -97,5 +113,21 @@ class Greeter(object):
         return grpc.experimental.unary_unary(request, target, '/indgen_conn.Greeter/SendLemma',
             indgen__conn__pb2.Lemma.SerializeToString,
             indgen__conn__pb2.Ack.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def QueryModel(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/indgen_conn.Greeter/QueryModel',
+            indgen__conn__pb2.Query.SerializeToString,
+            indgen__conn__pb2.Answer.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
