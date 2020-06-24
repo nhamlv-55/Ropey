@@ -51,7 +51,7 @@ def batch_tree_input(batch):
     returns a dict with keys ('features', 'node_order', 'edge_order', 'adjacency_list', 'tree_sizes')
     '''
     tree_sizes = [b['features'].shape[0] for b in batch]
-
+    # print("tree sizes", tree_sizes)
     batched_features = torch.cat([b['features'] for b in batch])
     batched_node_order = torch.cat([b['node_order'] for b in batch])
     batched_edge_order = torch.cat([b['edge_order'] for b in batch])
@@ -82,6 +82,9 @@ def unbatch_tree_tensor(tensor, tree_sizes):
 
 def stack_last_h(tensor, tree_sizes):
     unb = unbatch_tree_tensor(tensor, tree_sizes)
+    #summation over node
+    # last_h = [torch.sum(x, dim = 0) for x in unb]
+    #get hidden of root
     last_h = [x[0] for x in unb]
     return torch.stack(last_h)
 
