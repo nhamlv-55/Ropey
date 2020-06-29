@@ -17,6 +17,8 @@ def setup_model(model_path):
                   use_dot_product = model_metadata['use_dot_product'],
                   device = torch.device('cuda')).eval()
 
+    model.load_state_dict(checkpoint["model_state_dict"])
+
     return model
 
 if __name__=="__main__":
