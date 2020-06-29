@@ -18,6 +18,7 @@ def setup_model(model_path):
                   use_dot_product = model_metadata['use_dot_product']
     ).eval()
 
+    model.load_state_dict(checkpoint["model_state_dict"])
     # datafolder = '1_tree_to_test_adj_list/'
     dataObj = DataObj(datafolder = dataset_metadata['datafolder'],
     # dataObj = DataObj(datafolder = datafolder,
