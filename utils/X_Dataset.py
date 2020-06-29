@@ -85,7 +85,7 @@ class DataObj:
                 lit_index = lit["index"]
                 assert(lit_index not in self.lits)
                 lit_tree = DPu.convert_tree_to_tensors(lit["tree"])
-                self.lits[lit_index] = lit_tree
+                self.lits[lit_index] = {"lit_tree": lit_tree, "filename": lf}
 
         X_mats = glob.glob(self.datafolder + "/X0*.json")
         X_mats = sorted(X_mats)
@@ -119,8 +119,9 @@ class DataObj:
                 #at row_i
                 for j in range(len(P_matrix[i])):
                     # print(self.lits[i])
-                    L_a_trees.append(self.lits[i])
-                    L_b_trees.append(self.lits[j])
+                    L_a_trees.append(self.lits[i]["lit_tree"])
+                    L_b_trees.append(self.lits[j]["lit_tree"])
+                    filenames.append((self.lits[i]["filename"], self.lits[j]["filename"]))
                     labels.append(int(P_matrix[i][j]> self.threshold))
         else:#if using negative sampling
             pos_samples = []
@@ -128,7 +129,6 @@ class DataObj:
             for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
                 #at row_i
                 for j in range(len(P_matrix[i])):
-                    # print(self.lits[i])
                     if (P_matrix[i][j] > self.threshold):
                         pos_samples.append((i, j, 1))
                     else:
@@ -141,8 +141,9 @@ class DataObj:
             random.shuffle(all_samples)
             log.debug("Use negative sampling. Number of datapoints for this batch:{}".format(len(all_samples)))
             for (i,j,label) in all_samples:
-                L_a_trees.append(self.lits[i])
-                L_b_trees.append(self.lits[j])
+                L_a_trees.append(self.lits[i]["lit_tree"])
+                L_b_trees.append(self.lits[j]["lit_tree"])
+                filenames.append((self.lits[i]["filename"], self.lits[j]["filename"]))
                 labels.append(int(label))
 
 

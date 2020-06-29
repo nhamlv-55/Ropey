@@ -33,6 +33,12 @@ from six.moves import cStringIO
 import torch
 import torch.nn as nn
 from Doping.pytorchtreelstm.treelstm import batch_tree_input
+import json
+
+#(lit_56, lit_55)
+TEST1 = ["not( = invariant_33_n 3)","not(= invariant_33_n 2)"]
+
+
 class Lemma_Dp:
     def __init__(self, exp_folder, new_folder, prefix = ""):
         self.lemma = ""
@@ -73,6 +79,9 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         
         self.m = nn.Softmax(dim = 1)
         self.is_training = False
+
+        self.run_test(TEST1)
+
     def SayHello(self, request, context):
         return indgen_conn_pb2.HelloReply(message='Hello, %s!' % request.name)
 
@@ -113,6 +122,10 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
         print("Receive lemma:", lemma)
 
+        answer = self.predict_core(lemma, kept_lits, checking_lit, to_be_checked_lits)
+        return indgen_conn_pb2.Answer(answer = answer)
+
+    def predict_core(self, lemma, kept_lits, checking_lit, to_be_checked_lits):
         lit_jsons, lits = self.parse_lemma(lemma)
         print("no of lits:", len(lit_jsons))
 
@@ -145,9 +158,19 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         pred = pred.tolist()
         print(output, values, pred)
         if 1 in pred: #In kept list there is a lit with high correlation with checking_lit -> skip the checking lit
-            return indgen_conn_pb2.Answer(answer = [])
+            return []
         else:
-            return indgen_conn_pb2.Answer(answer = [checking_lit])
+            return [checking_lit]
+
+
+    def run_test(self, cube):
+        print("Running test on cube", cube)
+        lemma = "(and ({}) ({}))".format(cube[0], cube[1])
+        kept_lits = [0]
+        checking_lit = 1
+        to_be_checked_lits = []
+
+        self.predict_core(lemma, kept_lits, checking_lit, to_be_checked_lits)
 
     def get_seed_file(self):
         print("\t\tIn get seed file")
@@ -244,6 +267,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         # Use the dataset object to parse it to JSON.
         try:
             lit_jsons = self.dataset.parse_cube_to_lit_jsons(lits)
+            json.dumps(lit_jsons, indent = 2)
         except Exception as e:
             print(lemma)
             print(e)
@@ -270,7 +294,11 @@ if __name__ == '__main__':
     seed_smtfile = args.seed_smtfile
     #need the dataset object to parse the received lemma
     dataset = DPu.Dataset(folder = os.path.dirname(args.input) )
-
+    #use the vocab of the dataset
+    dataset.vocab.load(os.path.join( os.path.dirname(args.input),"vocab.json"))
+    #check
+    print("My vocab:")
+    dataset.vocab.dump()
     model = setup_model(args.model_path)
     edb = ExprDb(seed_smtfile)
     # logging.basicConfig()
