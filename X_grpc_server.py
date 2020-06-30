@@ -66,11 +66,12 @@ class Lemma_Dp:
             f.write("(ind-gen %s)\n"%(self.lemma))
 
 class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
-    def __init__(self, exp_folder, new_folder, model, dataset, edb):
+    def __init__(self, exp_folder, new_folder, dataset, edb, p_model = None, n_model = None):
         print("init server")
         self.exp_folder = exp_folder
         self.new_folder = new_folder
-        self.model = model
+        self.p_model = p_model #positive model
+        self.n_model = n_model #negative model
         self.dataset = dataset
         self.edb = edb
         self.seed_file = ""
@@ -78,9 +79,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.max_q = 50
         
         self.m = nn.Softmax(dim = 1)
-        self.is_training = False
 
-        self.run_test(TEST1)
+        # self.run_test(TEST1)
 
     def SayHello(self, request, context):
         return indgen_conn_pb2.HelloReply(message='Hello, %s!' % request.name)
@@ -117,50 +117,148 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
         lemma = request.lemma
         kept_lits = request.kept_lits
-        checking_lit = request.checking_lit
         to_be_checked_lits = request.to_be_checked_lits
 
         print("Receive lemma:", lemma)
 
-        answer = self.predict_core(lemma, kept_lits, checking_lit, to_be_checked_lits)
+        L_a_batch, L_b_batch = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+        
+
+        # in positive_pairs, if a pair value is 1, that means it has very high correlation
+        output = self.p_model(L_a_batch, L_b_batch)[0]
+        values, pos_pred = torch.max(self.m(output), 1)
+        positive_pairs = pos_pred.tolist()
+
+        # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
+        output = self.n_model(L_a_batch, L_b_batch)[0]
+        values, neg_pred = torch.max(self.m(output), 1)
+        negative_pairs = neg_pred.tolist()
+
+        #print for debugging
+        for i in range(len(positive_pairs)):
+            if i%len(kept_lits)==0:
+                print("----------------------")
+            print(positive_pairs[i], negative_pairs[i])
+        
+        # build answer using positive_pairs and negative_pairs
+
         return indgen_conn_pb2.Answer(answer = answer)
 
-    def predict_core(self, lemma, kept_lits, checking_lit, to_be_checked_lits):
+    def QueryMask(self, request, context):
+        """
+        Input:
+        - lemma (a list of literals)
+        - kept_lits (a list of indices of literals that are kept)
+        - to_be_checked_lits (a list of indices of literals that we haven't seen yet)
+        - checking_lit is a dummy number. We are not using it now
+        Output:
+        - A dirty bit telling the solver whether to use the answer or not
+        - A binary mask of what literal should be stay(1) and what literal should be tried to drop/set to true(0)
+            The mask should have the same size as the lemma
+        - A new kept_lits list
+        - A new to_be_checked_lits list
+        """
+
+        lemma = request.lemma
+        kept_lits = request.kept_lits
+        to_be_checked_lits = request.to_be_checked_lits
+
+        print("Receive lemma:", lemma)
+        print("kept_lits", kept_lits)
+        print("to_be_checked_lits", to_be_checked_lits)
+        L_a_batch, L_b_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+
+        # in positive_pairs, if a pair value is 1, that means it has very high correlation
+        if self.p_model is not None:
+            output = self.p_model(L_a_batch, L_b_batch)[0]
+            values, pos_pred = torch.max(self.m(output), 1)
+            positive_pairs = pos_pred.tolist()
+
+        # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
+        if self.n_model is not None:
+            output = self.n_model(L_a_batch, L_b_batch)[0]
+            values, neg_pred = torch.max(self.m(output), 1)
+            negative_pairs = neg_pred.tolist()
+
+        """
+        START BUILDING ANSWER
+        """
+        dirty = False 
+        #clone kept_lits and to_be_checked_lits
+        new_kept_lits = [lit_idx for lit_idx in kept_lits]
+        new_to_be_checked_lits = [lit_idx for lit_idx in to_be_checked_lits]
+
+        if self.p_model is not None:
+            for i in range(len(to_be_checked_lits)):
+                lit_idx = to_be_checked_lits[i]
+                #does lit at lit_idx has high correlation with any lit in kept_lits? If yes, move it to kept_lits
+                high_cor_with_kept_lits = positive_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
+                print("high cor with kept_lits", high_cor_with_kept_lits)
+                if 1 in high_cor_with_kept_lits:
+                    dirty = True
+                    new_kept_lits.append(lit_idx)
+                    new_to_be_checked_lits.remove(lit_idx)
+
+        # default mask
+        mask = [0]*lemma_size
+        for i in new_kept_lits:
+            mask[i] = 1
+        for i in new_to_be_checked_lits:
+            mask[i] = 1
+
+        # update mask using negative_pairs
+        if self.n_model is not None:
+            for i in range(len(to_be_checked_lits)):
+                lit_idx = to_be_checked_lits[i]
+                #does the lit at lit_idx has any correlation with any lit in kept_lits? If all correlations are 0, try to drop it
+                any_cor_with_kept_lits = negative_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
+                print("any cor with kept_lits", any_cor_with_kept_lits)
+                if 1 not in any_cor_with_kept_lits:
+                    mask[lit_idx] = 0
+                    dirty = True
+
+        print("dirty",dirty)
+        print("mask", mask)
+        print("new_kep_lits", new_kept_lits)
+        print("new_to_be_checked_lits", new_to_be_checked_lits)
+
+        return indgen_conn_pb2.FullAnswer(dirty = dirty,
+                                          mask = mask,
+                                          new_kept_lits = new_kept_lits,
+                                          new_to_be_checked_lits = new_to_be_checked_lits)
+
+    def parse_and_batch_input(self, lemma, kept_lits, to_be_checked_lits):
         lit_jsons, lits = self.parse_lemma(lemma)
         print("no of lits:", len(lit_jsons))
 
         """
         example:
-        kept_lits = [0, 1, 2, 4]
-        checking_lit = 5
+        with p_model, and
+        kept_lits = [0, 1, 4]
+        to_be_checked_lits = [5, 6]
         => calculating
-        P(l_0|l_5)>THRESHOLD,
-        P(l_1|l_5)>THRESHOLD,
-        P(l_2|l_5)>THRESHOLD,
-        P(l_3|l_5)>THRESHOLD
+        P(l_5|l_0)=0,
+        P(l_5|l_1)=0,
+        P(l_5|l_4)=0,
+        P(l_6|l_0)=0.1,
+        P(l_6|l_1)=0.2,
+        P(l_6|l_4)=0,
         """
         #batching inputs
         #L_a_batch = [l_0, l_1, l_2, l_3)
         #L_b_batch = [l_5, l_5, l_5, l_5)
         L_a_trees = []
         L_b_trees = []
-        for i in kept_lits:
-            print("calculating P({}|{})".format(lits[checking_lit], lits[i]))
-            L_a_trees.append(DPu.convert_tree_to_tensors(lit_jsons[i]["tree"]))
-            L_b_trees.append(DPu.convert_tree_to_tensors(lit_jsons[checking_lit]["tree"]))
+        for a in kept_lits:
+            for b in to_be_checked_lits:
+                # print("P(l_{}|l_{})".format(a, b))
+                L_a_trees.append(DPu.convert_tree_to_tensors(lit_jsons[a]["tree"]))
+                L_b_trees.append(DPu.convert_tree_to_tensors(lit_jsons[b]["tree"]))
         L_a_batch = batch_tree_input(L_a_trees)
         L_b_batch = batch_tree_input(L_b_trees)
 
-        #run the model
-        output = self.model(L_b_batch, L_a_batch)[0]
-        values, pred = torch.max(self.m(output), 1)
+        return L_a_batch, L_b_batch, len(lits)
 
-        pred = pred.tolist()
-        print(output, values, pred)
-        if 1 in pred: #In kept list there is a lit with high correlation with checking_lit -> skip the checking lit
-            return []
-        else:
-            return [checking_lit]
 
 
     def run_test(self, cube):
@@ -274,9 +372,9 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         assert(len(lit_jsons)==len(lits))
         return lit_jsons, lits
 
-def serve(exp_folder, new_folder, model, dataset, edb):
+def serve(exp_folder, new_folder, dataset, edb, p_model, n_model):
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    indgen_conn_pb2_grpc.add_GreeterServicer_to_server(Greeter(exp_folder, new_folder, model, dataset, edb), server)
+    indgen_conn_pb2_grpc.add_GreeterServicer_to_server(Greeter(exp_folder, new_folder, dataset, edb, p_model, n_model), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
@@ -286,7 +384,8 @@ if __name__ == '__main__':
     parser.add_argument('-input', help='path to the smt2 files generated by running z3')
     parser.add_argument('-seed-smtfile', help='path to the seed pool_solver indgen smt2 query file')
     parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
-    parser.add_argument('--model-path', help='path to the .pt file')
+    parser.add_argument('--p-model-path', help='path to the .pt file of the positive model')
+    parser.add_argument('--n-model-path', help='path to the .pt file of the negative model')
     args = parser.parse_args()
 
     exp_folder = args.input
@@ -299,7 +398,14 @@ if __name__ == '__main__':
     #check
     print("My vocab:")
     dataset.vocab.dump()
-    model = setup_model(args.model_path)
+    if args.p_model_path is not None:
+        p_model = setup_model(args.p_model_path)
+    else:
+        p_model = None
+    if args.n_model_path is not None:
+        n_model = setup_model(args.n_model_path)
+    else:
+        n_model = None
     edb = ExprDb(seed_smtfile)
     # logging.basicConfig()
-    serve(exp_folder, new_folder, model, dataset, edb)
+    serve(exp_folder, new_folder, dataset, edb, p_model, n_model)
