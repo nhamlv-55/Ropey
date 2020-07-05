@@ -91,7 +91,7 @@ class DataObj:
         X_mats = sorted(X_mats)
 
         
-        train_index = int(len(X_mats)*self.train_size)
+        train_index = int(len(X_mats)*self.train_size)-1
         X_train_filename = os.path.basename(X_mats[train_index])
         X_test_filename = os.path.basename(X_mats[-1])
         #expect X_train_filename to be X00***.json, then suffix would be 00***.json
