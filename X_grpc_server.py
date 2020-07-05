@@ -38,7 +38,8 @@ import json
 #(lit_56, lit_55)
 TEST1 = ["not( = invariant_33_n 3)","not(= invariant_33_n 2)"]
 
-
+#only trigger N_MODEL if kept_lits has more than N_MODEL_LIM
+N_MODEL_LIM = 1
 class Lemma_Dp:
     def __init__(self, exp_folder, new_folder, prefix = ""):
         self.lemma = ""
@@ -77,7 +78,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.seed_file = ""
         self.lemmas_q = []
         self.max_q = 50
-        
+        self.last_request = None
         self.m = nn.Softmax(dim = 1)
 
         # self.run_test(TEST1)
@@ -100,49 +101,49 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                 self.is_training = True
             return indgen_conn_pb2.Ack(ack_message=False)
 
-    def QueryModel(self, request, context):
-        """
-        Input:
-        - lemma (a list of literals)
-        - kept_lits (a list of indices of literals that are kept)
-        - checking_lit (index of the literal we want to check)
-        - to_be_checked_lits (a list of indices of literals that we haven't seen yet)
+    # def QueryModel(self, request, context):
+    #     """
+    #     Input:
+    #     - lemma (a list of literals)
+    #     - kept_lits (a list of indices of literals that are kept)
+    #     - checking_lit (index of the literal we want to check)
+    #     - to_be_checked_lits (a list of indices of literals that we haven't seen yet)
 
-        Output:
-        - A list of indices of literal that we should try to drop
-        NOTE: for now, we only return either:
-        - []: empty list ~ should keep the checking_lit literal
-        - [checking_lit]:  should try to drop the checking_lit 
-        """
+    #     Output:
+    #     - A list of indices of literal that we should try to drop
+    #     NOTE: for now, we only return either:
+    #     - []: empty list ~ should keep the checking_lit literal
+    #     - [checking_lit]:  should try to drop the checking_lit 
+    #     """
 
-        lemma = request.lemma
-        kept_lits = request.kept_lits
-        to_be_checked_lits = request.to_be_checked_lits
+    #     lemma = request.lemma
+    #     kept_lits = request.kept_lits
+    #     to_be_checked_lits = request.to_be_checked_lits
+    #     lemma_size = request.lemma_size
+    #     print("Receive lemma:", lemma)
 
-        print("Receive lemma:", lemma)
-
-        L_a_batch, L_b_batch = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+    #     L_a_batch, L_b_batch = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
         
 
-        # in positive_pairs, if a pair value is 1, that means it has very high correlation
-        output = self.p_model(L_a_batch, L_b_batch)[0]
-        values, pos_pred = torch.max(self.m(output), 1)
-        positive_pairs = pos_pred.tolist()
+    #     # in positive_pairs, if a pair value is 1, that means it has very high correlation
+    #     output = self.p_model(L_a_batch, L_b_batch)[0]
+    #     values, pos_pred = torch.max(self.m(output), 1)
+    #     positive_pairs = pos_pred.tolist()
 
-        # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
-        output = self.n_model(L_a_batch, L_b_batch)[0]
-        values, neg_pred = torch.max(self.m(output), 1)
-        negative_pairs = neg_pred.tolist()
+    #     # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
+    #     output = self.n_model(L_a_batch, L_b_batch)[0]
+    #     values, neg_pred = torch.max(self.m(output), 1)
+    #     negative_pairs = neg_pred.tolist()
 
-        #print for debugging
-        for i in range(len(positive_pairs)):
-            if i%len(kept_lits)==0:
-                print("----------------------")
-            print(positive_pairs[i], negative_pairs[i])
+    #     #print for debugging
+    #     for i in range(len(positive_pairs)):
+    #         if i%len(kept_lits)==0:
+    #             print("----------------------")
+    #         print(positive_pairs[i], negative_pairs[i])
         
-        # build answer using positive_pairs and negative_pairs
+    #     # build answer using positive_pairs and negative_pairs
 
-        return indgen_conn_pb2.Answer(answer = answer)
+    #     return indgen_conn_pb2.Answer(answer = answer)
 
     def QueryMask(self, request, context):
         """
@@ -158,74 +159,130 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         - A new kept_lits list
         - A new to_be_checked_lits list
         """
-
         lemma = request.lemma
         kept_lits = request.kept_lits
         to_be_checked_lits = request.to_be_checked_lits
-
+        lemma_size = request.lemma_size
+        # default mask
+        mask = [0]*lemma_size
+        # is the mask updated?
+        mask_updated = False
+        # are kept_lits and to_be_checked_lits updated?
+        lists_updated = False
         print("Receive lemma:", lemma)
         print("kept_lits", kept_lits)
         print("to_be_checked_lits", to_be_checked_lits)
-        L_a_batch, L_b_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
 
-        # in positive_pairs, if a pair value is 1, that means it has very high correlation
-        if self.p_model is not None:
-            output = self.p_model(L_a_batch, L_b_batch)[0]
-            values, pos_pred = torch.max(self.m(output), 1)
-            positive_pairs = pos_pred.tolist()
-
-        # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
-        if self.n_model is not None:
-            output = self.n_model(L_a_batch, L_b_batch)[0]
-            values, neg_pred = torch.max(self.m(output), 1)
-            negative_pairs = neg_pred.tolist()
-
-        """
-        START BUILDING ANSWER
-        """
-        dirty = False 
         #clone kept_lits and to_be_checked_lits
         new_kept_lits = [lit_idx for lit_idx in kept_lits]
         new_to_be_checked_lits = [lit_idx for lit_idx in to_be_checked_lits]
+        checking_lits = []
+        """
+        FALLBACK MODE
+        """
+        if request == self.last_request or len(kept_lits)==0:
+            #got the same request again. immediately use the fallback mode
+            checking_lits = [to_be_checked_lits[0]]
+            to_be_checked_lits = to_be_checked_lits[1:]
+            for i in kept_lits:
+                mask[i] = 1
+            for i in to_be_checked_lits:
+                mask[i] = 1
+            for i in checking_lits:
+                mask[i] = 0
+            return indgen_conn_pb2.FullAnswer(dirty = False,
+                                              mask = mask,
+                                              new_to_be_checked_lits = to_be_checked_lits,
+                                              new_kept_lits = kept_lits,
+                                              checking_lits = checking_lits)
+        #update cache
+        self.last_request = request
+        """
+        USING ML MODEL MODE
+        """
+        #update kept_lits and to_be_checked_lits
+        if self.p_model is not None and len(kept_lits)*len(to_be_checked_lits)>0:
+            # in positive_pairs, if a pair value is 1, that means it has very high correlation
+            L_kept_batch, L_2bchecked_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+            output = self.p_model(L_kept_batch, L_2bchecked_batch)[0]
+            values, pos_pred = torch.max(self.m(output), 1)
+            positive_pairs = pos_pred.tolist()
+            print("p_model calculation")
+            self.dump_model_res(kept_lits, to_be_checked_lits, output)
+            new_kept_lits = [idx for idx in kept_lits]
+            new_to_be_checked_lits = [idx for idx in to_be_checked_lits]
 
-        if self.p_model is not None:
             for i in range(len(to_be_checked_lits)):
                 lit_idx = to_be_checked_lits[i]
                 #does lit at lit_idx has high correlation with any lit in kept_lits? If yes, move it to kept_lits
                 high_cor_with_kept_lits = positive_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
-                print("high cor with kept_lits", high_cor_with_kept_lits)
+                print("lit_{} has high cor with kept_lits".format(lit_idx), high_cor_with_kept_lits)
                 if 1 in high_cor_with_kept_lits:
-                    dirty = True
+                    print("p model found a high cor pair. immediately move the lit to kept_lits")
                     new_kept_lits.append(lit_idx)
                     new_to_be_checked_lits.remove(lit_idx)
+                    lists_updated = True
+            kept_lits = new_kept_lits
+            to_be_checked_lits = new_to_be_checked_lits
 
-        # default mask
-        mask = [0]*lemma_size
-        for i in new_kept_lits:
+        #MAP after running the P model
+        for i in kept_lits:
             mask[i] = 1
-        for i in new_to_be_checked_lits:
+        for i in to_be_checked_lits:
             mask[i] = 1
+        
 
         # update mask using negative_pairs
-        if self.n_model is not None:
+        if self.n_model is not None and len(kept_lits)*len(to_be_checked_lits)>0 and len(kept_lits)>N_MODEL_LIM:
+            # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
+            L_kept_batch, L_2bchecked_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+            output = self.n_model(L_kept_batch, L_2bchecked_batch)[0]
+            print("n_model calculation")
+            self.dump_model_res(kept_lits, to_be_checked_lits, output)
+            values, neg_pred = torch.max(self.m(output), 1)
+            negative_pairs = neg_pred.tolist()
+
             for i in range(len(to_be_checked_lits)):
                 lit_idx = to_be_checked_lits[i]
                 #does the lit at lit_idx has any correlation with any lit in kept_lits? If all correlations are 0, try to drop it
                 any_cor_with_kept_lits = negative_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
                 print("any cor with kept_lits", any_cor_with_kept_lits)
                 if 1 not in any_cor_with_kept_lits:
+                    print("lit {} has 0 correlation with everyone in kept_lits. set it to 0".format(lit_idx))
                     mask[lit_idx] = 0
-                    dirty = True
+                    checking_lits.append(lit_idx)
+                    mask_updated = True
 
-        print("dirty",dirty)
+        #if mask is not updated, update it by popping left 1 from to_be_checked_lits
+        if not mask_updated and len(to_be_checked_lits)>0:
+            checking_lits = [to_be_checked_lits[0]]
+            to_be_checked_lits = to_be_checked_lits[1:]
+            for i in kept_lits:
+                mask[i] = 1
+            for i in to_be_checked_lits:
+                mask[i] = 1
+            for i in checking_lits:
+                mask[i] = 0
         print("mask", mask)
-        print("new_kep_lits", new_kept_lits)
-        print("new_to_be_checked_lits", new_to_be_checked_lits)
-
-        return indgen_conn_pb2.FullAnswer(dirty = dirty,
+        print("new_kep_lits", kept_lits)
+        print("new_to_be_checked_lits", to_be_checked_lits)
+        print("checking_lits", checking_lits)
+        print("-------------")
+        return indgen_conn_pb2.FullAnswer(dirty = (mask_updated),
                                           mask = mask,
-                                          new_kept_lits = new_kept_lits,
-                                          new_to_be_checked_lits = new_to_be_checked_lits)
+                                          new_kept_lits = kept_lits,
+                                          new_to_be_checked_lits = to_be_checked_lits,
+                                          checking_lits = checking_lits)
+
+    def dump_model_res(self, kept_lits, to_be_checked_lits, output):
+        output = output.tolist()
+        counter = 0
+        for tobechecked_idx in to_be_checked_lits:
+            for kept_idx in kept_lits:
+                print("f(l_{},l_{}) = {}".format(kept_idx, tobechecked_idx, output[counter]))
+                counter+=1
+
+
 
     def parse_and_batch_input(self, lemma, kept_lits, to_be_checked_lits):
         lit_jsons, lits = self.parse_lemma(lemma)
@@ -245,19 +302,22 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         P(l_6|l_4)=0,
         """
         #batching inputs
-        #L_a_batch = [l_0, l_1, l_2, l_3)
-        #L_b_batch = [l_5, l_5, l_5, l_5)
-        L_a_trees = []
-        L_b_trees = []
-        for a in kept_lits:
-            for b in to_be_checked_lits:
-                # print("P(l_{}|l_{})".format(a, b))
-                L_a_trees.append(DPu.convert_tree_to_tensors(lit_jsons[a]["tree"]))
-                L_b_trees.append(DPu.convert_tree_to_tensors(lit_jsons[b]["tree"]))
-        L_a_batch = batch_tree_input(L_a_trees)
-        L_b_batch = batch_tree_input(L_b_trees)
+        #L_kept_batch = [l_0, l_1, l_4, l_0, l_1, l_4)
+        #L_2bchecked_batch = [l_5, l_5, l_5, l_6, l_6, l_6)
+        L_kept_trees = []
+        L_2bchecked_trees = []
+        for tobechecked_idx in to_be_checked_lits:
+            for kept_idx in kept_lits:
+                L_kept_trees.append(DPu.convert_tree_to_tensors(lit_jsons[kept_idx]["tree"]))
+                L_2bchecked_trees.append(DPu.convert_tree_to_tensors(lit_jsons[tobechecked_idx]["tree"]))
 
-        return L_a_batch, L_b_batch, len(lits)
+        if len(L_kept_trees)>0:
+            L_kept_batch = batch_tree_input(L_kept_trees)
+            L_2bechecked_batch = batch_tree_input(L_2bchecked_trees)
+
+            return L_kept_batch, L_2bechecked_batch, len(lits)
+        else:
+            return None, None, len(lits)
 
 
 
@@ -354,7 +414,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
         #parse the lemma to PySMT representation
         lemma_cmd = "\n(ind-gen {})\n".format(lemma)
-        print(lemma_cmd)
+        # print(lemma_cmd)
         all_cmds = self.edb.parser.get_script(cStringIO(lemma_cmd)).commands
         assert(len(all_cmds)==1)
         assert(all_cmds[0].name == "ind-gen")
