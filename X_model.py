@@ -8,13 +8,14 @@ class Model(torch.nn.Module):
     '''
     This model use h_c as a feature in h_a and h_b.
     '''
-    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, tree_dim = 10, use_const_emb = True, use_dot_product = True, device = torch.device('cuda')):
+    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, const_emb_dim = 0, tree_dim = 10, use_const_emb = True, use_dot_product = True, device = torch.device('cuda')):
         super().__init__()
         print("VOCAB SIZE:", vocab_size)
         print("SORT SIZE", sort_vocab_size)
         print("USE CONSTANT EMB", use_const_emb)
         self.device = device
         self._emb_dim = emb_dim
+        self._const_emb_dim = const_emb_dim
         self._tree_dim = tree_dim
         self._use_const_emb = use_const_emb
         self._use_dot_product = use_dot_product
@@ -24,7 +25,7 @@ class Model(torch.nn.Module):
         #calculate the input size of tree_lstm based on flags
         self.treelstm_input_size = emb_dim * 2
         if self._use_const_emb:
-            self.treelstm_input_size += self._emb_dim
+            self.treelstm_input_size += self._const_emb_dim
         self.treelstm = TreeLSTM(self.treelstm_input_size, tree_dim).to(device)
 
         #calculate the size of the last layer before FNN
@@ -37,6 +38,7 @@ class Model(torch.nn.Module):
         self.softmax = nn.Softmax(dim = 1)
     def metadata(self):
         return {"emb_dim": self._emb_dim,
+                "const_emb_dim": self._const_emb_dim,
                 "tree_dim": self._tree_dim,
                 "use_const_emb": self._use_const_emb,
                 "use_dot_product": self._use_dot_product,
@@ -82,8 +84,8 @@ class Model(torch.nn.Module):
         adjacency_list = tree["adjacency_list"].to(self.device)
         edge_order = tree["edge_order"].to(self.device)
         # print(features.shape)
-        token_feat = features[:,0]
-        sort_feat = features[:,1]
+        token_feat = features[:,0].long()
+        sort_feat = features[:,1].long()
 
         # print("token_feat", token_feat.tolist())
 
