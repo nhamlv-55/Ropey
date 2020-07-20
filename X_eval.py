@@ -11,7 +11,8 @@ def setup_model(model_path):
 
     model = Model(dataset_metadata['vocab_size'],
                   dataset_metadata['sort_size'],
-                  emb_dim = 30, #30 is the max emb_dim possible, due to the legacy dataset
+                  emb_dim = model_metadata['emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
+                  const_emb_dim = model_metadata['const_emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
                   tree_dim = 100,
                   use_const_emb = model_metadata['use_const_emb'],
                   use_dot_product = model_metadata['use_dot_product'],
