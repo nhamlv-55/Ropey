@@ -16,8 +16,8 @@ import random
 import logging
 
 #TRAIN_BSZ could be much bigger than TEST_BSZ because we use negative sampling in training
-TRAIN_BSZ = 300
-TEST_BSZ = 35
+TRAIN_BSZ = 200
+TEST_BSZ = 70
 
 
 def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
@@ -98,12 +98,16 @@ if __name__ == '__main__':
     parser.add_argument('-D', '--use_dot_product', action='store_true')
     parser.add_argument('-E', '--use_const_emb', action='store_true')
     parser.add_argument('-M', '--max_size', type = int, default = -1)
+    parser.add_argument('--train_batch_size', type = int, default = 200)
+    parser.add_argument('--test_batch_size', type = int, default = 70)
     parser.add_argument('-Nr', '--negative_sampling_rate', type = int, default = -1, help="controlling how many negative samples are used per 1 positive sample")
     parser.add_argument('-S', '--shuffle', action='store_true')
+    parser.add_argument('--train_negative_model', action='store_true')
     parser.add_argument('-N', '--epoch', type = int, default = 100)
-    parser.add_argument('--eval-epoch', type = int, default = 10)
-    parser.add_argument('--save-epoch', type = int, default = 100)
-    parser.add_argument('-th','--threshold', type = float, default = 0.75)
+    parser.add_argument('--eval_epoch', type = int, default = 10)
+    parser.add_argument('--save_epoch', type = int, default = 100)
+    parser.add_argument('-th','--threshold', type = float, default = 0.75, help="Cap all entries in the matrix that greater than the threshold to be 1, 0 otherwise")
+    parser.add_argument('-p','--prefix', default = "model", help="Prefix for the model name. Default is just `model`")
     args = parser.parse_args()
 
     exp_folder = args.input
@@ -118,12 +122,15 @@ if __name__ == '__main__':
     save_epoch = args.save_epoch
     threshold = args.threshold
     negative_sampling_rate = args.negative_sampling_rate
+    prefix = args.prefix
 
+    TRAIN_BSZ = args.train_batch_size
+    TEST_BSZ  = args.test_batch_size
 
-    exp_name = Du.get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate)
+    exp_name = Du.get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold)
     SWRITER = SummaryWriter(comment = exp_name)
     #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
-    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 0.8, threshold = threshold)
+    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 1, threshold = threshold, negative=args.train_negative_model)
     vocab = dataObj.vocab
     device = torch.device('cuda')
     print("DATASET SIZE:", dataObj.size())
@@ -132,7 +139,8 @@ if __name__ == '__main__':
     # print("TEST SIZE:", dataObj.test["size"])
     model = Model(vocab['size'],
                   vocab['sort_size'],
-                  emb_dim = 30, #30 is the max emb_dim possible, due to the legacy dataset
+                  emb_dim = 20, #30 is the max emb_dim possible, due to the legacy dataset
+                  const_emb_dim = vocab["const_emb_size"],
                   tree_dim = 100,
                   use_const_emb = use_const_emb,
                   use_dot_product = use_dot_product,
@@ -169,17 +177,17 @@ if __name__ == '__main__':
             # print(output.shape)
             train_res = evaluate(model, dataObj.train_P)
             # print("example_ids:", examples_idx)
-            test_res = evaluate(model, dataObj.test_P)
+            # test_res = evaluate(model, dataObj.test_P)
             SWRITER.add_scalar('Loss/train', total_loss, n)
             SWRITER.add_scalar('Accuracy/train', train_res["acc"], n)
-            SWRITER.add_scalar('Accuracy/test', test_res["acc"], n)
+            # SWRITER.add_scalar('Accuracy/test', test_res["acc"], n)
             SWRITER.add_scalar('F1/train', train_res["f1"], n)
-            SWRITER.add_scalar('F1/test', test_res["f1"], n)
+            # SWRITER.add_scalar('F1/test', test_res["f1"], n)
             print(f'Iteration {n+1} Loss: {loss}')
             #check that embedding is being trained
             # print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
 
-        if n%save_epoch==0:
+        if n%save_epoch==0 or n==n_epoch - 1:
             model_path = new_model_path(basename = exp_name)
             print("Saving to ", model_path)
             torch.save({

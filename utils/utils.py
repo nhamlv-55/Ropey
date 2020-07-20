@@ -6,7 +6,7 @@ from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
 import os
 import numpy as np
 
-def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate):
+def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold):
     '''
     construct a meaningful exp_name for the Tensorboard
     '''
@@ -14,6 +14,7 @@ def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_siz
     #exp_folder is in the form
     #"PySpacerSolver/MEDIA/backward_encoded_split_on_relu.smt2_250220_13_04_22/ind_gen_files/"
     exp_name.append(exp_folder.split("/")[-3])
+    exp_name.append(prefix+"_")
     if vis:
         exp_name.append("V")
     if use_c:
@@ -26,6 +27,8 @@ def get_exp_name(exp_folder, vis, use_c, use_const_emb, use_dot_product, max_siz
     exp_name.append(str(max_size))
     exp_name.append("Nr")
     exp_name.append(str(negative_sampling_rate))
+    exp_name.append("Th")
+    exp_name.append(str(threshold))
     if shuffle:
         exp_name.append("S")
 
@@ -83,8 +86,8 @@ def calculate_P(X, L, L_freq):
     P_matrix = np.zeros((len(X), len(X)))
     for i in range(len(X)):
         for j in range(len(X)):
-            P_matrix[i][j] = X[i][j]/idx2freq[i]
+            #P_matrix[i][j] = P(lit_i|lit_j)
+            P_matrix[i][j] = X[i][j]/idx2freq[j]
             assert(P_matrix[i][j]<=1 )
 
     return P_matrix
-

@@ -13,7 +13,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 log = logging.getLogger(__name__)
 
 class DataObj:
-    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75):
+    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75, negative = False):
         '''
         datafolder: path to the /ind_gen_files folder
         name: name of the dataset
@@ -35,7 +35,9 @@ class DataObj:
         self.data_pointer = 0
         self.train_size = train_size
         self.shuffle = shuffle
-        
+        self.const_emb_size = 0
+
+        self.negative = negative
         self.train_P = None
         self.test_P = None
         self.threshold = threshold
@@ -59,13 +61,28 @@ class DataObj:
         with open(vocab_file, "r") as f:
             self.vocab = json.load(f)
 
-    def _build_P(self, suffix):
-        with open(os.path.join(self.datafolder, "X" + suffix), "r") as f:
-            X = json.load(f)["X"]
-        with open(os.path.join(self.datafolder, "L" + suffix ), "r") as f:
-            L = json.load(f)
-        with open(os.path.join(self.datafolder, "L_freq" + suffix ), "r") as f:
-            L_freq = json.load(f)
+    def _build_P(self, filename):
+        """
+        expect file name to be positive_X_00001.json or negative_X_00001.json
+        """
+        tokens = filename.split("_")
+        suffix = tokens[-1]
+
+        if self.negative:
+            with open(os.path.join(self.datafolder, filename), "r") as f:
+                X = json.load(f)["X"]
+            with open(os.path.join(self.datafolder, "negative_L" + suffix ), "r") as f:
+                L = json.load(f)
+            with open(os.path.join(self.datafolder, "negative_L_freq" + suffix ), "r") as f:
+                L_freq = json.load(f)
+        else:
+            with open(os.path.join(self.datafolder, filename), "r") as f:
+                X = json.load(f)["X"]
+            with open(os.path.join(self.datafolder, "positive_L" + suffix ), "r") as f:
+                L = json.load(f)
+            with open(os.path.join(self.datafolder, "positive_L_freq" + suffix ), "r") as f:
+                L_freq = json.load(f)
+
 
         P = calculate_P(X, L, L_freq)
         return P
@@ -87,21 +104,21 @@ class DataObj:
                 lit_tree = DPu.convert_tree_to_tensors(lit["tree"])
                 self.lits[lit_index] = {"lit_tree": lit_tree, "filename": lf}
 
-        X_mats = glob.glob(self.datafolder + "/X0*.json")
-        X_mats = sorted(X_mats)
-
+        if self.negative:
+            X_mats = glob.glob(self.datafolder + "/negative_X*.json")
+            X_mats = sorted(X_mats)
+        else:
+            print(self.datafolder)
+            X_mats = glob.glob(self.datafolder + "/positive_X*.json")
+            X_mats = sorted(X_mats)
+        print(X_mats)
         
         train_index = int(len(X_mats)*self.train_size)-1
         X_train_filename = os.path.basename(X_mats[train_index])
         X_test_filename = os.path.basename(X_mats[-1])
-        #expect X_train_filename to be X00***.json, then suffix would be 00***.json
-        train_suffix = X_train_filename[1:]
-        log.info("train_suffix:{}".format(train_suffix))
-        test_suffix  = X_test_filename[1:]
-        log.info("test_suffix:{}".format(test_suffix))
 
-        self.train_P = self._build_P(train_suffix)
-        self.test_P = self._build_P(test_suffix)
+        self.train_P = self._build_P(X_train_filename)
+        self.test_P = self._build_P(X_test_filename)
 
 
     def next_batch(self, P_matrix, batch_size, negative_sampling_rate):
@@ -122,20 +139,30 @@ class DataObj:
                     L_a_trees.append(self.lits[i]["lit_tree"])
                     L_b_trees.append(self.lits[j]["lit_tree"])
                     filenames.append((self.lits[i]["filename"], self.lits[j]["filename"]))
-                    labels.append(int(P_matrix[i][j]> self.threshold))
+                    if self.threshold>0:
+                        labels.append(int(P_matrix[i][j]> self.threshold))
+                    else:
+                        labels.append(int(P_matrix[i][j] <= self.threshold))
         else:#if using negative sampling
             pos_samples = []
             neg_samples = []
             for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
                 #at row_i
                 for j in range(len(P_matrix[i])):
-                    if (P_matrix[i][j] > self.threshold):
-                        pos_samples.append((i, j, 1))
+                    if self.threshold>0:
+                        if (P_matrix[i][j] > self.threshold):
+                            pos_samples.append((i, j, 1))
+                        else:
+                            neg_samples.append((i, j, 0))
                     else:
-                        neg_samples.append((i, j, 0))
+                        if (P_matrix[i][j] <= self.threshold):
+                            pos_samples.append((i, j, 1))
+                        else:
+                            neg_samples.append((i, j, 0))
 
-            n_neg_samples = len(pos_samples)*negative_sampling_rate
-            neg_samples = random.sample(neg_samples, n_neg_samples)
+            if self.threshold > 0 and len(pos_samples)>0:
+                n_neg_samples = len(pos_samples)*negative_sampling_rate
+                neg_samples = random.sample(neg_samples, n_neg_samples)
 
             all_samples = pos_samples + neg_samples
             random.shuffle(all_samples)
@@ -145,7 +172,6 @@ class DataObj:
                 L_b_trees.append(self.lits[j]["lit_tree"])
                 filenames.append((self.lits[i]["filename"], self.lits[j]["filename"]))
                 labels.append(int(label))
-
 
         dataset["size"] = len(L_a_trees)
         dataset["L_a_batch"] = batch_tree_input(L_a_trees)
