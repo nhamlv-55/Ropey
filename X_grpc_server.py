@@ -67,20 +67,20 @@ class Lemma_Dp:
             f.write("(ind-gen %s)\n"%(self.lemma))
 
 class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
-    def __init__(self, exp_folder, new_folder, dataset, edb, p_model = None, n_model = None):
+    def __init__(self, server_config):
         print("init server")
-        self.exp_folder = exp_folder
-        self.new_folder = new_folder
-        self.p_model = p_model #positive model
-        self.n_model = n_model #negative model
-        self.dataset = dataset
-        self.edb = edb
-        self.seed_file = ""
-        self.lemmas_q = []
-        self.max_q = 50
+        self.exp_folder = server_config["exp_folder"]
+        self.new_folder = server_config["new_folder"]
+        self.p_model = server_config["p_model"] #positive model
+        self.n_model = server_config["n_model"] #negative model
+        self.dataset = server_config["dataset"]
+        self.edb = server_config["edb"]
+        self.fallback_mode = server_config["fallback_mode"]
         self.last_request = None
         self.m = nn.Softmax(dim = 1)
 
+
+        print("N model:", self.n_model)
         # self.run_test(TEST1)
 
     def SayHello(self, request, context):
@@ -180,7 +180,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         """
         FALLBACK MODE
         """
-        if request == self.last_request or len(kept_lits)==0:
+        if self.fallback_mode or request == self.last_request or len(kept_lits)==0:
             #got the same request again. immediately use the fallback mode
             checking_lits = [to_be_checked_lits[0]]
             to_be_checked_lits = to_be_checked_lits[1:]
@@ -204,7 +204,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         if self.p_model is not None and len(kept_lits)*len(to_be_checked_lits)>0:
             # in positive_pairs, if a pair value is 1, that means it has very high correlation
             L_kept_batch, L_2bchecked_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
-            output = self.p_model(L_kept_batch, L_2bchecked_batch)[0]
+            # calculating whether P(lit_2bechecked| lit_kept) > THRESHOLD
+            output = self.p_model(L_2bchecked_batch, L_kept_batch)[0]
             values, pos_pred = torch.max(self.m(output), 1)
             positive_pairs = pos_pred.tolist()
             print("p_model calculation")
@@ -236,19 +237,20 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         if self.n_model is not None and len(kept_lits)*len(to_be_checked_lits)>0 and len(kept_lits)>N_MODEL_LIM:
             # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
             L_kept_batch, L_2bchecked_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
-            output = self.n_model(L_kept_batch, L_2bchecked_batch)[0]
+            output = self.n_model(L_2bchecked_batch, L_kept_batch)[0]
+            output = self.m(output)
             print("n_model calculation")
             self.dump_model_res(kept_lits, to_be_checked_lits, output)
-            values, neg_pred = torch.max(self.m(output), 1)
+            values, neg_pred = torch.max(output, 1)
             negative_pairs = neg_pred.tolist()
 
             for i in range(len(to_be_checked_lits)):
                 lit_idx = to_be_checked_lits[i]
                 #does the lit at lit_idx has any correlation with any lit in kept_lits? If all correlations are 0, try to drop it
-                any_cor_with_kept_lits = negative_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
-                print("any cor with kept_lits", any_cor_with_kept_lits)
-                if 1 not in any_cor_with_kept_lits:
-                    print("lit {} has 0 correlation with everyone in kept_lits. set it to 0".format(lit_idx))
+                no_cor_with_kept_lits = negative_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
+                print("no cor with kept_lits", no_cor_with_kept_lits)
+                if no_cor_with_kept_lits.count(1)>=N_MODEL_LIM:
+                    print("lit {} has 0 correlation with {} lits in kept_lits. set it to 0".format(lit_idx, no_cor_with_kept_lits.count(1)))
                     mask[lit_idx] = 0
                     checking_lits.append(lit_idx)
                     mask_updated = True
@@ -279,7 +281,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         counter = 0
         for tobechecked_idx in to_be_checked_lits:
             for kept_idx in kept_lits:
-                print("f(l_{},l_{}) = {}".format(kept_idx, tobechecked_idx, output[counter]))
+                print("f(l_{},l_{}) = {}".format(tobechecked_idx, kept_idx, output[counter]))
                 counter+=1
 
 
@@ -306,8 +308,10 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         #L_2bchecked_batch = [l_5, l_5, l_5, l_6, l_6, l_6)
         L_kept_trees = []
         L_2bchecked_trees = []
+        # print("batching...")
         for tobechecked_idx in to_be_checked_lits:
             for kept_idx in kept_lits:
+                # print("kept", kept_idx, "tobechecked", tobechecked_idx)
                 L_kept_trees.append(DPu.convert_tree_to_tensors(lit_jsons[kept_idx]["tree"]))
                 L_2bchecked_trees.append(DPu.convert_tree_to_tensors(lit_jsons[tobechecked_idx]["tree"]))
 
@@ -432,20 +436,22 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         assert(len(lit_jsons)==len(lits))
         return lit_jsons, lits
 
-def serve(exp_folder, new_folder, dataset, edb, p_model, n_model):
+def serve(server_config, port):
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    indgen_conn_pb2_grpc.add_GreeterServicer_to_server(Greeter(exp_folder, new_folder, dataset, edb, p_model, n_model), server)
-    server.add_insecure_port('[::]:50051')
+    indgen_conn_pb2_grpc.add_GreeterServicer_to_server(Greeter(server_config), server)
+    server.add_insecure_port('[::]:{}'.format(port))
     server.start()
     server.wait_for_termination()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-input', help='path to the smt2 files generated by running z3')
-    parser.add_argument('-seed-smtfile', help='path to the seed pool_solver indgen smt2 query file')
-    parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
-    parser.add_argument('--p-model-path', help='path to the .pt file of the positive model')
-    parser.add_argument('--n-model-path', help='path to the .pt file of the negative model')
+    parser.add_argument('-I', '--input', help='path to the smt2 files generated by running z3')
+    parser.add_argument('-S', '--seed-smtfile', help='path to the seed pool_solver indgen smt2 query file')
+    parser.add_argument("-L", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
+    parser.add_argument('-P', '--p-model-path', help='path to the .pt file of the positive model')
+    parser.add_argument('-N', '--n-model-path', help='path to the .pt file of the negative model')
+    parser.add_argument('-p', '--port', default='50051', help='port to serve the grpc server')
+    parser.add_argument('-F', '--fallback-mode', action='store_true', help='whether to run in fallback mode')
     args = parser.parse_args()
 
     exp_folder = args.input
@@ -454,10 +460,12 @@ if __name__ == '__main__':
     #need the dataset object to parse the received lemma
     dataset = DPu.Dataset(folder = os.path.dirname(args.input) )
     #use the vocab of the dataset
-    dataset.vocab.load(os.path.join( os.path.dirname(args.input),"vocab.json"))
+    if args.fallback_mode == False:
+        dataset.vocab.load(os.path.join( os.path.dirname(args.input),"vocab.json"))
     #check
     print("My vocab:")
     dataset.vocab.dump()
+    port = args.port
     if args.p_model_path is not None:
         p_model = setup_model(args.p_model_path)
     else:
@@ -468,4 +476,14 @@ if __name__ == '__main__':
         n_model = None
     edb = ExprDb(seed_smtfile)
     # logging.basicConfig()
-    serve(exp_folder, new_folder, dataset, edb, p_model, n_model)
+    server_config={
+        "exp_folder": exp_folder,
+        "new_folder": new_folder,
+        "p_model": p_model, #positive model
+        "n_model": n_model, #negative model
+        "dataset": dataset,
+        "edb": edb,
+        "fallback_mode": args.fallback_mode
+    }
+    print(server_config)
+    serve(server_config, port)
