@@ -25,10 +25,11 @@ class DataObj:
         self.datafolder = datafolder
 
         self.all_dps = []
-        self._size = 0
-        self._max_size = max_size
-        self._total_dps = 10000
-        self.lits = []
+        self.size = 0
+        self.max_size = max_size
+        self.total_dps = 10000
+        self.id2lits_json = {}
+        self.lits_str2id = {}
         self.vocab = {}
         self.train_dps = []
         self.test_dps = []
@@ -47,8 +48,8 @@ class DataObj:
 
     def metadata(self):
         return {"datafolder": self.datafolder,
-                "size": self._size,
-                "max_size": self._max_size,
+                "size": self.size,
+                "max_size": self.max_size,
                 "train_size": self.train_size,
                 "vocab_size": self.vocab['size'],
                 "sort_size": self.vocab['sort_size'],
@@ -61,7 +62,7 @@ class DataObj:
         with open(vocab_file, "r") as f:
             self.vocab = json.load(f)
 
-    def _build_P(self, filename):
+    def build_P(self, filename):
         """
         expect file name to be positive_X_00001.json or negative_X_00001.json
         """
@@ -71,45 +72,72 @@ class DataObj:
         if self.negative:
             with open(os.path.join(self.datafolder, filename), "r") as f:
                 X = json.load(f)["X"]
-            with open(os.path.join(self.datafolder, "negative_L" + suffix ), "r") as f:
+            with open(os.path.join(self.datafolder, "negative_lits_map" + suffix ), "r") as f:
                 L = json.load(f)
-            with open(os.path.join(self.datafolder, "negative_L_freq" + suffix ), "r") as f:
-                L_freq = json.load(f)
+            with open(os.path.join(self.datafolder, "negative_lits_map" + suffix ), "r") as f:
+                L = json.load(f)
+            with open(os.path.join(self.datafolder, "P_negative_X_matrix_" + suffix ), "r") as f:
+                P = json.load(f)["X"]
+
         else:
             with open(os.path.join(self.datafolder, filename), "r") as f:
                 X = json.load(f)["X"]
-            with open(os.path.join(self.datafolder, "positive_L" + suffix ), "r") as f:
+            with open(os.path.join(self.datafolder, "positive_lits_map" + suffix ), "r") as f:
                 L = json.load(f)
-            with open(os.path.join(self.datafolder, "positive_L_freq" + suffix ), "r") as f:
+            with open(os.path.join(self.datafolder, "positive_lits_count" + suffix ), "r") as f:
                 L_freq = json.load(f)
 
-
-        P = calculate_P(X, L, L_freq)
+            P = calculate_P(X, L, L_freq)
         return P
 
+    def get_lit_id(self, lit_str):
+        if lit_str in self.lits_str2id:
+            return self.lits_str2id[lit_str]
+        else:
+            return -1
+
+    def query_train_p(self, lit_str_a, lit_str_b):
+        lit_id_a = self.get_lit_id(lit_str_a)
+        lit_id_b = self.get_lit_id(lit_str_b)
+
+        if lit_id_a != -1 and lit_id_b != -1:
+            return self.train_P[lit_id_a][lit_id_b]
 
     def build_dataset(self):
         self.datafolder = os.path.join(self.datafolder, "")
-        self.lit_files = glob.glob(self.datafolder+"/lit_*.json")
+        if self.negative:
+            self.lit_files = glob.glob(self.datafolder+"/negative_lit_*.json")
+        else:
+            self.lit_files = glob.glob(self.datafolder+"/positive_lit_*.json")
         self.lit_files = sorted(self.lit_files)
-        self._size = len(self.lit_files)
-        self.lits = {}
+        self.size = len(self.lit_files)
         #pre convert all lit tree to tensors
         for lf in self.lit_files:
             with open(lf, "r") as f:
                 lit = json.load(f)
                 # print(lit)
                 lit_index = lit["index"]
-                assert(lit_index not in self.lits)
+                assert(lit_index not in self.id2lits_json)
                 lit_tree = DPu.convert_tree_to_tensors(lit["tree"])
-                self.lits[lit_index] = {"lit_tree": lit_tree, "filename": lf}
+                self.id2lits_json[lit_index] = {"lit_tree": lit_tree, "filename": lf}
+
+        #load lits_map
+        if self.negative:
+            lits_maps = glob.glob(self.datafolder + "/negative_lits_map*.json")
+        else:
+            lits_maps = glob.glob(self.datafolder + "/positive_lits_map*.json")
+
+        lits_maps = sorted(lits_maps)
+        lits_map_file = lits_maps[-1]
+        with open(lits_map_file, "r") as f:
+            self.lits_str2id = json.load(f)
 
         if self.negative:
-            X_mats = glob.glob(self.datafolder + "/negative_X*.json")
+            X_mats = glob.glob(self.datafolder + "/negative_X_*.json")
             X_mats = sorted(X_mats)
         else:
             print(self.datafolder)
-            X_mats = glob.glob(self.datafolder + "/positive_X*.json")
+            X_mats = glob.glob(self.datafolder + "/positive_X_*.json")
             X_mats = sorted(X_mats)
         print(X_mats)
         
@@ -117,8 +145,8 @@ class DataObj:
         X_train_filename = os.path.basename(X_mats[train_index])
         X_test_filename = os.path.basename(X_mats[-1])
 
-        self.train_P = self._build_P(X_train_filename)
-        self.test_P = self._build_P(X_test_filename)
+        self.train_P = self.build_P(X_train_filename)
+        self.test_P = self.build_P(X_test_filename)
 
 
     def next_batch(self, P_matrix, batch_size, negative_sampling_rate):
@@ -135,10 +163,10 @@ class DataObj:
             for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
                 #at row_i
                 for j in range(len(P_matrix[i])):
-                    # print(self.lits[i])
-                    L_a_trees.append(self.lits[i]["lit_tree"])
-                    L_b_trees.append(self.lits[j]["lit_tree"])
-                    filenames.append((self.lits[i]["filename"], self.lits[j]["filename"]))
+                    # print(self.id2lits_json[i])
+                    L_a_trees.append(self.id2lits_json[i]["lit_tree"])
+                    L_b_trees.append(self.id2lits_json[j]["lit_tree"])
+                    filenames.append((self.id2lits_json[i]["filename"], self.id2lits_json[j]["filename"]))
                     if self.threshold>0:
                         labels.append(int(P_matrix[i][j]> self.threshold))
                     else:
@@ -168,9 +196,9 @@ class DataObj:
             random.shuffle(all_samples)
             log.debug("Use negative sampling. Number of datapoints for this batch:{}".format(len(all_samples)))
             for (i,j,label) in all_samples:
-                L_a_trees.append(self.lits[i]["lit_tree"])
-                L_b_trees.append(self.lits[j]["lit_tree"])
-                filenames.append((self.lits[i]["filename"], self.lits[j]["filename"]))
+                L_a_trees.append(self.id2lits_json[i]["lit_tree"])
+                L_b_trees.append(self.id2lits_json[j]["lit_tree"])
+                filenames.append((self.id2lits_json[i]["filename"], self.id2lits_json[j]["filename"]))
                 labels.append(int(label))
 
         dataset["size"] = len(L_a_trees)
@@ -183,10 +211,6 @@ class DataObj:
             last_batch = True
             self.data_pointer = 0
         return dataset, last_batch
-
-
-    def size(self):
-        return self._size
 
 
 #test batching

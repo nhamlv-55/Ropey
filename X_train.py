@@ -133,7 +133,7 @@ if __name__ == '__main__':
     dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 1, threshold = threshold, negative=args.train_negative_model)
     vocab = dataObj.vocab
     device = torch.device('cuda')
-    print("DATASET SIZE:", dataObj.size())
+    print("DATASET SIZE:", dataObj.size)
     print("NEGATIVE SAMPLING RATE:", negative_sampling_rate)
     # print("TRAIN SIZE:", dataObj.train["size"])
     # print("TEST SIZE:", dataObj.test["size"])
