@@ -24,12 +24,14 @@ service Greeter {
     // Sends a lemma to python server
     rpc SendLemma(Lemma) returns (Ack) {}
 
+    rpc QueryMask(Query) returns (FullAnswer) {}
 }
 
 
 // The request message containing lemma
 message Lemma {
-    string lemma = 1;
+    string lemma_before = 1;
+    string lemma_after = 2;
 }
 
 
@@ -37,13 +39,37 @@ message Lemma {
 message HelloRequest {
     string name = 1;
 }
-
+message Query {
+    string lemma = 1;
+    repeated int32 kept_lits = 2;
+    int32 lemma_size = 3;
+    repeated int32 to_be_checked_lits = 4;
+    bool last_ans_success = 5;
+}
 // The response message containing the greetings
 message HelloReply {
     string message = 1;
 }
 
 // The response message from the server
+message Answer {
+    //ack_message = True -> the server is still accepting more datapoints
+    //ack_message = False -> the server doesnt accept more datapoints
+    repeated int32 answer = 1;
+}
+// The response message from the server
+message FullAnswer {
+    //ack_message = True -> the server is still accepting more datapoints
+    //ack_message = False -> the server doesnt accept more datapoints
+    bool dirty = 1;
+    repeated int32 mask = 2;
+    repeated int32 new_kept_lits = 3;
+    repeated int32 new_to_be_checked_lits = 4;
+    repeated int32 checking_lits = 5;
+}
+// The response message from the server
 message Ack {
-    string ack_message = 1;
+    //ack_message = True -> the server is still accepting more datapoints
+    //ack_message = False -> the server doesnt accept more datapoints
+    bool ack_message = 1;
 }

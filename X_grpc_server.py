@@ -73,9 +73,11 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.new_folder = server_config["new_folder"]
         self.p_model = server_config["p_model"] #positive model
         self.n_model = server_config["n_model"] #negative model
-        self.dataset = server_config["dataset"]
+        self.n_dataset = server_config["n_dataset"]
+        self.p_dataset = server_config["p_dataset"]
         self.seed_path = server_config["seed_path"]
         self.seed_file = self.get_seed_file()
+        self.edb = ExprDb(self.seed_file)
         self.fallback_mode = server_config["fallback_mode"]
         self.last_request = None
         self.m = nn.Softmax(dim = 1)
@@ -186,6 +188,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         mask_updated = False
         # are kept_lits and to_be_checked_lits updated?
         lists_updated = False
+        print("Last ans success:", request.last_ans_success)
         print("Receive lemma:", lemma)
         print("kept_lits", kept_lits)
         print("to_be_checked_lits", to_be_checked_lits)
@@ -200,18 +203,19 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         if self.seed_file is None:
             self.seed_file = self.get_seed_file()
 
-
         if self.fallback_mode or request == self.last_request or len(kept_lits)==0 or self.seed_file is None:
             return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
         #update cache
         self.last_request = request
         """
         USING ML MODEL MODE
+        Q: Should we run P first or N first?
+
         """
         #update kept_lits and to_be_checked_lits
         if self.p_model is not None and len(kept_lits)*len(to_be_checked_lits)>0:
             # in positive_pairs, if a pair value is 1, that means it has very high correlation
-            L_kept_batch, L_2bchecked_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(self.p_dataset, lemma, kept_lits, to_be_checked_lits)
             # calculating whether P(lit_2bechecked| lit_kept) > THRESHOLD
             output = self.p_model(L_2bchecked_batch, L_kept_batch)[0]
             values, pos_pred = torch.max(self.m(output), 1)
@@ -227,14 +231,14 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                 high_cor_with_kept_lits = positive_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
                 print("lit_{} has high cor with kept_lits".format(lit_idx), high_cor_with_kept_lits)
                 if 1 in high_cor_with_kept_lits:
-                    print("p model found a high cor pair. immediately move the lit to kept_lits")
+                    print("p model found a high cor pair. immediately move the lit {} to kept_lits".format(lit_idx))
                     new_kept_lits.append(lit_idx)
                     new_to_be_checked_lits.remove(lit_idx)
                     lists_updated = True
             kept_lits = new_kept_lits
             to_be_checked_lits = new_to_be_checked_lits
 
-        #MAP after running the P model
+        #Mask after running the P model
         for i in kept_lits:
             mask[i] = 1
         for i in to_be_checked_lits:
@@ -242,9 +246,22 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         
 
         # update mask using negative_pairs
+        """
+        #collect anti-occurance
+        for ori_lit_idx in range(len(ori_cube)):
+            L_ori_tree_str = L_ori_trees_str[ori_lit_idx]
+            ori_lit_global_idx = self.negative_lit[L_ori_tree_str]
+            if L_ori_tree_str not in L_inducted_trees_str:
+                #mark all pair into the negative_X matrix
+                for inducted_lit_idx in range(len(inducted_cube)):
+                    L_inducted_tree_str = L_inducted_trees_str[inducted_lit_idx]
+                    inducted_lit_global_idx = self.negative_lit[L_inducted_tree_str]
+
+                    self.negative_X[(ori_lit_global_idx, inducted_lit_global_idx)]+=1
+        """
         if self.n_model is not None and len(kept_lits)*len(to_be_checked_lits)>0 and len(kept_lits)>N_MODEL_LIM:
             # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
-            L_kept_batch, L_2bchecked_batch, lemma_size = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(self.n_dataset, lemma, kept_lits, to_be_checked_lits)
             output = self.n_model(L_2bchecked_batch, L_kept_batch)[0]
             output = self.m(output)
             print("n_model calculation")
@@ -254,11 +271,11 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
             for i in range(len(to_be_checked_lits)):
                 lit_idx = to_be_checked_lits[i]
-                #does the lit at lit_idx has any correlation with any lit in kept_lits? If all correlations are 0, try to drop it
+                #does the lit at lit_idx has anti-correlation with any lit in kept_lits? 
                 no_cor_with_kept_lits = negative_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
                 print("no cor with kept_lits", no_cor_with_kept_lits)
                 if no_cor_with_kept_lits.count(1)>=N_MODEL_LIM:
-                    print("lit {} has 0 correlation with {} lits in kept_lits. set it to 0".format(lit_idx, no_cor_with_kept_lits.count(1)))
+                    print("lit at id {} has 0 correlation with {} lits in kept_lits. set it to 0".format(lit_idx, no_cor_with_kept_lits.count(1)))
                     mask[lit_idx] = 0
                     checking_lits.append(lit_idx)
                     mask_updated = True
@@ -294,8 +311,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
 
 
-    def parse_and_batch_input(self, lemma, kept_lits, to_be_checked_lits):
-        lit_jsons, lits = self.parse_lemma(lemma)
+    def parse_and_batch_input(self, dataset, lemma, kept_lits, to_be_checked_lits):
+        lit_jsons, lits = self.parse_lemma(dataset, lemma)
         print("no of lits:", len(lit_jsons))
 
         """
@@ -327,9 +344,9 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
             L_kept_batch = batch_tree_input(L_kept_trees)
             L_2bechecked_batch = batch_tree_input(L_2bchecked_trees)
 
-            return L_kept_batch, L_2bechecked_batch, len(lits)
+            return L_kept_batch, L_2bechecked_batch, len(lits), lits
         else:
-            return None, None, len(lits)
+            return None, None, len(lits), None
 
 
 
@@ -350,7 +367,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
             return None
         seed_files = sorted(seed_files)
         print(seed_files)
-        seed_file = os.path.basename(seed_files[0])
+        seed_file = seed_files[0]
         return seed_file
 
     def dump_lemmas(self):
@@ -419,7 +436,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         return (lemma_before, lemma_after)
 
 
-    def parse_lemma(self, lemma):
+    def parse_lemma(self, dataset, lemma):
         """
         Given a lemma in a str format, parse it into:
         - a list of literals in SMT2 format, and
@@ -439,7 +456,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         lits = [self.edb.converter.convert(v) for v in cmd.args.args()]
         # Use the dataset object to parse it to JSON.
         try:
-            lit_jsons = self.dataset.parse_cube_to_lit_jsons(lits)
+            lit_jsons = dataset.parse_cube_to_lit_jsons(lits)
             json.dumps(lit_jsons, indent = 2)
         except Exception as e:
             print(lemma)
@@ -483,13 +500,15 @@ if __name__ == '__main__':
         new_folder = "ind_gen_files"
         seed_path = args.seed_path
         #need the dataset object to parse the received lemma
-        dataset = DPu.Dataset(folder = os.path.dirname(args.input) )
+        n_dataset = DPu.Dataset(folder = os.path.dirname(args.input))
+        p_dataset = DPu.Dataset(folder = os.path.dirname(args.input))
         #use the vocab of the dataset
-        if args.fallback_mode == False:
-            dataset.vocab.load(os.path.join( os.path.dirname(args.input),"vocab.json"))
-        #check
-        print("My vocab:")
-        dataset.vocab.dump()
+        n_dataset.vocab.load(os.path.join(args.input,"vocab.json"))
+        p_dataset.vocab.load(os.path.join(args.input,"vocab.json"))
+        print("N vocab:")
+        n_dataset.vocab.dump()
+        print("P vocab:")
+        p_dataset.vocab.dump()
         port = args.port
         if args.p_model_path is not None:
             p_model = setup_model(args.p_model_path)
@@ -504,7 +523,8 @@ if __name__ == '__main__':
             "new_folder": new_folder,
             "p_model": p_model, #positive model
             "n_model": n_model, #negative model
-            "dataset": dataset,
+            "n_dataset": n_dataset,
+            "p_dataset": p_dataset,
             "seed_path": seed_path,
             "fallback_mode": args.fallback_mode
         }
