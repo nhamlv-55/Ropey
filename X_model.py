@@ -8,7 +8,7 @@ class Model(torch.nn.Module):
     '''
     This model use h_c as a feature in h_a and h_b.
     '''
-    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, const_emb_dim = 0, tree_dim = 10, use_const_emb = True, use_dot_product = True, device = torch.device('cuda')):
+    def __init__(self, vocab_size, sort_vocab_size, emb_dim = 10, const_emb_dim = 0, tree_dim = 10, use_const_emb = True, use_dot_product = True, dropout_rate = 0.5, device = torch.device('cuda')):
         super().__init__()
         print("VOCAB SIZE:", vocab_size)
         print("SORT SIZE", sort_vocab_size)
@@ -19,9 +19,10 @@ class Model(torch.nn.Module):
         self._tree_dim = tree_dim
         self._use_const_emb = use_const_emb
         self._use_dot_product = use_dot_product
+        self._dropout_rate = dropout_rate
         self.emb = nn.Embedding(vocab_size*2, emb_dim ).to(self.device) #*2 to handle out of vocab cases
         self.sort_emb = nn.Embedding(sort_vocab_size*2, emb_dim ).to(self.device)
-
+        self.dropout = nn.Dropout(p=self._dropout_rate)
         #calculate the input size of tree_lstm based on flags
         self.treelstm_input_size = emb_dim * 2
         if self._use_const_emb:
@@ -42,6 +43,7 @@ class Model(torch.nn.Module):
                 "tree_dim": self._tree_dim,
                 "use_const_emb": self._use_const_emb,
                 "use_dot_product": self._use_dot_product,
+                "dropout_rate": self._dropout_rate,
                 "model": "new_model"
         }
 
@@ -65,9 +67,9 @@ class Model(torch.nn.Module):
         h = torch.cat((h_a, h_b), dim = -1)
         if self._use_dot_product:
             h = torch.cat((h, dotp), dim = -1)
-        logits = self.fc2(F.relu(self.fc1(h)))
+        logits = self.fc2(self.dropout(F.relu(self.fc1(h))))
         if self.training:
-            return logits.view(batch_size, -1)
+            return logits.view(batch_size, -1), None
         else:
             return logits.view(batch_size, -1), {
                 "h_a_raw": h_a_raw,
