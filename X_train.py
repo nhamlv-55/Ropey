@@ -3,92 +3,24 @@ import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
 import z3
 from Doping.pytorchtreelstm.treelstm import TreeLSTM, calculate_evaluation_orders
-import Doping.utils.utils as Du
 from Doping.utils.X_Dataset import DataObj
 from Doping.settings import MODEL_PATH, new_model_path
 from X_model import Model
 import json
 import os
-from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 from termcolor import colored
 import argparse
 import random
 import logging
 
+import Doping.utils.utils as Du
+
+from Doping.X_eval import evaluate
 #TRAIN_BSZ could be much bigger than TEST_BSZ because we use negative sampling in training
 TRAIN_BSZ = 200
 TEST_BSZ = 70
 
 
-def evaluate(model, testset, examples_idx = None, writer = None, n = None ):
-    last_batch = False
-
-    all_true_labels = []
-    all_preds  = []
-    all_values = []
-
-    results = {"acc": -1,
-               "pre": -1,
-               "rec": -1,
-               "f1": -1}
-
-    while not last_batch:
-        test, last_batch = dataObj.next_batch(testset, TEST_BSZ, -1) #set negative_sampling_rate to -1 in evaluation
-        output = model(
-            test["L_a_batch"],
-            test["L_b_batch"]
-        )
-        true_label = test["label_batch"].cpu()
-        m = nn.Softmax(dim = 1)
-
-        values, pred = torch.max(m(output), 1)
-
-        all_true_labels.extend(true_label.tolist())
-        all_preds.extend(pred.tolist())
-        all_values.extend(values.tolist())
-
-    acc = accuracy_score(all_true_labels, all_preds)
-    f1 = f1_score(all_true_labels, all_preds)
-    pre = precision_score(all_true_labels, all_preds)
-    recall = recall_score(all_true_labels, all_preds)
-
-    results["acc"] = acc
-    results["f1"] = f1
-    results["pre"] = pre
-    results["rec"] = recall
-
-    print(confusion_matrix(all_true_labels, all_preds)) 
-    print("accurarcy", acc)
-    print("f1", f1)
-    print("precision", pre)
-    print("recall", recall)
-    true_label = true_label.tolist()
-    values = values.tolist()
-    pred = pred.tolist()
-    if examples_idx is not None:
-        #grab the random 20 examples
-        examples_dps = [testset[i] for i in examples_idx]
-        test, last_batch = dataObj.next_batch(examples_dps, -1, -1)
-        output = model(
-            test["C_batch"],
-            test["L_a_batch"],
-            test["L_b_batch"]
-        )
-        true_label = test["label_batch"].cpu()
-        m = nn.Softmax(dim = 1)
-
-        values, pred = torch.max(m(output), 1)
-
-        true_label = true_label.tolist()
-        pred = pred.tolist()
-        values = values.tolist()
-
-        for idx in range(len(examples_dps)):
-            example = examples_dps[idx]
-            display_text = Du.display_example(example, true_label[idx], pred[idx], values[idx])
-            
-            writer.add_text('example', display_text, n)
-    return results
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-input', help='path to the ind_gen_files folder')
@@ -107,6 +39,7 @@ if __name__ == '__main__':
     parser.add_argument('--eval_epoch', type = int, default = 10)
     parser.add_argument('--save_epoch', type = int, default = 100)
     parser.add_argument('-th','--threshold', type = float, default = 0.75, help="Cap all entries in the matrix that greater than the threshold to be 1, 0 otherwise")
+    parser.add_argument('-dr','--dropout_rate', type = float, default = 0.5, help="Dropout rate")
     parser.add_argument('-p','--prefix', default = "model", help="Prefix for the model name. Default is just `model`")
     args = parser.parse_args()
 
@@ -123,11 +56,11 @@ if __name__ == '__main__':
     threshold = args.threshold
     negative_sampling_rate = args.negative_sampling_rate
     prefix = args.prefix
-
+    dropout_rate = args.dropout_rate
     TRAIN_BSZ = args.train_batch_size
     TEST_BSZ  = args.test_batch_size
 
-    exp_name = Du.get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold)
+    exp_name = Du.get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold, dropout_rate)
     SWRITER = SummaryWriter(comment = exp_name)
     #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
     dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 1, threshold = threshold, negative=args.train_negative_model)
@@ -144,6 +77,7 @@ if __name__ == '__main__':
                   tree_dim = 100,
                   use_const_emb = use_const_emb,
                   use_dot_product = use_dot_product,
+                  dropout_rate = dropout_rate,
                   device = device).train()
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(model.parameters())
@@ -164,7 +98,7 @@ if __name__ == '__main__':
             output = model(
                 train["L_a_batch"],
                 train["L_b_batch"]
-            )
+            )[0]
             loss = loss_function(output, train["label_batch"].to(device))
             total_loss += loss
 
@@ -175,7 +109,7 @@ if __name__ == '__main__':
 
         if n%eval_epoch==0:
             # print(output.shape)
-            train_res = evaluate(model, dataObj.train_P)
+            train_res = evaluate(model, dataObj, dataObj.train_P, TEST_BSZ)
             # print("example_ids:", examples_idx)
             # test_res = evaluate(model, dataObj.test_P)
             SWRITER.add_scalar('Loss/train', total_loss, n)
