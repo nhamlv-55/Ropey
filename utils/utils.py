@@ -5,8 +5,9 @@ from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
 # from Doping.PySpacerSolver.utils import *
 import os
 import numpy as np
+import glob
 
-def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold):
+def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold, dropout_rate):
     '''
     construct a meaningful exp_name for the Tensorboard
     '''
@@ -29,6 +30,8 @@ def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product,
     exp_name.append(str(negative_sampling_rate))
     exp_name.append("Th")
     exp_name.append(str(threshold))
+    exp_name.append("Dr")
+    exp_name.append(str(dropout_rate))
     if shuffle:
         exp_name.append("S")
 
@@ -44,6 +47,16 @@ def json_to_markdown(data):
         result += "\n"
 
     return result
+
+def get_seed_file(seed_path):
+    print("\t\tIn get seed file")
+    seed_files = glob.glob(seed_path+"/pool_solver*.smt2")
+    if(len(seed_files)==0):
+        return None
+    seed_files = sorted(seed_files)
+    print(seed_files)
+    seed_file = seed_files[0]
+    return seed_file
 
 
 def display_example(filename, true_label, pred_label, value):
