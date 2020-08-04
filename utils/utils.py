@@ -20,7 +20,7 @@ def get_exp_name(configs):
     #"PySpacerSolver/MEDIA/backward_encoded_split_on_relu.smt2_250220_13_04_22/ind_gen_files/"
     # exp_name.append(exp_folder.split("/")[-3])
     for k in configs:
-        if k=="input_folders":
+        if k in ["input_folders", "checkpoint"]: #do not put those parameters to the model name
             continue
         else:
             exp_name.append(configs[k][2])
@@ -109,7 +109,9 @@ def visualize_X(filename, key):
         ax.grid(color='w', linestyle='-', linewidth=1)
         plt.show()
 
-def parser_from_template(config_template):
+def parser_from_template(json_config_template = "/home/nv3le/workspace/Doping/exp_config_template.json"):
+    with open(json_config_template, "r") as f:
+        config_template = json.load(f)
     parser = argparse.ArgumentParser()
     for key in config_template:
         if key=="input_folders":
@@ -133,4 +135,3 @@ def parser_from_template(config_template):
 
     parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
     return parser
-

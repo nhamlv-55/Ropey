@@ -14,14 +14,10 @@ import random
 import logging
 
 import Doping.utils.utils as Du
-
 from Doping.X_eval import evaluate
 
-with open("exp_config_template.json", "r") as f:
-    config_template = json.load(f)
-
 if __name__ == '__main__':
-    parser = Du.parser_from_template(config_template)
+    parser = Du.parser_from_template()
     args = parser.parse_args()
 
     #load the config file
@@ -64,10 +60,16 @@ if __name__ == '__main__':
                   use_dot_product = configs["use_dot_product"][0],
                   dropout_rate = configs["dropout_rate"][0],
                   device = device).train()
+
+    if configs["checkpoint"][0]!="":
+        print("Training start from this checkpoint:\n{}".format(configs["checkpoint"][0]))
+        checkpoint = torch.load(configs["checkpoint"][0])
+        model.load_state_dict(checkpoint["model_state_dict"])
+
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(model.parameters())
 
-    metadata = {"dataset": dataObj.metadata(), "model": model.metadata(), "input_folders": configs["input_folders"]}
+    metadata = {"dataset": dataObj.metadata(), "model": model.metadata(), "configs": configs}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
     # examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
     for n in range(configs["epoch"][0]):
