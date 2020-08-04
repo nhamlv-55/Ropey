@@ -18,6 +18,7 @@ from Doping.X_eval import evaluate
 
 if __name__ == '__main__':
     parser = Du.parser_from_template()
+    parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
     args = parser.parse_args()
 
     #load the config file
@@ -118,5 +119,6 @@ if __name__ == '__main__':
                 'optimizer_state_dict': optimizer.state_dict(),
                 'loss': loss,
                 'dataset': dataObj.metadata(),
-                'metadata': model.metadata()
+                'metadata': model.metadata(),
+                'configs': configs
             }, model_path)

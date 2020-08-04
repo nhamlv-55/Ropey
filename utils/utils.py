@@ -133,5 +133,4 @@ def parser_from_template(json_config_template = "/home/nv3le/workspace/Doping/ex
                                 type = arg_type,
                                 help = help_text)
 
-    parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
     return parser

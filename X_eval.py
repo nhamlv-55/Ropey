@@ -3,7 +3,7 @@ import torch.nn as nn
 from X_model import Model
 from Doping.utils.X_Dataset import DataObj
 import argparse
-
+import json
 import Doping.utils.utils as Du
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
 
@@ -20,11 +20,16 @@ def setup_model(model_path):
                   tree_dim = 100,
                   use_const_emb = model_metadata['use_const_emb'],
                   use_dot_product = model_metadata['use_dot_product'],
-                  device = torch.device('cpu')).eval()
+                  device = torch.device('cuda')).eval()
 
     model.load_state_dict(checkpoint["model_state_dict"])
 
     return model
+
+def load_configs_from_model(model_path):
+    checkpoint = torch.load(model_path)
+    configs = checkpoint['configs']
+    return configs
 
 def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = None, n = None ):
     #switch to eval mode
@@ -103,44 +108,20 @@ def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = No
     return results
 
 if __name__=="__main__":
-    torch.no_grad()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', help='path to the .pt file')
-    parser.add_argument('-input', help='path to the ind_gen_files folder')
-    parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
-    parser.add_argument('-v', '--vis', action='store_true')
-    parser.add_argument('-C', '--use_c', action='store_true')
-    parser.add_argument('-D', '--use_dot_product', action='store_true')
-    parser.add_argument('-E', '--use_const_emb', action='store_true')
-    parser.add_argument('-M', '--max_size', type = int, default = -1)
-    parser.add_argument('--train_batch_size', type = int, default = 200)
-    parser.add_argument('--test_batch_size', type = int, default = 70)
-    parser.add_argument('-Nr', '--negative_sampling_rate', type = int, default = -1, help="controlling how many negative samples are used per 1 positive sample")
-    parser.add_argument('-S', '--shuffle', action='store_true')
-    parser.add_argument('--train_negative_model', action='store_true')
-    parser.add_argument('-N', '--epoch', type = int, default = 100)
-    parser.add_argument('--eval_epoch', type = int, default = 10)
-    parser.add_argument('--save_epoch', type = int, default = 100)
-    parser.add_argument('-th','--threshold', type = float, default = 0.75, help="Cap all entries in the matrix that greater than the threshold to be 1, 0 otherwise")
-    parser.add_argument('-p','--prefix', default = "model", help="Prefix for the model name. Default is just `model`")
+    parser = Du.parser_from_template()
+    parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder")
+    parser.add_argument("--model_path", help = "path to the .pt file")
     args = parser.parse_args()
-
-    exp_folder = args.input
-    vis = args.vis
-    use_c = args.use_c
-    use_const_emb = args.use_const_emb
-    use_dot_product = args.use_dot_product
-    max_size = args.max_size
-    shuffle = args.shuffle
-    n_epoch = args.epoch
-    eval_epoch = args.eval_epoch
-    save_epoch = args.save_epoch
-    threshold = args.threshold
-    negative_sampling_rate = args.negative_sampling_rate
-    prefix = args.prefix
 
 
     model_path = args.model_path
     model = setup_model(model_path)
-    dataObj = DataObj(exp_folder, max_size = max_size, shuffle = shuffle, train_size = 1, threshold = threshold, negative=args.train_negative_model)
-    evaluate(model, dataObj, dataObj.train_P, args.test_batch_size)
+    configs = load_configs_from_model(model_path)
+    dataObj = DataObj(args.test_folder,
+                      max_size = configs["max_size"][0],
+                      shuffle = configs["shuffle"][0],
+                      train_size = 1,
+                      threshold = configs["threshold"][0],
+                      negative=configs["train_negative_model"][0])
+
+    evaluate(model, dataObj, dataObj.train_P, configs["test_batch_size"][0])
