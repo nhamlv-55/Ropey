@@ -1,0 +1,22 @@
+{
+    "input_folders":[
+        "grpc_test_runs/chc0002/ind_gen_files/",
+        "grpc_test_runs/chc0002/variant2/ind_gen_files/"
+    ],
+    "use_c": [false,"", "C"],
+    "use_dot_product": [true,"", "D"],
+    "use_const_emb": [true,"", "E"],
+    "max_size": [-1,"","M"],
+    "train_batch_size": [70,"","TrBSz"],
+    "test_batch_size": [70,"","TeBSz"],
+    "negative_sampling_rate": [5,"","Nr"],
+    "shuffle": [true,"","s"],
+    "train_negative_model": [true,"","TrNeg"],
+    "epoch": [3000,"","N"],
+    "eval_epoch": [100,"","eN"],
+    "save_epoch": [100,"","sN"],
+    "threshold": [0.8,"","Th"],
+    "dropout_rate": [0.5,"","Dr"],
+    "prefix": ["model","","P"],
+    "checkpoint": ["", "", "Ckp"]
+}
