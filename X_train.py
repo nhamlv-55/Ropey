@@ -39,7 +39,7 @@ if __name__ == '__main__':
     exp_name = Du.get_exp_name(configs)
     SWRITER = SummaryWriter(comment = exp_name)
     #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
-    print("Configs:\n", configs)
+    print("Configs:\n", json.dumps(configs, indent=2))
     dataObjs = []
     vocabs = []
     for exp_folder in configs["input_folders"]:
@@ -67,14 +67,13 @@ if __name__ == '__main__':
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(model.parameters())
 
-    metadata = {"dataset": dataObj.metadata(), "model": model.metadata()}
+    metadata = {"dataset": dataObj.metadata(), "model": model.metadata(), "input_folders": configs["input_folders"]}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
     # examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
     for n in range(configs["epoch"][0]):
-        last_batch = False
-        total_loss = 0
-
         for dataObj in dataObjs:
+            last_batch = False
+            total_loss = 0
             while not last_batch:
                 optimizer.zero_grad()
                 loss = 0
