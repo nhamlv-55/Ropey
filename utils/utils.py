@@ -6,34 +6,25 @@ from Doping.pytorchtreelstm.treelstm import calculate_evaluation_orders
 import os
 import numpy as np
 import glob
+import argparse
 
-def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold, dropout_rate):
+import matplotlib.pyplot as plt
+
+# def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold, dropout_rate):
+def get_exp_name(configs):
     '''
     construct a meaningful exp_name for the Tensorboard
     '''
     exp_name = []
     #exp_folder is in the form
     #"PySpacerSolver/MEDIA/backward_encoded_split_on_relu.smt2_250220_13_04_22/ind_gen_files/"
-    exp_name.append(exp_folder.split("/")[-3])
-    exp_name.append(prefix+"_")
-    if vis:
-        exp_name.append("V")
-    if use_c:
-        exp_name.append("C")
-    if use_const_emb:
-        exp_name.append("E")
-    if use_dot_product:
-        exp_name.append("D")
-    exp_name.append("M")
-    exp_name.append(str(max_size))
-    exp_name.append("Nr")
-    exp_name.append(str(negative_sampling_rate))
-    exp_name.append("Th")
-    exp_name.append(str(threshold))
-    exp_name.append("Dr")
-    exp_name.append(str(dropout_rate))
-    if shuffle:
-        exp_name.append("S")
+    # exp_name.append(exp_folder.split("/")[-3])
+    for k in configs:
+        if k=="input_folders":
+            continue
+        else:
+            exp_name.append(configs[k][2])
+            exp_name.append(str(configs[k][0]))
 
     return "_".join(exp_name)
 
@@ -104,3 +95,42 @@ def calculate_P(X, L, L_freq):
             assert(P_matrix[i][j]<=1 )
 
     return P_matrix
+
+def visualize_X(filename, key):
+    with open(filename, "r") as f:
+        data = json.load(f)[key]
+        fig, ax = plt.subplots()
+        im = ax.imshow(data)
+        ax.set_title(filename)
+        ax.set_xticks(np.arange(.5, len(data), 10))
+        ax.set_yticks(np.arange(.5, len(data), 10))
+        ax.set_xticklabels(np.arange(1, len(data), 10))
+        ax.set_yticklabels(np.arange(1, len(data), 10))
+        ax.grid(color='w', linestyle='-', linewidth=1)
+        plt.show()
+
+def parser_from_template(config_template):
+    parser = argparse.ArgumentParser()
+    for key in config_template:
+        if key=="input_folders":
+            continue
+        long_name = key
+        short_name = config_template[key][2]
+        arg_type = type(config_template[key][0])
+        help_text = config_template[key][1]
+        if arg_type==bool:
+            parser.add_argument("--{}".format(long_name),
+                                "-{}".format(short_name),
+                                default = None,
+                                help = help_text,
+                                action = 'store_true')
+        else:
+            parser.add_argument("--{}".format(long_name),
+                                "-{}".format(short_name),
+                                default = None,
+                                type = arg_type,
+                                help = help_text)
+
+    parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
+    return parser
+

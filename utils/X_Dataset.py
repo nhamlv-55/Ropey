@@ -77,6 +77,7 @@ class DataObj:
             with open(os.path.join(self.datafolder, "negative_lits_map" + suffix ), "r") as f:
                 L = json.load(f)
             with open(os.path.join(self.datafolder, "P_negative_X_matrix_" + suffix ), "r") as f:
+                print(f.name)
                 P = json.load(f)["X"]
 
         else:
@@ -139,7 +140,6 @@ class DataObj:
             print(self.datafolder)
             X_mats = glob.glob(self.datafolder + "/positive_X_*.json")
             X_mats = sorted(X_mats)
-        print(X_mats)
         
         train_index = int(len(X_mats)*self.train_size)-1
         X_train_filename = os.path.basename(X_mats[train_index])
@@ -213,6 +213,8 @@ class DataObj:
         return dataset, last_batch
 
 
+    def __str__(self):
+        return self.datafolder
 #test batching
 if __name__=="__main__":
     dataObj = DataObj("/home/nv3le/workspace/Doping/PySpacerSolver/MEDIA/backward_encoded_split_on_relu.smt2_240220_23_54_17/ind_gen_files", train_size = 0.8, batch_size = 1024)
