@@ -27,6 +27,7 @@ import subprocess
 
 import Doping.PySpacerSolver.utils as DPu
 from Doping.PySpacerSolver.ExprDb import ExprDb
+from Doping.utils.utils import get_seed_file
 from X_eval import setup_model
 from six.moves import cStringIO
 
@@ -73,17 +74,19 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.new_folder = server_config["new_folder"]
         self.p_model = server_config["p_model"] #positive model
         self.n_model = server_config["n_model"] #negative model
-        self.n_dataset = server_config["n_dataset"]
-        self.p_dataset = server_config["p_dataset"]
+        self.dataset = server_config["dataset"]
         self.seed_path = server_config["seed_path"]
-        self.seed_file = self.get_seed_file()
+        self.seed_file = get_seed_file(self.seed_path)
         self.edb = ExprDb(self.seed_file)
         self.fallback_mode = server_config["fallback_mode"]
         self.last_request = None
         self.m = nn.Softmax(dim = 1)
 
+        self.cached_lemma = None
+        self.cached_lits = None
+        self.cached_lit_jsons = None
 
-        print("N model:", self.n_model)
+        # print("N model:", self.n_model)
         # self.run_test(TEST1)
 
     def SayHello(self, request, context):
@@ -179,6 +182,10 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         - A new to_be_checked_lits list
         """
         lemma = request.lemma
+        if lemma!="":#receive a new lemma, invalidate cache
+            self.cached_lemma = lemma
+            self.cached_lits = None
+            self.cached_lit_jsons = None
         kept_lits = request.kept_lits
         to_be_checked_lits = request.to_be_checked_lits
         lemma_size = request.lemma_size
@@ -188,15 +195,12 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         mask_updated = False
         # are kept_lits and to_be_checked_lits updated?
         lists_updated = False
-        print("Last ans success:", request.last_ans_success)
-        print("Receive lemma:", lemma)
-        print("kept_lits", kept_lits)
-        print("to_be_checked_lits", to_be_checked_lits)
+        if not request.last_ans_success:
+            print("Last ans success:", request.last_ans_success)
+            print("Receive lemma:", lemma)
+            print("kept_lits", kept_lits)
+            print("to_be_checked_lits", to_be_checked_lits)
 
-        #clone kept_lits and to_be_checked_lits
-        new_kept_lits = [lit_idx for lit_idx in kept_lits]
-        new_to_be_checked_lits = [lit_idx for lit_idx in to_be_checked_lits]
-        checking_lits = []
         """
         FALLBACK MODE
         """
@@ -211,19 +215,19 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         USING ML MODEL MODE
         Q: Should we run P first or N first?
 
+        Q: Should we just create  suggested lists from P and N model
         """
-        #update kept_lits and to_be_checked_lits
+        # suggest a "should be kept list"
+        should_be_kept_lits = set()
         if self.p_model is not None and len(kept_lits)*len(to_be_checked_lits)>0:
             # in positive_pairs, if a pair value is 1, that means it has very high correlation
-            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(self.p_dataset, lemma, kept_lits, to_be_checked_lits)
+            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
             # calculating whether P(lit_2bechecked| lit_kept) > THRESHOLD
             output = self.p_model(L_2bchecked_batch, L_kept_batch)[0]
             values, pos_pred = torch.max(self.m(output), 1)
             positive_pairs = pos_pred.tolist()
             print("p_model calculation")
             self.dump_model_res(kept_lits, to_be_checked_lits, output)
-            new_kept_lits = [idx for idx in kept_lits]
-            new_to_be_checked_lits = [idx for idx in to_be_checked_lits]
 
             for i in range(len(to_be_checked_lits)):
                 lit_idx = to_be_checked_lits[i]
@@ -231,21 +235,11 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                 high_cor_with_kept_lits = positive_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
                 print("lit_{} has high cor with kept_lits".format(lit_idx), high_cor_with_kept_lits)
                 if 1 in high_cor_with_kept_lits:
-                    print("p model found a high cor pair. immediately move the lit {} to kept_lits".format(lit_idx))
-                    new_kept_lits.append(lit_idx)
-                    new_to_be_checked_lits.remove(lit_idx)
-                    lists_updated = True
-            kept_lits = new_kept_lits
-            to_be_checked_lits = new_to_be_checked_lits
-
-        #Mask after running the P model
-        for i in kept_lits:
-            mask[i] = 1
-        for i in to_be_checked_lits:
-            mask[i] = 1
-        
+                    print("p model found a high cor pair. suggest to keep lit {}".format(lit_idx))
+                    should_be_kept_lits.add(lit_idx)
 
         # update mask using negative_pairs
+        # suggest a "should be drop list"
         """
         #collect anti-occurance
         for ori_lit_idx in range(len(ori_cube)):
@@ -259,9 +253,11 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
                     self.negative_X[(ori_lit_global_idx, inducted_lit_global_idx)]+=1
         """
+        should_be_drop_lits = set()
         if self.n_model is not None and len(kept_lits)*len(to_be_checked_lits)>0 and len(kept_lits)>N_MODEL_LIM:
             # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
-            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(self.n_dataset, lemma, kept_lits, to_be_checked_lits)
+            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+
             output = self.n_model(L_2bchecked_batch, L_kept_batch)[0]
             output = self.m(output)
             print("n_model calculation")
@@ -276,30 +272,44 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                 print("no cor with kept_lits", no_cor_with_kept_lits)
                 if no_cor_with_kept_lits.count(1)>=N_MODEL_LIM:
                     print("lit at id {} has 0 correlation with {} lits in kept_lits. set it to 0".format(lit_idx, no_cor_with_kept_lits.count(1)))
-                    mask[lit_idx] = 0
-                    checking_lits.append(lit_idx)
-                    mask_updated = True
+                    should_be_drop_lits.add(lit_idx)
 
-        #if mask is not updated, update it by popping left 1 from to_be_checked_lits
-        if not mask_updated and len(to_be_checked_lits)>0:
-            checking_lits = [to_be_checked_lits[0]]
-            to_be_checked_lits = to_be_checked_lits[1:]
+        """
+        construct the answer using should_be_kept_lits, should_be_drop_lits
+        """
+
+
+        intersect_set = should_be_drop_lits.intersection(should_be_kept_lits)
+        print("intersect between 2 suggestion sets:", intersect_set)
+        #there is a conflict, use fallback mode
+        if len(intersect_set)>0:
+            return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
+        else:
             for i in kept_lits:
-                mask[i] = 1
+                mask[i]=1
             for i in to_be_checked_lits:
-                mask[i] = 1
-            for i in checking_lits:
-                mask[i] = 0
-        print("mask", mask)
-        print("new_kep_lits", kept_lits)
-        print("new_to_be_checked_lits", to_be_checked_lits)
-        print("checking_lits", checking_lits)
-        print("-------------")
-        return indgen_conn_pb2.FullAnswer(dirty = (mask_updated),
-                                          mask = mask,
-                                          new_kept_lits = kept_lits,
-                                          new_to_be_checked_lits = to_be_checked_lits,
-                                          checking_lits = checking_lits)
+                mask[i]=1
+            for i in should_be_kept_lits:
+                mask[i]=1
+                kept_lits.append(i)
+                to_be_checked_lits.remove(i)
+            if len(should_be_drop_lits)==0 and len(to_be_checked_lits)>0:
+                return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
+            else:
+                for i in should_be_drop_lits:
+                    mask[i]=0
+
+                checking_lits = should_be_drop_lits
+                print("mask", mask)
+                print("new_kep_lits", kept_lits)
+                print("new_to_be_checked_lits", to_be_checked_lits)
+                print("checking_lits", checking_lits)
+                print("-------------")
+                return indgen_conn_pb2.FullAnswer(dirty = True,
+                                                mask = mask,
+                                                new_kept_lits = kept_lits,
+                                                new_to_be_checked_lits = to_be_checked_lits,
+                                                checking_lits = checking_lits)
 
     def dump_model_res(self, kept_lits, to_be_checked_lits, output):
         output = output.tolist()
@@ -311,8 +321,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
 
 
-    def parse_and_batch_input(self, dataset, lemma, kept_lits, to_be_checked_lits):
-        lit_jsons, lits = self.parse_lemma(dataset, lemma)
+    def parse_and_batch_input(self, lemma, kept_lits, to_be_checked_lits):
+        lit_jsons, lits = self.parse_lemma(lemma)
         print("no of lits:", len(lit_jsons))
 
         """
@@ -358,17 +368,6 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         to_be_checked_lits = []
 
         self.predict_core(lemma, kept_lits, checking_lit, to_be_checked_lits)
-
-    def get_seed_file(self):
-        print("\t\tIn get seed file")
-        print(self.seed_path)
-        seed_files = glob.glob(self.seed_path+"/pool_solver*.smt2")
-        if(len(seed_files)==0):
-            return None
-        seed_files = sorted(seed_files)
-        print(seed_files)
-        seed_file = seed_files[0]
-        return seed_file
 
     def dump_lemmas(self):
         """
@@ -436,32 +435,34 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         return (lemma_before, lemma_after)
 
 
-    def parse_lemma(self, dataset, lemma):
+    def parse_lemma(self, lemma):
         """
         Given a lemma in a str format, parse it into:
         - a list of literals in SMT2 format, and
         - a list of literals in JSON format
         NOTE:This is very ugly for now
         """
+        if self.cached_lit_jsons is not None:
+            return self.cached_lit_jsons, self.cached_lits
+        else:
+            #parse the lemma to PySMT representation
+            lemma_cmd = "\n(ind-gen {})\n".format(self.cached_lemma)
+            # print(lemma_cmd)
+            all_cmds = self.edb.parser.get_script(cStringIO(lemma_cmd)).commands
+            assert(len(all_cmds)==1)
+            assert(all_cmds[0].name == "ind-gen")
+            cmd = all_cmds[0]
 
-        #parse the lemma to PySMT representation
-        lemma_cmd = "\n(ind-gen {})\n".format(lemma)
-        # print(lemma_cmd)
-        all_cmds = self.edb.parser.get_script(cStringIO(lemma_cmd)).commands
-        assert(len(all_cmds)==1)
-        assert(all_cmds[0].name == "ind-gen")
-        cmd = all_cmds[0]
+            print(cmd)
+            lits = [self.edb.converter.convert(v) for v in cmd.args.args()]
+            # Use the dataset object to parse it to JSON.
+            lit_jsons = self.dataset.parse_cube_to_lit_jsons(lits)
+            assert(len(lit_jsons)==len(lits))
 
+            #update cache
+            self.cached_lits = lits
+            self.cached_lit_jsons = lit_jsons
 
-        lits = [self.edb.converter.convert(v) for v in cmd.args.args()]
-        # Use the dataset object to parse it to JSON.
-        try:
-            lit_jsons = dataset.parse_cube_to_lit_jsons(lits)
-            json.dumps(lit_jsons, indent = 2)
-        except Exception as e:
-            print(lemma)
-            print(e)
-        assert(len(lit_jsons)==len(lits))
         return lit_jsons, lits
 
 def serve(server_config, port):
@@ -500,15 +501,9 @@ if __name__ == '__main__':
         new_folder = "ind_gen_files"
         seed_path = args.seed_path
         #need the dataset object to parse the received lemma
-        n_dataset = DPu.Dataset(folder = os.path.dirname(args.input))
-        p_dataset = DPu.Dataset(folder = os.path.dirname(args.input))
+        dataset = DPu.Dataset(folder = os.path.dirname(args.input))
         #use the vocab of the dataset
-        n_dataset.vocab.load(os.path.join(args.input,"vocab.json"))
-        p_dataset.vocab.load(os.path.join(args.input,"vocab.json"))
-        print("N vocab:")
-        n_dataset.vocab.dump()
-        print("P vocab:")
-        p_dataset.vocab.dump()
+        dataset.vocab.load(os.path.join(args.input,"vocab.json"))
         port = args.port
         if args.p_model_path is not None:
             p_model = setup_model(args.p_model_path)
@@ -523,8 +518,7 @@ if __name__ == '__main__':
             "new_folder": new_folder,
             "p_model": p_model, #positive model
             "n_model": n_model, #negative model
-            "n_dataset": n_dataset,
-            "p_dataset": p_dataset,
+            "dataset": dataset,
             "seed_path": seed_path,
             "fallback_mode": args.fallback_mode
         }
