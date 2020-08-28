@@ -11,8 +11,9 @@ def setup_model(model_path):
     checkpoint = torch.load(model_path)
     model_metadata = checkpoint['metadata']
     dataset_metadata = checkpoint['dataset']
+    print("I was trained with the configs:\n{}".format(json.dumps(checkpoint["configs"], indent=2)))
     print("Epoch", checkpoint["epoch"])
-
+    
     model = Model(dataset_metadata['vocab_size'],
                   dataset_metadata['sort_size'],
                   emb_dim = model_metadata['emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
@@ -109,14 +110,23 @@ def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = No
 
 if __name__=="__main__":
     parser = Du.parser_from_template()
-    parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder")
-    parser.add_argument("--model_path", help = "path to the .pt file")
+    parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder", required = True)
+    parser.add_argument("--model_path", help = "path to the .pt file", required = True)
     args = parser.parse_args()
 
 
     model_path = args.model_path
     model = setup_model(model_path)
+    #load config
     configs = load_configs_from_model(model_path)
+    #overwrite configs with parser value if user provide input
+    for key,value in vars(args).items():
+        if value is None or key not in configs:
+            continue
+        else:
+            print("Setting {} in configs to {}".format(key, value))
+            configs[key][0] = value
+
     dataObj = DataObj(args.test_folder,
                       max_size = configs["max_size"][0],
                       shuffle = configs["shuffle"][0],
