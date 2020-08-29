@@ -20,6 +20,5 @@ Need https://github.com/nhamlv-55/PySpacerSolver clone in to the same folder. Th
 
 ```
 ###Test
-`PYTHONPATH=~/workspace/ python3 X_train.py -input TEST_DATA/TEST_DATA_1/ -E`
-
+`PYTHONPATH=~/workspace/ python3 X_train.py --json_config_file exp_config_1.json --threshold 0.99`
 (Basically, you need to add the project to your PYTHONPATH)
