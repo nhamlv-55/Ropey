@@ -62,6 +62,8 @@ if __name__ == '__main__':
                   dropout_rate = configs["dropout_rate"][0],
                   device = device).train()
 
+    no_of_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print("no_of_params:", no_of_params)
     if configs["checkpoint"][0]!="":
         print("Training start from this checkpoint:\n{}".format(configs["checkpoint"][0]))
         checkpoint = torch.load(configs["checkpoint"][0])
@@ -70,7 +72,7 @@ if __name__ == '__main__':
     loss_function = torch.nn.CrossEntropyLoss().to(device)
     optimizer = torch.optim.Adam(model.parameters())
 
-    metadata = {"dataset": dataObj.metadata(), "model": model.metadata(), "configs": configs}
+    metadata = {"dataset": dataObj.metadata(), "model": model.metadata(), "configs": configs, "no_of_params": no_of_params}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
     # examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
     for n in range(configs["epoch"][0]):
@@ -120,5 +122,6 @@ if __name__ == '__main__':
                 'loss': loss,
                 'dataset': dataObj.metadata(),
                 'metadata': model.metadata(),
-                'configs': configs
+                'configs': configs,
+                'no_of_params': no_of_params
             }, model_path)
