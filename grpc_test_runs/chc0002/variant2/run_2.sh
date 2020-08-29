@@ -1,0 +1,1 @@
+python /home/nv3le/workspace/Doping/PySpacerSolver/generate_ind_gen_files.py -input . >/dev/null

@@ -1,0 +1,4666 @@
+DUMP QUERY = TRUE
+OLD THRES:1e+07
+Dumping benchmark to pool_solver_vsolver#1_0.smt2
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (= invariant_2_n 1.0) (= invariant_5_n 0.0))
+into
+(= invariant_2_n 1.0)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (<= (+ invariant_7_n (* (- 1.0) invariant_11_n)) (- 51.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_10_n (- 1.0)))
+into
+(<= (+ invariant_7_n (* (- 1.0) invariant_11_n)) (- 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n (= invariant_5_n 1.0) (= invariant_2_n 2.0))
+into
+(= invariant_2_n 2.0)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (= invariant_6_n 1.0))
+     (= invariant_2_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 1.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and (not (= invariant_6_n 1.0))
+     (= invariant_2_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (= invariant_6_n 1.0))
+     (= invariant_5_n 1.0)
+     (= invariant_2_n 0.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (not (= invariant_6_n 1.0)) (= invariant_5_n 1.0) (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (= invariant_6_n 1.0))
+     (= invariant_2_n 1.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and (= invariant_2_n 1.0) (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (= invariant_6_n 1.0))
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (= invariant_2_n 1.0) (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_11_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (>= invariant_8_n 19.0))
+into
+(and invariant_1_n (<= invariant_10_n (- 32.0)) (= invariant_7_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and (= invariant_2_n 2.0) (= invariant_5_n 2.0) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not (<= invariant_13_n 0.0)) (= invariant_5_n 2.0) (= invariant_2_n 2.0))
+into
+(and (= invariant_5_n 2.0) (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_5_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 1.0))
+into
+(and (= invariant_2_n 2.0) (= invariant_5_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (= invariant_6_n 0.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not (= invariant_6_n 1.0))
+     invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_4_n 1.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_8_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0)))
+     (= invariant_9_n (- 1.0)))
+into
+(and (not (= invariant_6_n 1.0))
+     invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_8_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_6_n 0.0))
+into
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (<= invariant_13_n 0.0))
+into
+(and invariant_1_n (<= invariant_10_n (- 32.0)) (= invariant_8_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0)))
+into
+(and invariant_1_n (= invariant_8_n (- 1.0)) (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_9_n (- 1.0)))
+into
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0))))
+into
+(and invariant_1_n
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0))
+     (not (>= invariant_7_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_7_n (- 1.0)))
+into
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_7_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n invariant_3_n (= invariant_2_n 1.0))
+into
+(and invariant_3_n (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_3_n
+     invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 1.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n (not (<= invariant_0_n 0.0)))
+into
+(not (<= invariant_0_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and invariant_1_n (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 0.0))
+into
+(and invariant_1_n (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n (not (>= invariant_0_n 0.0)))
+into
+(not (>= invariant_0_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (not (>= invariant_0_n 0.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0)))
+into
+(not (>= invariant_0_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (not (>= invariant_0_n 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (not (>= invariant_0_n 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not invariant_3_n)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (not (<= invariant_13_n 0.0))
+     (not (>= invariant_0_n 1.0)))
+into
+(and invariant_1_n
+     (not invariant_3_n)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (not (<= invariant_13_n 0.0))
+     (not (>= invariant_0_n 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+       a!1))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 1.0)
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 1.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n (not (<= invariant_13_n 0.0)) (= invariant_2_n 1.0))
+into
+(and (not (<= invariant_13_n 0.0)) (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       a!1))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       a!1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_5_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and invariant_1_n (= invariant_2_n 1.0) (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and invariant_1_n (= invariant_2_n 1.0) (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not invariant_3_n)
+     (= invariant_5_n 1.0)
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 1.0))
+into
+(and (= invariant_5_n 1.0) (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n (= invariant_5_n 1.0) (= invariant_2_n 0.0))
+into
+(and (= invariant_5_n 1.0) (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))))
+  (and invariant_1_n
+       (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0))
+       a!1
+       (= invariant_5_n 2.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_2_n 0.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not invariant_3_n)
+     (not (<= invariant_0_n 0.0))
+     (= invariant_2_n 1.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (not (<= invariant_0_n 0.0)) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (not (<= invariant_0_n 0.0))
+     (= invariant_2_n 1.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_0_n 0.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 0.0)
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (not invariant_3_n) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not invariant_3_n)
+     (= invariant_2_n 1.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (not invariant_3_n) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 1.0)
+     (not (>= invariant_0_n 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0)))
+into
+(and (not invariant_3_n) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (not invariant_3_n)
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       (not (<= invariant_13_n 0.0))))
+into
+(and (not invariant_3_n) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (not invariant_3_n) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and (not (<= invariant_13_n 0.0)) (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (= invariant_2_n 1.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and (= invariant_6_n 0.0) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 40.0)))
+into
+(and (= invariant_6_n 0.0) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_6_n 0.0)
+       (not (<= invariant_13_n 0.0))
+       a!1
+       a!2))
+into
+(and (= invariant_6_n 0.0) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(and (= invariant_6_n 0.0) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (not (<= invariant_13_n 0.0))
+       (= invariant_2_n 2.0)
+       a!1
+       a!2
+       (= invariant_6_n 0.0)))
+into
+(and (not (<= invariant_13_n 0.0)) (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and (= invariant_6_n 0.0) (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n (= invariant_2_n 1.0) (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n (= invariant_2_n 1.0) (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (>= invariant_7_n (- 1.0)))
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))))
+  (and invariant_3_n (not (<= invariant_13_n 0.0)) a!1))
+into
+(not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (>= invariant_8_n (- 1.0)))
+into
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (<= invariant_10_n (- 32.0))
+     (>= invariant_8_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+       a!1
+       a!2
+       a!3
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 0.0)
+       a!1
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (= invariant_6_n 1.0)
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_2_n 0.0)
+       a!2))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 1.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_2_n 0.0)
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (= invariant_2_n 0.0)
+     (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0))))
+into
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_7_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_3_n
+       invariant_1_n
+       a!1
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       a!2))
+into
+(and invariant_3_n
+     invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_3_n
+     invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_8_n (* (- 1.0) invariant_7_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 2.0)
+       (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+       a!1
+       (= invariant_6_n 1.0)
+       (<= invariant_13_n 0.0)
+       (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (<= invariant_10_n (- 32.0))
+       a!1
+       (>= invariant_8_n (- 1.0))
+       a!2))
+into
+(and invariant_1_n (<= invariant_10_n (- 32.0)) (>= invariant_8_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (>= invariant_8_n (- 1.0))
+     (not (>= invariant_8_n 19.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_1_n (= invariant_7_n (- 1.0)) (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_3_n
+       invariant_1_n
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+       a!1
+       a!2
+       a!3
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 2.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (not (<= invariant_13_n 0.0))
+       (= invariant_2_n 2.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and (= invariant_2_n 1.0) (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_7_n (- 21.0))
+     (= invariant_8_n (- 21.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_9_n (- 21.0)))
+into
+(and (= invariant_2_n 1.0)
+     (= invariant_7_n (- 21.0))
+     (= invariant_8_n (- 21.0))
+     (= invariant_9_n (- 21.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_7_n (- 21.0))
+     (= invariant_8_n (- 21.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_2_n 1.0))
+into
+(and (= invariant_8_n (- 21.0)) (= invariant_9_n (- 1.0)) (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 0.0)
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 0.0)
+     (= invariant_9_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_7_n (- 21.0))
+     (= invariant_8_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_9_n (- 21.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       invariant_3_n
+       (= invariant_8_n (- 1.0))
+       (<= invariant_10_n (- 32.0))
+       (= invariant_2_n 1.0)
+       (= invariant_5_n 1.0)
+       (not (>= invariant_7_n (- 1.0)))
+       a!1))
+into
+(and invariant_1_n
+     invariant_3_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_5_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_9_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and (= invariant_6_n 1.0) (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_8_n (- 1.0)))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0)))
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_8_n (- 1.0)))
+     (<= invariant_10_n (- 32.0))
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_8_n (- 1.0)))
+     (not (>= invariant_8_n 19.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n (= invariant_7_n (- 1.0)) (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_2_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_6_n 1.0)
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_5_n 2.0)
+       (not (<= invariant_13_n 0.0))
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0)
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (= invariant_6_n 1.0)
+       (= invariant_2_n 2.0)
+       a!1
+       a!2
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (= invariant_8_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_1_n (= invariant_6_n 1.0) (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (= invariant_5_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_5_n 0.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_7_n (- 21.0))
+     (= invariant_9_n (- 21.0))
+     (>= invariant_8_n (- 21.0))
+     (not (>= invariant_8_n (- 1.0))))
+into
+(and invariant_1_n (= invariant_7_n (- 21.0)) (not (>= invariant_8_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_3_n
+       invariant_1_n
+       (= invariant_9_n (- 1.0))
+       (not (>= invariant_8_n (- 1.0)))
+       a!1
+       (not (>= invariant_7_n (- 1.0)))))
+into
+(and invariant_1_n (= invariant_9_n (- 1.0)) (not (>= invariant_8_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (<= invariant_10_n (- 32.0))
+     (not (<= invariant_7_n (- 21.0)))
+     (= invariant_9_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_8_n (- 21.0))))
+into
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (not (>= invariant_7_n (- 1.0)))
+     (>= invariant_8_n (- 1.0))
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (>= invariant_8_n (- 1.0))
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (>= invariant_8_n (- 1.0))
+     (not (>= invariant_8_n 19.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_2_n 0.0)
+       (= invariant_5_n 2.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (<= invariant_9_n (- 21.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= invariant_7_n (- 41.0))
+     (<= invariant_8_n (- 41.0))
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(<= invariant_7_n (- 41.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (<= invariant_8_n (- 21.0))
+       (<= invariant_9_n (- 21.0))
+       a!1
+       (not (>= invariant_7_n (- 21.0)))
+       a!2))
+into
+(and (<= invariant_8_n (- 21.0)) (<= invariant_9_n (- 21.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_7_n (- 21.0))
+     (= invariant_9_n (- 21.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_8_n (- 21.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0))
+into
+(= invariant_8_n (- 21.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_7_n (- 21.0))
+     (= invariant_8_n (- 21.0))
+     (= invariant_9_n (- 1.0)))
+into
+(and (= invariant_8_n (- 21.0)) (= invariant_9_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_11_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0)))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_8_n (- 1.0)))
+into
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0)
+     (= invariant_8_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 2.0)
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)
+       (= invariant_2_n 2.0)
+       a!1
+       a!2
+       (= invariant_5_n 0.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 21.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_9_n (- 21.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0))
+into
+(= invariant_8_n (- 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       invariant_3_n
+       a!1
+       (not (>= invariant_7_n (- 1.0)))
+       (= invariant_8_n (- 1.0))
+       (<= invariant_10_n (- 32.0))
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     invariant_3_n
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_7_n (- 21.0))
+     (>= invariant_8_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_9_n (- 21.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= invariant_10_n (- 32.0)))
+into
+(and (= invariant_7_n (- 21.0))
+     (>= invariant_8_n (- 1.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_8_n (- 1.0)))
+     (= invariant_2_n 1.0)
+     (<= invariant_10_n (- 32.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_9_n (- 1.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_8_n (- 1.0)))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_9_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (not (<= invariant_8_n (- 1.0)))
+     (not (>= invariant_8_n 19.0))
+     (<= invariant_10_n (- 32.0)))
+into
+(and invariant_1_n (= invariant_7_n (- 1.0)) (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (= invariant_5_n 2.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_2_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_8_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0))))
+into
+(and (= invariant_8_n (- 1.0)) (= invariant_9_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (<= invariant_10_n (- 32.0)))
+into
+(and (= invariant_9_n (- 1.0))
+     (= invariant_8_n (- 1.0))
+     (= invariant_7_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (<= invariant_13_n 0.0)
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (not invariant_3_n)
+       invariant_1_n
+       (not (<= invariant_0_n 0.0))
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and (not (<= invariant_0_n 0.0))
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 2.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 2.0)
+       a!1
+       a!2
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n (= invariant_5_n 0.0) (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 0.0)
+     (<= invariant_13_n 0.0))
+into
+(and invariant_1_n (= invariant_5_n 0.0) (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_10_n (- 32.0))
+       a!1
+       (not (>= invariant_7_n (- 1.0)))
+       (= invariant_11_n (- 1.0))
+       (not (<= invariant_13_n 0.0))
+       (= invariant_5_n 1.0)
+       (= invariant_9_n (- 1.0))))
+into
+(and invariant_1_n
+     (<= invariant_10_n (- 32.0))
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_2_n 1.0)
+     (= invariant_5_n 1.0)
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_5_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 1.0)
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_5_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0)))
+     (>= invariant_8_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 0.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (<= invariant_10_n (- 32.0))
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (<= invariant_10_n (- 32.0))
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n (= invariant_11_n (- 1.0)) (<= invariant_10_n (- 32.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (not (<= invariant_13_n 0.0))
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_2_n 0.0)
+       (= invariant_5_n 2.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (= invariant_2_n 0.0)
+       (= invariant_5_n 2.0)
+       (not (<= invariant_13_n 0.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+into
+(and (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 0.0)
+       a!1
+       a!2
+       (= invariant_5_n 2.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_6_n 0.0)))
+into
+(and (= invariant_5_n 2.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 0.0))
+into
+(and (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_6_n 0.0))
+into
+(and (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (not invariant_3_n)
+       invariant_1_n
+       (not (<= invariant_0_n 0.0))
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_6_n 0.0)))
+into
+(and (not (<= invariant_0_n 0.0))
+     (= invariant_2_n 1.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and (not invariant_3_n)
+     invariant_1_n
+     (= invariant_2_n 1.0)
+     (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and (not invariant_3_n)
+     (= invariant_2_n 1.0)
+     (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_6_n 0.0)
+     (= invariant_2_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= invariant_8_n 19.0)
+     (= invariant_7_n (- 1.0))
+     (= invariant_5_n 0.0)
+     (= invariant_9_n (- 1.0)))
+into
+(and invariant_1_n
+     (>= invariant_8_n 19.0)
+     (= invariant_7_n (- 1.0))
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 2.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       a!1
+       a!2))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (<= invariant_13_n 0.0)
+     (= invariant_2_n 2.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (<= invariant_13_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 0.0)
+       (<= invariant_13_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       a!1
+       a!2
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (not (<= invariant_13_n 0.0))
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_6_n 0.0)
+     (= invariant_2_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 1.0)
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (= invariant_5_n 2.0)
+       (not (<= invariant_13_n 0.0))
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_2_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_2_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0))
+into
+(and (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and (= invariant_5_n 2.0) (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       (= invariant_5_n 2.0)
+       (= invariant_6_n 0.0)
+       (<= invariant_13_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and (= invariant_5_n 2.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0)
+     (= invariant_2_n 0.0))
+into
+(and (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 2.0)
+     (= invariant_6_n 0.0)
+     (<= invariant_13_n 0.0))
+into
+(and (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 2.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (= invariant_6_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 2.0)
+       (= invariant_5_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+     (<= invariant_13_n 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 1.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)
+       (not (<= invariant_13_n 0.0))
+       a!1
+       a!2))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 1.0)
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (= invariant_5_n 2.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (= invariant_5_n 0.0)
+       (= invariant_2_n 0.0)
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       (= invariant_2_n 0.0)
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (<= invariant_13_n 0.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 0.0)
+       (= invariant_5_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       a!1
+       a!2
+       (= invariant_6_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 0.0)
+     (= invariant_5_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_3_n
+       a!1
+       (= invariant_5_n 1.0)
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!2))
+into
+(and invariant_3_n (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     (= invariant_6_n 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_3_n (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (= invariant_2_n 0.0)
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 0.0)
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0)
+     (<= invariant_13_n 0.0))
+into
+(and invariant_1_n
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       (= invariant_5_n 2.0)
+       (= invariant_6_n 0.0)
+       (<= invariant_13_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       a!2
+       (= invariant_5_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_5_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 31.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_2_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 0.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_2_n 2.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_6_n 1.0)
+       (not (<= invariant_13_n 0.0))
+       (= invariant_5_n 1.0)
+       a!1
+       a!2
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 0.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 1.0)
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n (not (<= invariant_0_n 0.0)) a!1))
+into
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (not (<= invariant_0_n 0.0)) a!1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (not invariant_3_n)
+       invariant_1_n
+       a!1
+       (not (<= invariant_0_n 0.0))
+       (= invariant_2_n 1.0)
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+into
+(and (not (<= invariant_0_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       a!1
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       (= invariant_2_n 2.0)))
+into
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n a!1 (= invariant_5_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n a!1 a!2 a!3 (= invariant_5_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n a!1 (= invariant_5_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       (= invariant_5_n 0.0)
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       (= invariant_2_n 2.0)
+       (= invariant_6_n 0.0)))
+into
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       (= invariant_2_n 2.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!2
+       a!3
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_11_n (- 1.0))))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_11_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_3_n
+       invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 1.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       a!1
+       a!2
+       (<= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 1.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (<= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_6_n 1.0)
+       (= invariant_2_n 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 1.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 0.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= invariant_2_n 2.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 2.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))
+       (not (<= invariant_13_n 0.0))
+       (= invariant_5_n 1.0)
+       (= invariant_6_n 1.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (not invariant_3_n)
+       (= invariant_5_n 1.0)
+       (= invariant_2_n 1.0)
+       a!1
+       a!2
+       a!3))
+into
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and (not invariant_3_n) (= invariant_2_n 1.0) a!1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (<= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_6_n 0.0)
+     (<= invariant_13_n 0.0))
+into
+(and (= invariant_5_n 2.0) (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))))
+  (and invariant_1_n
+       (<= invariant_13_n 0.0)
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       a!1
+       (= invariant_2_n 0.0)))
+into
+(and invariant_1_n (<= invariant_13_n 0.0) (= invariant_2_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       a!1
+       a!2
+       (= invariant_11_n (- 1.0))
+       (= invariant_5_n 0.0)
+       (= invariant_2_n 2.0)
+       (<= invariant_13_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n a!1 (= invariant_5_n 0.0) (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (= invariant_5_n 0.0)
+       a!1
+       (<= invariant_13_n 0.0)
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+into
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_9_n (- 1.0))
+       (not (<= invariant_13_n 0.0))
+       (= invariant_2_n 2.0)
+       a!1
+       (not (>= invariant_7_n (- 1.0)))
+       (not (>= invariant_8_n 19.0))
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (not (>= invariant_7_n (- 1.0)))
+     (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (= invariant_6_n 1.0)
+     (= invariant_2_n 2.0)
+     (not (>= invariant_8_n 19.0))
+     (= invariant_5_n 0.0)
+     (not (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n (= invariant_7_n (- 1.0)) (= invariant_5_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       a!3
+       (= invariant_5_n 0.0)
+       (= invariant_11_n (- 1.0))))
+into
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n a!1 (= invariant_5_n 0.0) (= invariant_11_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       a!1
+       a!2
+       (= invariant_5_n 0.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 2.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       a!1
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 2.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 1.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       a!1))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       a!1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_3_n
+       invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       a!1
+       a!2
+       (<= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 1.0)
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (<= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_3_n
+     invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_6_n 1.0)
+       (= invariant_5_n 2.0)
+       (not (<= invariant_13_n 0.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 2.0)
+     (not (<= invariant_13_n 0.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       (<= invariant_13_n 0.0)
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_2_n 0.0)
+       a!2
+       (= invariant_6_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_6_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_6_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       (= invariant_6_n 0.0)
+       (= invariant_2_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))
+       (<= invariant_13_n 0.0)
+       (= invariant_5_n 2.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_6_n 0.0)
+     (= invariant_2_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_2_n 2.0)
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 20.0)
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_2_n 2.0)
+     (<= invariant_13_n 0.0))
+into
+(and invariant_1_n
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (= invariant_9_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (not (>= invariant_7_n (- 1.0))))
+into
+(and (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (>= invariant_8_n 19.0)
+     (not (>= invariant_7_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (= invariant_9_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_2_n 2.0)
+     (= invariant_6_n 1.0))
+into
+(and (= invariant_7_n (- 1.0))
+     (>= invariant_8_n 19.0)
+     (= invariant_2_n 2.0)
+     (= invariant_6_n 1.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (= invariant_2_n 0.0)
+     (<= invariant_13_n 0.0)
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))
+     (<= invariant_13_n 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       (= invariant_2_n 2.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= invariant_2_n 2.0)
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (<= invariant_13_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (= invariant_5_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_6_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (<= invariant_13_n 0.0)
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_2_n 0.0)
+       (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       a!1
+       (= invariant_6_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_5_n 0.0)
+     (= invariant_6_n 0.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_2_n 1.0)
+     (<= invariant_13_n 0.0)
+     (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_6_n 1.0)
+       (not (<= invariant_13_n 0.0))
+       (= invariant_5_n 1.0)
+       a!1
+       (= invariant_2_n 1.0)))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (not (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       a!3
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 0.0)
+       (= invariant_5_n 0.0)
+       (= invariant_11_n (- 1.0))))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 0.0)
+       (= invariant_11_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       a!1
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 0.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (<= invariant_13_n 0.0)
+     (= invariant_2_n 0.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 2.0)
+       (= invariant_5_n 0.0)
+       a!1
+       a!2
+       (<= invariant_13_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       a!1
+       (<= invariant_13_n 0.0)
+       (= invariant_11_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       (= invariant_11_n (- 1.0))
+       a!1
+       (<= invariant_13_n 0.0)))
+into
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       (= invariant_11_n (- 1.0))
+       a!1
+       (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (not (>= invariant_7_n (- 1.0)))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (= invariant_5_n 0.0)
+     (not (>= invariant_8_n 19.0))
+     (= invariant_9_n (- 1.0)))
+into
+(and invariant_1_n
+     (not (<= invariant_13_n 0.0))
+     (= invariant_5_n 0.0)
+     (not (>= invariant_8_n 19.0))
+     (= invariant_9_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_5_n 0.0)
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (not (>= invariant_8_n 19.0))
+     (= invariant_11_n (- 1.0)))
+into
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (= invariant_2_n 2.0)
+       a!2
+       a!3
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+       a!1
+       (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 2.0)))
+into
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0)))))
+  (and invariant_1_n
+       a!1
+       (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (<= invariant_13_n 0.0)
+       (= invariant_11_n (- 1.0))
+       (= invariant_2_n 2.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       a!3
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (not (<= invariant_13_n 0.0))
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       (= invariant_5_n 2.0)
+       (= invariant_2_n 0.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) (- 20.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+       (= invariant_11_n (- 1.0))
+       a!2))
+into
+(and invariant_1_n
+     (= invariant_5_n 2.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_6_n 1.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_5_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_9_n (- 1.0))
+       (not (<= invariant_13_n 0.0))
+       (= invariant_2_n 2.0)
+       a!1
+       (not (>= invariant_7_n (- 1.0)))
+       (= invariant_5_n 0.0)))
+into
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (not (>= invariant_7_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_9_n (- 1.0))
+     (= invariant_7_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0)
+     (not (>= invariant_8_n 19.0))
+     (= invariant_5_n 0.0))
+into
+(and invariant_1_n
+     (= invariant_7_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= invariant_2_n 2.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!3 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       a!2
+       a!3
+       (= invariant_2_n 2.0)
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+into
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_11_n (- 1.0))
+       a!1
+       (= invariant_5_n 0.0)
+       (<= invariant_13_n 0.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_5_n 0.0)
+       a!1
+       a!2
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 2.0)
+       (= invariant_11_n (- 1.0))))
+into
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_9_n)) (- 20.0))))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       a!1
+       a!2
+       (<= invariant_13_n 0.0)
+       (= invariant_2_n 2.0)
+       (= invariant_11_n (- 1.0))))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       a!2
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0)))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 31.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (<= (+ invariant_7_n (* (- 1.0) invariant_8_n)) (- 20.0)))))
+  (and invariant_1_n
+       (= invariant_2_n 1.0)
+       (<= invariant_13_n 0.0)
+       a!1
+       (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+       (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+       (= invariant_11_n (- 1.0))))
+into
+(and invariant_1_n
+     (<= invariant_13_n 0.0)
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0)
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 31.0)
+     (= invariant_11_n (- 1.0)))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_2_n 1.0))
+into
+(and invariant_1_n
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(let ((a!1 (not (>= (+ invariant_7_n (* (- 1.0) invariant_8_n)) 0.0)))
+      (a!2 (not (>= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))))
+  (and invariant_1_n
+       (not (<= invariant_13_n 0.0))
+       a!1
+       a!2
+       (= invariant_6_n 1.0)
+       (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+       (= invariant_11_n (- 1.0))
+       (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0)))
+into
+(and invariant_1_n
+     (>= (+ invariant_8_n (* (- 1.0) invariant_9_n)) 0.0)
+     (= invariant_11_n (- 1.0))
+     (>= (+ invariant_9_n (* (- 1.0) invariant_10_n)) 51.0))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() /home/nv3le/opt/z3grpc/src/muz/spacer/spacer_generalizers.cpp:565 ---------
+Generalized from:
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (not (<= invariant_13_n 0.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+into
+(and invariant_1_n
+     (>= (+ invariant_7_n (* (- 1.0) invariant_10_n)) 51.0)
+     (= invariant_11_n (- 1.0))
+     (= (+ invariant_7_n (* (- 1.0) invariant_9_n)) 0.0))
+------------------------------------------------

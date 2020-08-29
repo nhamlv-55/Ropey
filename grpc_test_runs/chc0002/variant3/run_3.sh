@@ -1,0 +1,1 @@
+PYTHONPATH=~/opt/z3squashed/build/python/:~/workspace/:~/opt/pysmt/ python3 /home/nv3le/workspace/Doping/PySpacerSolver/spacer_solver.py -input ind_gen_files/ -S ./ -gen_dataset -limit 100000 -skip-indgen 
