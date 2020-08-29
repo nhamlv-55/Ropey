@@ -76,9 +76,13 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.n_model = server_config["n_model"] #negative model
         self.dataset = server_config["dataset"]
         self.seed_path = server_config["seed_path"]
-        self.seed_file = get_seed_file(self.seed_path)
-        self.edb = ExprDb(self.seed_file)
         self.fallback_mode = server_config["fallback_mode"]
+        if not self.fallback_mode:
+            self.seed_file = get_seed_file(self.seed_path)
+            self.edb = ExprDb(self.seed_file)
+        else:
+            self.seed_file = None
+            self.edb = None
         self.last_request = None
         self.m = nn.Softmax(dim = 1)
 
@@ -204,9 +208,6 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         """
         FALLBACK MODE
         """
-        if self.seed_file is None:
-            self.seed_file = self.get_seed_file()
-
         if self.fallback_mode or request == self.last_request or len(kept_lits)==0 or self.seed_file is None:
             return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
         #update cache
@@ -485,7 +486,6 @@ if __name__ == '__main__':
 
     fallback_mode = args.fallback_mode
     if fallback_mode:
-        seed_path = args.seed_path
         port = args.port
         server_config={
             "exp_folder": None,
@@ -493,7 +493,7 @@ if __name__ == '__main__':
             "p_model": None, #positive model
             "n_model": None, #negative model
             "dataset": None,
-            "seed_path": seed_path,
+            "seed_path": None,
             "fallback_mode": args.fallback_mode
         }
     else:
