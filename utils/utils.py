@@ -40,6 +40,8 @@ def json_to_markdown(data):
     return result
 
 def get_seed_file(seed_path):
+    if seed_path is None:
+        return None
     print("\t\tIn get seed file")
     seed_files = glob.glob(seed_path+"/pool_solver*.smt2")
     if(len(seed_files)==0):
@@ -121,16 +123,15 @@ def parser_from_template(json_config_template = "/home/nv3le/workspace/Doping/ex
         arg_type = type(config_template[key][0])
         help_text = config_template[key][1]
         if arg_type==bool:
-            parser.add_argument("--{}".format(long_name),
-                                "-{}".format(short_name),
+            parser.add_argument("-{}".format(short_name),
+                                "--{}".format(long_name),
                                 default = None,
                                 help = help_text,
                                 action = 'store_true')
         else:
-            parser.add_argument("--{}".format(long_name),
-                                "-{}".format(short_name),
+            parser.add_argument("-{}".format(short_name),
+                                "--{}".format(long_name),
                                 default = None,
                                 type = arg_type,
                                 help = help_text)
-
     return parser
