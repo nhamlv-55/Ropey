@@ -111,7 +111,7 @@ def visualize_X(filename, key):
         ax.grid(color='w', linestyle='-', linewidth=1)
         plt.show()
 
-def parser_from_template(json_config_template = "/home/nv3le/workspace/Doping/exp_config_template.json"):
+def parser_from_template(json_config_template = "/home/nle/workspace/Doping/exp_config_template.json"):
     with open(json_config_template, "r") as f:
         config_template = json.load(f)
     parser = argparse.ArgumentParser()

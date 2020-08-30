@@ -13,7 +13,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 log = logging.getLogger(__name__)
 
 class DataObj:
-    def __init__(self, datafolder, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75, negative = False):
+    def __init__(self, datafolder, device, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75, negative = False):
         '''
         datafolder: path to the /ind_gen_files folder
         name: name of the dataset
@@ -23,7 +23,7 @@ class DataObj:
         train_size: how much of the dataset is used for training
         '''
         self.datafolder = datafolder
-
+        self.device = device
         self.all_dps = []
         self.size = 0
         self.max_size = max_size
@@ -119,7 +119,7 @@ class DataObj:
                 # print(lit)
                 lit_index = lit["index"]
                 assert(lit_index not in self.id2lits_json)
-                lit_tree = DPu.convert_tree_to_tensors(lit["tree"])
+                lit_tree = DPu.convert_tree_to_tensors(lit["tree"], self.device)
                 self.id2lits_json[lit_index] = {"lit_tree": lit_tree, "filename": lf}
 
         #load lits_map

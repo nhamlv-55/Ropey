@@ -39,8 +39,10 @@ if __name__ == '__main__':
     print("Configs:\n", json.dumps(configs, indent=2))
     dataObjs = []
     vocabs = []
+    device = torch.device(configs['device'][0])
     for exp_folder in configs["input_folders"]:
         dataObj = DataObj(exp_folder,
+                          device = device,
                           max_size = configs["max_size"][0],
                           shuffle = configs["shuffle"][0],
                           train_size = 1,
@@ -51,7 +53,6 @@ if __name__ == '__main__':
         dataObjs.append(dataObj)
         vocabs.append(vocab)
 
-    device = torch.device(configs['device'][0])
     model = Model(vocabs[0]['size'],
                   vocabs[0]['sort_size'],
                   emb_dim = configs['emb_dim'][0],
