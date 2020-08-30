@@ -51,7 +51,7 @@ if __name__ == '__main__':
         dataObjs.append(dataObj)
         vocabs.append(vocab)
 
-    device = torch.device('cuda')
+    device = torch.device(configs['device'][0])
     model = Model(vocabs[0]['size'],
                   vocabs[0]['sort_size'],
                   emb_dim = configs['emb_dim'][0],
