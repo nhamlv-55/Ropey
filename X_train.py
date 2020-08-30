@@ -54,9 +54,9 @@ if __name__ == '__main__':
     device = torch.device('cuda')
     model = Model(vocabs[0]['size'],
                   vocabs[0]['sort_size'],
-                  emb_dim = 20,
+                  emb_dim = configs['emb_dim'][0],
                   const_emb_dim = vocabs[0]["const_emb_size"],
-                  tree_dim = 100,
+                  tree_dim = configs['tree_dim'][0],
                   use_const_emb = configs["use_const_emb"][0],
                   use_dot_product = configs["use_dot_product"][0],
                   dropout_rate = configs["dropout_rate"][0],
