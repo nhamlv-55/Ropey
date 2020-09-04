@@ -90,6 +90,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.cached_lits = None
         self.cached_lit_jsons = None
 
+        self.cached_P_mat = None
+        self.cached_N_mat = None
         # print("N model:", self.n_model)
         # self.run_test(TEST1)
 
@@ -111,50 +113,6 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                 self.is_training = True
             return indgen_conn_pb2.Ack(ack_message=False)
 
-    # def QueryModel(self, request, context):
-    #     """
-    #     Input:
-    #     - lemma (a list of literals)
-    #     - kept_lits (a list of indices of literals that are kept)
-    #     - checking_lit (index of the literal we want to check)
-    #     - to_be_checked_lits (a list of indices of literals that we haven't seen yet)
-
-    #     Output:
-    #     - A list of indices of literal that we should try to drop
-    #     NOTE: for now, we only return either:
-    #     - []: empty list ~ should keep the checking_lit literal
-    #     - [checking_lit]:  should try to drop the checking_lit 
-    #     """
-
-    #     lemma = request.lemma
-    #     kept_lits = request.kept_lits
-    #     to_be_checked_lits = request.to_be_checked_lits
-    #     lemma_size = request.lemma_size
-    #     print("Receive lemma:", lemma)
-
-    #     L_a_batch, L_b_batch = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
-        
-
-    #     # in positive_pairs, if a pair value is 1, that means it has very high correlation
-    #     output = self.p_model(L_a_batch, L_b_batch)[0]
-    #     values, pos_pred = torch.max(self.m(output), 1)
-    #     positive_pairs = pos_pred.tolist()
-
-    #     # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
-    #     output = self.n_model(L_a_batch, L_b_batch)[0]
-    #     values, neg_pred = torch.max(self.m(output), 1)
-    #     negative_pairs = neg_pred.tolist()
-
-    #     #print for debugging
-    #     for i in range(len(positive_pairs)):
-    #         if i%len(kept_lits)==0:
-    #             print("----------------------")
-    #         print(positive_pairs[i], negative_pairs[i])
-        
-    #     # build answer using positive_pairs and negative_pairs
-
-    #     return indgen_conn_pb2.Answer(answer = answer)
-
     def fallback_answer(self, to_be_checked_lits, kept_lits, mask):
             checking_lits = [to_be_checked_lits[0]]
             to_be_checked_lits = to_be_checked_lits[1:]
@@ -170,6 +128,12 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                                               new_kept_lits = kept_lits,
                                               checking_lits = checking_lits)
 
+    def precompute_all_pairs(self, lemma, lemma_size):
+        L_K_batch, L_C_batch, lemma_size, lits = self.parse_and_batch_input(lemma, range(lemma_size), range(lemma_size))
+        _, P_mat = torch.max(self.p_model(L_K_batch, L_C_batch)[0], 1)
+        _, N_mat = torch.max(self.n_model(L_K_batch, L_C_batch)[0], 1)
+        self.cached_P_mat = P_mat.view(lemma_size, lemma_size)
+        self.cached_N_mat = N_mat.view(lemma_size, lemma_size)
 
     def QueryMask(self, request, context):
         """
@@ -190,6 +154,8 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
             self.cached_lemma = lemma
             self.cached_lits = None
             self.cached_lit_jsons = None
+            self.cached_N_mat = None
+            self.cached_P_mat = None
         kept_lits = request.kept_lits
         to_be_checked_lits = request.to_be_checked_lits
         lemma_size = request.lemma_size
@@ -218,89 +184,49 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
 
         Q: Should we just create  suggested lists from P and N model
         """
-        # suggest a "should be kept list"
-        should_be_kept_lits = set()
-        if self.p_model is not None and len(kept_lits)*len(to_be_checked_lits)>0:
-            # in positive_pairs, if a pair value is 1, that means it has very high correlation
-            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
-            # calculating whether P(lit_2bechecked| lit_kept) > THRESHOLD
-            output = self.p_model(L_2bchecked_batch, L_kept_batch)[0]
-            values, pos_pred = torch.max(self.m(output), 1)
-            positive_pairs = pos_pred.tolist()
-            print("p_model calculation")
-            self.dump_model_res(kept_lits, to_be_checked_lits, output)
 
-            for i in range(len(to_be_checked_lits)):
-                lit_idx = to_be_checked_lits[i]
-                #does lit at lit_idx has high correlation with any lit in kept_lits? If yes, move it to kept_lits
-                high_cor_with_kept_lits = positive_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
-                print("lit_{} has high cor with kept_lits".format(lit_idx), high_cor_with_kept_lits)
-                if 1 in high_cor_with_kept_lits:
-                    print("p model found a high cor pair. suggest to keep lit {}".format(lit_idx))
-                    should_be_kept_lits.add(lit_idx)
+        #Precompute all pairs
+        if self.cached_N_mat is None or self.cached_P_mat is None:
+            self.precompute_all_pairs(lemma, lemma_size)
 
-        # update mask using negative_pairs
-        # suggest a "should be drop list"
-        """
-        #collect anti-occurance
-        for ori_lit_idx in range(len(ori_cube)):
-            L_ori_tree_str = L_ori_trees_str[ori_lit_idx]
-            ori_lit_global_idx = self.negative_lit[L_ori_tree_str]
-            if L_ori_tree_str not in L_inducted_trees_str:
-                #mark all pair into the negative_X matrix
-                for inducted_lit_idx in range(len(inducted_cube)):
-                    L_inducted_tree_str = L_inducted_trees_str[inducted_lit_idx]
-                    inducted_lit_global_idx = self.negative_lit[L_inducted_tree_str]
+        new_to_be_checked_lits = set(to_be_checked_lits)
 
-                    self.negative_X[(ori_lit_global_idx, inducted_lit_global_idx)]+=1
-        """
-        should_be_drop_lits = set()
-        if self.n_model is not None and len(kept_lits)*len(to_be_checked_lits)>0 and len(kept_lits)>N_MODEL_LIM:
-            # in negative_pairs, if a pair value is 0, that means if 1 of the pair exists in the lemma, the other should not be there.
-            L_kept_batch, L_2bchecked_batch, lemma_size, lits = self.parse_and_batch_input(lemma, kept_lits, to_be_checked_lits)
+        delta_K = set()
+        # print("catched_P_mat:\n", self.cached_P_mat) 
+        for C_idx in to_be_checked_lits:
+            for K_idx in kept_lits:
+                if self.cached_P_mat[K_idx][C_idx]==1:
+                    delta_K.add(C_idx)
+        
+        new_kept_lits = set(kept_lits).union(delta_K)
+        new_to_be_checked_lits = new_to_be_checked_lits.difference(delta_K)
 
-            output = self.n_model(L_2bchecked_batch, L_kept_batch)[0]
-            output = self.m(output)
-            print("n_model calculation")
-            self.dump_model_res(kept_lits, to_be_checked_lits, output)
-            values, neg_pred = torch.max(output, 1)
-            negative_pairs = neg_pred.tolist()
-
-            for i in range(len(to_be_checked_lits)):
-                lit_idx = to_be_checked_lits[i]
-                #does the lit at lit_idx has anti-correlation with any lit in kept_lits? 
-                no_cor_with_kept_lits = negative_pairs[i*len(kept_lits):(i+1)*len(kept_lits)]
-                print("no cor with kept_lits", no_cor_with_kept_lits)
-                if no_cor_with_kept_lits.count(1)>=N_MODEL_LIM:
-                    print("lit at id {} has 0 correlation with {} lits in kept_lits. set it to 0".format(lit_idx, no_cor_with_kept_lits.count(1)))
-                    should_be_drop_lits.add(lit_idx)
+        delta_C = set()
+        for C_idx in new_to_be_checked_lits:
+            for K_idx in new_kept_lits:
+                if self.cached_N_mat[K_idx][C_idx]==1:
+                    delta_C.add(C_idx)
+        new_to_be_checked_lits = new_to_be_checked_lits.difference(delta_C)
 
         """
         construct the answer using should_be_kept_lits, should_be_drop_lits
         """
 
-
-        intersect_set = should_be_drop_lits.intersection(should_be_kept_lits)
-        print("intersect between 2 suggestion sets:", intersect_set)
-        #there is a conflict, use fallback mode
-        if len(intersect_set)>0:
+        if len(delta_C)==0:
             return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
         else:
             for i in kept_lits:
                 mask[i]=1
-            for i in to_be_checked_lits:
+            for i in new_to_be_checked_lits:
                 mask[i]=1
-            for i in should_be_kept_lits:
+            for i in delta_K:
                 mask[i]=1
                 kept_lits.append(i)
                 to_be_checked_lits.remove(i)
-            if len(should_be_drop_lits)==0 and len(to_be_checked_lits)>0:
-                return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
-            else:
-                for i in should_be_drop_lits:
-                    mask[i]=0
+            for i in delta_C:
+                mask[i]=0
 
-                checking_lits = should_be_drop_lits
+                checking_lits = delta_C
                 print("mask", mask)
                 print("new_kep_lits", kept_lits)
                 print("new_to_be_checked_lits", to_be_checked_lits)
