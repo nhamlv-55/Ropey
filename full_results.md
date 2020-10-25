@@ -1,7 +1,8 @@
+---
 layout: page
 title: "FULL RESULTS"
 permalink: /results/
-
+---
 |     | variant                                                                                 |   total_timeD |   total_time_insideD |   ind_gen_timeD |   ind_gen_totalD |   ind_gen_outsideD |   n_requestD |   n_responseD |   n_correctD |   time.pool_solver.smt.totalD |   depthD |   n_lemmasD |   indgen_failD | resultD   |   total_timeS |   total_time_insideS |   ind_gen_timeS |   ind_gen_totalS |   ind_gen_outsideS |   n_requestS |   n_responseS |   n_correctS |   time.pool_solver.smt.totalS |   depthS |   n_lemmasS |   indgen_failS | resultS   |
 |----:|:----------------------------------------------------------------------------------------|--------------:|---------------------:|----------------:|-----------------:|-------------------:|-------------:|--------------:|-------------:|------------------------------:|---------:|------------:|---------------:|:----------|--------------:|---------------------:|----------------:|-----------------:|-------------------:|-------------:|--------------:|-------------:|------------------------------:|---------:|------------:|---------------:|:----------|
 |   0 | /home/nle/workspace/Doping/run_benchmark/all_dataset/chc-lra-0002.smt2.folder/variant_0 |         65.1  |                16.63 |            7.79 |            56.26 |              48.47 |          395 |            57 |           25 |                         14.38 |       17 |         411 |            930 | sat       |         48.87 |                44.86 |           19.81 |            23.82 |               4.01 |          355 |             0 |            0 |                         41.54 |       17 |         372 |            930 | sat       |
