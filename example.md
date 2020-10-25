@@ -1,4 +1,8 @@
-
+---
+layout: page
+title: "MOTIVATING EXAMPLE"
+permalink: /example/
+---
 
 
 Here is the running time of solving chc-lra-0055.smt2 from CHC-COMP 2018
