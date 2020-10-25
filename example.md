@@ -74,7 +74,7 @@ The first line measures the total solving time, and the second line measures tim
 is spent in inductive generalization.
 
 Plotting the P+ and P- matrices, as described in the paper, we get
-![](https://github.com/nhamlv-55/Dopey/blob/gh-pages/XP.svg)
+![](/XP.svg)
 Top to bottom, we have P+ (brighter the cell, bigger the value), P+ normalized (all non-zero cells are equally bright), P-, P- normalized.
 
 There are some patterns in it, and we started this project by implementing handcrafted heuristics that we thought could capture the patterns, but unfortunately they
