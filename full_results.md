@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "FULL RESULTS"
 permalink: /results/
 ---
