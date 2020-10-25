@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: "MOTIVATING EXAMPLE"
 permalink: /example/
 ---
