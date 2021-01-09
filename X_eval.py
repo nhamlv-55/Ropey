@@ -49,18 +49,19 @@ def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = No
 
     while not last_batch:
         test, last_batch = dataObj.next_batch(testset, test_bsz, -1) #set negative_sampling_rate to -1 in evaluation
-        output = model(
-            test["L_a_batch"],
-            test["L_b_batch"]
-        )[0]
-        true_label = test["label_batch"].cpu()
-        m = nn.Softmax(dim = 1)
+        if test is not None:
+            output = model(
+                test["L_a_batch"],
+                test["L_b_batch"]
+            )[0]
+            true_label = test["label_batch"].cpu()
+            m = nn.Softmax(dim = 1)
 
-        values, pred = torch.max(m(output), 1)
+            values, pred = torch.max(m(output), 1)
 
-        all_true_labels.extend(true_label.tolist())
-        all_preds.extend(pred.tolist())
-        all_values.extend(values.tolist())
+            all_true_labels.extend(true_label.tolist())
+            all_preds.extend(pred.tolist())
+            all_values.extend(values.tolist())
 
     acc = accuracy_score(all_true_labels, all_preds)
     f1 = f1_score(all_true_labels, all_preds)
@@ -77,9 +78,6 @@ def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = No
     print("f1", f1)
     print("precision", pre)
     print("recall", recall)
-    true_label = true_label.tolist()
-    values = values.tolist()
-    pred = pred.tolist()
     if examples_idx is not None:
         #grab the random 20 examples
         examples_dps = [testset[i] for i in examples_idx]
@@ -132,6 +130,7 @@ if __name__=="__main__":
                       shuffle = configs["shuffle"][0],
                       train_size = 1,
                       threshold = configs["threshold"][0],
-                      negative=configs["train_negative_model"][0])
+                      negative=configs["train_negative_model"][0],
+                      device = configs["device"][0])
 
     evaluate(model, dataObj, dataObj.train_P, configs["test_batch_size"][0])

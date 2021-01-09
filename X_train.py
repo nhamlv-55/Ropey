@@ -88,15 +88,16 @@ if __name__ == '__main__':
                                                     negative_sampling_rate = configs["negative_sampling_rate"][0])
                 # print(last_batch)
                 # print("Training with %d datapoints"%train["size"])
-                output = model(
-                    train["L_a_batch"],
-                    train["L_b_batch"]
-                )[0]
-                loss = loss_function(output, train["label_batch"].to(device))
-                total_loss += loss
+                if train is not None:
+                    output = model(
+                        train["L_a_batch"],
+                        train["L_b_batch"]
+                    )[0]
+                    loss = loss_function(output, train["label_batch"].to(device))
+                    total_loss += loss
 
-                loss.backward()
-                optimizer.step()
+                    loss.backward()
+                    optimizer.step()
 
             if n%configs["eval_epoch"][0]==0:
                 print("Result using data from: {}".format(str(dataObj)))
@@ -114,7 +115,7 @@ if __name__ == '__main__':
                 # print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
 
         if n%configs["save_epoch"][0]==0 or n==configs["epoch"][0] - 1:
-            model_path = new_model_path(basename = exp_name)
+            model_path = new_model_path(basename = exp_name, epoch = n)
             print("Saving to ", model_path)
             torch.save({
                 'epoch': n,
