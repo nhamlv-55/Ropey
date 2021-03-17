@@ -77,6 +77,7 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         self.dataset = server_config["dataset"]
         self.seed_path = server_config["seed_path"]
         self.fallback_mode = server_config["fallback_mode"]
+        self.random_mode = server_config["random_mode"]
         if not self.fallback_mode:
             self.seed_file = get_seed_file(self.seed_path)
             self.edb = ExprDb(self.seed_file)
@@ -113,27 +114,50 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
                 self.is_training = True
             return indgen_conn_pb2.Ack(ack_message=False)
 
-    def fallback_answer(self, to_be_checked_lits, kept_lits, mask):
+    def fallback_answer(self, to_be_checked_lits, kept_lits, mask, dirty = False):
+        if len(to_be_checked_lits)>0:
             checking_lits = [to_be_checked_lits[0]]
             to_be_checked_lits = to_be_checked_lits[1:]
-            for i in kept_lits:
-                mask[i] = 1
-            for i in to_be_checked_lits:
-                mask[i] = 1
-            for i in checking_lits:
-                mask[i] = 0
-            return indgen_conn_pb2.FullAnswer(dirty = False,
-                                              mask = mask,
-                                              new_to_be_checked_lits = to_be_checked_lits,
-                                              new_kept_lits = kept_lits,
-                                              checking_lits = checking_lits)
+        else:
+            checking_lits = []
+        for i in kept_lits:
+            mask[i] = 1
+        for i in to_be_checked_lits:
+            mask[i] = 1
+        for i in checking_lits:
+            mask[i] = 0
+        return indgen_conn_pb2.FullAnswer(dirty = dirty,
+                                            mask = mask,
+                                            new_to_be_checked_lits = to_be_checked_lits,
+                                            new_kept_lits = kept_lits,
+                                            checking_lits = checking_lits)
+    def random_answer(self, to_be_checked_lits, kept_lits, mask, dirty = False):
+        if len(to_be_checked_lits)>0:
+            checking_lits = [to_be_checked_lits[0]]
+            to_be_checked_lits = to_be_checked_lits[1:]
+        else:
+            checking_lits = []
+        for i in kept_lits:
+            mask[i] = 1
+        for i in to_be_checked_lits:
+            mask[i] = 1
+        for i in checking_lits:
+            mask[i] = 0
+        return indgen_conn_pb2.FullAnswer(dirty = dirty,
+                                            mask = mask,
+                                            new_to_be_checked_lits = to_be_checked_lits,
+                                            new_kept_lits = kept_lits,
+                                            checking_lits = checking_lits)
+
 
     def precompute_all_pairs(self, lemma, lemma_size):
         L_K_batch, L_C_batch, lemma_size, lits = self.parse_and_batch_input(lemma, range(lemma_size), range(lemma_size))
-        _, P_mat = torch.max(self.p_model(L_K_batch, L_C_batch)[0], 1)
-        _, N_mat = torch.max(self.n_model(L_K_batch, L_C_batch)[0], 1)
-        self.cached_P_mat = P_mat.view(lemma_size, lemma_size)
-        self.cached_N_mat = N_mat.view(lemma_size, lemma_size)
+        if self.p_model:
+            _, P_mat = torch.max(self.p_model(L_K_batch, L_C_batch)[0], 1)
+            self.cached_P_mat = P_mat.view(lemma_size, lemma_size)
+        if self.n_model:
+            _, N_mat = torch.max(self.n_model(L_K_batch, L_C_batch)[0], 1)
+            self.cached_N_mat = N_mat.view(lemma_size, lemma_size)
 
     def QueryMask(self, request, context):
         """
@@ -186,34 +210,49 @@ class Greeter(indgen_conn_pb2_grpc.GreeterServicer):
         """
 
         #Precompute all pairs
-        if self.cached_N_mat is None or self.cached_P_mat is None:
-            self.precompute_all_pairs(lemma, lemma_size)
+        try:
+            if self.cached_N_mat is None or self.cached_P_mat is None:
+                self.precompute_all_pairs(lemma, lemma_size)
+        except:
+            print("Error in parsing. Use fallback mode")
+            return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
 
         new_to_be_checked_lits = set(to_be_checked_lits)
 
-        delta_K = set()
-        # print("catched_P_mat:\n", self.cached_P_mat) 
-        for C_idx in to_be_checked_lits:
-            for K_idx in kept_lits:
-                if self.cached_P_mat[K_idx][C_idx]==1:
-                    delta_K.add(C_idx)
-        
-        new_kept_lits = set(kept_lits).union(delta_K)
-        new_to_be_checked_lits = new_to_be_checked_lits.difference(delta_K)
+        if self.random_mode:
+            return self.random_answer(to_be_checked_lits, kept_lits, mask)
+        else:
+            delta_K = set()
+            if self.p_model:
+                for C_idx in to_be_checked_lits:
+                    for K_idx in kept_lits:
+                        if self.cached_P_mat[K_idx][C_idx]==1:
+                            delta_K.add(C_idx)
+                
+            new_kept_lits = set(kept_lits).union(delta_K)
+            new_to_be_checked_lits = new_to_be_checked_lits.difference(delta_K)
 
-        delta_C = set()
-        for C_idx in new_to_be_checked_lits:
-            for K_idx in new_kept_lits:
-                if self.cached_N_mat[K_idx][C_idx]==1:
-                    delta_C.add(C_idx)
-        new_to_be_checked_lits = new_to_be_checked_lits.difference(delta_C)
+            delta_C = set()
+            if self.n_model:
+                for C_idx in new_to_be_checked_lits:
+                    for K_idx in new_kept_lits:
+                        if self.cached_N_mat[K_idx][C_idx]==1:
+                            delta_C.add(C_idx)
+            new_to_be_checked_lits = new_to_be_checked_lits.difference(delta_C)
 
         """
         construct the answer using should_be_kept_lits, should_be_drop_lits
         """
 
         if len(delta_C)==0:
-            return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
+            #both model do nothing
+            if len(delta_K)==0:
+                return self.fallback_answer(to_be_checked_lits, kept_lits, mask)
+            else:
+                return self.fallback_answer(sorted(list(new_to_be_checked_lits)), 
+                                            sorted(list(new_kept_lits)),
+                                            mask
+                                            )
         else:
             for i in kept_lits:
                 mask[i]=1
@@ -408,6 +447,7 @@ if __name__ == '__main__':
     parser.add_argument('-N', '--n-model-path', help='path to the .pt file of the negative model')
     parser.add_argument('-p', '--port', default='50051', help='port to serve the grpc server')
     parser.add_argument('-F', '--fallback-mode', action='store_true', help='whether to run in fallback mode')
+    parser.add_argument('-R', '--random-mode', action='store_true', help='whether to run in fallback mode')
     args = parser.parse_args()
 
     fallback_mode = args.fallback_mode
@@ -420,7 +460,8 @@ if __name__ == '__main__':
             "n_model": None, #negative model
             "dataset": None,
             "seed_path": None,
-            "fallback_mode": args.fallback_mode
+            "fallback_mode": args.fallback_mode,
+            "random_mode": False
         }
     else:
         exp_folder = args.input
@@ -446,7 +487,8 @@ if __name__ == '__main__':
             "n_model": n_model, #negative model
             "dataset": dataset,
             "seed_path": seed_path,
-            "fallback_mode": args.fallback_mode
+            "fallback_mode": args.fallback_mode,
+            "random_mode": args.random_mode
         }
 
     print(server_config)
