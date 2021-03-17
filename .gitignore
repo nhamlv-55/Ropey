@@ -3,3 +3,6 @@
 PySpacerSolver/
 run_benchmark/
 grpc_test_runs/
+benchmarks/
+all_lra_chc19/
+all_lra_chc20/
