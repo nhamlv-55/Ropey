@@ -2,3 +2,4 @@
 *.json
 PySpacerSolver/
 run_benchmark/
+grpc_test_runs/
