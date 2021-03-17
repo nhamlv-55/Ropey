@@ -13,14 +13,17 @@ import argparse
 import random
 import logging
 
+import matplotlib.pyplot as plt
 import Doping.utils.utils as Du
 from Doping.X_eval import evaluate
 
 if __name__ == '__main__':
     parser = Du.parser_from_template()
     parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
+    parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
     args = parser.parse_args()
-
+    log = logging.getLogger(__name__)
+    log.setLevel(getattr(logging, args.logLevel))
     #load the config file
     with open(args.json_config_file, "r") as f:
         configs = json.load(f)
@@ -105,6 +108,25 @@ if __name__ == '__main__':
                 train_res = evaluate(model, dataObj, dataObj.train_P, configs["train_batch_size"][0])
                 # print("example_ids:", examples_idx)
                 # test_res = evaluate(model, dataObj.test_P)
+                for name, weight in model.named_parameters():
+                    SWRITER.add_histogram(name,weight, n)
+                    SWRITER.add_histogram(f'{name}.grad',weight.grad, n)
+
+                    if len(list(weight.data.size()))==2:
+                        # fig = plt.figure()
+                        # ax = fig.add_subplot()
+                        image = weight.data.cpu().detach().numpy()
+                        print(image)
+                        image -= image.min()
+                        image /= image.max()
+                        # im = ax.imshow(weight.data.cpu(), interpolation = None)
+                        # plt.savefig("W_iou_{}.jpg", )
+                        print(weight.data.size())
+                        print(image, image.shape)
+                        # Du.plot_to_tensorboard(SWRITER, fig, n)
+                        SWRITER.add_image("weight"+str(name), image, global_step = n,  dataformats='HW')
+
+
                 SWRITER.add_scalar('Loss/train', total_loss, n)
                 SWRITER.add_scalar('Accuracy/train', train_res["acc"], n)
                 # SWRITER.add_scalar('Accuracy/test', test_res["acc"], n)
@@ -112,7 +134,7 @@ if __name__ == '__main__':
                 # SWRITER.add_scalar('F1/test', test_res["f1"], n)
                 print(f'Iteration {n+1} Loss: {loss}')
                 #check that embedding is being trained
-                # print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
+                print(model.emb(torch.LongTensor([5]).to(device = device ) ) )
 
         if n%configs["save_epoch"][0]==0 or n==configs["epoch"][0] - 1:
             model_path = new_model_path(basename = exp_name, epoch = n)

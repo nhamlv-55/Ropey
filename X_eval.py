@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from X_model import Model
+from Doping.X_model import Model
 from Doping.utils.X_Dataset import DataObj
 import argparse
 import json
@@ -32,9 +32,34 @@ def load_configs_from_model(model_path):
     configs = checkpoint['configs']
     return configs
 
-def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = None, n = None ):
-    #switch to eval mode
+def print_debug(test, values, pred):
+    true_label = test["label_batch"].cpu()
+    pred = pred.tolist()
+    values = values.tolist()
+    assert(len(true_label) == len(pred))
+    for i in range(len(true_label)):
+        if true_label[i]==1 or pred[i]==1:
+            l_a = test["filenames"][i][0]
+            l_b = test["filenames"][i][1]
 
+            l_a_json = json.load(open(l_a, "r"))
+            l_a_expr = l_a_json["tree"]["children"][0]["expr"]
+            l_a_idx = l_a_json["index"]
+            
+            l_b_json = json.load(open(l_b, "r"))
+            l_b_expr = l_b_json["tree"]["children"][0]["expr"]
+            l_b_idx = l_b_json["index"]
+            print("(lit_a, lit_b)", l_a_idx, l_b_idx)
+            print("lit_a: %s\nlit_b: %s"%(l_a_expr, l_b_expr))
+            print("pred", pred[i], "val", values[i])
+            print("true label", true_label[i])
+            print("--------------")
+
+    return
+
+
+def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = None, n = None, debug = False):
+    #switch to eval mode
     model.eval()
     last_batch = False
 
@@ -52,17 +77,21 @@ def evaluate(model, dataObj, testset, test_bsz, examples_idx = None, writer = No
         if test is not None:
             output = model(
                 test["L_a_batch"],
-                test["L_b_batch"]
+                test["L_b_batch"],
+                debug = debug
             )[0]
             true_label = test["label_batch"].cpu()
             m = nn.Softmax(dim = 1)
 
             values, pred = torch.max(m(output), 1)
 
+            print_debug(test, values, pred)
+
+
             all_true_labels.extend(true_label.tolist())
             all_preds.extend(pred.tolist())
             all_values.extend(values.tolist())
-
+            
     acc = accuracy_score(all_true_labels, all_preds)
     f1 = f1_score(all_true_labels, all_preds)
     pre = precision_score(all_true_labels, all_preds)

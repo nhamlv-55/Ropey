@@ -47,10 +47,10 @@ class Model(torch.nn.Module):
                 "model": "new_model"
         }
 
-    def forward(self, lit_a, lit_b):
+    def forward(self, lit_a, lit_b, debug = False):
         #if use context, need to compute context features first
-        h_a_raw, c_a_raw, a_sz = self.forward_a_tree(lit_a)
-        h_b_raw, c_b_raw, b_sz = self.forward_a_tree(lit_b)
+        h_a_raw, c_a_raw, a_sz = self.forward_a_tree(lit_a, debug = debug)
+        h_b_raw, c_b_raw, b_sz = self.forward_a_tree(lit_b, debug = debug)
         h_a = TLUtil.stack_last_h(h_a_raw, a_sz)
         h_b = TLUtil.stack_last_h(h_b_raw, b_sz)
 
@@ -64,6 +64,7 @@ class Model(torch.nn.Module):
 
         h_a = h_a.view(batch_size, 1, -1)
         h_b = h_b.view(batch_size, 1, -1)
+
         h = torch.cat((h_a, h_b), dim = -1)
         if self._use_dot_product:
             h = torch.cat((h, dotp), dim = -1)
@@ -76,7 +77,7 @@ class Model(torch.nn.Module):
                 "h_b_raw": h_b_raw,
             }
 
-    def forward_a_tree(self, tree, context_features = None):
+    def forward_a_tree(self, tree, context_features = None, debug = False):
         '''
         if context_features is not None, we are forwarding a L_a or L_b tree.
         if context_features is None, we are forwarding the C_tree.
@@ -98,6 +99,10 @@ class Model(torch.nn.Module):
         if self._use_const_emb:
             const_emb = features[:, 2:2+self._emb_dim]*1.0
             const_emb = const_emb.to(self.device)
+            if debug:
+                print("token_emb", token_emb[0])
+                print("sort_emb", sort_emb[0])
+                print("const_emb", const_emb[0])
             features = torch.cat((token_emb, sort_emb, const_emb), dim = 1)
         else:
             features = torch.cat((token_emb, sort_emb), dim = 1)
