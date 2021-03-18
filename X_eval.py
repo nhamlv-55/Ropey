@@ -38,7 +38,7 @@ def print_debug(test, values, pred):
     values = values.tolist()
     assert(len(true_label) == len(pred))
     for i in range(len(true_label)):
-        if true_label[i]==1 or pred[i]==1:
+        if True or true_label[i]==1 or pred[i]==1:
             l_a = test["filenames"][i][0]
             l_b = test["filenames"][i][1]
 

@@ -113,17 +113,12 @@ if __name__ == '__main__':
                     SWRITER.add_histogram(f'{name}.grad',weight.grad, n)
 
                     if len(list(weight.data.size()))==2:
-                        # fig = plt.figure()
-                        # ax = fig.add_subplot()
                         image = weight.data.cpu().detach().numpy()
-                        print(image)
+                        log.debug(image)
                         image -= image.min()
                         image /= image.max()
-                        # im = ax.imshow(weight.data.cpu(), interpolation = None)
-                        # plt.savefig("W_iou_{}.jpg", )
-                        print(weight.data.size())
-                        print(image, image.shape)
-                        # Du.plot_to_tensorboard(SWRITER, fig, n)
+                        log.debug(weight.data.size())
+                        log.debug(image)
                         SWRITER.add_image("weight"+str(name), image, global_step = n,  dataformats='HW')
 
 
