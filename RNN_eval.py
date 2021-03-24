@@ -6,7 +6,7 @@ import argparse
 import json
 import Doping.utils.utils as Du
 from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
-
+from enum import Enum
 def setup_model(model_path):
     checkpoint = torch.load(model_path)
     model_metadata = checkpoint['metadata']['lemma_encoder']
@@ -42,7 +42,32 @@ def print_debug(test, values, pred):
     return
 
 
-def evaluate(model, dataObj, test_bsz, writer = None, n = None, debug = False, examples_idx = None):
+
+def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug = False, examples_idx = None):
+    class CHK_LEMMA_RES(Enum):
+        perfect = 1
+        eligable = 2 #if the only mistake is that we keep literal that should be dropped
+        wrong = 3 #if we drop literal that cannot be drop
+
+    def check_lemma(test, pred, counters):
+        true_label = test["labels"][0].cpu()
+        pred = pred.tolist()
+        perfect = True
+        for idx in range(len(true_label)):
+            if true_label[idx] == 1 and pred[idx]==0:
+                counters["wrong_cnt"]+=1
+                return CHK_LEMMA_RES.wrong
+            if true_label[idx] == 0 and pred[idx]==1:
+                perfect = False
+
+        if perfect:
+            counters["perfect_cnt"]+=1
+            return CHK_LEMMA_RES.perfect
+        else:
+            counters["eligable_cnt"]+=1
+            return CHK_LEMMA_RES.eligable
+
+
     #switch to eval mode
     model.eval()
     last_batch = False
@@ -51,16 +76,19 @@ def evaluate(model, dataObj, test_bsz, writer = None, n = None, debug = False, e
     all_preds  = []
     all_values = []
 
+    counters = {"wrong_cnt": 0, "perfect_cnt": 0, "eligable_cnt": 0}
+
+
     results = {"acc": -1,
                "pre": -1,
                "rec": -1,
                "f1": -1}
 
     while not last_batch:
-        test, last_batch = dataObj.next_batch(test_bsz)
+        test, last_batch = dataObj.next_batch(datapart, test_bsz, gamma = -1)
         if test is not None:
             labels = test["labels"][0]
-            print("labels", labels, labels.size())
+            # print("labels", labels, labels.size())
 
             output = model(test["input_trees"][0])
 
@@ -68,9 +96,9 @@ def evaluate(model, dataObj, test_bsz, writer = None, n = None, debug = False, e
             m = nn.Softmax(dim = 1)
 
             values, pred = torch.max(m(output), 1)
-
+            check_lemma(test, pred, counters)
             print_debug(test, values, pred)
-
+            # print("pred", pred)
 
             all_true_labels.extend(true_label.tolist())
             all_preds.extend(pred.tolist())
@@ -91,6 +119,7 @@ def evaluate(model, dataObj, test_bsz, writer = None, n = None, debug = False, e
     print("f1", f1)
     print("precision", pre)
     print("recall", recall)
+    print("counters", json.dumps(counters, indent = 2))
     if examples_idx is not None:
         #grab the random 20 examples
         examples_dps = [testset[i] for i in examples_idx]

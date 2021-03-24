@@ -12,6 +12,8 @@ from Doping.utils.utils import calculate_P
 logging.getLogger().setLevel(logging.DEBUG)
 log = logging.getLogger(__name__)
 
+MIN_LEN_GAMMA = 2
+
 class DataObj:
     def __init__(self, datafolder, device, name = "dataset", shuffle = True, max_size = -1, train_size = 0.67, threshold = 0.75):
         '''
@@ -40,8 +42,8 @@ class DataObj:
         self.X_test_filename = ""
         self.X_train_filename = ""
         self.rnn_dps = []
-        self.train_P = None
-        self.test_P = None
+        self.train_dps = []
+        self.test_dps = []
         self.threshold = threshold
         
         self.build_dataset()
@@ -105,28 +107,44 @@ class DataObj:
         rnn_dps = sorted(rnn_dps)
         with open(rnn_dps[-1], "r") as f:
             self.rnn_dps = json.load(f)["RNN_datapoints"]
+            
+        train_index = int(len(self.rnn_dps)*self.train_size)-1
+        self.train_dps = self.rnn_dps[:train_index]
+        self.test_dps = self.rnn_dps[train_index:]
 
-
-
-    def next_batch(self, batch_size):
+    def next_batch(self, datapart, batch_size, gamma = 0.1):
+        """
+        datapart is either self.train_dps or self.test_dps
+        """
         last_batch = False
         dataset = {}
         input_trees = []
         labels = []
         log.debug("data_pointer:{}".format(self.data_pointer))
-        log.debug(len(self.rnn_dps))
+        log.debug(len(datapart))
 
-        for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(self.rnn_dps))):
+        for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(datapart))):
             #for each datapoint (timestamp, original cube, inducted cube, mask)
-            datapoint = self.rnn_dps[i]
+            datapoint = datapart[i]
 
             lit_jsons = [self.id2lits_json[idx]["lit_tree"] for idx in datapoint["ori"]]
 
             ori_tree_input = batch_tree_input(lit_jsons)
 
             input_trees.append(ori_tree_input)
-            labels.append(torch.tensor(datapoint["mask"]).to(self.device))
 
+            #randomly change 0 to 1 to encourage higher recall
+            if gamma > 0 and len(datapoint["mask"]) > MIN_LEN_GAMMA:
+                mask = datapoint["mask"][:] #has to do a copy here otherwise data will be corrupted
+                # print("before", mask)
+                for mask_idx in range(len(mask)):
+                    if mask[mask_idx] == 0 and random.random()<gamma:
+                        mask[mask_idx] = 1
+                # print("after", mask)
+
+                labels.append(torch.tensor(mask).to(self.device))
+            else:
+                labels.append(torch.tensor(datapoint["mask"]).to(self.device))
         if len(input_trees) == 0:
             self.data_pointer = 0
             return None, True
@@ -136,7 +154,7 @@ class DataObj:
         dataset["input_trees"] = input_trees
         dataset["labels"] = labels
         self.data_pointer+=batch_size
-        if self.data_pointer>len(self.rnn_dps):
+        if self.data_pointer>len(datapart):
             last_batch = True
             self.data_pointer = 0
         return dataset, last_batch
