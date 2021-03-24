@@ -18,6 +18,7 @@
     "save_epoch": [100,"","sN"],
     "threshold": [0.8,"if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example","Th"],
     "dropout_rate": [0.5,"","Dr"],
+    "gamma": [0.1, "", "Gm"],
     "prefix": ["model","","P"],
     "checkpoint": ["", "Path to the .pt file of a model. Use it to resume training", "Ckp"],
     "device": ["cuda", "Use CPU or GPU to train. Possilbe option: cuda, cpu", "Dev"]
