@@ -103,7 +103,7 @@ class LemmaEncoder(torch.nn.Module):
         self._use_const_emb = use_const_emb
         self._use_dot_product = use_dot_product
         self._dropout_rate = dropout_rate
-        self.emb = nn.Embedding(vocab_size*2, emb_dim ).to(self.device) #*2 to handle out of vocab cases
+        self.emb = nn.Embedding(vocab_size, emb_dim ).to(self.device) 
         self.sort_emb = nn.Embedding(sort_vocab_size*2, emb_dim ).to(self.device)
         self.dropout = nn.Dropout(p=self._dropout_rate)
         #calculate the input size of tree_lstm based on flags
