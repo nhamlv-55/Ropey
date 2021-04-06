@@ -1,7 +1,5 @@
 import torch
-import torch.nn as nn
 from torch.utils.tensorboard import SummaryWriter
-import z3
 from Doping.pytorchtreelstm.treelstm import TreeLSTM, calculate_evaluation_orders
 from Doping.utils.RNN_Dataset import DataObj
 from Doping.settings import MODEL_PATH, new_model_path
@@ -15,7 +13,7 @@ import logging
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 import Doping.utils.utils as Du
-from Doping.RNN_eval import evaluate
+from Doping.RNN_eval import evaluate, plot_tsne, plot_weight_tfboard
 
 if __name__ == '__main__':
     parser = Du.parser_from_template()
@@ -48,7 +46,7 @@ if __name__ == '__main__':
                           device = device,
                           max_size = configs["max_size"][0],
                           shuffle = configs["shuffle"][0],
-                          train_size = 0.3,
+                          train_size = 1,
                           threshold = configs["threshold"][0],
                           )
         vocab = dataObj.vocab
@@ -81,71 +79,79 @@ if __name__ == '__main__':
     metadata = {"dataset": dataObj.metadata(), "model": model.metadata(), "configs": configs, "no_of_params": no_of_params}
     SWRITER.add_text('metadata', json.dumps(metadata, indent = 2)  )
     # examples_idx = random.sample(list(range(len(dataObj.test_dps))), 20)
-    with tqdm(range(configs["epoch"][0])) as progress_bar:
-        for n in range(configs["epoch"][0]):
-            for dataObj in dataObjs:
-                last_batch = False
-                total_loss = 0
-                while not last_batch:
-                    optimizer.zero_grad()
-                    loss = 0
+    model_path = new_model_path(basename = exp_name, epoch = "RN")
+    plot_tsne(model, vocabs[0], model_path, "RN")
+    try:
+        with tqdm(range(configs["epoch"][0])) as progress_bar:
+            for n in range(configs["epoch"][0]):
+                for dataObj in dataObjs:
+                    last_batch = False
+                    total_loss = 0
+                    while not last_batch:
+                        optimizer.zero_grad()
+                        loss = 0
 
-                    train, last_batch = dataObj.next_batch(dataObj.train_dps, 1, configs['gamma'][0])
-
-
-                    if train is not None:
-                        labels = train["labels"][0]
-                        # print("labels", labels, labels.size())
-
-                        output = model(train["input_trees"][0])
-
-                        loss = loss_function(output, labels)
-                        total_loss += loss
-                        loss.backward()
-
-                        optimizer.step()
-
-                progress_bar.update(1)
-
-                if n%configs["eval_epoch"][0]==0:
-                    print("Result using data from: {}".format(str(dataObj)))
-                    # print(output.shape)
-                    train_res = evaluate(model, dataObj, dataObj.train_dps, 1)
-                    # print("example_ids:", examples_idx)
-                    test_res = evaluate(model, dataObj, dataObj.test_dps, 1)
-                    for name, weight in model.named_parameters():
-                        SWRITER.add_histogram(name,weight, n)
-                        SWRITER.add_histogram(f'{name}.grad',weight.grad, n)
-
-                        if len(list(weight.data.size()))==2:
-                            image = weight.data.cpu().detach().numpy()
-                            log.debug(image)
-                            image -= image.min()
-                            image /= image.max()
-                            log.debug(weight.data.size())
-                            log.debug(image)
-                            SWRITER.add_image("weight"+str(name), image, global_step = n,  dataformats='HW')
+                        train, last_batch = dataObj.next_batch(dataObj.train_dps, 1, configs['gamma'][0])
 
 
-                    SWRITER.add_scalar('Loss/train', total_loss, n)
-                    SWRITER.add_scalar('Accuracy/train', train_res["acc"], n)
-                    SWRITER.add_scalar('Accuracy/test', test_res["acc"], n)
-                    SWRITER.add_scalar('F1/train', train_res["f1"], n)
-                    SWRITER.add_scalar('F1/test', test_res["f1"], n)
-                    print(f'Iteration {n+1} Loss: {total_loss}')
-                    #check that embedding is being trained
-                    print(model.lemma_encoder.emb(torch.LongTensor([5]).to(device = device ) ) )
+                        if train is not None:
+                            labels = train["labels"][0]
+                            # print("labels", labels, labels.size())
 
-            if n%configs["save_epoch"][0]==0 or n==configs["epoch"][0] - 1:
-                model_path = new_model_path(basename = exp_name, epoch = n)
-                print("Saving to ", model_path)
-                torch.save({
-                    'epoch': n,
-                    'model_state_dict': model.state_dict(),
-                    'optimizer_state_dict': optimizer.state_dict(),
-                    'loss': loss,
-                    'dataset': dataObj.metadata(),
-                    'metadata': model.metadata(),
-                    'configs': configs,
-                    'no_of_params': no_of_params
-                }, model_path)
+                            output = model(train["input_trees"][0])
+
+                            loss = loss_function(output, labels)
+                            total_loss += loss
+                            loss.backward()
+
+                            optimizer.step()
+
+                    progress_bar.update(1)
+
+                    if n%configs["eval_epoch"][0]==0:
+                        print("Result using data from: {}".format(str(dataObj)))
+                        # print(output.shape)
+                        train_res = evaluate(model, dataObj, dataObj.train_dps, 1)
+                        # print("example_ids:", examples_idx)
+                        test_res = evaluate(model, dataObj, dataObj.test_dps, 1)
+
+                        # plot_weight_tfboard(model, SWRITER, n)
+                        SWRITER.add_scalar('Loss/train', total_loss, n)
+                        SWRITER.add_scalar('Accuracy/train', train_res["acc"], n)
+                        SWRITER.add_scalar('Accuracy/test', test_res["acc"], n)
+                        SWRITER.add_scalar('F1/train', train_res["f1"], n)
+                        SWRITER.add_scalar('F1/test', test_res["f1"], n)
+                        print(f'Iteration {n+1} Loss: {total_loss}')
+                        #check that embedding is being trained
+
+                if n%configs["save_epoch"][0]==0 or n==configs["epoch"][0] - 1:
+                    model_path = new_model_path(basename = exp_name, epoch = n)
+                    print("Saving to ", model_path)
+                    torch.save({
+                        'model_path': model_path,
+                        'epoch': n,
+                        'model_state_dict': model.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                        'loss': loss,
+                        'dataset': dataObj.metadata(),
+                        'metadata': model.metadata(),
+                        'configs': configs,
+                        'no_of_params': no_of_params
+                    }, model_path)
+                    plot_tsne(model, vocabs[0], model_path, n)
+    except KeyboardInterrupt:
+        model_path = new_model_path(basename = exp_name, epoch="KI")
+        print("Keyboard Interupted. Saving to ", model_path)
+        torch.save({
+            'model_path': model_path,
+            'epoch': n,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'loss': loss,
+            'dataset': dataObj.metadata(),
+            'metadata': model.metadata(),
+            'configs': configs,
+            'no_of_params': no_of_params
+        }, model_path)
+
+        plot_tsne(model, vocabs[0], model_path, n)
