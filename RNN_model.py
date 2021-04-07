@@ -54,6 +54,18 @@ class RNNModel(nn.Module):
     def metadata(self):
         return {"lemma_encoder": self.lemma_encoder.metadata() }
 
+    def disable_token_emb(self):
+        self.lemma_encoder.disable_token_emb()
+
+    def enable_token_emb(self):
+        self.lemma_encoder.enable_token_emb()
+
+    def disable_constant_emb(self):
+        self.lemma_encoder.disable_constant_emb()
+
+    def enable_constant_emb(self):
+        self.lemma_encoder.enable_constant_emb()
+
     def forward(self, cube):
         ##XXX: currently expect only a single cube, not a batch
         #text = [sent len, batch size]
@@ -103,8 +115,12 @@ class LemmaEncoder(torch.nn.Module):
         self._use_const_emb = use_const_emb
         self._use_dot_product = use_dot_product
         self._dropout_rate = dropout_rate
+
+        self._use_token_emb = True
+
+
         self.emb = nn.Embedding(vocab_size, emb_dim ).to(self.device) 
-        self.sort_emb = nn.Embedding(sort_vocab_size*2, emb_dim ).to(self.device)
+        self.sort_emb = nn.Embedding(sort_vocab_size, emb_dim ).to(self.device)
         self.dropout = nn.Dropout(p=self._dropout_rate)
         #calculate the input size of tree_lstm based on flags
         self.treelstm_input_size = emb_dim * 2
@@ -116,6 +132,27 @@ class LemmaEncoder(torch.nn.Module):
         self.next_to_last_size = tree_dim * 2
         if self._use_dot_product:
             self.next_to_last_size+=1
+
+    def disable_token_emb(self):
+        if self._use_token_emb:
+            print("Disable token embeddings...")
+            self._use_token_emb = False
+
+    def enable_token_emb(self):
+        if not self._use_token_emb:
+            print("Enable token embeddings...")
+            self._use_token_emb = True
+
+    def disable_constant_emb(self):
+        if self._use_const_emb:
+            print("Disable const embeddings...")
+            self._use_const_emb = False
+
+    def enable_constant_emb(self):
+        if not self._use_const_emb:
+            print("Enable const embeddings...")
+            self._use_const_emb = True
+
 
     def metadata(self):
         return {"emb_dim": self._emb_dim,
@@ -141,8 +178,10 @@ class LemmaEncoder(torch.nn.Module):
         sort_feat = features[:,1].long()
 
         # self.log.debug("token_feat", token_feat.tolist())
-
-        token_emb = self.emb(token_feat)
+        if self._use_token_emb:
+            token_emb = self.emb(token_feat)
+        else:
+            token_emb = torch.zeros([token_feat.shape[0], self._emb_dim], requires_grad = False).to(self.device)
         sort_emb = self.sort_emb(sort_feat)
         # self.log.debug(token_emb.shape)
         # self.log.debug(const_emb.shape)
@@ -155,7 +194,8 @@ class LemmaEncoder(torch.nn.Module):
                 self.log.debug("const_emb", const_emb[0])
             features = torch.cat((token_emb, sort_emb, const_emb), dim = 1)
         else:
-            features = torch.cat((token_emb, sort_emb), dim = 1)
+            const_emb = torch.zeros([token_feat.shape[0], self._const_emb_dim], requires_grad = False).to(self.device)
+            features = torch.cat((token_emb, sort_emb, const_emb), dim = 1)
 
         # features = token_emb
         h, c = self.treelstm(features, node_order, adjacency_list, edge_order)
