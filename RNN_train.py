@@ -15,6 +15,10 @@ import matplotlib.pyplot as plt
 import Doping.utils.utils as Du
 from Doping.RNN_eval import evaluate, plot_tsne, plot_weight_tfboard
 
+PRETRAIN_EPC = 100 #turn off the token emb for how many iterations?
+
+
+
 if __name__ == '__main__':
     parser = Du.parser_from_template()
     parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
@@ -84,6 +88,14 @@ if __name__ == '__main__':
     try:
         with tqdm(range(configs["epoch"][0])) as progress_bar:
             for n in range(configs["epoch"][0]):
+                if n < PRETRAIN_EPC:
+                    model.disable_token_emb()
+                    model.disable_constant_emb()
+                else:
+                    model.enable_token_emb()
+                    model.enable_constant_emb()
+
+
                 for dataObj in dataObjs:
                     last_batch = False
                     total_loss = 0
@@ -103,7 +115,8 @@ if __name__ == '__main__':
                             loss = loss_function(output, labels)
                             total_loss += loss
                             loss.backward()
-
+                            #clip the gradient
+                            torch.nn.utils.clip_grad_norm_(model.parameters(), 10)
                             optimizer.step()
 
                     progress_bar.update(1)
