@@ -11,6 +11,17 @@ from enum import Enum
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+import glob
+from pathlib import Path
+import traceback
+from datetime import datetime
+
+def oJson(filename):
+    with open(filename, "r") as f:
+        data = json.load(f)
+        return data
+
 
 def setup_model(model_path):
     checkpoint = torch.load(model_path)
@@ -202,7 +213,7 @@ def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug 
     results["rec"] = recall
 
     print(confusion_matrix(all_true_labels, all_preds)) 
-    print("accurarcy", acc)
+    print("accuracy", acc)
     print("f1", f1)
     print("precision", pre)
     print("recall", recall)
@@ -215,6 +226,11 @@ def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug 
         counters["wrong_avg_len"] = counters["wrong_len"]/counters["wrong_cnt"]
     if counters["eligable_cnt"]>0:
         counters["eligable_avg_len"] = counters["eligable_len"]/counters["eligable_cnt"]
+    cnt  = (counters["perfect_cnt"] + counters["wrong_cnt"] + counters["eligable_cnt"])
+    counters["perfect_ratio"] = counters["perfect_cnt"]/cnt
+    counters["wrong_ratio"] = counters["wrong_cnt"]/cnt
+    counters["eligable_ratio"] = counters["eligable_cnt"]/cnt
+    results["counters"] = counters
 
     print("counters", json.dumps(counters, indent = 2))
     if examples_idx is not None:
@@ -245,31 +261,71 @@ def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug 
     model.train()
     return results
 
+def get_lustre_variants(test_folder):
+    exp_folder = test_folder.parent.absolute()
+    all_exp_folder = exp_folder.parent.absolute()
+    exp_seed_name = Path(exp_folder).parts[-1]
+
+    assert(".smt2.folder" in exp_seed_name)
+
+    exp_seed_name = exp_seed_name.replace(".smt2.folder", "")
+
+    query = str(all_exp_folder)+"/"+exp_seed_name+"_*.smt2.folder"
+
+    variants = glob.glob(query)
+
+    return variants
+
+def get_model_path(test_folder, n = 299):
+    model_folder = str(test_folder.parent.absolute().joinpath("models"))
+    suffix = "{}.pt".format(n)
+
+    all_models = glob.glob(model_folder+"/*.pt")
+    all_models.sort(key = os.path.getmtime, reverse = True)
+    for model_path in all_models:
+        if model_path.endswith(suffix):
+            break
+    return model_path
+
+
+
 if __name__=="__main__":
     parser = Du.parser_from_template()
     parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder", required = True)
-    parser.add_argument("--model_path", help = "path to the .pt file", required = True)
+
     args = parser.parse_args()
 
-
-    model_path = args.model_path
-    model = setup_model(model_path)
-    #load config
+    test_folder = Path(args.test_folder)
+    variants = get_lustre_variants(test_folder)
+    model_path  = get_model_path(test_folder)
+    print("Eval model\n", model_path)
+    #load vocab
+    vocab = json.load(open(os.path.join(test_folder, "vocab.json")))
+    #load model
+    model  = setup_model(model_path)
+    #load configs
     configs = load_configs_from_model(model_path)
-    #overwrite configs with parser value if user provide input
-    for key,value in vars(args).items():
-        if value is None or key not in configs:
-            continue
-        else:
-            print("Setting {} in configs to {}".format(key, value))
-            configs[key][0] = value
 
-    dataObj = DataObj(args.test_folder,
-                      max_size = configs["max_size"][0],
-                      shuffle = configs["shuffle"][0],
-                      train_size = 1,
-                      threshold = configs["threshold"][0],
-                      negative=configs["train_negative_model"][0],
-                      device = configs["device"][0])
+    results = {"model": model_path}
 
-    evaluate(model, dataObj, dataObj.train_P, configs["test_batch_size"][0])
+
+    for v in variants:
+        try:
+            print("Evaluating on ", v)
+            v_path = os.path.join(v, "ind_gen_files")
+
+
+            var_dataObj = DataObj(v_path,
+                                max_size = configs["max_size"][0],
+                                shuffle = configs["shuffle"][0],
+                                train_size = 1,
+                                threshold = configs["threshold"][0],
+                                device = configs["device"][0])
+            print(len(var_dataObj.train_dps))
+            results[v] = evaluate(model, var_dataObj, var_dataObj.train_dps, 1, debug=True)
+        except:
+            traceback.print_exc()
+    now = datetime.now()
+    current_time = now.strftime("%d%m_%H_%M_%S")
+    with open("RESULTS_{}.json".format(current_time), "w") as f:
+        json.dump(results, f, indent = 2)
