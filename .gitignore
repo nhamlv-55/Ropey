@@ -13,3 +13,4 @@ GRTAGS
 *.html
 .\#
 .z3-trace
+cred.py
