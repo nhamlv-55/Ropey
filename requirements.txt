@@ -1,6 +1,8 @@
 torch
 termcolor
-z3
+z3-solver
 pysmt
 tensorboard
 sklearn
+matplotlib
+tqdm
