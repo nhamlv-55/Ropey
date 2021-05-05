@@ -16,14 +16,15 @@ import glob
 from pathlib import Path
 import traceback
 from datetime import datetime
-
+import mysql.connector
+from cred import cred
 def oJson(filename):
     with open(filename, "r") as f:
         data = json.load(f)
         return data
 
 
-def setup_model(model_path):
+def setup_model(model_path, log_level = "INFO"):
     checkpoint = torch.load(model_path)
     model_metadata = checkpoint['metadata']['lemma_encoder']
     dataset_metadata = checkpoint['dataset']
@@ -34,10 +35,10 @@ def setup_model(model_path):
                      dataset_metadata['sort_size'],
                      emb_dim = model_metadata['emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
                      const_emb_dim = model_metadata['const_emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
+                     pos_emb_dim=32,
                      tree_dim = model_metadata['tree_dim'],
-                     use_const_emb = model_metadata['use_const_emb'],
-                     use_dot_product = model_metadata['use_dot_product'],
-                     device = torch.device('cuda')).eval()
+                     device = torch.device('cuda'),
+                     log_level = log_level).eval()
 
 
     model.load_state_dict(checkpoint["model_state_dict"])
@@ -125,7 +126,8 @@ def plot_tsne(model, vocab, title, n=-1):
 def load_configs_from_model(model_path):
     checkpoint = torch.load(model_path)
     configs = checkpoint['configs']
-    return configs
+    dataset_metadata = checkpoint['dataset']
+    return configs, dataset_metadata
 
 def print_debug(test, values, pred):
     pass
@@ -220,12 +222,9 @@ def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug 
 
 
     #compute average len
-    if counters["perfect_cnt"]>0:
-        counters["perfect_avg_len"] = counters["perfect_len"]/counters["perfect_cnt"]
-    if counters["wrong_cnt"]>0:
-        counters["wrong_avg_len"] = counters["wrong_len"]/counters["wrong_cnt"]
-    if counters["eligable_cnt"]>0:
-        counters["eligable_avg_len"] = counters["eligable_len"]/counters["eligable_cnt"]
+    counters["perfect_avg_len"] = counters["perfect_len"]/counters["perfect_cnt"] if counters["perfect_cnt"]>0 else -1
+    counters["wrong_avg_len"] = counters["wrong_len"]/counters["wrong_cnt"] if counters["wrong_cnt"]>0 else -1
+    counters["eligable_avg_len"] = counters["eligable_len"]/counters["eligable_cnt"] if counters["eligable_cnt"]>0 else -1
     cnt  = (counters["perfect_cnt"] + counters["wrong_cnt"] + counters["eligable_cnt"])
     counters["perfect_ratio"] = counters["perfect_cnt"]/cnt
     counters["wrong_ratio"] = counters["wrong_cnt"]/cnt
@@ -262,6 +261,12 @@ def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug 
     return results
 
 def get_lustre_variants(test_folder):
+    """
+    Given a test_folder of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1.smt2,
+    this function will first extract the SYNAPSE_1.smt2 part,
+    then find all variants of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1_*.smt2,
+    as well as all variants of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1.smt2/variant_*/input_file.smt2
+    """
     exp_folder = test_folder.parent.absolute()
     all_exp_folder = exp_folder.parent.absolute()
     exp_seed_name = Path(exp_folder).parts[-1]
@@ -274,6 +279,9 @@ def get_lustre_variants(test_folder):
 
     variants = glob.glob(query)
 
+    variants.append(str(exp_folder))
+    for i in range(10):
+        variants.append(str(exp_folder.joinpath("variant_{}".format(i))))
     return variants
 
 def get_model_path(test_folder, n = 299):
@@ -287,45 +295,103 @@ def get_model_path(test_folder, n = 299):
             break
     return model_path
 
-
+def get_db_conn():
+    db = mysql.connector.connect(
+        host='localhost',
+        database = "Dopey",
+        user = cred["username"],
+        password = cred["password"]
+    )
+    return db
 
 if __name__=="__main__":
     parser = Du.parser_from_template()
     parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder", required = True)
-
+    parser.add_argument("--variants_file", help = "Optional. If provided, will test the model againsts instances listed in the file", required = False)
     args = parser.parse_args()
 
     test_folder = Path(args.test_folder)
-    variants = get_lustre_variants(test_folder)
-    model_path  = get_model_path(test_folder)
+    if args.variants_file is None:
+        variants = get_lustre_variants(test_folder)
+    else:
+        variants = open(args.variants_file, "r").read().split("\n")
+    model_path  = get_model_path(test_folder, n = 1499)
     print("Eval model\n", model_path)
     #load vocab
     vocab = json.load(open(os.path.join(test_folder, "vocab.json")))
     #load model
     model  = setup_model(model_path)
     #load configs
-    configs = load_configs_from_model(model_path)
+    configs, dataset_metadata = load_configs_from_model(model_path)
 
     results = {"model": model_path}
 
+    db = get_db_conn()
+    c = db.cursor()
 
-    for v in variants:
+    #evaluate variants
+    if dataset_metadata["train_size"]==1:
+        print("train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...")
+        for v in variants:
+            try:
+                print("Evaluating on ", v)
+                v_path = os.path.join(v, "ind_gen_files")
+
+
+                var_dataObj = DataObj(v_path,
+                                    max_size = dataset_metadata["max_size"],
+                                    shuffle = dataset_metadata["shuffle"],
+                                    train_size = dataset_metadata["train_size"],
+                                    threshold = dataset_metadata["threshold"],
+                                    device = configs["device"][0])
+                print(len(var_dataObj.train_dps))
+                results[v] = evaluate(model, var_dataObj, var_dataObj.train_dps, 1, debug=True)
+                r = results[v]["counters"]
+                c.execute('''
+                REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                ''', (os.path.basename(model_path),
+                    str(Path(v).parts[-2:]) if "variant" in v else str(Path(v).parts[-1]),
+                    r["wrong_cnt"], r["perfect_cnt"], r["eligable_cnt"],
+                    r["perfect_ratio"], r["wrong_ratio"], r["eligable_ratio"],
+                    r["perfect_avg_len"], r["wrong_avg_len"], r["eligable_avg_len"]))
+            except:
+                print(c.statement)
+                traceback.print_exc()
+            db.commit()
+    else:
+        #evaluate test set
+        print("train_portion < 1.0-> We are evaluating online mode. Start evaluating on test set...")
         try:
+            v = str(test_folder.parent.absolute())
             print("Evaluating on ", v)
             v_path = os.path.join(v, "ind_gen_files")
 
 
             var_dataObj = DataObj(v_path,
-                                max_size = configs["max_size"][0],
-                                shuffle = configs["shuffle"][0],
-                                train_size = 1,
-                                threshold = configs["threshold"][0],
+                                max_size = dataset_metadata["max_size"],
+                                shuffle = dataset_metadata["shuffle"],
+                                train_size = dataset_metadata["train_size"],
+                                threshold = dataset_metadata["threshold"],
                                 device = configs["device"][0])
-            print(len(var_dataObj.train_dps))
-            results[v] = evaluate(model, var_dataObj, var_dataObj.train_dps, 1, debug=True)
+            results[v+".testset"] = evaluate(model, var_dataObj, var_dataObj.test_dps, 1, debug=True)
+            r = results[v+".testset"]["counters"]
+            c.execute('''
+            REPLACE INTO Dopey.Dopey_RNN_Res
+            (model_path, variant, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+            ''', (os.path.basename(model_path),
+                    v+".testset",
+                    r["wrong_cnt"], r["perfect_cnt"], r["eligable_cnt"],
+                    r["perfect_ratio"], r["wrong_ratio"], r["eligable_ratio"],
+                    r["perfect_avg_len"], r["wrong_avg_len"], r["eligable_avg_len"]))
         except:
+            print(c.statement)
             traceback.print_exc()
+
     now = datetime.now()
     current_time = now.strftime("%d%m_%H_%M_%S")
     with open("RESULTS_{}.json".format(current_time), "w") as f:
         json.dump(results, f, indent = 2)
+

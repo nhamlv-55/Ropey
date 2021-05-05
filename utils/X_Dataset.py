@@ -37,7 +37,8 @@ class DataObj:
         self.train_size = train_size
         self.shuffle = shuffle
         self.const_emb_size = 0
-
+        self.X_test_filename = ""
+        self.X_train_filename = ""
         self.negative = negative
         self.train_P = None
         self.test_P = None
@@ -72,8 +73,6 @@ class DataObj:
         if self.negative:
             with open(os.path.join(self.datafolder, filename), "r") as f:
                 X = json.load(f)["X"]
-            with open(os.path.join(self.datafolder, "negative_lits_map" + suffix ), "r") as f:
-                L = json.load(f)
             with open(os.path.join(self.datafolder, "negative_lits_map" + suffix ), "r") as f:
                 L = json.load(f)
             with open(os.path.join(self.datafolder, "P_negative_X_matrix_" + suffix ), "r") as f:
@@ -142,11 +141,11 @@ class DataObj:
             X_mats = sorted(X_mats)
         
         train_index = int(len(X_mats)*self.train_size)-1
-        X_train_filename = os.path.basename(X_mats[train_index])
-        X_test_filename = os.path.basename(X_mats[-1])
+        self.X_train_filename = os.path.basename(X_mats[train_index])
+        self.X_test_filename = os.path.basename(X_mats[-1])
 
-        self.train_P = self.build_P(X_train_filename)
-        self.test_P = self.build_P(X_test_filename)
+        self.train_P = self.build_P(self.X_train_filename)
+        self.test_P = self.build_P(self.X_test_filename)
 
 
     def next_batch(self, P_matrix, batch_size, negative_sampling_rate):
@@ -163,6 +162,9 @@ class DataObj:
             for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
                 #at row_i
                 for j in range(len(P_matrix[i])):
+                    #if P_matrix[i][j]== -1, it indicates a pair that has never been observed -> skip
+                    if P_matrix[i][j]<0:
+                        continue
                     # print(self.id2lits_json[i])
                     L_a_trees.append(self.id2lits_json[i]["lit_tree"])
                     L_b_trees.append(self.id2lits_json[j]["lit_tree"])
@@ -177,6 +179,10 @@ class DataObj:
             for i in range(self.data_pointer, min(self.data_pointer + batch_size, len(P_matrix))):
                 #at row_i
                 for j in range(len(P_matrix[i])):
+                    #if P_matrix[i][j]== -1, it indicates a pair that has never been observed -> skip
+                    if P_matrix[i][j]<0:
+                        continue
+
                     if self.threshold>0:
                         if (P_matrix[i][j] > self.threshold):
                             pos_samples.append((i, j, 1))
@@ -190,6 +196,7 @@ class DataObj:
 
             if self.threshold > 0 and len(pos_samples)>0:
                 n_neg_samples = len(pos_samples)*negative_sampling_rate
+                n_neg_samples = min(len(neg_samples), n_neg_samples)
                 neg_samples = random.sample(neg_samples, n_neg_samples)
 
             all_samples = pos_samples + neg_samples
@@ -201,6 +208,10 @@ class DataObj:
                 filenames.append((self.id2lits_json[i]["filename"], self.id2lits_json[j]["filename"]))
                 labels.append(int(label))
 
+        #return None if size = 0
+        if len(L_a_trees) == 0:
+            self.data_pointer = 0
+            return None, True
         dataset["size"] = len(L_a_trees)
         dataset["L_a_batch"] = batch_tree_input(L_a_trees)
         dataset["L_b_batch"] = batch_tree_input(L_b_trees)

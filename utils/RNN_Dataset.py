@@ -53,7 +53,7 @@ class DataObj:
         return {"datafolder": self.datafolder,
                 "size": self.size,
                 "max_size": self.max_size,
-                "train_size": self.train_size,
+                "train_portion": self.train_size,
                 "vocab_size": self.vocab['size'],
                 "sort_size": self.vocab['sort_size'],
                 "shuffle": self.shuffle,

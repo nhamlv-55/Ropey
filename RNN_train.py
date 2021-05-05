@@ -15,8 +15,7 @@ import matplotlib.pyplot as plt
 import Doping.utils.utils as Du
 from Doping.RNN_eval import evaluate, plot_tsne, plot_weight_tfboard
 
-PRETRAIN_EPC = 100 #turn off the token emb for how many iterations?
-
+PRETRAIN_EPC = 0 #turn off the token emb for how many iterations?
 
 
 if __name__ == '__main__':
@@ -24,8 +23,7 @@ if __name__ == '__main__':
     parser.add_argument("--json_config_file", "-JI", required=True, help="Path to the json config")
     parser.add_argument("-l", "--log", dest="logLevel", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], default='CRITICAL', help="Set the logging level")
     args = parser.parse_args()
-    log = logging.getLogger(__name__)
-    log.setLevel(getattr(logging, args.logLevel))
+    log = Du.create_logger(args.logLevel, __name__)
     #load the config file
     with open(args.json_config_file, "r") as f:
         configs = json.load(f)
@@ -40,33 +38,34 @@ if __name__ == '__main__':
 
     exp_name = Du.get_exp_name(configs)
     SWRITER = SummaryWriter(comment = exp_name)
-    #NOTE: batch_size should not be a divisor of the number of dps in train set or test set (batch_size = 32 while train has 4000 is not good)
     print("Configs:\n", json.dumps(configs, indent=2))
     dataObjs = []
     vocabs = []
     device = torch.device(configs['device'][0])
     for exp_folder in configs["input_folders"]:
-        dataObj = DataObj(exp_folder,
-                          device = device,
-                          max_size = configs["max_size"][0],
-                          shuffle = configs["shuffle"][0],
-                          train_size = 1,
-                          threshold = configs["threshold"][0],
-                          )
-        vocab = dataObj.vocab
+        if os.path.exists(exp_folder):
+            dataObj = DataObj(exp_folder,
+                            device = device,
+                            max_size = configs["max_size"][0],
+                            shuffle = configs["shuffle"][0],
+                            train_size = configs["train_portion"][0],
+                            threshold = configs["threshold"][0],
+                            )
+            vocab = dataObj.vocab
 
-        dataObjs.append(dataObj)
-        vocabs.append(vocab)
+            dataObjs.append(dataObj)
+            vocabs.append(vocab)
+        else:
+            log.info("exp_folder {} doesnt exist".format(exp_folder))
     model = RNNModel(vocabs[0]['size'],
                      vocabs[0]['sort_size'],
                      emb_dim = configs['emb_dim'][0],
                      const_emb_dim = vocabs[0]["const_emb_size"],
+                     pos_emb_dim=32,
                      tree_dim = configs['tree_dim'][0],
-                     use_const_emb = configs["use_const_emb"][0],
-                     use_dot_product = configs["use_dot_product"][0],
                      dropout_rate = configs["dropout_rate"][0],
                      device = device,
-                     log_level = logging.DEBUG).train()
+                     log_level = "INFO").train()
 
     no_of_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print("no_of_params:", no_of_params)
@@ -98,13 +97,11 @@ if __name__ == '__main__':
 
                 for dataObj in dataObjs:
                     last_batch = False
+                    n_dps = 0
+                    optimizer.zero_grad()
                     total_loss = 0
                     while not last_batch:
-                        optimizer.zero_grad()
-                        loss = 0
-
                         train, last_batch = dataObj.next_batch(dataObj.train_dps, 1, configs['gamma'][0])
-
 
                         if train is not None:
                             labels = train["labels"][0]
@@ -114,12 +111,11 @@ if __name__ == '__main__':
 
                             loss = loss_function(output, labels)
                             total_loss += loss
-                            loss.backward()
-                            #clip the gradient
-                            torch.nn.utils.clip_grad_norm_(model.parameters(), 10)
-                            optimizer.step()
-
-                    progress_bar.update(1)
+                            n_dps+=1
+                    total_loss.backward()
+                    #clip the gradient
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), 10)
+                    optimizer.step()
 
                     if n%configs["eval_epoch"][0]==0:
                         print("Result using data from: {}".format(str(dataObj)))
@@ -137,6 +133,7 @@ if __name__ == '__main__':
                         print(f'Iteration {n+1} Loss: {total_loss}')
                         #check that embedding is being trained
 
+                progress_bar.update(1)
                 if n%configs["save_epoch"][0]==0 or n==configs["epoch"][0] - 1:
                     model_path = new_model_path(basename = exp_name, epoch = n)
                     print("Saving to ", model_path)

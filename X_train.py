@@ -110,7 +110,7 @@ if __name__ == '__main__':
                 # test_res = evaluate(model, dataObj.test_P)
                 for name, weight in model.named_parameters():
                     SWRITER.add_histogram(name,weight, n)
-                    SWRITER.add_histogram(f'{name}.grad',weight.grad, n)
+                    # SWRITER.add_histogram(f'{name}.grad',weight.grad, n)
 
                     if len(list(weight.data.size()))==2:
                         image = weight.data.cpu().detach().numpy()

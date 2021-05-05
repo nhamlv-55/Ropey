@@ -7,9 +7,9 @@ import os
 import numpy as np
 import glob
 import argparse
-
+import sys
 import matplotlib.pyplot as plt
-
+import logging
 # def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold, dropout_rate):
 def get_exp_name(configs):
     '''
@@ -24,7 +24,10 @@ def get_exp_name(configs):
             continue
         else:
             exp_name.append(configs[k][2])
-            exp_name.append(str(configs[k][0]))
+            if isinstance(configs[k][0], bool):
+                exp_name.append(str(int(configs[k][0])))
+            else:
+                exp_name.append(str(configs[k][0]))
 
     return "_".join(exp_name)
 
@@ -164,3 +167,13 @@ def plot_to_tensorboard(writer, fig, step):
     plt.close(fig)
 
 
+def create_logger(lvl, name, outstream = 'stderr'):
+    logger = logging.getLogger(name)
+    logger.setLevel(getattr(logging, lvl))
+    formatter = logging.Formatter('%(name)s:%(levelname)s: %(message)s')
+    if outstream == 'stderr':
+        handler = logging.StreamHandler(sys.stderr)
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        
+    return logger
