@@ -6,3 +6,10 @@ grpc_test_runs/
 benchmarks/
 all_lra_chc19/
 all_lra_chc20/
+GTAGS
+GPATH
+GRTAGS
+*.smt2
+*.html
+.\#
+.z3-trace
