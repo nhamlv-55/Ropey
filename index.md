@@ -7,11 +7,11 @@ Arie Gurfinkel email
 
 ## Materials
 ### Motivating example
-[https://nhamlv-55.github.io/Dopey/example/](https://nhamlv-55.github.io/Dopey/example/)
+[https://nhamlv-55.github.io/Ropey/example/](https://nhamlv-55.github.io/Ropey/example/)
 ### Predictive evaluation results
-[https://nhamlv-55.github.io/Dopey/pred_results/](https://nhamlv-55.github.io/Dopey/pred_results/)
+[https://nhamlv-55.github.io/Ropey/pred_results/](https://nhamlv-55.github.io/Ropey/pred_results/)
 
 ### Running time evaluation results
-[https://nhamlv-55.github.io/Dopey/time_results/](https://nhamlv-55.github.io/Dopey/time_results/)
+[https://nhamlv-55.github.io/Ropey/time_results/](https://nhamlv-55.github.io/Ropey/time_results/)
 ## Code
-ROPEY main repo is at https://github.com/nhamlv-55/Dopey
+ROPEY main repo is at https://github.com/nhamlv-55/Ropey
