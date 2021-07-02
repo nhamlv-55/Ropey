@@ -3,7 +3,7 @@ We have specifically considered realistic applications where training time is no
 train once on one instance and apply to many similar instances (offline), 
 or train during a very long run and apply to the rest of the run (online). 
 We did not optimize training code, nor have we run training in an isolated environment where time measurements are meaningful.
-Nonetheless, we are happy to share some statistics of training time
+Nonetheless, we are happy to share some statistics of training time. Times are measured in seconds.
 
 ### All models
 mean 18759.219733669208
