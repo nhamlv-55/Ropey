@@ -1,0 +1,167 @@
+DUMP QUERY = TRUE
+OLD THRES:1e+07
+Dumping benchmark to pool_solver_vsolver#0_0.smt2
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_2_n) state_1_n)
+into
+state_1_n
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_2_n) state_0_n)
+into
+state_0_n
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_2_n (= state_3_n 4))
+into
+(= state_3_n 4)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_2_n (= state_3_n 3))
+into
+(= state_3_n 3)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_1_n (= state_3_n 4))
+into
+(= state_3_n 4)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_2_n) state_1_n (= state_3_n 4))
+into
+(and (not state_2_n) (= state_3_n 4))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_2_n (= state_3_n 2))
+into
+(= state_3_n 2)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_1_n (= state_3_n 3))
+into
+(= state_3_n 3)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_2_n (= state_3_n 4))
+into
+(= state_3_n 4)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (<= state_3_n (- 1))
+     (= (+ state_3_n (* (- 1) state_8_n)) 0)
+     (<= state_8_n (- 1)))
+into
+(<= state_8_n (- 1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_1_n (not state_2_n) (<= state_3_n 1))
+into
+(and state_1_n (<= state_3_n 1))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_0_n (not state_2_n) (not state_1_n) (<= state_3_n 3))
+into
+(and state_0_n (<= state_3_n 3))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_2_n) state_1_n (= state_3_n 3))
+into
+(and (not state_2_n) (= state_3_n 3))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_1_n) (not state_2_n) (not state_0_n) (= state_3_n 4))
+into
+(and (not state_1_n) (not state_0_n) (= state_3_n 4))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_1_n) (not state_2_n) (= state_3_n 2))
+into
+(and (not state_1_n) (= state_3_n 2))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_1_n) state_2_n (= state_3_n 3))
+into
+(and (not state_1_n) (= state_3_n 3))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_0_n) state_1_n (not state_2_n) (= state_3_n 4))
+into
+(and state_1_n (= state_3_n 4))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (>= state_3_n 5) (= (+ state_3_n (* (- 1) state_8_n)) 0) (>= state_8_n 5))
+into
+(>= state_8_n 5)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_2_n (>= state_3_n 6))
+into
+(>= state_3_n 6)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_1_n (>= state_3_n 6))
+into
+(>= state_3_n 6)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_2_n (>= state_3_n 6))
+into
+(>= state_3_n 6)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_0_n (>= state_3_n 6))
+into
+(>= state_3_n 6)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_1_n state_0_n (not state_2_n))
+into
+(and state_1_n state_0_n)
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and state_0_n (not state_2_n) (not state_1_n) (<= state_3_n 3))
+into
+(and state_0_n (<= state_3_n 3))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_2_n) (not state_0_n) (not state_1_n) (= state_3_n 2))
+into
+(and (not state_2_n) (not state_1_n) (= state_3_n 2))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_1_n) state_2_n (= state_3_n 3))
+into
+(and (not state_1_n) (= state_3_n 3))
+------------------------------------------------
+-------- [spacer.ind_gen] operator() ../src/muz/spacer/spacer_generalizers.cpp:574 ---------
+Generalized from:
+(and (not state_0_n) state_1_n (not state_2_n) (= state_3_n 4))
+into
+(and state_1_n (not state_2_n) (= state_3_n 4))
+------------------------------------------------

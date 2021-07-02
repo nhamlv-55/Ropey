@@ -1,0 +1,219 @@
+total_requests:1
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:2
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:3
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:4
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:5
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:6
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:7
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:8
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:9
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:10
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:11
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:12
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:13
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:14
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:15
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:16
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:17
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:18
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:19
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:20
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:21
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:22
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:23
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:24
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:25
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:26
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:27
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:28
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:29
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:30
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:31
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:32
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:33
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:34
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:35
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:36
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:37
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:38
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:39
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:40
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:41
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:42
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:43
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:44
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:45
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:46
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:47
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:48
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:49
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:50
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:51
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:52
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:53
+dirty_requests:0
+unsuccessful_answers:0
+total_requests:54
+dirty_requests:0
+unsuccessful_answers:0
+(:SPACER-cex-depth                                    11
+ :SPACER-max-depth                                    11
+ :SPACER-max-query-lvl                                11
+ :SPACER-num-active-lemmas                            34
+ :SPACER-num-ctp-blocked                              53
+ :SPACER-num-invariants                               4
+ :SPACER-num-is_invariant                             225
+ :SPACER-num-lemmas                                   62
+ :SPACER-num-pobs                                     28
+ :SPACER-num-propagations                             113
+ :SPACER-num-queries                                  64
+ :SPACER-num-reach-queries                            11
+ :SPACER-num-reuse-reach-facts                        1
+ :added-eqs                                           7624
+ :arith-eq-adapter                                    1608
+ :arith-bound-propagations-cheap                      11874
+ :arith-bound-propagations-lp                         138
+ :arith-conflicts                                     32
+ :arith-diseq                                         9174
+ :arith-lower                                         8540
+ :arith-make-feasible                                 2496
+ :arith-max-columns                                   60
+ :arith-max-rows                                      28
+ :arith-propagations                                  11874
+ :arith-rows                                          320
+ :arith-upper                                         8512
+ :bool-inductive-gen                                  117
+ :bool-inductive-gen-failures                         87
+ :conflicts                                           1014
+ :decisions                                           16054
+ :del-clause                                          1530
+ :final-checks                                        442
+ :iuc_solver.num_proxies                              90
+ :minimized-lits                                      372
+ :mk-bool-var                                         5494
+ :mk-clause                                           15976
+ :num-checks                                          1078
+ :pool_solver.checks                                  539
+ :pool_solver.checks.sat                              221
+ :propagations                                        99352
+ :time.iuc_solver.get_iuc                             0.03
+ :time.iuc_solver.get_iuc.hyp_reduce1                 0.00
+ :time.iuc_solver.get_iuc.hyp_reduce2                 0.01
+ :time.iuc_solver.get_iuc.learn_core                  0.00
+ :time.pool_solver.proof                              0.01
+ :time.pool_solver.smt.total                          0.31
+ :time.pool_solver.smt.total.sat                      0.14
+ :time.spacer.ctp                                     0.00
+ :time.spacer.init_rules                              0.00
+ :time.spacer.mbp                                     0.02
+ :time.spacer.solve                                   0.55
+ :time.spacer.solve.propagate                         0.15
+ :time.spacer.solve.reach                             0.40
+ :time.spacer.solve.reach.children                    0.04
+ :time.spacer.solve.reach.gen.bool_ind                0.17
+ :time.spacer.solve.reach.gen.bool_ind.outside_spacer 0.09
+ :time.spacer.solve.reach.is-reach                    0.04)
