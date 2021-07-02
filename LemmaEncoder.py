@@ -30,16 +30,16 @@ class LemmaEncoder(torch.nn.Module):
     def __init__(self,
                  vocab_size,
                  sort_vocab_size,
-                 emb_dim = 10,
-                 const_emb_dim = 0,
-                 pos_emb_dim = 32,
-                 tree_dim = 10,
-                 dropout_rate = 0.5,
+                 emb_dim ,
+                 const_emb_dim ,
+                 pos_emb_dim ,
+                 tree_dim ,
+                 dropout_rate ,
                  device = torch.device('cuda'),
-                 log_level = 'INFO'):
+                 log_level = 'INFO',
+                 use_var_emb = True):
         super().__init__()
         self.log = Du.create_logger(log_level, __name__)
-        self.positional_encoding = PositionalEncoding(pos_emb_dim, device = device)
 
         self.device = device
 
@@ -50,10 +50,15 @@ class LemmaEncoder(torch.nn.Module):
         self._dropout_rate = dropout_rate
 
         self._use_const_emb = (const_emb_dim > 0)
+        self._use_var_emb = use_var_emb
         self._use_token_emb = True
         self._use_pos_emb = (pos_emb_dim > 0)
 
-        self.emb = nn.Embedding(vocab_size, emb_dim ).to(self.device)
+        if self._use_var_emb:
+            self.emb = nn.Embedding(vocab_size, emb_dim ).to(self.device)
+        else:
+            #if var emb is disable, only use the first 12 tokens (+, -, *, /, ..., )
+            self.emb = nn.Embedding(12, emb_dim ).to(self.device)
         self.sort_emb = nn.Embedding(sort_vocab_size, emb_dim ).to(self.device)
         self.dropout = nn.Dropout(p=self._dropout_rate)
         #calculate the input size of tree_lstm based on flags
@@ -61,6 +66,7 @@ class LemmaEncoder(torch.nn.Module):
         if self._use_const_emb:
             self.treelstm_input_size += self._const_emb_dim
         if self._use_pos_emb:
+            self.positional_encoding = PositionalEncoding(pos_emb_dim, device = device)
             self.treelstm_input_size += self._pos_emb_dim
 
 
@@ -99,6 +105,7 @@ class LemmaEncoder(torch.nn.Module):
                 "tree_dim": self._tree_dim,
                 "use_const_emb": self._use_const_emb,
                 "dropout_rate": self._dropout_rate,
+                "use_var_emb": self._use_var_emb,
                 "model": "new_model"
         }
 
@@ -113,6 +120,9 @@ class LemmaEncoder(torch.nn.Module):
         edge_order = tree["edge_order"].to(self.device)
         # self.log.debug(features.shape)
         token_feat = features[:,0].long()
+        if not self._use_var_emb:
+            #if var emb is disable, all var is mapped to the same token id 11
+            token_feat = torch.clamp(token_feat, min = 0, max = 11)
         sort_feat = features[:,1].long()
         position_feat = features[:,2].long()
 
@@ -137,9 +147,13 @@ class LemmaEncoder(torch.nn.Module):
         else:
             const_emb = torch.zeros([token_feat.shape[0], self._const_emb_dim], requires_grad = False).to(self.device)
 
-        pos_emb = self.positional_encoding(position_feat).squeeze()
-        self.log.debug((pos_emb, pos_emb.size()))
-        features = torch.cat((token_emb, sort_emb, const_emb, pos_emb), dim = 1)
+        if self._use_pos_emb:
+            pos_emb = self.positional_encoding(position_feat).squeeze()
+            self.log.debug((pos_emb, pos_emb.size()))
+            features = torch.cat((token_emb, sort_emb, const_emb, pos_emb), dim = 1)
+        else:
+
+            features = torch.cat((token_emb, sort_emb, const_emb), dim = 1)
 
         # features = token_emb
         h, c = self.treelstm(features, node_order, adjacency_list, edge_order)

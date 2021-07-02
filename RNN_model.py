@@ -23,7 +23,8 @@ class RNNModel(nn.Module):
                  bidirectional = True, 
                  pad_idx = None,
                  log_level = "DEBUG",
-                 device = torch.device('cuda')):
+                 device = torch.device('cuda'),
+                 use_var_emb = True):
 
         super().__init__()
        
@@ -37,7 +38,8 @@ class RNNModel(nn.Module):
                                           tree_dim,
                                           dropout_rate,
                                           device,
-                                          log_level)
+                                          log_level,
+                                          use_var_emb)
 
         self.lstm = nn.LSTM(tree_dim, 
                             hidden_dim, 

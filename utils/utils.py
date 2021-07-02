@@ -11,11 +11,11 @@ import sys
 import matplotlib.pyplot as plt
 import logging
 # def get_exp_name(prefix, exp_folder, vis, use_c, use_const_emb, use_dot_product, max_size, shuffle, negative_sampling_rate, threshold, dropout_rate):
-def get_exp_name(configs):
+def get_exp_name(configs, prefix = ""):
     '''
     construct a meaningful exp_name for the Tensorboard
     '''
-    exp_name = []
+    exp_name = [prefix]
     #exp_folder is in the form
     #"PySpacerSolver/MEDIA/backward_encoded_split_on_relu.smt2_250220_13_04_22/ind_gen_files/"
     # exp_name.append(exp_folder.split("/")[-3])
