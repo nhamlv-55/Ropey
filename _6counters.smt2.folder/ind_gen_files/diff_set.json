@@ -1,0 +1,1 @@
+{"state_3_n <= -1": 1, "state_2_n": 8, "state_3_n >= 5": 1, "state_8_n + -1*state_3_n == 0": 2, "state_3_n >= 6": 4, "state_8_n <= -1": 1, "state_8_n >= 5": 1}

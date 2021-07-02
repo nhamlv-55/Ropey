@@ -1,0 +1,1 @@
+{"Not(state_2_n)": 13, "state_1_n": 10, "state_0_n": 5, "state_2_n": 8, "state_3_n == 4": 7, "state_3_n == 3": 5, "state_3_n == 2": 3, "state_3_n <= -1": 1, "state_8_n + -1*state_3_n == 0": 2, "state_8_n <= -1": 1, "state_3_n <= 1": 1, "Not(state_1_n)": 7, "state_3_n <= 3": 2, "Not(state_0_n)": 4, "state_3_n >= 5": 1, "state_8_n >= 5": 1, "state_3_n >= 6": 4}
