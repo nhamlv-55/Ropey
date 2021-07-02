@@ -5,6 +5,30 @@ or train during a very long run and apply to the rest of the run (online).
 We did not optimize training code, nor have we run training in an isolated environment where time measurements are meaningful.
 Nonetheless, we are happy to share some statistics of training time
 
+### All models
+mean 18759.219733669208
+
+std 38231.536908230875
+
+min 16.67198920249939
+
+max 165811.38317894936
+
+median 1027.116681098938
+
+__percentage of models that are trained in less than X hours__
+
+less than 2 0.6602564102564102
+
+less than 3 0.6858974358974359
+
+less than 4 0.6923076923076923
+
+less than 5 0.7564102564102564
+
+less than 6 0.8076923076923077
+
+less than 7 0.8397435897435898
 
 ### Offline models
 mean 24637.847560567014
@@ -17,7 +41,7 @@ max 165811.38317894936
 
 median 892.3176974058151
 
-#percentage of models that are trained in less than X hours
+__percentage of models that are trained in less than X hours__
 
 less than 2 0.6470588235294118
 
@@ -56,27 +80,3 @@ less than 6 0.8360655737704918
 
 less than 7 0.8770491803278688
 
-### All models
-mean 18759.219733669208
-
-std 38231.536908230875
-
-min 16.67198920249939
-
-max 165811.38317894936
-
-median 1027.116681098938
-
-__percentage of models that are trained in less than X hours__
-
-less than 2 0.6602564102564102
-
-less than 3 0.6858974358974359
-
-less than 4 0.6923076923076923
-
-less than 5 0.7564102564102564
-
-less than 6 0.8076923076923077
-
-less than 7 0.8397435897435898
