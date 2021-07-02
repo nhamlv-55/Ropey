@@ -1,0 +1,117 @@
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 340, in <module>
+    model  = setup_model(model_path)
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 34, in setup_model
+    if ['use_var_emb'] in model_metadata:
+TypeError: unhashable type: 'list'
+Traceback (most recent call last):
+  File "/home/nle/anaconda3/envs/py38/lib/python3.8/site-packages/torch/serialization.py", line 306, in _check_seekable
+    f.seek(f.tell())
+AttributeError: 'NoneType' object has no attribute 'seek'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 340, in <module>
+    model  = setup_model(model_path)
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 28, in setup_model
+    checkpoint = torch.load(model_path)
+  File "/home/nle/anaconda3/envs/py38/lib/python3.8/site-packages/torch/serialization.py", line 571, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/nle/anaconda3/envs/py38/lib/python3.8/site-packages/torch/serialization.py", line 234, in _open_file_like
+    return _open_buffer_reader(name_or_buffer)
+  File "/home/nle/anaconda3/envs/py38/lib/python3.8/site-packages/torch/serialization.py", line 219, in __init__
+    _check_seekable(buffer)
+  File "/home/nle/anaconda3/envs/py38/lib/python3.8/site-packages/torch/serialization.py", line 309, in _check_seekable
+    raise_err_msg(["seek", "tell"], e)
+  File "/home/nle/anaconda3/envs/py38/lib/python3.8/site-packages/torch/serialization.py", line 302, in raise_err_msg
+    raise type(e)(msg)
+AttributeError: 'NoneType' object has no attribute 'seek'. You can only torch.load from a file that is seekable. Please pre-load the data into a buffer like io.BytesIO and try to load from it instead.
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 198, 64, 6, 64)
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 134, 0, 6, 64)
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 198, 64, 6, 64)
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 198, 64, 6, 64)
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 198, 64, 6, 64)
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 198, 64, 6, 64)
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 198, 64, 6, 64)
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Doping.LemmaEncoder:INFO: ('treelstm_input_size', 192, 64, 0, 64)
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/home/nle/workspace/Doping/RNN_eval.py", line 358, in <module>
+    var_dataObj = DataObj(v_path,
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 49, in __init__
+    self.build_dataset()
+  File "/home/nle/workspace/Doping/utils/RNN_Dataset.py", line 101, in build_dataset
+    lits_map_file = lits_maps[-1]
+IndexError: list index out of range

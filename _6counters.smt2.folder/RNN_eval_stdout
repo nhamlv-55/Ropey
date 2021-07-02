@@ -1,0 +1,1514 @@
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_47_29EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    0.5,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 301
+Eval model
+ None
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    false,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 351
+train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e7_304.smt2.folder
+3
+[[3 0]
+ [0 3]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 3,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 6,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e1_448.smt2.folder
+1377
+[[1213  164]
+ [ 366 1524]]
+accuracy 0.8377716559534741
+f1 0.8518725544997205
+precision 0.9028436018957346
+recall 0.8063492063492064
+counters {
+  "wrong_cnt": 277,
+  "perfect_cnt": 1099,
+  "eligable_cnt": 1,
+  "wrong_len": 831,
+  "perfect_len": 2434,
+  "eligable_len": 2,
+  "perfect_avg_len": 2.2147406733393993,
+  "wrong_avg_len": 3.0,
+  "eligable_avg_len": 2.0,
+  "perfect_ratio": 0.7981118373275236,
+  "wrong_ratio": 0.20116194625998549,
+  "eligable_ratio": 0.0007262164124909223
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e2_80.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 277, 1099, 1, 0.7981118373275236, 0.20116194625998549, 0.0007262164124909223, 2.2147406733393993, 3.0, 2.0);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e3_140_e8_149.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 277, 1099, 1, 0.7981118373275236, 0.20116194625998549, 0.0007262164124909223, 2.2147406733393993, 3.0, 2.0);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+26
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_07_31EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    0,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 351
+train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e7_304.smt2.folder
+3
+[[3 0]
+ [0 3]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 3,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 6,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e1_448.smt2.folder
+1377
+[[1214  163]
+ [ 169 1721]]
+accuracy 0.8983777165595347
+f1 0.9120296767355591
+precision 0.9134819532908705
+recall 0.9105820105820106
+counters {
+  "wrong_cnt": 169,
+  "perfect_cnt": 1208,
+  "eligable_cnt": 0,
+  "wrong_len": 507,
+  "perfect_len": 2760,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.2847682119205297,
+  "wrong_avg_len": 3.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.8772694262890341,
+  "wrong_ratio": 0.12273057371096587,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e2_80.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_07_31EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 169, 1208, 0, 0.8772694262890341, 0.12273057371096587, 0.0, 2.2847682119205297, 3.0, -1);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e3_140_e8_149.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_07_31EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 169, 1208, 0, 0.8772694262890341, 0.12273057371096587, 0.0, 2.2847682119205297, 3.0, -1);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+26
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_16_12EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 351
+train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e7_304.smt2.folder
+3
+[[3 0]
+ [0 3]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 3,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 6,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e1_448.smt2.folder
+1377
+[[1209  168]
+ [ 599 1291]]
+accuracy 0.7652280379553107
+f1 0.7709764108689161
+precision 0.8848526387936944
+recall 0.683068783068783
+counters {
+  "wrong_cnt": 466,
+  "perfect_cnt": 911,
+  "eligable_cnt": 0,
+  "wrong_len": 1256,
+  "perfect_len": 2011,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.207464324917673,
+  "wrong_avg_len": 2.6952789699570814,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.6615831517792302,
+  "wrong_ratio": 0.3384168482207698,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e2_80.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_16_12EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 466, 911, 0, 0.6615831517792302, 0.3384168482207698, 0.0, 2.207464324917673, 2.6952789699570814, -1);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e3_140_e8_149.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_16_12EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 466, 911, 0, 0.6615831517792302, 0.3384168482207698, 0.0, 2.207464324917673, 2.6952789699570814, -1);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+26
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_47_29EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    0.5,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 301
+train_portion < 1.0-> We are evaluating online mode. Start evaluating on test set...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_47_29EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    0.5,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 301
+train_portion < 1.0-> We are evaluating online mode. Start evaluating on test set...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_47_29EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    0.5,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 301
+train_portion < 1.0-> We are evaluating online mode. Start evaluating on test set...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    false,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 351
+train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e7_304.smt2.folder
+3
+[[3 0]
+ [0 3]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 3,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 6,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e1_448.smt2.folder
+1377
+[[1213  164]
+ [ 366 1524]]
+accuracy 0.8377716559534741
+f1 0.8518725544997205
+precision 0.9028436018957346
+recall 0.8063492063492064
+counters {
+  "wrong_cnt": 277,
+  "perfect_cnt": 1099,
+  "eligable_cnt": 1,
+  "wrong_len": 831,
+  "perfect_len": 2434,
+  "eligable_len": 2,
+  "perfect_avg_len": 2.2147406733393993,
+  "wrong_avg_len": 3.0,
+  "eligable_avg_len": 2.0,
+  "perfect_ratio": 0.7981118373275236,
+  "wrong_ratio": 0.20116194625998549,
+  "eligable_ratio": 0.0007262164124909223
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e2_80.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 277, 1099, 1, 0.7981118373275236, 0.20116194625998549, 0.0007262164124909223, 2.2147406733393993, 3.0, 2.0);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e3_140_e8_149.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 277, 1099, 1, 0.7981118373275236, 0.20116194625998549, 0.0007262164124909223, 2.2147406733393993, 3.0, 2.0);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+26
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Eval model
+ /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder/models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_03_10EpochES.pt
+I was trained with the configs:
+{
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the variable embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Epoch 351
+train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e7_304.smt2.folder
+3
+[[3 0]
+ [0 3]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 3,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 6,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e1_448.smt2.folder
+1377
+[[1213  164]
+ [ 169 1721]]
+accuracy 0.8980716253443526
+f1 0.9117880794701987
+precision 0.9129973474801061
+recall 0.9105820105820106
+counters {
+  "wrong_cnt": 169,
+  "perfect_cnt": 1207,
+  "eligable_cnt": 1,
+  "wrong_len": 507,
+  "perfect_len": 2758,
+  "eligable_len": 2,
+  "perfect_avg_len": 2.2850041425020713,
+  "wrong_avg_len": 3.0,
+  "eligable_avg_len": 2.0,
+  "perfect_ratio": 0.8765432098765432,
+  "wrong_ratio": 0.12273057371096587,
+  "eligable_ratio": 0.0007262164124909223
+}
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e8_371_e2_80.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_03_10EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 169, 1207, 1, 0.8765432098765432, 0.12273057371096587, 0.0007262164124909223, 2.2850041425020713, 3.0, 2.0);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters_e3_140_e8_149.smt2.folder
+REPLACE INTO Dopey.Dopey_RNN_Res
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES('NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_03_10EpochES.pt', '_6counters_e8_371_e1_448.smt2.folder', '_6counters.smt2.folder', 169, 1207, 1, 0.8765432098765432, 0.12273057371096587, 0.0007262164124909223, 2.2850041425020713, 3.0, 2.0);
+Evaluating on  /home/nle/workspace/Doping_run_benchmark/lustre_all/_6counters.smt2.folder
+26
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}

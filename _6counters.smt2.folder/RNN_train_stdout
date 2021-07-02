@@ -1,0 +1,4660 @@
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    300,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    32,
+    "embedding dim",
+    "embD"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+70 64
+no_of_params: 102562
+Disable token embeddings...
+Disable const embeddings...
+Result using data from: ind_gen_files/
+[[11 20]
+ [11 29]]
+accuracy 0.5633802816901409
+f1 0.6516853932584269
+precision 0.5918367346938775
+recall 0.725
+counters {
+  "wrong_cnt": 11,
+  "perfect_cnt": 10,
+  "eligable_cnt": 5,
+  "wrong_len": 37,
+  "perfect_len": 20,
+  "eligable_len": 14,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": 3.3636363636363638,
+  "eligable_avg_len": 2.8,
+  "perfect_ratio": 0.38461538461538464,
+  "wrong_ratio": 0.4230769230769231,
+  "eligable_ratio": 0.19230769230769232
+}
+[[1 0]
+ [0 3]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 1,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 4,
+  "eligable_len": 0,
+  "perfect_avg_len": 4.0,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+Iteration 1 Loss: 17.748571395874023
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_12_53Epoch0.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "wrong_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 51 Loss: 0.21061401069164276
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_14_40Epoch50.pt
+Enable token embeddings...
+Enable const embeddings...
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 1 39]]
+accuracy 0.9859154929577465
+f1 0.9873417721518987
+precision 1.0
+recall 0.975
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 25,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 67,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.68,
+  "wrong_avg_len": 4.0,
+  "perfect_ratio": 0.9615384615384616,
+  "wrong_ratio": 0.038461538461538464,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [2 1]]
+accuracy 0.5
+f1 0.5
+precision 1.0
+recall 0.3333333333333333
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "wrong_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 101 Loss: 0.9051299691200256
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_16_27Epoch100.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "wrong_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 151 Loss: 0.02624513767659664
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_18_16Epoch150.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "wrong_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 201 Loss: 0.00470479903742671
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_20_05Epoch200.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "wrong_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 251 Loss: 0.0011311436537653208
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_21_54Epoch250.pt
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0704_02_23_41Epoch299.pt
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    300,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    32,
+    "embedding dim",
+    "embD"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+102 64
+no_of_params: 110754
+Result using data from: ind_gen_files/
+[[ 0 31]
+ [ 0 40]]
+accuracy 0.5633802816901409
+f1 0.7207207207207207
+precision 0.5633802816901409
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 0,
+  "eligable_cnt": 26,
+  "wrong_len": 0,
+  "perfect_len": 0,
+  "eligable_len": 71,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": 2.730769230769231,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 1.0
+}
+[[0 1]
+ [0 3]]
+accuracy 0.75
+f1 0.8571428571428571
+precision 0.75
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 0,
+  "eligable_cnt": 1,
+  "wrong_len": 0,
+  "perfect_len": 0,
+  "eligable_len": 4,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 1.0
+}
+Iteration 1 Loss: 17.803695678710938
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_20_36Epoch0.pt
+Result using data from: ind_gen_files/
+[[28  3]
+ [ 5 35]]
+accuracy 0.8873239436619719
+f1 0.8974358974358975
+precision 0.9210526315789473
+recall 0.875
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 20,
+  "eligable_cnt": 2,
+  "wrong_len": 14,
+  "perfect_len": 50,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.5,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.7692307692307693,
+  "wrong_ratio": 0.15384615384615385,
+  "eligable_ratio": 0.07692307692307693
+}
+[[0 1]
+ [1 2]]
+accuracy 0.5
+f1 0.6666666666666666
+precision 0.6666666666666666
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 51 Loss: 5.5761590003967285
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_22_14Epoch50.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 1 39]]
+accuracy 0.9859154929577465
+f1 0.9873417721518987
+precision 1.0
+recall 0.975
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 25,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 67,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.68,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.9615384615384616,
+  "wrong_ratio": 0.038461538461538464,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 101 Loss: 1.3255113363265991
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_23_56Epoch100.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 151 Loss: 0.2636774480342865
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_25_31Epoch150.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 201 Loss: 0.09278880059719086
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_27_15Epoch200.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 251 Loss: 0.03678015246987343
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_29_01Epoch250.pt
+Saving to  models/C_False_D_True_E_True_M_-1_TrBSz_101_TeBSz_16_Nr_5_s_True_TrNeg_False_N_300_embD_32_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_10_30_41Epoch299.pt
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    0.5,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+166 64
+no_of_params: 128322
+Result using data from: ind_gen_files/
+[[ 0 14]
+ [ 0 15]]
+accuracy 0.5172413793103449
+f1 0.6818181818181819
+precision 0.5172413793103449
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 0,
+  "eligable_cnt": 12,
+  "wrong_len": 0,
+  "perfect_len": 0,
+  "eligable_len": 29,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": 2.4166666666666665,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 1.0
+}
+[[ 0 18]
+ [ 0 28]]
+accuracy 0.6086956521739131
+f1 0.7567567567567568
+precision 0.6086956521739131
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 0,
+  "eligable_cnt": 15,
+  "wrong_len": 0,
+  "perfect_len": 0,
+  "eligable_len": 46,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": 3.066666666666667,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 1.0
+}
+Iteration 1 Loss: 8.338465690612793
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_22_37Epoch0.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 1 14]]
+accuracy 0.9655172413793104
+f1 0.9655172413793104
+precision 1.0
+recall 0.9333333333333333
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 11,
+  "eligable_cnt": 0,
+  "wrong_len": 3,
+  "perfect_len": 26,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.3636363636363638,
+  "wrong_avg_len": 3.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.9166666666666666,
+  "wrong_ratio": 0.08333333333333333,
+  "eligable_ratio": 0.0
+}
+[[15  3]
+ [10 18]]
+accuracy 0.717391304347826
+f1 0.7346938775510204
+precision 0.8571428571428571
+recall 0.6428571428571429
+counters {
+  "wrong_cnt": 8,
+  "perfect_cnt": 5,
+  "eligable_cnt": 2,
+  "wrong_len": 27,
+  "perfect_len": 14,
+  "eligable_len": 5,
+  "perfect_avg_len": 2.8,
+  "wrong_avg_len": 3.375,
+  "eligable_avg_len": 2.5,
+  "perfect_ratio": 0.3333333333333333,
+  "wrong_ratio": 0.5333333333333333,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 51 Loss: 1.2917835712432861
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_23_15Epoch50.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[15  3]
+ [ 6 22]]
+accuracy 0.8043478260869565
+f1 0.830188679245283
+precision 0.88
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 10,
+  "eligable_cnt": 1,
+  "wrong_len": 15,
+  "perfect_len": 28,
+  "eligable_len": 3,
+  "perfect_avg_len": 2.8,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.0,
+  "perfect_ratio": 0.6666666666666666,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.06666666666666667
+}
+Iteration 101 Loss: 0.21250928938388824
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_23_51Epoch100.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 151 Loss: 0.049037836492061615
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_24_28Epoch150.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 201 Loss: 0.014458274468779564
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_25_05Epoch200.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 251 Loss: 0.02030515857040882
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_25_41Epoch250.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 301 Loss: 0.008493438363075256
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_26_18Epoch300.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 351 Loss: 0.007930932566523552
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_26_55Epoch350.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 401 Loss: 0.013067462481558323
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_27_32Epoch400.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 451 Loss: 0.003307392355054617
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_28_10Epoch450.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 501 Loss: 0.0038940133526921272
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_28_48Epoch500.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 551 Loss: 0.0024081654846668243
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_29_26Epoch550.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 601 Loss: 0.006612612400203943
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_30_04Epoch600.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 651 Loss: 0.0010762918973341584
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_30_41Epoch650.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 701 Loss: 0.0036112891975790262
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_31_19Epoch700.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 751 Loss: 0.000891596544533968
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_31_58Epoch750.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 801 Loss: 0.0012098902370780706
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_32_36Epoch800.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 851 Loss: 0.0013734534149989486
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_33_13Epoch850.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 901 Loss: 0.000638703117147088
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_33_51Epoch900.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 951 Loss: 0.0013347154017537832
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_34_30Epoch950.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1001 Loss: 0.0013435441069304943
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_35_08Epoch1000.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1051 Loss: 0.0006752278422936797
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_35_46Epoch1050.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1101 Loss: 0.001085216528736055
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_36_24Epoch1100.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1151 Loss: 0.001587817445397377
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_37_02Epoch1150.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1201 Loss: 0.0017019030638039112
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_37_40Epoch1200.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1251 Loss: 0.0006152191199362278
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_38_18Epoch1250.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1301 Loss: 0.0006187531398609281
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_38_56Epoch1300.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1351 Loss: 0.0006240697111934423
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_39_35Epoch1350.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1401 Loss: 0.002678832970559597
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_40_13Epoch1400.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 6 22]]
+accuracy 0.7608695652173914
+f1 0.7999999999999999
+precision 0.8148148148148148
+recall 0.7857142857142857
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 9,
+  "eligable_cnt": 2,
+  "wrong_len": 15,
+  "perfect_len": 24,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.6666666666666665,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 1451 Loss: 0.0007900535711087286
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_40_51Epoch1450.pt
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0405_23_41_28Epoch1499.pt
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    0.5,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+no_of_params: 136514
+Disable token embeddings...
+Disable const embeddings...
+Result using data from: ind_gen_files/
+[[14  0]
+ [15  0]]
+accuracy 0.4827586206896552
+f1 0.0
+precision 0.0
+recall 0.0
+counters {
+  "wrong_cnt": 12,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 29,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 2.4166666666666665,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+[[18  0]
+ [28  0]]
+accuracy 0.391304347826087
+f1 0.0
+precision 0.0
+recall 0.0
+counters {
+  "wrong_cnt": 15,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 46,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 3.066666666666667,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 1 Loss: 8.35244083404541
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_43_48Epoch0.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 3 12]]
+accuracy 0.896551724137931
+f1 0.888888888888889
+precision 1.0
+recall 0.8
+counters {
+  "wrong_cnt": 3,
+  "perfect_cnt": 9,
+  "eligable_cnt": 0,
+  "wrong_len": 10,
+  "perfect_len": 19,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.111111111111111,
+  "wrong_avg_len": 3.3333333333333335,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.75,
+  "wrong_ratio": 0.25,
+  "eligable_ratio": 0.0
+}
+[[16  2]
+ [12 16]]
+accuracy 0.6956521739130435
+f1 0.6956521739130435
+precision 0.8888888888888888
+recall 0.5714285714285714
+counters {
+  "wrong_cnt": 9,
+  "perfect_cnt": 5,
+  "eligable_cnt": 1,
+  "wrong_len": 31,
+  "perfect_len": 12,
+  "eligable_len": 3,
+  "perfect_avg_len": 2.4,
+  "wrong_avg_len": 3.4444444444444446,
+  "eligable_avg_len": 3.0,
+  "perfect_ratio": 0.3333333333333333,
+  "wrong_ratio": 0.6,
+  "eligable_ratio": 0.06666666666666667
+}
+Iteration 51 Loss: 2.821504831314087
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_44_25Epoch50.pt
+Enable token embeddings...
+Enable const embeddings...
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[15  3]
+ [ 5 23]]
+accuracy 0.8260869565217391
+f1 0.8518518518518519
+precision 0.8846153846153846
+recall 0.8214285714285714
+counters {
+  "wrong_cnt": 4,
+  "perfect_cnt": 10,
+  "eligable_cnt": 1,
+  "wrong_len": 15,
+  "perfect_len": 28,
+  "eligable_len": 3,
+  "perfect_avg_len": 2.8,
+  "wrong_avg_len": 3.75,
+  "eligable_avg_len": 3.0,
+  "perfect_ratio": 0.6666666666666666,
+  "wrong_ratio": 0.26666666666666666,
+  "eligable_ratio": 0.06666666666666667
+}
+Iteration 101 Loss: 0.630736231803894
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_45_03Epoch100.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 151 Loss: 0.06566447019577026
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_45_38Epoch150.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 201 Loss: 0.042069435119628906
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_46_14Epoch200.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 251 Loss: 0.02307029813528061
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_46_51Epoch250.pt
+Result using data from: ind_gen_files/
+[[14  0]
+ [ 0 15]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 12,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 29,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.4166666666666665,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[13  5]
+ [ 9 19]]
+accuracy 0.6956521739130435
+f1 0.7307692307692307
+precision 0.7916666666666666
+recall 0.6785714285714286
+counters {
+  "wrong_cnt": 7,
+  "perfect_cnt": 6,
+  "eligable_cnt": 2,
+  "wrong_len": 24,
+  "perfect_len": 15,
+  "eligable_len": 7,
+  "perfect_avg_len": 2.5,
+  "wrong_avg_len": 3.4285714285714284,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.4,
+  "wrong_ratio": 0.4666666666666667,
+  "eligable_ratio": 0.13333333333333333
+}
+Iteration 301 Loss: 0.012167500331997871
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_47_28Epoch300.pt
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_0.5_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0505_22_47_29EpochES.pt
+Achieve good performance multiple times in a row. Early Stopping...
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+no_of_params: 136514
+Disable token embeddings...
+Disable const embeddings...
+Result using data from: ind_gen_files/
+[[25  6]
+ [25 15]]
+accuracy 0.5633802816901409
+f1 0.4918032786885245
+precision 0.7142857142857143
+recall 0.375
+counters {
+  "wrong_cnt": 24,
+  "perfect_cnt": 0,
+  "eligable_cnt": 2,
+  "wrong_len": 65,
+  "perfect_len": 0,
+  "eligable_len": 6,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 2.7083333333333335,
+  "eligable_avg_len": 3.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.9230769230769231,
+  "eligable_ratio": 0.07692307692307693
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 1 Loss: 18.173046112060547
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_07_02Epoch0.pt
+Result using data from: ind_gen_files/
+[[24  7]
+ [ 2 38]]
+accuracy 0.8732394366197183
+f1 0.8941176470588236
+precision 0.8444444444444444
+recall 0.95
+counters {
+  "wrong_cnt": 2,
+  "perfect_cnt": 19,
+  "eligable_cnt": 5,
+  "wrong_len": 8,
+  "perfect_len": 45,
+  "eligable_len": 18,
+  "perfect_avg_len": 2.3684210526315788,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": 3.6,
+  "perfect_ratio": 0.7307692307692307,
+  "wrong_ratio": 0.07692307692307693,
+  "eligable_ratio": 0.19230769230769232
+}
+[[0 1]
+ [1 2]]
+accuracy 0.5
+f1 0.6666666666666666
+precision 0.6666666666666666
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 51 Loss: 7.612244129180908
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_08_15Epoch50.pt
+Enable token embeddings...
+Enable const embeddings...
+Result using data from: ind_gen_files/
+[[30  1]
+ [ 3 37]]
+accuracy 0.9436619718309859
+f1 0.9487179487179489
+precision 0.9736842105263158
+recall 0.925
+counters {
+  "wrong_cnt": 3,
+  "perfect_cnt": 23,
+  "eligable_cnt": 0,
+  "wrong_len": 11,
+  "perfect_len": 60,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.608695652173913,
+  "wrong_avg_len": 3.6666666666666665,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.8846153846153846,
+  "wrong_ratio": 0.11538461538461539,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 101 Loss: 2.1240649223327637
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_09_35Epoch100.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 151 Loss: 0.259615957736969
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_10_54Epoch150.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 201 Loss: 0.16417638957500458
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_12_12Epoch200.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 251 Loss: 0.1471545547246933
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_13_31Epoch250.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 301 Loss: 0.05522890388965607
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_14_50Epoch300.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 351 Loss: 0.032671187072992325
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_16_10Epoch350.pt
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-0805_15_16_12EpochES.pt
+Achieve good performance multiple times in a row. Early Stopping...
+Setting pos_emb_dim in configs to 0
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    0,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+Setting pos_emb_dim in configs to 0
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    0,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+no_of_params: 120130
+Disable token embeddings...
+Disable const embeddings...
+Setting pos_emb_dim in configs to 0
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    0,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+no_of_params: 120130
+Disable token embeddings...
+Disable const embeddings...
+Result using data from: ind_gen_files/
+[[26  5]
+ [15 25]]
+accuracy 0.7183098591549296
+f1 0.7142857142857143
+precision 0.8333333333333334
+recall 0.625
+counters {
+  "wrong_cnt": 14,
+  "perfect_cnt": 10,
+  "eligable_cnt": 2,
+  "wrong_len": 45,
+  "perfect_len": 20,
+  "eligable_len": 6,
+  "perfect_avg_len": 2.0,
+  "wrong_avg_len": 3.2142857142857144,
+  "eligable_avg_len": 3.0,
+  "perfect_ratio": 0.38461538461538464,
+  "wrong_ratio": 0.5384615384615384,
+  "eligable_ratio": 0.07692307692307693
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 1 Loss: 17.997182846069336
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_00_58_38Epoch0.pt
+Result using data from: ind_gen_files/
+[[23  8]
+ [ 2 38]]
+accuracy 0.8591549295774648
+f1 0.8837209302325583
+precision 0.8260869565217391
+recall 0.95
+counters {
+  "wrong_cnt": 2,
+  "perfect_cnt": 18,
+  "eligable_cnt": 6,
+  "wrong_len": 8,
+  "perfect_len": 42,
+  "eligable_len": 21,
+  "perfect_avg_len": 2.3333333333333335,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": 3.5,
+  "perfect_ratio": 0.6923076923076923,
+  "wrong_ratio": 0.07692307692307693,
+  "eligable_ratio": 0.23076923076923078
+}
+[[0 1]
+ [1 2]]
+accuracy 0.5
+f1 0.6666666666666666
+precision 0.6666666666666666
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 51 Loss: 7.8698811531066895
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_00_59_51Epoch50.pt
+Enable token embeddings...
+Enable const embeddings...
+Result using data from: ind_gen_files/
+[[29  2]
+ [ 3 37]]
+accuracy 0.9295774647887324
+f1 0.9367088607594937
+precision 0.9487179487179487
+recall 0.925
+counters {
+  "wrong_cnt": 3,
+  "perfect_cnt": 23,
+  "eligable_cnt": 0,
+  "wrong_len": 11,
+  "perfect_len": 60,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.608695652173913,
+  "wrong_avg_len": 3.6666666666666665,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.8846153846153846,
+  "wrong_ratio": 0.11538461538461539,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 101 Loss: 3.3899621963500977
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_01_10Epoch100.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 151 Loss: 0.39780113101005554
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_02_26Epoch150.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 201 Loss: 0.2692190110683441
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_03_41Epoch200.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 251 Loss: 0.12259315699338913
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_04_57Epoch250.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 301 Loss: 0.051449574530124664
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_06_13Epoch300.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 351 Loss: 0.04652095213532448
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_07_30Epoch350.pt
+Saving to  models/C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_0_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1405_01_07_31EpochES.pt
+Achieve good performance multiple times in a row. Early Stopping...
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    false,
+    "whether to use the const embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+no_of_params: 135682
+Disable token embeddings...
+Disable const embeddings...
+Result using data from: ind_gen_files/
+[[ 0 31]
+ [ 0 40]]
+accuracy 0.5633802816901409
+f1 0.7207207207207207
+precision 0.5633802816901409
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 0,
+  "eligable_cnt": 26,
+  "wrong_len": 0,
+  "perfect_len": 0,
+  "eligable_len": 71,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": 2.730769230769231,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 1.0
+}
+[[0 1]
+ [0 3]]
+accuracy 0.75
+f1 0.8571428571428571
+precision 0.75
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 0,
+  "eligable_cnt": 1,
+  "wrong_len": 0,
+  "perfect_len": 0,
+  "eligable_len": 4,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": 4.0,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 1.0
+}
+Iteration 1 Loss: 17.95899772644043
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_02_59_23Epoch0.pt
+Result using data from: ind_gen_files/
+[[24  7]
+ [ 2 38]]
+accuracy 0.8732394366197183
+f1 0.8941176470588236
+precision 0.8444444444444444
+recall 0.95
+counters {
+  "wrong_cnt": 2,
+  "perfect_cnt": 19,
+  "eligable_cnt": 5,
+  "wrong_len": 8,
+  "perfect_len": 45,
+  "eligable_len": 18,
+  "perfect_avg_len": 2.3684210526315788,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": 3.6,
+  "perfect_ratio": 0.7307692307692307,
+  "wrong_ratio": 0.07692307692307693,
+  "eligable_ratio": 0.19230769230769232
+}
+[[0 1]
+ [1 2]]
+accuracy 0.5
+f1 0.6666666666666666
+precision 0.6666666666666666
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 51 Loss: 8.277535438537598
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_00_38Epoch50.pt
+Enable token embeddings...
+Enable const embeddings...
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 2 38]]
+accuracy 0.971830985915493
+f1 0.9743589743589743
+precision 1.0
+recall 0.95
+counters {
+  "wrong_cnt": 2,
+  "perfect_cnt": 24,
+  "eligable_cnt": 0,
+  "wrong_len": 8,
+  "perfect_len": 63,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.625,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.9230769230769231,
+  "wrong_ratio": 0.07692307692307693,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 101 Loss: 1.647544026374817
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_01_55Epoch100.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 151 Loss: 1.2303540706634521
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_03_11Epoch150.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 201 Loss: 0.2734316289424896
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_04_27Epoch200.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 251 Loss: 0.06568002700805664
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_05_44Epoch250.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 301 Loss: 0.05985167622566223
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_07_01Epoch300.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 351 Loss: 0.14844916760921478
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_18Epoch350.pt
+Saving to  models/C_0_D_1_E_0_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1505_03_08_19EpochES.pt
+Achieve good performance multiple times in a row. Early Stopping...
+Setting gamma in configs to -1.0
+Configs:
+ {
+  "input_folders": [
+    "ind_gen_files/"
+  ],
+  "use_c": [
+    false,
+    "whether to use context (pob)",
+    "C"
+  ],
+  "use_dot_product": [
+    true,
+    "whether to use the dot product",
+    "D"
+  ],
+  "use_const_emb": [
+    true,
+    "whether to use the variable embbeding",
+    "E"
+  ],
+  "max_size": [
+    -1,
+    "",
+    "M"
+  ],
+  "train_batch_size": [
+    101,
+    "train batch size",
+    "TrBSz"
+  ],
+  "test_batch_size": [
+    16,
+    "test batch size",
+    "TeBSz"
+  ],
+  "train_portion": [
+    1,
+    "How much of the data is used for train. Default is 1.0 (100%)",
+    "TrPer"
+  ],
+  "negative_sampling_rate": [
+    5,
+    "negative sampling rate. set to -1 to not use negative sampling",
+    "Nr"
+  ],
+  "shuffle": [
+    true,
+    "",
+    "s"
+  ],
+  "train_negative_model": [
+    false,
+    "whether we are training the negative model",
+    "TrNeg"
+  ],
+  "epoch": [
+    1500,
+    "",
+    "N"
+  ],
+  "emb_dim": [
+    64,
+    "embedding dim",
+    "embD"
+  ],
+  "pos_emb_dim": [
+    64,
+    "positional embedding dim",
+    "embP"
+  ],
+  "tree_dim": [
+    64,
+    "tree dim",
+    "treeD"
+  ],
+  "eval_epoch": [
+    50,
+    "",
+    "eN"
+  ],
+  "save_epoch": [
+    50,
+    "",
+    "sN"
+  ],
+  "threshold": [
+    0.7,
+    "if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example",
+    "Th"
+  ],
+  "dropout_rate": [
+    0.5,
+    "",
+    "Dr"
+  ],
+  "gamma": [
+    -1.0,
+    "",
+    "Gm"
+  ],
+  "prefix": [
+    "model",
+    "",
+    "P_CAV"
+  ],
+  "checkpoint": [
+    "",
+    "Path to the .pt file of a model. Use it to resume training",
+    "Ckp"
+  ],
+  "device": [
+    "cuda",
+    "Use CPU or GPU to train. Possilbe option: cuda, cpu",
+    "Dev"
+  ]
+}
+no_of_params: 134978
+Disable token embeddings...
+Result using data from: ind_gen_files/
+[[31  0]
+ [40  0]]
+accuracy 0.43661971830985913
+f1 0.0
+precision 0.0
+recall 0.0
+counters {
+  "wrong_cnt": 26,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 71,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 2.730769230769231,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [3 0]]
+accuracy 0.25
+f1 0.0
+precision 0.0
+recall 0.0
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 1 Loss: 18.18171501159668
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_14_55_56Epoch0.pt
+Result using data from: ind_gen_files/
+[[24  7]
+ [ 3 37]]
+accuracy 0.8591549295774648
+f1 0.8809523809523809
+precision 0.8409090909090909
+recall 0.925
+counters {
+  "wrong_cnt": 3,
+  "perfect_cnt": 19,
+  "eligable_cnt": 4,
+  "wrong_len": 11,
+  "perfect_len": 45,
+  "eligable_len": 15,
+  "perfect_avg_len": 2.3684210526315788,
+  "wrong_avg_len": 3.6666666666666665,
+  "eligable_avg_len": 3.75,
+  "perfect_ratio": 0.7307692307692307,
+  "wrong_ratio": 0.11538461538461539,
+  "eligable_ratio": 0.15384615384615385
+}
+[[0 1]
+ [1 2]]
+accuracy 0.5
+f1 0.6666666666666666
+precision 0.6666666666666666
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 51 Loss: 7.7399821281433105
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_14_56_56Epoch50.pt
+Enable token embeddings...
+Enable const embeddings...
+Result using data from: ind_gen_files/
+[[29  2]
+ [ 3 37]]
+accuracy 0.9295774647887324
+f1 0.9367088607594937
+precision 0.9487179487179487
+recall 0.925
+counters {
+  "wrong_cnt": 3,
+  "perfect_cnt": 23,
+  "eligable_cnt": 0,
+  "wrong_len": 11,
+  "perfect_len": 60,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.608695652173913,
+  "wrong_avg_len": 3.6666666666666665,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.8846153846153846,
+  "wrong_ratio": 0.11538461538461539,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 101 Loss: 2.3366682529449463
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_14_57_58Epoch100.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 151 Loss: 0.2655710279941559
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_14_59_00Epoch150.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 201 Loss: 0.07443588972091675
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_00_02Epoch200.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 251 Loss: 0.05294252187013626
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_01_04Epoch250.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 301 Loss: 0.04344276711344719
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_02_06Epoch300.pt
+Result using data from: ind_gen_files/
+[[31  0]
+ [ 0 40]]
+accuracy 1.0
+f1 1.0
+precision 1.0
+recall 1.0
+counters {
+  "wrong_cnt": 0,
+  "perfect_cnt": 26,
+  "eligable_cnt": 0,
+  "wrong_len": 0,
+  "perfect_len": 71,
+  "eligable_len": 0,
+  "perfect_avg_len": 2.730769230769231,
+  "wrong_avg_len": -1,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 1.0,
+  "wrong_ratio": 0.0,
+  "eligable_ratio": 0.0
+}
+[[1 0]
+ [1 2]]
+accuracy 0.75
+f1 0.8
+precision 1.0
+recall 0.6666666666666666
+counters {
+  "wrong_cnt": 1,
+  "perfect_cnt": 0,
+  "eligable_cnt": 0,
+  "wrong_len": 4,
+  "perfect_len": 0,
+  "eligable_len": 0,
+  "perfect_avg_len": -1,
+  "wrong_avg_len": 4.0,
+  "eligable_avg_len": -1,
+  "perfect_ratio": 0.0,
+  "wrong_ratio": 1.0,
+  "eligable_ratio": 0.0
+}
+Iteration 351 Loss: 0.024235349148511887
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_03_09Epoch350.pt
+Saving to  models/NoConstEmb_C_0_D_1_E_1_M_-1_TrBSz_101_TeBSz_16_TrPer_1_Nr_5_s_1_TrNeg_0_N_1500_embD_64_embP_64_treeD_64_eN_50_sN_50_Th_0.7_Dr_0.5_Gm_-1.0_P_CAV_model_Dev_cuda-1705_15_03_10EpochES.pt
+Achieve good performance multiple times in a row. Early Stopping...
