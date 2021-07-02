@@ -17,7 +17,7 @@ from pathlib import Path
 import traceback
 from datetime import datetime
 import mysql.connector
-from cred import cred
+from Doping.cred import cred
 def oJson(filename):
     with open(filename, "r") as f:
         data = json.load(f)
@@ -30,15 +30,21 @@ def setup_model(model_path, log_level = "INFO"):
     dataset_metadata = checkpoint['dataset']
     print("I was trained with the configs:\n{}".format(json.dumps(checkpoint["configs"], indent=2)))
     print("Epoch", checkpoint["epoch"])
-    
+
+    if 'use_var_emb' in model_metadata:
+        use_var_emb = model_metadata['use_var_emb']
+    else:
+        use_var_emb = True
+
     model = RNNModel(dataset_metadata['vocab_size'],
                      dataset_metadata['sort_size'],
                      emb_dim = model_metadata['emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
                      const_emb_dim = model_metadata['const_emb_dim'], #30 is the max emb_dim possible, due to the legacy dataset
-                     pos_emb_dim=32,
+                     pos_emb_dim=model_metadata['pos_emb_dim'],
                      tree_dim = model_metadata['tree_dim'],
                      device = torch.device('cuda'),
-                     log_level = log_level).eval()
+                     log_level = log_level,
+                     use_var_emb = use_var_emb).eval()
 
 
     model.load_state_dict(checkpoint["model_state_dict"])
@@ -260,9 +266,9 @@ def evaluate(model, dataObj, datapart, test_bsz, writer = None, n = None, debug 
     model.train()
     return results
 
-def get_lustre_variants(test_folder):
+def get_lustre_variants(test_folder, get_random_v = False):
     """
-    Given a test_folder of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1.smt2,
+    Given a test_folder of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1.smt2/ind_gen_file,
     this function will first extract the SYNAPSE_1.smt2 part,
     then find all variants of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1_*.smt2,
     as well as all variants of the form /home/nle/workspace/Doping/benchmarks/vmt-chc-benchmarks/lustre/SYNAPSE_1.smt2/variant_*/input_file.smt2
@@ -280,20 +286,25 @@ def get_lustre_variants(test_folder):
     variants = glob.glob(query)
 
     variants.append(str(exp_folder))
-    for i in range(10):
-        variants.append(str(exp_folder.joinpath("variant_{}".format(i))))
+    """
+    if we want to measure random variants created by permuting constants, set get_random_v to True
+    """
+    if get_random_v:
+        for i in range(10):
+            variants.append(str(exp_folder.joinpath("variant_{}".format(i))))
     return variants
 
-def get_model_path(test_folder, n = 299):
+def get_model_path(test_folder, n = 299, tag = ""):
     model_folder = str(test_folder.parent.absolute().joinpath("models"))
     suffix = "{}.pt".format(n)
 
-    all_models = glob.glob(model_folder+"/*.pt")
+    all_models = glob.glob(model_folder+"/{}*.pt".format(tag))
     all_models.sort(key = os.path.getmtime, reverse = True)
     for model_path in all_models:
         if model_path.endswith(suffix):
-            break
-    return model_path
+            
+            return model_path
+    return None
 
 def get_db_conn():
     db = mysql.connector.connect(
@@ -308,14 +319,20 @@ if __name__=="__main__":
     parser = Du.parser_from_template()
     parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder", required = True)
     parser.add_argument("--variants_file", help = "Optional. If provided, will test the model againsts instances listed in the file", required = False)
+
+    parser.add_argument("--model_tag", default = "", help = "Optional. If provided, will find the model that has the tag", required = False)
     args = parser.parse_args()
 
     test_folder = Path(args.test_folder)
+    exp_folder = test_folder.parent.absolute()
     if args.variants_file is None:
         variants = get_lustre_variants(test_folder)
     else:
         variants = open(args.variants_file, "r").read().split("\n")
-    model_path  = get_model_path(test_folder, n = 1499)
+    
+    model_path  = get_model_path(test_folder, n = 'ES', tag = args.model_tag)
+    if model_path is None:
+        model_path  = get_model_path(test_folder, n = 1499, tag = args.model_tag)
     print("Eval model\n", model_path)
     #load vocab
     vocab = json.load(open(os.path.join(test_folder, "vocab.json")))
@@ -330,7 +347,7 @@ if __name__=="__main__":
     c = db.cursor()
 
     #evaluate variants
-    if dataset_metadata["train_size"]==1:
+    if dataset_metadata["train_portion"]==1:
         print("train_portion = 1.0-> We are evaluating transfered models. Start evaluating variants...")
         for v in variants:
             try:
@@ -341,7 +358,7 @@ if __name__=="__main__":
                 var_dataObj = DataObj(v_path,
                                     max_size = dataset_metadata["max_size"],
                                     shuffle = dataset_metadata["shuffle"],
-                                    train_size = dataset_metadata["train_size"],
+                                    train_size = dataset_metadata["train_portion"],
                                     threshold = dataset_metadata["threshold"],
                                     device = configs["device"][0])
                 print(len(var_dataObj.train_dps))
@@ -349,13 +366,14 @@ if __name__=="__main__":
                 r = results[v]["counters"]
                 c.execute('''
                 REPLACE INTO Dopey.Dopey_RNN_Res
-                (model_path, variant, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
-                VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+                (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+                VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
                 ''', (os.path.basename(model_path),
-                    str(Path(v).parts[-2:]) if "variant" in v else str(Path(v).parts[-1]),
-                    r["wrong_cnt"], r["perfect_cnt"], r["eligable_cnt"],
-                    r["perfect_ratio"], r["wrong_ratio"], r["eligable_ratio"],
-                    r["perfect_avg_len"], r["wrong_avg_len"], r["eligable_avg_len"]))
+                      str(Path(v).parts[-2:]) if "variant" in v else str(Path(v).parts[-1]),
+                      str(exp_folder.parts[-1]),
+                      r["wrong_cnt"], r["perfect_cnt"], r["eligable_cnt"],
+                      r["perfect_ratio"], r["wrong_ratio"], r["eligable_ratio"],
+                      r["perfect_avg_len"], r["wrong_avg_len"], r["eligable_avg_len"]))
             except:
                 print(c.statement)
                 traceback.print_exc()
@@ -372,24 +390,26 @@ if __name__=="__main__":
             var_dataObj = DataObj(v_path,
                                 max_size = dataset_metadata["max_size"],
                                 shuffle = dataset_metadata["shuffle"],
-                                train_size = dataset_metadata["train_size"],
+                                train_size = dataset_metadata["train_portion"],
                                 threshold = dataset_metadata["threshold"],
                                 device = configs["device"][0])
             results[v+".testset"] = evaluate(model, var_dataObj, var_dataObj.test_dps, 1, debug=True)
             r = results[v+".testset"]["counters"]
             c.execute('''
             REPLACE INTO Dopey.Dopey_RNN_Res
-            (model_path, variant, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
-            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+            (model_path, variant, seed, wrong_cnt, perfect_cnt, eligable_cnt, perfect_ratio, wrong_ratio, eligable_ratio, perfect_avg_len, wrong_avg_len, eligable_avg_len)
+            VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
             ''', (os.path.basename(model_path),
-                    v+".testset",
-                    r["wrong_cnt"], r["perfect_cnt"], r["eligable_cnt"],
-                    r["perfect_ratio"], r["wrong_ratio"], r["eligable_ratio"],
-                    r["perfect_avg_len"], r["wrong_avg_len"], r["eligable_avg_len"]))
+                  str(Path(v).parts[-1])+".testset",
+                  str(exp_folder.parts[-1])+".testset",
+                  r["wrong_cnt"], r["perfect_cnt"], r["eligable_cnt"],
+                  r["perfect_ratio"], r["wrong_ratio"], r["eligable_ratio"],
+                  r["perfect_avg_len"], r["wrong_avg_len"], r["eligable_avg_len"]))
         except:
             print(c.statement)
             traceback.print_exc()
 
+        db.commit()
     now = datetime.now()
     current_time = now.strftime("%d%m_%H_%M_%S")
     with open("RESULTS_{}.json".format(current_time), "w") as f:
