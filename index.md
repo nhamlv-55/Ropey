@@ -13,5 +13,8 @@ Arie Gurfinkel email
 
 ### Running time evaluation results
 [https://nhamlv-55.github.io/Ropey/running_time_results/](https://nhamlv-55.github.io/Ropey/running_time_results)
+
+### Training time details
+[https://nhamlv-55.github.io/Ropey/training_time/](https://nhamlv-55.github.io/Ropey/training_time)
 ## Code
 ROPEY main repo is at https://github.com/nhamlv-55/Ropey
