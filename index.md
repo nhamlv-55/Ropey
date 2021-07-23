@@ -1,6 +1,6 @@
 ## Welcome to ROPEY's webpage
 ## Contact
-Nham Le nv3le@uwaterloo.ca
+Nham Le nv3le curvy a uwaterloo dot ca
 Xujie Si email
 Arie Gurfinkel email
 ## Paper
