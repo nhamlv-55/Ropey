@@ -21,9 +21,11 @@ Need https://github.com/nhamlv-55/PySpacerSolver clone in to the same folder. Th
 ```
 ## Test
 #### Train command
-`PYTHONPATH=~/workspace/ python3 X_train.py --json_config_file exp_config_1.json --threshold 0.99`
-(Basically, you need to add the project to your PYTHONPATH)
+`python3 RNN_train.py -JI exp_config_getting_started.json`
+The models are saved to a `model` folder where the code is run.
 
 #### Eval command
-``
-`PYTHONPATH=~/workspace/ python3 X_eval.py --test_folder grpc_test_runs/chc0002/ind_gen_files -Th 0.5 --model_path <some model.pt>`
+Before running, please make sure the `PROJECT_ROOT` variable in `RNN_eval_runningtime.py` is set correctly
+`
+python RNN_eval_runningtime.py --test_folder _6counters.smt2.folder/ind_gen_files --gs_model_path _6counters.smt2.folder/models/getting_started.pt --getting_started
+`
