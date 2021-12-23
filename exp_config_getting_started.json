@@ -1,0 +1,27 @@
+{
+    "input_folders":[
+        "_6counters.smt2.folder/ind_gen_files/"
+    ],
+    "use_c": [false,"whether to use context (pob)", "C"],
+    "use_dot_product": [true,"whether to use the dot product", "D"],
+    "use_const_emb": [true,"whether to use the variable embbeding", "E"],
+    "max_size": [-1,"","M"],
+    "train_batch_size": [101,"train batch size","TrBSz"],
+    "test_batch_size": [16,"test batch size","TeBSz"],
+    "train_portion": [1, "How much of the data is used for train. Default is 1.0 (100%)", "TrPer"],
+    "negative_sampling_rate": [5,"negative sampling rate. set to -1 to not use negative sampling","Nr"],
+    "shuffle": [true,"","s"],
+    "train_negative_model": [false, "whether we are training the negative model","TrNeg"],
+    "epoch": [1500,"","N"],
+    "emb_dim": [64,"embedding dim","embD"],
+    "pos_emb_dim": [64,"positional embedding dim","embP"],
+    "tree_dim": [64,"tree dim","treeD"],
+    "eval_epoch": [50,"","eN"],
+    "save_epoch": [50,"","sN"],
+    "threshold": [0.7,"if a cell in the Prob matrix has the value > threshold, it will be a positive example. Otherwise a negative example","Th"],
+    "dropout_rate": [0.5,"","Dr"],
+    "gamma": [0.1, "", "Gm"],
+    "prefix": ["model","","P_CAV"],
+    "checkpoint": ["", "Path to the .pt file of a model. Use it to resume training", "Ckp"],
+    "device": ["cuda", "Use CPU or GPU to train. Possilbe option: cuda, cpu", "Dev"]
+}
