@@ -11,7 +11,7 @@ import traceback
 import json
 TIMELIMIT = 930
 DEFAULT_MAX_LEVEL = 4294967295
-
+PROJECT_ROOT = '/home/nle/workspace/FreshRepos/Ropey'
 class SpacerResult(Enum):
     SAT = 1
     UNSAT = 2
@@ -22,16 +22,14 @@ class SpacerResult(Enum):
 
 
 def run_50052(port):
-    cmd = 'python /home/nle/workspace/Doping/X_grpc_server.py -F -p {}'.format(port).split()
+    cmd = 'python {}/X_grpc_server.py -F -p {}'.format(PROJECT_ROOT, port).split()
     p = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr = subprocess.DEVNULL)
     return p
 
 
 def run_model_server(exp_folder, model_path, port):
-    cmd = 'python /home/nle/workspace/Doping/RNN_grpc_server.py -S {} -M {} -I {} -p {}'.format(exp_folder,
-                                                                                                model_path,
-                                                                                                os.path.join(exp_folder, "ind_gen_files"),
-                                                                                                port).split()
+    cmd = 'python {}/RNN_grpc_server.py -S {} -M {} -I {} -p {}'.format(PROJECT_ROOT,
+     exp_folder, model_path, os.path.join(exp_folder, "ind_gen_files"),port).split()
     p = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr = subprocess.DEVNULL)
     return p
 
@@ -46,7 +44,8 @@ def run_z3(exp_smt2, port, max_level, ver):
         timelimit = TIMELIMIT*3
     else:
         timelimit = TIMELIMIT
-    cmd = ['/home/nle/opt/z3grpc/build/z3',
+    cmd = [
+            '{}/z3grpc/build/z3'.format(PROJECT_ROOT),
            'fp.spacer.dump_benchmarks=true',
            'fp.spacer.dump_threshold=99999',
            'fp.spacer.use_expansion=false',
@@ -229,6 +228,22 @@ def spot_check(exp_folder, max_level, args):
     print(pz3.stdout.strip())
     proc.kill()
 
+def getting_started(exp_folder, model_path):
+    '''
+    Run the getting started example
+    note: exp_folder is expect to be _6counters.smt2.folder, not the ind_gen folder
+
+    '''
+    input_file_path = os.path.join(exp_folder, 'input_file.smt2')
+    ind_gen_folder = os.path.join(exp_folder, 'ind_gen_files')
+    proc = run_model_server(ind_gen_folder, model_path, port = 40042)
+    time.sleep(5)
+    pz3 = run_z3(input_file_path, port = 40042, max_level = DEFAULT_MAX_LEVEL, ver = args.ver)
+    z3r = parse_result("spotcheck", pz3)
+    print(pz3.stderr.strip())
+    print(pz3.stdout.strip())
+    proc.kill()
+
 
 def eval_running_time_variants(exp_folder, variants, model_path, max_level, args):
     p50052 = run_50052(port = 50000 + int(args.port))
@@ -312,10 +327,12 @@ def eval_running_time_variants(exp_folder, variants, model_path, max_level, args
 if __name__=="__main__":
     parser = argparse.ArgumentParser() 
     parser.add_argument("--test_folder", help = "path to the test ind_gen_files folder", required = True)
+    parser.add_argument("--gs_model_path", help = "path to the model used in getting started", required = True)
     parser.add_argument("--port", type = int)
     parser.add_argument("--max_level", type=int, default = DEFAULT_MAX_LEVEL)
     parser.add_argument("--ver", type=int, default = 42)
     parser.add_argument("--spotcheck", action = 'store_true')
+    parser.add_argument("--getting_started", action = 'store_true')
     parser.add_argument("--ropey", action = 'store_true')
     parser.add_argument("--spacer", action = 'store_true')
     args = parser.parse_args()
@@ -328,7 +345,8 @@ if __name__=="__main__":
     max_level = args.max_level
     if spotcheck:
         spot_check(exp_folder, max_level, args)
-
+    elif getting_started:
+        getting_started(exp_folder, args.gs_model_path)
     else:
 
         variants = get_lustre_variants(test_folder)
